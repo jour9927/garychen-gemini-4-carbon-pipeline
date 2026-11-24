@@ -1,0 +1,18 @@
+# Byte-compiled / virtualenvs
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Large reference downloads & local runtime secrets (voice_refs & analysis summaries ARE tracked)
+reference_channel/videos/
+reference_channel/frames_*/
+configs/colab_token.txt
+configs/colab_endpoint.json
+.env
+
+# Scratch / intermediate temp frames
+outputs/*/frames_tmp/
+outputs/*/short_frames_tmp/

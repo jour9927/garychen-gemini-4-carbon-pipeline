@@ -1,0 +1,32 @@
+[
+  {
+    "name": "gary_hook.wav",
+    "src": "reference_channel/videos/01_UrFrDJ-G6h8/UrFrDJ-G6h8.mp4",
+    "start": 13.25,
+    "duration": 5.92,
+    "ref_text": "今天這支影片，我會讓你不花任何一毛錢，就能直接玩到完整的 AI Agent。",
+    "style": "hook",
+    "actual_duration": 5.92,
+    "sample_rate": 24000
+  },
+  {
+    "name": "gary_explainer.wav",
+    "src": "reference_channel/videos/01_UrFrDJ-G6h8/UrFrDJ-G6h8.mp4",
+    "start": 205.8,
+    "duration": 7.55,
+    "ref_text": "點開左下角的設定進到一般，你會看到免費版其實每週就有一億個 token 的額度，但如果往下滑點進兌換邀請代碼。",
+    "style": "explainer",
+    "actual_duration": 7.55,
+    "sample_rate": 24000
+  },
+  {
+    "name": "gary_warm.wav",
+    "src": "reference_channel/videos/02_aCvEYczBVSY/aCvEYczBVSY.mp4",
+    "start": 30.32,
+    "duration": 8.44,
+    "ref_text": "我想用最白話的方式帶你搞懂什麼是 CI，什麼是 CD，以及它們到底重要在哪裡，因為只有在專案裡把這道防線建立起來。",
+    "style": "warm",
+    "actual_duration": 8.44,
+    "sample_rate": 24000
+  }
+]

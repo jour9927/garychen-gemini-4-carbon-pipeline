@@ -1,0 +1,10 @@
+Host b850 b850-ubuntu alan-eagle
+    HostName 100.100.230.119
+    Port 22
+    User alan-eagle
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    StrictHostKeyChecking accept-new
+    ConnectTimeout 8
+    ServerAliveInterval 30
+    ServerAliveCountMax 6

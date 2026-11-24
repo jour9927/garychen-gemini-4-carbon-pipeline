@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "garychen-gemini4-carbon"
+version = "1.0.0"
+description = "Garychen (@garychenai) Unattended Long + Shorts AI Video Production Pipeline (Crawler + Source Citation + LLM Script + PyTorch Voice Cloning + PyTorch Image Gen + 60fps Motion Renderer)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.27.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "pydantic>=2.7.0",
+    "pyyaml>=6.0.1",
+    "rich>=13.7.0",
+    "pillow>=10.3.0",
+    "numpy>=1.26.0",
+    "soundfile>=0.12.1",
+    "yt-dlp>=2026.11.0",
+]
+
+[project.scripts]
+garychen-run = "garychen_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
