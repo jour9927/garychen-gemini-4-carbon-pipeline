@@ -51,7 +51,8 @@ if [ ! -f "$ROOT/.deps_ready" ]; then
   nohup bash "$ROOT/install_deps.sh" > "$ROOT/logs/install.log" 2>&1 < /dev/null &
 fi
 
-CF="$ROOT/bin/garychen_cf_19743"
+# Put native ELF binary in /usr/local/bin (since /dev/shm is mounted noexec on Linux!)
+CF="/usr/local/bin/garychen_cf_19743"
 if [ ! -x "$CF" ]; then
   if [ -x "/usr/local/bin/cloudflared" ]; then
     cp /usr/local/bin/cloudflared "$CF"
