@@ -1,0 +1,19 @@
+{
+  "topic_id": "nvidia",
+  "title": "NVIDIA Blackwell 財報與算力資本支出深度解析：三大護城河與估值拆解",
+  "primary_entity": "NVIDIA",
+  "category": "us_stocks",
+  "hook_angle": "NVIDIA Blackwell 財報與算力資本支出深度解析：三大護城河與估值拆解",
+  "why_now": "即時公開數據與架構深度拆解",
+  "score": 100.0,
+  "seed_queries": [
+    "NVIDIA",
+    "NVIDIA Blackwell 財報與算力資本"
+  ],
+  "seed_urls": [
+    "https://github.com/NVIDIA/TensorRT-LLM"
+  ],
+  "tickers": [
+    "NVDA"
+  ]
+}

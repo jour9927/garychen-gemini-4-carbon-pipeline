@@ -1,0 +1,190 @@
+[
+  {
+    "source_id": "S1",
+    "title": "NVIDIA/TensorRT-LLM (15,128 ★)",
+    "url": "https://github.com/NVIDIA/TensorRT-LLM",
+    "domain": "github.com",
+    "published_date": "2026-11-24",
+    "retrieved_at": "2026-11-24T18:24:34Z",
+    "source_type": "github_primary",
+    "relevance_score": 1.0,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep02_us_stocks_nvda/source_screenshots/S1.png",
+    "key_facts": [
+      "GitHub 官方開源儲存庫 NVIDIA/TensorRT-LLM：15,128 Stars、2,956 Forks（主要語言 Python）",
+      "官方核心定位：TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perfo",
+      "最新正式版本 v1.3.0（發布於 2026-11-20）：v1.3.0",
+      "11/17 NVFP4 MLA: Unified 4-bit KV Cache Storage and Attention Compute in TensorRT LLM",
+      "11/11 Dense DWDP: Extending Distributed Weight Data Parallelism to Dense Weights on Vera Rubin NVL72",
+      "11/03 ISER-MoE: In-Switch Expert Replication for Load-Balanced MoE Prefill",
+      "10/14 KV Cache Compression in TensorRT LLM"
+    ],
+    "metrics": [
+      "15,128 Stars",
+      "2,956 Forks",
+      "Python",
+      "2040 Issues"
+    ],
+    "code_or_commands": [],
+    "excerpt": "GitHub 官方開源儲存庫 NVIDIA/TensorRT-LLM：15,128 Stars、2,956 Forks（主要語言 Python） | 官方核心定位：TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perfo | 最新正式版本 v1.3.0（發布於 2026-11-20）：v1.3.0 | 11/17 NVFP4 MLA: Unified 4-bit KV Cache Storage and Attention Compute in TensorRT LLM"
+  },
+  {
+    "source_id": "S2",
+    "title": "BerriAI/litellm (63,826 ★)",
+    "url": "https://github.com/BerriAI/litellm",
+    "domain": "github.com",
+    "published_date": "2026-11-24",
+    "retrieved_at": "2026-11-24T18:24:36Z",
+    "source_type": "github_repo",
+    "relevance_score": 1.0,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep02_us_stocks_nvda/source_screenshots/S2.png",
+    "key_facts": [
+      "相關生態開源專案 BerriAI/litellm（63,826 Stars / 13,528 Forks）",
+      "The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, l",
+      "<a href=\"https://pypi.org/project/litellm/\" target=\"_blank\"",
+      "<a href=\"https://github.com/BerriAI/litellm\" target=\"_blank\""
+    ],
+    "metrics": [
+      "63,826 Stars",
+      "13,528 Forks",
+      "Python"
+    ],
+    "code_or_commands": [
+      "uv add litellm",
+      "python litellm/scripts/build_core_distribution.py --out-dir dist/core",
+      "python -m pip install dist/core/litellm_core-*.whl",
+      "from litellm import completion",
+      "import os"
+    ],
+    "excerpt": "相關生態開源專案 BerriAI/litellm（63,826 Stars / 13,528 Forks） | The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, l | <a href=\"https://pypi.org/project/litellm/\" target=\"_blank\" | <a href=\"https://github.com/BerriAI/litellm\" target=\"_blank\""
+  },
+  {
+    "source_id": "S3",
+    "title": "NVIDIA/NemoClaw (23,083 ★)",
+    "url": "https://github.com/NVIDIA/NemoClaw",
+    "domain": "github.com",
+    "published_date": "2026-11-24",
+    "retrieved_at": "2026-11-24T18:24:36Z",
+    "source_type": "github_repo",
+    "relevance_score": 1.0,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep02_us_stocks_nvda/source_screenshots/S3.png",
+    "key_facts": [
+      "相關生態開源專案 NVIDIA/NemoClaw（23,083 Stars / 3,233 Forks）",
+      "Run agents like Hermes, LangChain Deep Agents, and OpenClaw more securely inside NVIDIA OpenShell with managed inference",
+      "SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.",
+      "SPDX-License-Identifier: Apache-2.0"
+    ],
+    "metrics": [
+      "23,083 Stars",
+      "3,233 Forks",
+      "TypeScript"
+    ],
+    "code_or_commands": [
+      "./scripts/dev-setup.sh"
+    ],
+    "excerpt": "相關生態開源專案 NVIDIA/NemoClaw（23,083 Stars / 3,233 Forks） | Run agents like Hermes, LangChain Deep Agents, and OpenClaw more securely inside NVIDIA OpenShell with managed inference | SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved. | SPDX-License-Identifier: Apache-2.0"
+  },
+  {
+    "source_id": "S4",
+    "title": "NVIDIA Nemotron Nano 2: An Accurate and Efficient Hybrid Mamba-Transformer Reaso",
+    "url": "http://arxiv.org/abs/2508.14444v4",
+    "domain": "arxiv.org",
+    "published_date": "2025-08-20",
+    "retrieved_at": "2026-11-24T18:24:41Z",
+    "source_type": "research_paper",
+    "relevance_score": 1.0,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep02_us_stocks_nvda/source_screenshots/S4.png",
+    "key_facts": [
+      "arXiv 技術論文（2025-08-20，NVIDIA, :）：NVIDIA Nemotron Nano 2: An Accurate and Efficient Hybrid Mamba-Transformer Reasoning Model",
+      "實驗與架構重點：We introduce Nemotron-Nano-9B-v2, a hybrid Mamba-Transformer language model designed to increase throughput for reasoning workloads while achieving state-of-the-art accuracy compar"
+    ],
+    "metrics": [
+      "6x"
+    ],
+    "code_or_commands": [],
+    "excerpt": "We introduce Nemotron-Nano-9B-v2, a hybrid Mamba-Transformer language model designed to increase throughput for reasoning workloads while achieving state-of-the-art accuracy compared to similarly-sized models. Nemotron-Nano-9B-v2 builds on the Nemotron-H architecture, in which the majority of the self-attention layers in the common Transformer architecture are replaced with Mamba-2 layers, to achi"
+  },
+  {
+    "source_id": "S5",
+    "title": "Audio2Face-3D: Audio-driven Realistic Facial Animation For Digital Avatars",
+    "url": "http://arxiv.org/abs/2508.16401v1",
+    "domain": "arxiv.org",
+    "published_date": "2025-08-22",
+    "retrieved_at": "2026-11-24T18:24:41Z",
+    "source_type": "research_paper",
+    "relevance_score": 1.0,
+    "screenshot_path": "",
+    "key_facts": [
+      "arXiv 技術論文（2025-08-22，NVIDIA, :）：Audio2Face-3D: Audio-driven Realistic Facial Animation For Digital Avatars",
+      "實驗與架構重點：Audio-driven facial animation presents an effective solution for animating digital avatars. In this paper, we detail the technical aspects of NVIDIA Audio2Face-3D, including data a"
+    ],
+    "metrics": [
+      "arXiv Paper"
+    ],
+    "code_or_commands": [],
+    "excerpt": "Audio-driven facial animation presents an effective solution for animating digital avatars. In this paper, we detail the technical aspects of NVIDIA Audio2Face-3D, including data acquisition, network architecture, retargeting methodology, evaluation metrics, and use cases. Audio2Face-3D system enables real-time interaction between human users and interactive avatars, facilitating facial animation "
+  },
+  {
+    "source_id": "S6",
+    "title": "Dissecting the NVIDIA Blackwell Architecture with Microbenchmarks",
+    "url": "http://arxiv.org/abs/2507.10789v2",
+    "domain": "arxiv.org",
+    "published_date": "2025-07-14",
+    "retrieved_at": "2026-11-24T18:24:42Z",
+    "source_type": "research_paper",
+    "relevance_score": 1.0,
+    "screenshot_path": "",
+    "key_facts": [
+      "arXiv 技術論文（2025-07-14，Aaron Jarmusch, Nathan Graddon）：Dissecting the NVIDIA Blackwell Architecture with Microbenchmarks",
+      "實驗與架構重點：The rapid development in scientific research provides a need for more compute power, which is partly being solved by GPUs. This paper presents a microarchitectural analysis of the "
+    ],
+    "metrics": [
+      "arXiv Paper"
+    ],
+    "code_or_commands": [],
+    "excerpt": "The rapid development in scientific research provides a need for more compute power, which is partly being solved by GPUs. This paper presents a microarchitectural analysis of the modern NVIDIA Blackwell architecture by studying GPU performance features with thought through microbenchmarks. We unveil key subsystems, including the memory hierarchy, SM execution pipelines, and the SM sub-core units,"
+  },
+  {
+    "source_id": "S7",
+    "title": "官方網站與文件：Welcome to TensorRT LLM’s Documentation! — TensorRT LLM",
+    "url": "https://nvidia.github.io/TensorRT-LLM",
+    "domain": "nvidia.github.io",
+    "published_date": "2026-11-25",
+    "retrieved_at": "2026-11-24T18:24:35Z",
+    "source_type": "official_doc",
+    "relevance_score": 0.98,
+    "screenshot_path": "",
+    "key_facts": [
+      "Welcome to TensorRT LLM’s Documentation! — TensorRT LLM",
+      "Overview About TensorRT LLM Key Capabilities What Can You Do With TensorRT LLM?",
+      "What Can You Do With TensorRT LLM?",
+      "Quick Start Guide Install TensorRT LLM Deploy Online Serving with trtllm-serve Run Offline Inference with LLM API Run Offline Inference with VisualGen API Next "
+    ],
+    "metrics": [],
+    "code_or_commands": [],
+    "excerpt": "Overview About TensorRT LLM Key Capabilities What Can You Do With TensorRT LLM? What Can You Do With TensorRT LLM? Quick Start Guide Install TensorRT LLM Deploy Online Serving with trtllm-serve Run Offline Inference with LLM API Run Offline Inference with VisualGen API Next Steps Deploy Online Serving with trtllm-serve Run Offline Inference with LLM API Run Offline Inference with VisualGen API LLM Examples Basics Customization Slurm VisualGen Exa"
+  },
+  {
+    "source_id": "S8",
+    "title": "Nvidia Reinstates Jensen Huang as CEO",
+    "url": "https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html",
+    "domain": "cnbc.com",
+    "published_date": "2026-11-23",
+    "retrieved_at": "2026-11-24T18:24:38Z",
+    "source_type": "hn_discussion",
+    "relevance_score": 0.88,
+    "screenshot_path": "",
+    "key_facts": [
+      "Hacker News 工程師社群實測討論（2753 Points / 3622 則留言）：Nvidia Reinstates Jensen Huang as CEO",
+      "Jensen Huang reinstated as Nvidia CEO. Stock skyrockets 31%",
+      "The Nvidia board said it had input from senior levels of the U.S. government."
+    ],
+    "metrics": [
+      "2753 HN Points",
+      "3622 則討論",
+      "$186.64",
+      "31%"
+    ],
+    "code_or_commands": [],
+    "excerpt": "Jensen Huang was reinstated as CEO of Nvidia, the board announced in a statement. The Nvidia board said it had input from senior levels of the U.S. government. Huang resigned as CEO on Nov. 13 following reports that he engaged in several extramarital affairs, including one with an alleged Chinese spy. Huang disclosed one affair in a note to employees. Shares of Nvidia closed up 31% following Huang's reinstatement. Th"
+  }
+]

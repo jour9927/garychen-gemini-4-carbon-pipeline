@@ -154,7 +154,7 @@ class GarychenLongRenderer:
         ]
         out_mp4.parent.mkdir(parents=True, exist_ok=True)
         cmd = [
-            "ffmpeg", "-y",
+            "ffmpeg", "-y", "-loglevel", "error",
             "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
             "-i", str(master_audio_wav),
             *vcodec,
@@ -171,43 +171,46 @@ class GarychenLongRenderer:
         transition_start_f = -999
         is_beat_switch = False
 
-        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
-        assert proc.stdin is not None
-        try:
-            for f_idx in range(total_frames):
-                t_sec = f_idx / FPS
-                while cue_idx + 1 < n_cues and t_sec >= line_cues[cue_idx + 1]["start"] - 0.03:
-                    cue_idx += 1
-                cue = line_cues[cue_idx]
-                next_key = (cue["beat_id"], int(cue.get("step_idx", 0)))
-                if next_key != cur_key:
-                    is_beat_switch = (next_key[0] != cur_key[0])
-                    prev_key = cur_key
-                    cur_key = next_key
-                    transition_start_f = f_idx
+        err_log_path = out_mp4.with_suffix(".ffmpeg.log")
+        with open(err_log_path, "w", encoding="utf-8") as err_fh:
+            proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=err_fh)
+            assert proc.stdin is not None
+            try:
+                for f_idx in range(total_frames):
+                    t_sec = f_idx / FPS
+                    while cue_idx + 1 < n_cues and t_sec >= line_cues[cue_idx + 1]["start"] - 0.03:
+                        cue_idx += 1
+                    cue = line_cues[cue_idx]
+                    next_key = (cue["beat_id"], int(cue.get("step_idx", 0)))
+                    if next_key != cur_key:
+                        is_beat_switch = (next_key[0] != cur_key[0])
+                        prev_key = cur_key
+                        cur_key = next_key
+                        transition_start_f = f_idx
 
-                target_arr = state_frames[cur_key]
-                age = f_idx - transition_start_f
-                trans_len = 16 if is_beat_switch else 11
-                if 0 <= age < trans_len:
-                    alpha = 1.0 - math.pow(1.0 - (age / float(trans_len)), 3)
-                    src_arr = bg_np if (is_beat_switch and f_idx < 16) else state_frames[prev_key]
-                    frame = (src_arr * (1.0 - alpha) + target_arr * alpha).astype(np.uint8)
-                else:
-                    frame = target_arr.copy()
+                    target_arr = state_frames[cur_key]
+                    age = f_idx - transition_start_f
+                    trans_len = 16 if is_beat_switch else 11
+                    if 0 <= age < trans_len:
+                        alpha = 1.0 - math.pow(1.0 - (age / float(trans_len)), 3)
+                        src_arr = bg_np if (is_beat_switch and f_idx < 16) else state_frames[prev_key]
+                        frame = (src_arr * (1.0 - alpha) + target_arr * alpha).astype(np.uint8)
+                    else:
+                        frame = target_arr.copy()
 
-                # Composite subtitle pill cleanly on rows [916:1026]
-                if (cue["start"] - 0.03) <= t_sec <= (cue["end"] + 0.12) and cue["text"] in sub_cache:
-                    s_rgb, s_a = sub_cache[cue["text"]]
-                    roi = frame[916:1026]
-                    frame[916:1026] = (roi * (1.0 - s_a) + s_rgb * s_a).astype(np.uint8)
+                    # Composite subtitle pill cleanly on rows [916:1026]
+                    if (cue["start"] - 0.03) <= t_sec <= (cue["end"] + 0.12) and cue["text"] in sub_cache:
+                        s_rgb, s_a = sub_cache[cue["text"]]
+                        roi = frame[916:1026]
+                        frame[916:1026] = (roi * (1.0 - s_a) + s_rgb * s_a).astype(np.uint8)
 
-                prog_w = max(4, int((f_idx + 1) / total_frames * W))
-                frame[0:4, 0:prog_w] = orange_np
-                proc.stdin.write(frame.tobytes())
-        finally:
-            proc.stdin.close()
-            stderr_out = proc.stderr.read().decode("utf-8", errors="ignore") if proc.stderr else ""
-            rc = proc.wait()
-            if rc != 0:
-                raise RuntimeError(f"FFmpeg long V2 encode failed (rc={rc}): {stderr_out[-400:]}")
+                    prog_w = max(4, int((f_idx + 1) / total_frames * W))
+                    frame[0:4, 0:prog_w] = orange_np
+                    proc.stdin.write(frame.tobytes())
+            finally:
+                proc.stdin.close()
+                rc = proc.wait()
+        if rc != 0:
+            stderr_out = err_log_path.read_text(encoding="utf-8", errors="ignore")
+            raise RuntimeError(f"FFmpeg long V2 encode failed (rc={rc}): {stderr_out[-400:]}")
+        err_log_path.unlink(missing_ok=True)

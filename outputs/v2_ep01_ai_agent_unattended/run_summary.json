@@ -1,0 +1,18 @@
+{
+  "episode_id": "v2_ep01_ai_agent_unattended",
+  "episode_dir": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep01_ai_agent_unattended",
+  "long_title": "不花錢升級開發流！n8n 新手實戰",
+  "short_title": "不花錢升級開發流 #Shorts",
+  "long_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep01_ai_agent_unattended/garychen_long.mp4",
+  "short_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep01_ai_agent_unattended/garychen_short_funnel.mp4",
+  "thumbnail_png": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep01_ai_agent_unattended/thumbnail.png",
+  "publish_pack_md": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v2_ep01_ai_agent_unattended/youtube_publish_pack.md",
+  "long_duration_sec": 117.27,
+  "short_duration_sec": 32.437,
+  "beats_count": 18,
+  "cues_count": 59,
+  "sources_count": 8,
+  "live_screenshots_count": 4,
+  "tts_backend": "colab_rtx_pro_6000:cuda",
+  "image_backend": "colab_rtx_pro_6000:cuda:sdxl_base"
+}

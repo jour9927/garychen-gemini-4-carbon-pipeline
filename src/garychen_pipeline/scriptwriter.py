@@ -65,31 +65,119 @@ VALID_ICONS = {
 }
 
 
+TW_REPLACEMENTS = [
+    ("代碼", "程式碼"),
+    ("代码", "程式碼"),
+    ("編程", "寫程式"),
+    ("编程", "寫程式"),
+    ("創建", "建立"),
+    ("创建", "建立"),
+    ("自托管", "自架部署"),
+    ("自託管", "自架部署"),
+    ("教程", "教學"),
+    ("地址", "網址"),
+    ("模版", "模板"),
+    ("贡献", "貢獻"),
+    ("安裝完 n8n 后", "安裝完 n8n 後"),
+    ("之后", "之後"),
+    ("以后", "以後"),
+    ("背后", "背後"),
+    ("軟件", "軟體"),
+    ("软件", "軟體"),
+    ("服務器", "伺服器"),
+    ("服务器", "伺服器"),
+    ("數據庫", "資料庫"),
+    ("数据库", "資料庫"),
+    ("默認", "預設"),
+    ("默认", "預設"),
+    ("調用", "呼叫"),
+    ("调用", "呼叫"),
+    ("項目", "專案"),
+    ("项目", "專案"),
+    ("視頻", "影片"),
+    ("视频", "影片"),
+    ("信息", "資訊"),
+]
+
+DIORAMA_SCENES = [
+    "isometric 3D dark studio diorama of glowing modular workflow nodes connected by amber light beams on matte charcoal desk",
+    "sleek 3D architectural cutaway of an autonomous AI engine processing data cubes with warm orange rim lighting",
+    "minimalist 3D glass terminal dashboard floating above brushed gunmetal hardware modules, studio softbox lighting",
+    "tactile 3D precision vault shield protecting glowing golden data crystals on dark slate pedestal",
+    "3D mechanical balance scale comparing a compact glowing amber core against heavy legacy iron blocks",
+    "3D ecosystem hub radiating clean fiber-optic pathways to six floating tool satellites on dark charcoal stage",
+]
+
+
+def taiwanize_text(text: str) -> str:
+    out = str(text or "")
+    try:
+        from opencc import OpenCC
+        out = OpenCC("s2tw").convert(out)
+    except Exception:
+        pass
+    for src_w, dst_w in TW_REPLACEMENTS:
+        out = out.replace(src_w, dst_w)
+    return out
+
+
+def clean_ai_prompt(raw_prompt: str, entity: str, idx: int) -> str:
+    p = str(raw_prompt or "").strip()
+    has_cjk = bool(re.search(r"[\u4e00-\u9fff]", p))
+    if not p or has_cjk or "Concrete English" in p or len(p) < 18:
+        base = DIORAMA_SCENES[idx % len(DIORAMA_SCENES)]
+        return f"{base}, inspired by {entity} system architecture, strictly no text"
+    return p
+
+
 def space_pad_english(text: str) -> str:
-    t = re.sub(r"([\u4e00-\u9fff])([A-Za-z0-9$%+])", r"\1 \2", text)
+    t = taiwanize_text(text)
+    t = re.sub(r"([\u4e00-\u9fff])([A-Za-z0-9$%+])", r"\1 \2", t)
     t = re.sub(r"([A-Za-z0-9%])([\u4e00-\u9fff])", r"\1 \2", t)
     t = re.sub(r"\s+", " ", t).strip()
-    return t.rstrip("。.！!；;")
+    return t.rstrip("。.！!；;、，,")
 
 
-def split_into_clauses(text: str, target_max: int = 18) -> list[str]:
-    raw_parts = re.split(r"[。！？；!?\n]+|，", text)
-    clauses: list[str] = []
+def split_into_clauses(text: str, target_max: int = 22) -> list[str]:
+    raw_parts = re.split(r"[。！？；!?\n]+|，", taiwanize_text(text))
+    pieces: list[str] = []
     for p in raw_parts:
         s = space_pad_english(p.strip(" 、：:「」"))
         if not s:
             continue
-        if len(s) <= target_max + 5:
-            clauses.append(s)
+        if len(s) <= target_max + 6:
+            pieces.append(s)
         else:
-            # Split cleanly near middle space or CJK boundary
+            # Prefer splitting on space, colon, or natural Chinese particle near middle — never mid-word!
             mid = len(s) // 2
-            sp = s.find(" ", mid - 4, mid + 6)
-            if sp != -1:
-                clauses.extend([s[:sp].strip(), s[sp + 1 :].strip()])
+            best_pos = -1
+            for sep in (" ", "：", "、", "的", "把", "讓", "跟", "並"):
+                pos = s.find(sep, max(6, mid - 7), min(len(s) - 5, mid + 8))
+                if pos != -1:
+                    best_pos = pos + (0 if sep == " " else 1)
+                    break
+            if best_pos != -1:
+                pieces.extend([s[:best_pos].strip(" 、："), s[best_pos:].strip(" 、：")])
             else:
-                clauses.extend([s[:target_max].strip(), s[target_max:].strip()])
-    return [c for c in clauses if c][:5]
+                pieces.append(s[: target_max + 6].strip())
+
+    # Merge tiny discourse markers (<= 6 chars like '首先', '不過', '現在', '接下來') into adjacent clause!
+    merged: list[str] = []
+    carry = ""
+    for seg in pieces:
+        if carry:
+            seg = f"{carry} {seg}" if carry[-1].isascii() else f"{carry}{seg}"
+            carry = ""
+        if len(re.sub(r"\s+", "", seg)) <= 6:
+            carry = seg + ("，" if len(seg) >= 2 else "")
+        else:
+            merged.append(seg)
+    if carry:
+        if merged:
+            merged[-1] = f"{merged[-1]}，{carry.rstrip('，')}"
+        else:
+            merged.append(carry.rstrip("，"))
+    return [c for c in merged if c][:4]
 
 
 class GarychenScriptwriter:
@@ -308,10 +396,10 @@ class GarychenScriptwriter:
                 if lt not in palette_layouts:
                     lt = palette_layouts[(len(all_beats)) % len(palette_layouts)]
 
-                narr_str = str(rb.get("narration") or "").strip()
-                clauses = split_into_clauses(narr_str, target_max=18)
+                narr_str = taiwanize_text(str(rb.get("narration") or "").strip())
+                clauses = split_into_clauses(narr_str, target_max=22)
                 if len(clauses) < 2:
-                    clauses = split_into_clauses(f"{c_title}其實沒有想像中複雜，我們直接拆開來看最核心的做法", target_max=18)
+                    clauses = split_into_clauses(f"{c_title}其實沒有想像中複雜，我們直接拆開來看最核心的做法", target_max=22)
 
                 v_nodes: list[VisualNode] = []
                 for nd in (rb.get("nodes") or [])[:4]:
@@ -322,11 +410,14 @@ class GarychenScriptwriter:
                         tr = str(nd.get("trend") or "neutral").lower()
                         if tr not in ("up", "down", "neutral"):
                             tr = "neutral"
+                        raw_tag = taiwanize_text(str(nd.get("tag") or "")).strip()
+                        if raw_tag in ("無", "无", "None", "none", "N/A", "-"):
+                            raw_tag = ""
                         v_nodes.append(
                             VisualNode(
-                                label=str(nd["label"])[:18],
-                                sub=str(nd.get("sub") or "")[:28],
-                                tag=str(nd.get("tag") or "")[:16],
+                                label=taiwanize_text(str(nd["label"]))[:20],
+                                sub=taiwanize_text(str(nd.get("sub") or ""))[:30],
+                                tag=raw_tag[:16],
                                 icon=ic,
                                 trend=tr,  # type: ignore[arg-type]
                             )
@@ -334,7 +425,7 @@ class GarychenScriptwriter:
                 # If chapter_roadmap_agenda has < 4 nodes, populate with actual chapter titles!
                 if lt == "chapter_roadmap_agenda" and len(v_nodes) < 4:
                     v_nodes = [
-                        VisualNode(label=ct, sub=chapters_plan[i].get("focus", "")[:16], tag=f"0{i+1}", icon="layers")
+                        VisualNode(label=taiwanize_text(ct), sub=taiwanize_text(chapters_plan[i].get("focus", ""))[:18], tag=f"0{i+1}", icon="layers")
                         for i, ct in enumerate(all_chapter_titles[:4])
                     ]
                 elif len(v_nodes) < 2:
@@ -342,7 +433,7 @@ class GarychenScriptwriter:
                     m0 = src0.metrics[0] if (src0 and src0.metrics) else "關鍵指標"
                     v_nodes = [
                         VisualNode(label=topic.primary_entity[:16], sub=clauses[0][:22], tag=m0, icon="zap", trend="up"),
-                        VisualNode(label=c_title, sub=clauses[-1][:22], tag="實戰重點", icon="check", trend="neutral"),
+                        VisualNode(label=taiwanize_text(c_title), sub=clauses[-1][:22], tag="實戰重點", icon="check", trend="neutral"),
                     ]
 
                 sids = [s for s in (rb.get("source_ids") or []) if s in valid_sids]
@@ -371,100 +462,111 @@ class GarychenScriptwriter:
                         beat_id=f"beat_{len(all_beats) + 1:02d}",
                         chapter_index=c_idx,
                         total_chapters=num_chapters,
-                        chapter_title=c_title,
+                        chapter_title=taiwanize_text(c_title),
                         layout_type=lt,
                         voice_style=v_style,  # type: ignore[arg-type]
                         clauses=clauses,
-                        visual_title=str(rb.get("visual_title") or c_title)[:20],
-                        visual_subtitle=str(rb.get("visual_subtitle") or "")[:34],
-                        badge_text=str(rb.get("badge_text") or "")[:18],
+                        visual_title=taiwanize_text(str(rb.get("visual_title") or c_title))[:28],
+                        visual_subtitle=taiwanize_text(str(rb.get("visual_subtitle") or ""))[:40],
+                        badge_text=taiwanize_text(str(rb.get("badge_text") or ""))[:18],
                         nodes=v_nodes,
-                        callout_title=str(rb.get("callout_title") or "Gary 實戰重點")[:18],
-                        callout_body=str(rb.get("callout_body") or clauses[-1])[:42],
+                        callout_title=taiwanize_text(str(rb.get("callout_title") or "Gary 實戰重點"))[:18],
+                        callout_body=taiwanize_text(str(rb.get("callout_body") or clauses[-1]))[:46],
                         code_lines=code_lns,
-                        ai_image_prompt=str(
-                            rb.get("ai_image_prompt")
-                            or f"isometric 3D dark matte studio diorama illustrating {topic.primary_entity} {c_title}"
-                        ),
+                        ai_image_prompt=clean_ai_prompt(str(rb.get("ai_image_prompt") or ""), topic.primary_entity, len(all_beats)),
                         source_ids=sids,
                         sfx_cue=sfx,  # type: ignore[arg-type]
                     )
                 )
 
-        # Normalize Shorts Funnel Beats (6–8 fast progressive vertical beats, ending with CTA!)
-        raw_sbeats = plan_data.get("short_beats") or []
+        # PASS 3: Dedicated 40–50s High-Retention Traffic-Funnel Shorts Script (7 full spoken beats!)
+        pass3_prompt = (
+            f"長片標題：{taiwanize_text(str(plan_data.get('title') or topic.title))}\n"
+            f"長片各章節精華：{[{'chapter': b.chapter_title, 'point': '，'.join(b.clauses[:2]), 'badge': b.badge_text} for b in all_beats[::3]]}\n"
+            f"公開來源數據：{json.dumps(src_digest[:4], ensure_ascii=False)}\n\n"
+            "請專門為這支長片設計一支 **40～50 秒對應推流 YouTube Shorts**，共 **7 幕 (short_beats)**！\n"
+            "注意每一幕的 `narration` 必須是 **完整 28～45 個中文字的自然台灣口語句子（至少兩到三句話，絕對不能只寫四五個字的標題！）**：\n"
+            "- 第 1 幕：痛點＋驚人公開數據破題（如 GitHub 幾萬顆星或股價營收反差）\n"
+            "- 第 2～6 幕：濃縮長片最吸睛的核心原理、關鍵指令/指標、競品對比與避坑重點（留一個關鍵細節懸念在長片）\n"
+            "- 第 7 幕 (is_cta=true)：明確口播『完整實戰步驟、指令模板跟公開查證來源我都整理在長片裡了，現在直接點擊左下角關聯影片看完整版！』\n"
+            "輸出 JSON：{\"short_title\": \"... #Shorts\", \"short_hook_banner\": \"6字內標籤\", \"short_beats\": [{\"layout_type\": \"short_shock_metric_hero\", \"narration\": \"完整30到45字口語台詞，分成兩三句話講清楚\", \"headline\": \"12字內大標題\", \"sub_caption\": \"18字內副標\", \"highlight_badge\": \"具體數據\", \"nodes\": [{\"label\": \"重點\", \"sub\": \"白話說明\", \"tag\": \"數據\", \"icon\": \"zap\"}], \"ai_image_prompt\": \"distinct English 3D dark studio diorama prompt\", \"source_ids\": [\"S1\"], \"is_cta\": false}]}"
+        )
+        try:
+            short_plan = self._call_llm_json(sys_prompt, pass3_prompt, max_tokens=2400)
+        except Exception:
+            short_plan = {}
+        raw_sbeats = short_plan.get("short_beats") or plan_data.get("short_beats") or []
         short_beats: list[ShortBeatSpec] = []
-        for idx, sb in enumerate(raw_sbeats[:7]):
-            if not isinstance(sb, dict):
-                continue
-            is_cta = (idx == len(raw_sbeats[:7]) - 1) or bool(sb.get("is_cta"))
+        chapter_anchor_beats = all_beats[:: max(1, len(all_beats) // 6)][:6]
+        for idx in range(7):
+            sb = raw_sbeats[idx] if idx < len(raw_sbeats) and isinstance(raw_sbeats[idx], dict) else {}
+            is_cta = (idx == 6) or bool(sb.get("is_cta") and idx >= 5)
             slt = "short_funnel_cta" if is_cta else sb.get("layout_type", SHORT_LAYOUTS[idx % 5])
             if slt not in SHORT_LAYOUTS:
                 slt = SHORT_LAYOUTS[idx % 5]
-            s_clauses = split_into_clauses(str(sb.get("narration") or ""), target_max=15)
-            if not s_clauses:
-                s_clauses = ["點擊左下角關聯影片", "直接看完整實戰教學"] if is_cta else all_beats[min(idx, len(all_beats) - 1)].clauses[:2]
+            if idx == 2 and screenshot_sids:
+                slt = "short_live_source_proof"
+            ref_b = chapter_anchor_beats[min(idx, len(chapter_anchor_beats) - 1)]
+            raw_narr = taiwanize_text(str(sb.get("narration") or ""))
+            s_clauses = split_into_clauses(raw_narr, target_max=19)
+            # Guarantee rich 24–45 char spoken sentences per Short beat (never 4-char fragments!)
+            if is_cta and sum(len(c) for c in s_clauses) < 22:
+                s_clauses = [
+                    "完整實戰步驟與避坑細節我都整理在長片裡了",
+                    "現在直接點擊畫面左下角關聯影片看完整版",
+                ]
+            elif sum(len(c) for c in s_clauses) < 18:
+                s_clauses = ref_b.clauses[:3]
             snodes: list[VisualNode] = []
             for nd in (sb.get("nodes") or [])[:3]:
                 if isinstance(nd, dict) and nd.get("label"):
                     ic = str(nd.get("icon") or "zap").lower()
                     snodes.append(
                         VisualNode(
-                            label=str(nd["label"])[:16],
-                            sub=str(nd.get("sub") or "")[:22],
-                            tag=str(nd.get("tag") or "")[:14],
+                            label=taiwanize_text(str(nd["label"]))[:16],
+                            sub=taiwanize_text(str(nd.get("sub") or ""))[:22],
+                            tag=taiwanize_text(str(nd.get("tag") or ""))[:14],
                             icon=ic if ic in VALID_ICONS else "zap",
                         )
                     )
-            if not snodes:
-                snodes = all_beats[min(idx, len(all_beats) - 1)].nodes[:3]
+            if len(snodes) < 2:
+                snodes = ref_b.nodes[:3]
             sids = [s for s in (sb.get("source_ids") or []) if s in valid_sids]
-            if not sids and sources:
+            if slt == "short_live_source_proof" and screenshot_sids:
+                sids = [screenshot_sids[0]]
+            elif not sids and sources:
                 sids = [sources[idx % len(sources)].source_id]
             short_beats.append(
                 ShortBeatSpec(
                     beat_id=f"sbeat_{len(short_beats) + 1:02d}",
                     layout_type=slt,  # type: ignore[arg-type]
                     voice_style="hook" if idx == 0 else ("warm" if is_cta else "explainer"),
-                    clauses=s_clauses,
-                    headline=str(sb.get("headline") or ("點擊左下角看完整版" if is_cta else all_beats[min(idx, len(all_beats) - 1)].visual_title))[:15],
-                    sub_caption=str(sb.get("sub_caption") or "")[:24],
-                    highlight_badge=str(sb.get("highlight_badge") or ("完整教學已上線" if is_cta else all_beats[min(idx, len(all_beats) - 1)].badge_text))[:16],
+                    clauses=s_clauses[:3],
+                    headline=taiwanize_text(str(sb.get("headline") or ("點擊左下角看完整教學" if is_cta else ref_b.visual_title)))[:15],
+                    sub_caption=taiwanize_text(str(sb.get("sub_caption") or ref_b.visual_subtitle))[:24],
+                    highlight_badge=taiwanize_text(str(sb.get("highlight_badge") or ("完整長片已上線" if is_cta else ref_b.badge_text)))[:16],
                     nodes=snodes,
-                    ai_image_prompt=str(sb.get("ai_image_prompt") or f"vertical sleek 3D dark studio diorama of {topic.primary_entity}, beat {idx+1}"),
+                    ai_image_prompt=clean_ai_prompt(str(sb.get("ai_image_prompt") or ""), topic.primary_entity, idx + 20),
                     source_ids=sids,
                     is_cta=is_cta,
                 )
             )
 
-        if not short_beats or not short_beats[-1].is_cta:
-            short_beats.append(
-                ShortBeatSpec(
-                    beat_id=f"sbeat_{len(short_beats) + 1:02d}",
-                    layout_type="short_funnel_cta",
-                    voice_style="warm",
-                    clauses=["完整步驟與避坑細節都整理在長片裡", "馬上點擊左下角關聯影片看完整版"],
-                    headline="點擊左下角看完整教學",
-                    sub_caption="含完整公開數據來源與實戰設定",
-                    highlight_badge="完整長片已上線",
-                    nodes=all_beats[0].nodes[:2],
-                    source_ids=[sources[0].source_id] if sources else ["S1"],
-                    is_cta=True,
-                )
-            )
-
-        ep_title = str(plan_data.get("title") or topic.title)
+        ep_title = taiwanize_text(str(plan_data.get("title") or topic.title))
+        s_title = taiwanize_text(str(short_plan.get("short_title") or plan_data.get("short_title") or f"{ep_title[:22]}｜精華速看 #Shorts"))
+        if "#Shorts" not in s_title and "#shorts" not in s_title:
+            s_title = f"{s_title} #Shorts"
         return EpisodeScript(
             episode_id=episode_id,
             title=ep_title,
             category=topic.category,
             avatar_mode=(topic.category == "us_stocks"),
-            youtube_description_summary=str(plan_data.get("youtube_description_summary") or topic.hook_angle),
+            youtube_description_summary=taiwanize_text(str(plan_data.get("youtube_description_summary") or topic.hook_angle)),
             hashtags=[str(h) for h in (plan_data.get("hashtags") or ["#AIAgent", "#AI教學", "#GaryChen", "#自動化", "#Shorts"])[:6]],
-            chapters=[f"{i + 1:02d} {t}" for i, t in enumerate(all_chapter_titles)],
+            chapters=[f"{i + 1:02d} {taiwanize_text(t)}" for i, t in enumerate(all_chapter_titles)],
             beats=all_beats,
-            short_title=str(plan_data.get("short_title") or f"{ep_title[:24]}｜精華速看 #Shorts"),
-            short_hook_banner=str(plan_data.get("short_hook_banner") or all_chapter_titles[0])[:10],
+            short_title=s_title,
+            short_hook_banner=taiwanize_text(str(short_plan.get("short_hook_banner") or plan_data.get("short_hook_banner") or all_chapter_titles[0]))[:10],
             short_cta_target_title=ep_title,
             short_beats=short_beats,
         )

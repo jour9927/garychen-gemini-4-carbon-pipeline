@@ -72,17 +72,19 @@ class UnattendedTopicScout:
                         desc = (item.get("description") or "").strip()
                         if self._is_duplicate(name):
                             continue
-                        score = min(98.5, 75.0 + min(20.0, stars / 4000.0))
+                        score = min(99.0, 75.0 + min(24.0, stars / 8000.0))
+                        is_browser = "browser" in f"{name} {desc}".lower()
+                        tag_label = "瀏覽器 AI Agent" if is_browser else ("AI Coding 工作流" if cat == "vibe_coding" else "開源 AI Agent 工具")
                         candidates.append(
                             TopicCandidate(
                                 topic_id=f"gh_{re.sub(r'[^a-z0-9]+', '_', name.lower())[:18]}",
-                                title=f"不花錢打造最強瀏覽器 AI Agent！{name} 新手實戰教學（{stars:,} Stars 開源神器）",
+                                title=f"不花錢升級你的開發流！{name} 新手實戰教學（{stars:,} Stars {tag_label}）",
                                 primary_entity=name,
                                 category=cat,  # type: ignore[arg-type]
-                                hook_angle=f"為什麼 {full_name} 能在 GitHub 狂飆 {stars:,} 顆星？教你怎麼讓 AI Agent 直接幫你操作瀏覽器、抓資料跟自動填表！",
+                                hook_angle=f"為什麼開源專案 {full_name} 能在 GitHub 狂飆 {stars:,} 顆星？這集直接帶你拆解核心原理：{desc[:90]}",
                                 why_now=f"GitHub 突破 {stars:,} Stars：{desc[:110]}",
                                 score=round(score, 2),
-                                seed_queries=[full_name, f"{name} MCP", f"{name} browser agent"],
+                                seed_queries=[full_name, f"{name} AI", f"{name} docs"],
                                 seed_urls=[item.get("html_url", "")],
                             )
                         )

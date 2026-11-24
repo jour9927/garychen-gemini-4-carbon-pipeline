@@ -251,6 +251,8 @@ class PublicInfoCrawler:
                     continue
                 pts = int(hit.get("points") or 0)
                 cmts = int(hit.get("num_comments") or 0)
+                if pts < 10:
+                    continue
                 dom = urlparse(ext_url).netloc.replace("www.", "") or "news.ycombinator.com"
                 page_facts, excerpt = self._scrape_webpage_summary(ext_url)
                 facts = [f"Hacker News 工程師社群實測討論（{pts} Points / {cmts} 則留言）：{title}"] + page_facts[:2]
@@ -263,7 +265,7 @@ class PublicInfoCrawler:
                         published_date=created,
                         retrieved_at=_now_iso(),
                         source_type="hn_discussion",
-                        relevance_score=rel,
+                        relevance_score=min(0.88, rel),
                         key_facts=facts,
                         metrics=[f"{pts} HN Points", f"{cmts} 則討論"] + _extract_metrics(excerpt)[:2],
                         excerpt=excerpt[:420] or title,

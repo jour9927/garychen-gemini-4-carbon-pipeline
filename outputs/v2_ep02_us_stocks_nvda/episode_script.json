@@ -1,0 +1,1048 @@
+{
+  "episode_id": "v2_ep02_us_stocks_nvda",
+  "title": "NVIDIA Blackwell 贏在三大護城河",
+  "category": "us_stocks",
+  "avatar_mode": true,
+  "youtube_description_summary": "深入解析 NVIDIA Blackwell 架構與財報，探索其背後的技術優勢和市場表現，並提供實戰建議。",
+  "hashtags": [
+    "#AIAgent",
+    "#AI教學",
+    "#GaryChen"
+  ],
+  "chapters": [
+    "01 為什麼選它",
+    "02 背後運作原理",
+    "03 三步安裝實戰",
+    "04 進階避坑技巧",
+    "05 跟競品差在哪",
+    "06 我的搭配建議"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "為什麼選它",
+      "layout_type": "kpi_financial_cards",
+      "voice_style": "explainer",
+      "clauses": [
+        "最近 AI 抓取資料的需求越來越多",
+        "而 NVIDIA 的 TensorRT-LLM",
+        "這個開源專案已經有 15,128 星了",
+        "顯見市場對它的需求很大"
+      ],
+      "visual_title": "市場需求大",
+      "visual_subtitle": "TensorRT-LLM GitHub 有 15,128 星，反映市",
+      "badge_text": "15,128",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "最近 AI 抓取資料的需求越來越多",
+          "tag": "15,128 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "為什麼選它",
+          "sub": "顯見市場對它的需求很大",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "市場需求與 NVIDIA Black",
+      "callout_body": "市場需要高效能的 AI 模型，NVIDIA Blackwell 正好符合需求",
+      "code_lines": [],
+      "ai_image_prompt": "isometric 3D dark studio diorama of glowing modular workflow nodes connected by amber light beams on matte charcoal desk, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "為什麼選它",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "這個專案的 Forks 數量也很多",
+        "已經有 2,956 個 Forks 了",
+        "表示很多人在實際應用這套工具"
+      ],
+      "visual_title": "多人實際應用",
+      "visual_subtitle": "TensorRT-LLM 在 GitHub 上已有 2,956 個 ",
+      "badge_text": "2,956",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "這個專案的 Forks 數量也很多",
+          "tag": "15,128 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "為什麼選它",
+          "sub": "表示很多人在實際應用這套工具",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "市場需求與 NVIDIA Black",
+      "callout_body": "大量實際應用證明了市場對此技術的需求",
+      "code_lines": [],
+      "ai_image_prompt": "sleek 3D architectural cutaway of an autonomous AI engine processing data cubes with warm orange rim lighting, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "為什麼選它",
+      "layout_type": "chapter_roadmap_agenda",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來我們會聊聊為什麼選擇",
+        "NVIDIA Blackwell",
+        "再來看看它的背後運作原理",
+        "以及如何安裝和一些進階技巧"
+      ],
+      "visual_title": "今天的議程",
+      "visual_subtitle": "聊聊為什麼選擇 NVIDIA Blackwell，再來看看它的背後運",
+      "badge_text": "",
+      "nodes": [
+        {
+          "label": "為什麼選它",
+          "sub": "",
+          "tag": "",
+          "icon": "check",
+          "trend": "neutral"
+        },
+        {
+          "label": "背後運作原理",
+          "sub": "",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "",
+          "tag": "",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "",
+          "tag": "",
+          "icon": "shield",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "今天的議程",
+      "callout_body": "聊聊為什麼選擇 NVIDIA Blackwell，再來看看它的背後運作原理，以及如何安裝和一",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D glass terminal dashboard floating above brushed gunmetal hardware modules, studio softbox lighting, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "背後運作原理",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "NVIDIA Blackwell 的技術架構非常獨特",
+        "它結合了 Mamba-Transformer 架構",
+        "可以大幅提高推理工作的吞吐量"
+      ],
+      "visual_title": "技術架構獨特",
+      "visual_subtitle": "NVIDIA Blackwell 結合 Mamba-Transfor",
+      "badge_text": "6x",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "NVIDIA Blackwell 的技術架構",
+          "tag": "63,826 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "背後運作原理",
+          "sub": "可以大幅提高推理工作的吞吐量",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "NVIDIA Blackwell 的",
+      "callout_body": "NVIDIA Blackwell 使用 Mamba-Transformer 提升效能",
+      "code_lines": [],
+      "ai_image_prompt": "tactile 3D precision vault shield protecting glowing golden data crystals on dark slate pedestal, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "背後運作原理",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "這篇論文詳細說明了 Nemotron-Nano-9B-v",
+        "顯示了 NVIDIA",
+        "Blackwell 在準確性和效率上的優勢"
+      ],
+      "visual_title": "論文詳述架構",
+      "visual_subtitle": "NVIDIA Blackwell 在準確性和效率上表現優異，論文詳述",
+      "badge_text": "Nemotron-Nano-9B-v",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "這篇論文詳細說明了 Nemotron-Nan",
+          "tag": "63,826 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "背後運作原理",
+          "sub": "Blackwell 在準確性和效率上的優勢",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "NVIDIA Blackwell 的",
+      "callout_body": "論文詳述架構和實驗結果，顯示優勢",
+      "code_lines": [],
+      "ai_image_prompt": "3D mechanical balance scale comparing a compact glowing amber core against heavy legacy iron blocks, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "背後運作原理",
+      "layout_type": "hub_ecosystem_radiate",
+      "voice_style": "explainer",
+      "clauses": [
+        "除了主要的黑鯨架構外",
+        "還有許多相關生態系統的專案支持",
+        "NVIDIA Blackwell",
+        "比如 litellm 和 NemoClaw"
+      ],
+      "visual_title": "相關生態系統",
+      "visual_subtitle": "litellm 和 NemoClaw 等專案支持 NVIDIA Bl",
+      "badge_text": "",
+      "nodes": [
+        {
+          "label": "litellm",
+          "sub": "最快最輕的 AI 网关",
+          "tag": "63,826 Stars",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "NemoClaw",
+          "sub": "安全地在 NVIDIA OpenShell 中運行代理",
+          "tag": "23,083 Stars",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "NVIDIA Blackwell 的",
+      "callout_body": "生態系統專案支持 NVIDIA Blackwell",
+      "code_lines": [],
+      "ai_image_prompt": "3D ecosystem hub radiating clean fiber-optic pathways to six floating tool satellites on dark charcoal stage, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "三步安裝實戰",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來要教大家怎麼安裝 NVIDIA Blackwell",
+        "首先得安裝 litellm",
+        "這是個超快的 AI 置入工具"
+      ],
+      "visual_title": "安裝第一步",
+      "visual_subtitle": "使用 pip 安裝 litellm",
+      "badge_text": "63,826 ★",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "接下來要教大家怎麼安裝 NVIDIA Bla",
+          "tag": "23,083 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "這是個超快的 AI 置入工具",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "確保 Python 環境已設定好",
+      "code_lines": [
+        "pip install litellm"
+      ],
+      "ai_image_prompt": "A robotic arm sorting glowing Python modules on a conveyor belt",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "三步安裝實戰",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來要打開 litellm 的 GitHub 專案頁面",
+        "看看它的主要功能和文件"
+      ],
+      "visual_title": "查看 litellm 文件",
+      "visual_subtitle": "探索 litellm 的功能和使用方法",
+      "badge_text": "13,528 Forks",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "接下來要打開 litellm 的 GitHu",
+          "tag": "23,083 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "看看它的主要功能和文件",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "詳細閱讀官方文件",
+      "code_lines": [
+        "https://github.com/BerriAI/litellm"
+      ],
+      "ai_image_prompt": "A spotlight highlighting a web page screenshot of litellm's GitHub repository",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "三步安裝實戰",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後一步是設定 litellm",
+        "我們要用它來呼叫",
+        "NVIDIA Blackwell 的 API",
+        "這步驟很重要，別忘了檢查設定"
+      ],
+      "visual_title": "設定 litellm",
+      "visual_subtitle": "設定 litellm 以呼叫 NVIDIA Blackwell AP",
+      "badge_text": "100+ APIs",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "最後一步是設定 litellm",
+          "tag": "23,083 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "這步驟很重要，別忘了檢查設定",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "確認 API 連接無誤",
+      "code_lines": [
+        "litellm.set_api_key('your_key')"
+      ],
+      "ai_image_prompt": "A pipeline showing the flow of setting up litellm with API keys",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "進階避坑技巧",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "談到進階技巧，我們得注意的一個常見問題就是效能問題",
+        "NemoClaw 可以幫助我們更安全地執行代理"
+      ],
+      "visual_title": "解決效能問題",
+      "visual_subtitle": "使用 NemoClaw 提升執行效率",
+      "badge_text": "23,083 ★",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "談到進階技巧，我們得注意的一個常見問題就是效",
+          "tag": "6x",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "NemoClaw 可以幫助我們更安全地執行代",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "使用 NemoClaw 解決效能瓶頸",
+      "code_lines": [
+        "./scripts/dev-setup.sh"
+      ],
+      "ai_image_prompt": "A conveyor belt with glowing efficiency symbols moving through a pipeline",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "進階避坑技巧",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "再來看一下 NemoClaw 的 GitHub 專案",
+        "裡面有很多有用的資源和範例"
+      ],
+      "visual_title": "探索 NemoClaw 文件",
+      "visual_subtitle": "查看 NemoClaw 的官方文件和範例",
+      "badge_text": "3,233 Forks",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "再來看一下 NemoClaw 的 GitHu",
+          "tag": "6x",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "裡面有很多有用的資源和範例",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "參考官方範例",
+      "code_lines": [
+        "https://github.com/NVIDIA/NemoClaw"
+      ],
+      "ai_image_prompt": "A spotlight highlighting a web page screenshot of NemoClaw's GitHub repository",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "進階避坑技巧",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後我們來談談安全問題",
+        "使用 NemoClaw 可以讓我們更安全地執行代理",
+        "這步驟非常關鍵"
+      ],
+      "visual_title": "解決安全問題",
+      "visual_subtitle": "使用 NemoClaw 確保代理安全執行",
+      "badge_text": "安全執行",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "最後我們來談談安全問題",
+          "tag": "6x",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "這步驟非常關鍵",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "確保代理安全執行",
+      "code_lines": [
+        "./scripts/run_securely.sh"
+      ],
+      "ai_image_prompt": "A pipeline showing the flow of securing agent execution with NemoClaw",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "跟競品差在哪",
+      "layout_type": "versus_debate_columns",
+      "voice_style": "explainer",
+      "clauses": [
+        "NVIDIA Blackwell 與其他產品相比",
+        "它的優勢在哪裡呢",
+        "首先，Blackwell 擁有更高效的微架構",
+        "根據 arXiv 的研究顯示"
+      ],
+      "visual_title": "高效微架構",
+      "visual_subtitle": "NVIDIA Blackwell vs 其他產品：更高的計算力",
+      "badge_text": "6x",
+      "nodes": [
+        {
+          "label": "NVIDIA Blackwell",
+          "sub": "微架構分析",
+          "tag": "6x",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "其他產品",
+          "sub": "傳統架構",
+          "tag": "",
+          "icon": "cpu",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "Blackwell 提供卓越的效能提升",
+      "code_lines": [
+        "nvidia-smi",
+        "nvcc --version"
+      ],
+      "ai_image_prompt": "isometric 3D dark studio diorama of glowing modular workflow nodes connected by amber light beams on matte charcoal desk, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S6"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "跟競品差在哪",
+      "layout_type": "hub_ecosystem_radiate",
+      "voice_style": "explainer",
+      "clauses": [
+        "除此之外，Blackwell 還有一個龐大的生態系統支援",
+        "像是 NVIDIA/TensorRT-LLM",
+        "和 litellm 這樣的開源專案",
+        "都能夠有效增強 Blackwell 的功能"
+      ],
+      "visual_title": "龐大生態系統",
+      "visual_subtitle": "NVIDIA/TensorRT-LLM 和 litellm 等開源專",
+      "badge_text": "15,128 Stars",
+      "nodes": [
+        {
+          "label": "NVIDIA/TensorRT-LL",
+          "sub": "15,128 Stars",
+          "tag": "15,128 Stars",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "litellm",
+          "sub": "63,826 Stars",
+          "tag": "63,826 Stars",
+          "icon": "github",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "豐富的開源資源",
+      "code_lines": [
+        "uv add litellm",
+        "git clone https://github.com/NVIDIA/TensorRT-LLM.git"
+      ],
+      "ai_image_prompt": "sleek 3D architectural cutaway of an autonomous AI engine processing data cubes with warm orange rim lighting, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "跟競品差在哪",
+      "layout_type": "before_after_stamp_compare",
+      "voice_style": "explainer",
+      "clauses": [
+        "再來，看看使用 Blackwell 之前的舊系統和之後的差異",
+        "Blackwell 讓模型推理變得更加安全且高效",
+        "這是因為它能夠在 NVIDIA",
+        "OpenShell 中執行更多代理程式"
+      ],
+      "visual_title": "使用前後比較",
+      "visual_subtitle": "更安全且高效的模型推理",
+      "badge_text": "更安全",
+      "nodes": [
+        {
+          "label": "使用前",
+          "sub": "舊系統",
+          "tag": "",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "使用後",
+          "sub": "Blackwell",
+          "tag": "更安全",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "Blackwell 提升安全性",
+      "code_lines": [
+        "./scripts/dev-setup.sh"
+      ],
+      "ai_image_prompt": "minimalist 3D glass terminal dashboard floating above brushed gunmetal hardware modules, studio softbox lighting, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "我的搭配建議",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "那麼，如何將 Blackwell 整合到你的工作流程中呢",
+        "首先，你可以利用 litellm 這個開源專案",
+        "輕鬆整合多種大型語言模型的 API"
+      ],
+      "visual_title": "整合 Blackwell",
+      "visual_subtitle": "使用 litellm 輕鬆整合多種大型語言模型的 API",
+      "badge_text": "快速整合",
+      "nodes": [
+        {
+          "label": "開始整合",
+          "sub": "安裝 litellm",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "下一步",
+          "sub": "設定環境變數",
+          "tag": "",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "完成",
+          "sub": "測試 API",
+          "tag": "",
+          "icon": "play",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "順暢的工作流程",
+      "code_lines": [
+        "uv add litellm",
+        "python litellm/scripts/build_core_distribution.py --out-dir dist"
+      ],
+      "ai_image_prompt": "tactile 3D precision vault shield protecting glowing golden data crystals on dark slate pedestal, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "我的搭配建議",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來，我們可以透過實際的網頁截圖來看看",
+        "litellm 的操作介面",
+        "這會讓你對它的功能有更直觀的理解"
+      ],
+      "visual_title": "litellm 操作介面",
+      "visual_subtitle": "實際的網頁截圖展示",
+      "badge_text": "直觀理解",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "接下來，我們可以透過實際的網頁截圖來看看",
+          "tag": "arXiv Paper",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "我的搭配建議",
+          "sub": "這會讓你對它的功能有更直觀的理解",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "視覺化的操作介面",
+      "code_lines": [
+        "uv add litellm"
+      ],
+      "ai_image_prompt": "3D mechanical balance scale comparing a compact glowing amber core against heavy legacy iron blocks, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "我的搭配建議",
+      "layout_type": "checklist_two_tier_defense",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後一步，確保你的工作流程中包含定期更新和測試",
+        "這樣才能確保 Blackwell 的效能始終保持最佳"
+      ],
+      "visual_title": "定期更新和測試",
+      "visual_subtitle": "確保效能始終最佳",
+      "badge_text": "定期檢查",
+      "nodes": [
+        {
+          "label": "第一步",
+          "sub": "檢查更新",
+          "tag": "",
+          "icon": "database",
+          "trend": "neutral"
+        },
+        {
+          "label": "第二步",
+          "sub": "進行測試",
+          "tag": "",
+          "icon": "play",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "保持最佳效能",
+      "code_lines": [
+        "pip install --upgrade litellm"
+      ],
+      "ai_image_prompt": "3D ecosystem hub radiating clean fiber-optic pathways to six floating tool satellites on dark charcoal stage, inspired by NVIDIA system architecture, strictly no text",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    }
+  ],
+  "short_title": "NVIDIA Blackwell 贏在三大護城河 #Shorts",
+  "short_hook_banner": "AI 抓取資料",
+  "short_cta_target_title": "NVIDIA Blackwell 贏在三大護城河",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "hook",
+      "clauses": [
+        "最近 AI 抓取資料需求大增",
+        "NVIDIA TensorRT-LLM",
+        "獲得了 15,128 顆 GitHub 星"
+      ],
+      "headline": "TensorRT-LLM 大火",
+      "sub_caption": "15,128 GitHub 星，抓取資料需求大增",
+      "highlight_badge": "15,128",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "最近 AI 抓取資料的需求越來越多",
+          "tag": "15,128 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "為什麼選它",
+          "sub": "顯見市場對它的需求很大",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "Blackwell 技術獨特",
+        "結合 Mamba-Transformer 架構",
+        "性能飆升，快來看看背後原理"
+      ],
+      "headline": "獨特技術架構",
+      "sub_caption": "結合 Mamba-Transformer 架構，",
+      "highlight_badge": "6x",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "NVIDIA Blackwell 的技術架構",
+          "tag": "63,826 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "背後運作原理",
+          "sub": "可以大幅提高推理工作的吞吐量",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S4"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_live_source_proof",
+      "voice_style": "explainer",
+      "clauses": [
+        "litellm 讓安裝變得超簡單",
+        "63,826 顆 GitHub 星",
+        "快速整合到你的工作流程"
+      ],
+      "headline": "litellm 安裝超簡單",
+      "sub_caption": "63,826 GitHub 星，快速整合工作流程",
+      "highlight_badge": "63,826 ★",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "接下來要教大家怎麼安裝 NVIDIA Bla",
+          "tag": "23,083 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "這是個超快的 AI 置入工具",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "NemoClaw 可以幫你更安全執行代理",
+        "23,083 顆 GitHub 星，別再踩坑了"
+      ],
+      "headline": "NemoClaw 更安全執行",
+      "sub_caption": "23,083 GitHub 星，避免效能問題",
+      "highlight_badge": "23,083 ★",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "談到進階技巧，我們得注意的一個常見問題就是效",
+          "tag": "6x",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "NemoClaw 可以幫助我們更安全地執行代",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S3"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "與其他產品相比",
+        "Blackwell 最大的優勢在哪裡，看完你就知道"
+      ],
+      "headline": "與其他產品比較",
+      "sub_caption": "Blackwell 有何優勢？看完你就知道",
+      "highlight_badge": "6x",
+      "nodes": [
+        {
+          "label": "NVIDIA Blackwell",
+          "sub": "微架構分析",
+          "tag": "6x",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "其他產品",
+          "sub": "傳統架構",
+          "tag": "",
+          "icon": "cpu",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S4"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "如何將 Blackwell 整合到你的工作流程中",
+        "利用 litellm 這個開源專案，快速上手"
+      ],
+      "headline": "快速整合工作流程",
+      "sub_caption": "利用 litellm，快速整合 Blackwel",
+      "highlight_badge": "快速整合",
+      "nodes": [
+        {
+          "label": "開始整合",
+          "sub": "安裝 litellm",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "下一步",
+          "sub": "設定環境變數",
+          "tag": "",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "完成",
+          "sub": "測試 API",
+          "tag": "",
+          "icon": "play",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S2"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "完整實戰步驟，指令模板跟公開查證來源我都整理在長片裡了",
+        "現在直接點擊左下角關聯影片看完整版"
+      ],
+      "headline": "完整實戰步驟",
+      "sub_caption": "點擊左下角看完整版",
+      "highlight_badge": "完整長片已上線",
+      "nodes": [
+        {
+          "label": "開始整合",
+          "sub": "安裝 litellm",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "下一步",
+          "sub": "設定環境變數",
+          "tag": "",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "完成",
+          "sub": "測試 API",
+          "tag": "",
+          "icon": "play",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S7"
+      ],
+      "is_cta": true
+    }
+  ]
+}

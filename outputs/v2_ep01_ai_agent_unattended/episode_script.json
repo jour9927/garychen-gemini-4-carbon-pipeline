@@ -1,0 +1,1152 @@
+{
+  "episode_id": "v2_ep01_ai_agent_unattended",
+  "title": "不花錢升級開發流！n8n 新手實戰",
+  "category": "vibe_coding",
+  "avatar_mode": false,
+  "youtube_description_summary": "Gary 來教你如何利用這款超強工作流工具 n8n 自動化各種流程，還能整合 AI 功能，讓開發效率大大提升！",
+  "hashtags": [
+    "#AIAgent",
+    "#AI教學",
+    "#GaryChen"
+  ],
+  "chapters": [
+    "01 為什麼選它",
+    "02 背後運作原理",
+    "03 三步安裝實戰",
+    "04 進階避坑技巧",
+    "05 跟競品差在哪",
+    "06 我的搭配建議"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "為什麼選它",
+      "layout_type": "claude_terminal_progressive",
+      "voice_style": "explainer",
+      "clauses": [
+        "你可能聽說過 n8n",
+        "這個工具可以幫你輕鬆搞定工作流程自動化",
+        "甚至還內建了 AI 功能"
+      ],
+      "visual_title": "輕鬆搞定工作流程自動化",
+      "visual_subtitle": "n8n 讓你不用寫太多程式碼就能搞定複雜的工作流程",
+      "badge_text": "211,995 GitHub 星",
+      "nodes": [
+        {
+          "label": "GitHub Stars",
+          "sub": "超多人支持的開源工具",
+          "tag": "211,995",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "開源社群",
+          "sub": "活躍的社群讓你找到解決方案更快",
+          "tag": "",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "AI 能力",
+          "sub": "內建 AI 功能讓你自動化更智能",
+          "tag": "",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "n8n 讓開發者能快速上手，自動化流程變得簡單又智能",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh"
+      ],
+      "ai_image_prompt": "Robotic arm sorting glowing browser windows on a conveyor belt",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "為什麼選它",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "看看 n8n 的官網",
+        "它提供了詳細的文件和教學",
+        "幫助你快速了解如何開始使用"
+      ],
+      "visual_title": "詳細的文件和教學",
+      "visual_subtitle": "n8n 官網提供豐富資源助你快速上手",
+      "badge_text": "",
+      "nodes": [
+        {
+          "label": "n8n 官網",
+          "sub": "豐富的文件和教學",
+          "tag": "",
+          "icon": "globe",
+          "trend": "neutral"
+        },
+        {
+          "label": "文件",
+          "sub": "詳細的文件幫助你快速了解",
+          "tag": "",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "教學",
+          "sub": "一步步教你如何開始使用",
+          "tag": "",
+          "icon": "play",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "n8n 官網資源豐富，新手也能快速上手",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Detailed webpage screenshot of n8n's official website",
+      "source_ids": [
+        "S1",
+        "S4"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "為什麼選它",
+      "layout_type": "chapter_roadmap_agenda",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來我們要聊聊為什麼選擇 n8n",
+        "以及它的背後運作原理",
+        "還有怎麼安裝和使用"
+      ],
+      "visual_title": "今天的議程",
+      "visual_subtitle": "為什麼選擇 n8n，背後運作原理，安裝實戰，避坑技巧，與競品比較，搭",
+      "badge_text": "",
+      "nodes": [
+        {
+          "label": "為什麼選它",
+          "sub": "n8n 為何成為開發者首選，AI 能",
+          "tag": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "背後運作原理",
+          "sub": "n8n 的核心架構與 AI 整合方式",
+          "tag": "02",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "快速上手 n8n，安裝與初始化設定",
+          "tag": "03",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "常見錯誤與解決方案，提高使用效率",
+          "tag": "04",
+          "icon": "layers",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "今天將介紹 n8n 的選用理由及運作原理",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Roadmap agenda with icons representing each topic",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "背後運作原理",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "n8n 的核心架構是基於",
+        "Node.js 和 TypeScript",
+        "它可以自定義程式碼並結合視覺化的流程圖"
+      ],
+      "visual_title": "基於 Node.js 和 TypeScr",
+      "visual_subtitle": "n8n 具備視覺化流程圖和自定義程式碼的能力",
+      "badge_text": "視覺化流程圖",
+      "nodes": [
+        {
+          "label": "Node.js",
+          "sub": "後端框架",
+          "tag": "",
+          "icon": "cpu",
+          "trend": "neutral"
+        },
+        {
+          "label": "TypeScript",
+          "sub": "強型別語言",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "視覺化流程圖",
+          "sub": "拖拉放便於操作",
+          "tag": "",
+          "icon": "layers",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "n8n 使用 Node.js 和 TypeScript 提供強大的自動化能力",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh"
+      ],
+      "ai_image_prompt": "Conveyor belt with nodes representing different parts of the pipeline",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "背後運作原理",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "n8n 的 AI 整合方式非常靈活",
+        "你可以根據自己的需求選擇不同的 AI 服務"
+      ],
+      "visual_title": "靈活的 AI 整合",
+      "visual_subtitle": "n8n 支援多種 AI 服務，讓你自動化流程更智能",
+      "badge_text": "",
+      "nodes": [
+        {
+          "label": "AI 整合",
+          "sub": "支援多種 AI 服務",
+          "tag": "",
+          "icon": "sparkles",
+          "trend": "neutral"
+        },
+        {
+          "label": "OpenAI",
+          "sub": "支援 ChatGPT 和其他模型",
+          "tag": "",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "自定義",
+          "sub": "可根據需求自定義",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "n8n 的 AI 整合方式非常靈活，支援多種 AI 服務",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Screenshot of n8n's AI integration settings",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "背後運作原理",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "n8n 的核心是提供公平程式碼的工作流程自動化平台",
+        "支援超過 400 種整合"
+      ],
+      "visual_title": "公平程式碼工作流程自動化",
+      "visual_subtitle": "n8n 支援超過 400 種整合，提供公平程式碼的工作流程自動化",
+      "badge_text": "400+ 整合",
+      "nodes": [
+        {
+          "label": "公平程式碼",
+          "sub": "免費社區版和企業版",
+          "tag": "",
+          "icon": "lock",
+          "trend": "neutral"
+        },
+        {
+          "label": "400+ 整合",
+          "sub": "支援各種應用程式",
+          "tag": "",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "雲端或自建",
+          "sub": "根據需求選擇部署方式",
+          "tag": "",
+          "icon": "globe",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "Gary 實戰重點",
+      "callout_body": "n8n 是一個公平程式碼的工作流程自動化平台，支援超過 400 種整合",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh"
+      ],
+      "ai_image_prompt": "Pipeline with different nodes representing various integrations",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "三步安裝實戰",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們的主角 Gary 正在安裝 n8n",
+        "這是個好工具，因為它有超過 21 萬顆星星",
+        "表示很多人都在用"
+      ],
+      "visual_title": "安裝 n8n",
+      "visual_subtitle": "使用 curl 指令快速安裝",
+      "badge_text": "211,995 星",
+      "nodes": [
+        {
+          "label": "n8n",
+          "sub": "我們的主角 Gary 正在安裝 n8n",
+          "tag": "26,554 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "表示很多人都在用",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "安裝步驟",
+      "callout_body": "執行 curl -fsSL https://get.n8n.io | sh",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh"
+      ],
+      "ai_image_prompt": "A conveyor belt with glowing terminal screens moving through a futuristic factory",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "三步安裝實戰",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來，我們要建立一個 Docker 卷來存儲 n8n 的資料",
+        "這樣就算重新啟動",
+        "資料也不會遺失"
+      ],
+      "visual_title": "建立 Docker 卷",
+      "visual_subtitle": "確保資料安全不遺失",
+      "badge_text": "資料保護",
+      "nodes": [
+        {
+          "label": "n8n",
+          "sub": "接下來，我們要建立一個 Docker 卷來存",
+          "tag": "26,554 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "資料也不會遺失",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "資料保護",
+      "callout_body": "docker volume create n8n_data",
+      "code_lines": [
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "A spotlight on a screenshot of a Docker command window showing the creation of a new volume",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "三步安裝實戰",
+      "layout_type": "checklist_two_tier_defense",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後一步，確認 n8n 已經成功安裝",
+        "我們可以打開瀏覽器",
+        "看看是否能順利進入 n8n 的主頁面"
+      ],
+      "visual_title": "檢查安裝",
+      "visual_subtitle": "打開瀏覽器確認 n8n 是否正常運行",
+      "badge_text": "檢查完成",
+      "nodes": [
+        {
+          "label": "n8n",
+          "sub": "最後一步，確認 n8n 已經成功安裝",
+          "tag": "26,554 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "看看是否能順利進入 n8n 的主頁面",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "檢查步驟",
+      "callout_body": "訪問 n8n 主頁面",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "A checklist with two tiers: one tier showing a computer screen with a web browser, the other tier showing a tick mark",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "進階避坑技巧",
+      "layout_type": "versus_debate_columns",
+      "voice_style": "explainer",
+      "clauses": [
+        "在使用 n8n 時",
+        "常常會遇到一些問題",
+        "比如說，如果你忘了建立 Docker 卷",
+        "可能會導致資料遺失"
+      ],
+      "visual_title": "常見錯誤",
+      "visual_subtitle": "忘記建立 Docker 卷",
+      "badge_text": "資料遺失",
+      "nodes": [
+        {
+          "label": "忘記建立 Docker 卷",
+          "sub": "資料可能會遺失",
+          "tag": "資料遺失",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "記得建立 Docker 卷",
+          "sub": "資料安全無虞",
+          "tag": "資料安全",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "避免資料遺失",
+      "callout_body": "記得建立 Docker 卷",
+      "code_lines": [
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Two columns side by side, one showing a warning sign, the other showing a checkmark",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "進階避坑技巧",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "另一個常見問題是",
+        "如果 n8n 版本太舊",
+        "可能會出現不相容的情況",
+        "記得定期更新版本"
+      ],
+      "visual_title": "版本更新",
+      "visual_subtitle": "保持 n8n 最新版本",
+      "badge_text": "版本更新",
+      "nodes": [
+        {
+          "label": "檢查版本",
+          "sub": "確認是否需要更新",
+          "tag": "2.49.5",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "更新版本",
+          "sub": "確保功能正常",
+          "tag": "穩定性提升",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "更新步驟",
+      "callout_body": "檢查並更新到最新版本",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh"
+      ],
+      "ai_image_prompt": "A pipeline with slots that progressively fill with different colored blocks representing version updates",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "terminal"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "進階避坑技巧",
+      "layout_type": "kpi_financial_cards",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後，我們來看看如何提高使用效率",
+        "比如說，利用 n8n 的 AI 功能來自動化工作流程",
+        "讓你省下更多時間"
+      ],
+      "visual_title": "提高效率",
+      "visual_subtitle": "利用 n8n 的 AI 功能自動化工作流程",
+      "badge_text": "效率提升",
+      "nodes": [
+        {
+          "label": "n8n",
+          "sub": "最後，我們來看看如何提高使用效率",
+          "tag": "1,859 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "進階避坑技巧",
+          "sub": "讓你省下更多時間",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "效率提升",
+      "callout_body": "利用 n8n 的 AI 功能",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Financial cards displaying KPIs like time saved and efficiency gains",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "跟競品差在哪",
+      "layout_type": "versus_debate_columns",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們來看看 n8n 和其他工作流工具相比",
+        "有哪些優勢，像是 Zapier 或是 Integromat",
+        "n8n 除了有，211,995 的 GitHub 星數之外",
+        "還支援自建程式碼和本地部署，讓你更靈活"
+      ],
+      "visual_title": "n8n vs 其他工具",
+      "visual_subtitle": "自建程式碼和本地部署，讓你更靈活",
+      "badge_text": "211,995 GitHub Sta",
+      "nodes": [
+        {
+          "label": "Zapier",
+          "sub": "雲端服務",
+          "tag": "付費",
+          "icon": "sparkles",
+          "trend": "neutral"
+        },
+        {
+          "label": "Integromat",
+          "sub": "雲端服務",
+          "tag": "付費",
+          "icon": "sparkles",
+          "trend": "neutral"
+        },
+        {
+          "label": "n8n",
+          "sub": "雲端或本地部署",
+          "tag": "免費版",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "n8n 優勢",
+      "callout_body": "本地部署更安全，自建程式更靈活",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Versus column comparison of cloud services vs local deployment, with a robotic arm representing n8n's flexibility",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "跟競品差在哪",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "你可以看到 n8n 的介面非常直觀",
+        "用拖拉的方式就能搭建複雜的工作流程",
+        "而且它還有 AI 功能",
+        "可以自動生成工作流程"
+      ],
+      "visual_title": "n8n 使用介面",
+      "visual_subtitle": "直觀的拖拉介面，自動生成工作流程",
+      "badge_text": "AI 功能",
+      "nodes": [
+        {
+          "label": "拖拉介面",
+          "sub": "直觀易用",
+          "tag": "無",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "AI 生成",
+          "sub": "自動化工作流程",
+          "tag": "無",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "AI 生成工作流程",
+      "callout_body": "自動化複雜工作流程，提高效率",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Screenshot spotlight of n8n's user interface with drag-and-drop functionality and AI workflow generation highlighted",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "跟競品差在哪",
+      "layout_type": "checklist_two_tier_defense",
+      "voice_style": "explainer",
+      "clauses": [
+        "n8n 不僅提供大量的整合模組",
+        "還能自己寫程式碼",
+        "比其他工具更靈活",
+        "而且還有一個大型的社群和豐富的文件"
+      ],
+      "visual_title": "n8n 整合與支援",
+      "visual_subtitle": "大量整合模組，自建程式碼，強大的社群支持",
+      "badge_text": "400+ 整合",
+      "nodes": [
+        {
+          "label": "整合模組",
+          "sub": "400+ 選項",
+          "tag": "無",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "自建程式碼",
+          "sub": "靈活度高",
+          "tag": "無",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "社群支持",
+          "sub": "大型社群",
+          "tag": "無",
+          "icon": "users",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "n8n 整合與支援",
+      "callout_body": "靈活整合，強大社群",
+      "code_lines": [
+        "git clone https://github.com/n8n-io/self-hosted-ai-starter-kit.g",
+        "cd self-hosted-ai-starter-kit"
+      ],
+      "ai_image_prompt": "Checklist with icons representing integration modules, custom coding, and community support",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "我的搭配建議",
+      "layout_type": "progressive_slot_pipeline",
+      "voice_style": "explainer",
+      "clauses": [
+        "如果你想要搭配其他工具",
+        "我建議可以試試看和",
+        "Airtable 或是 Notion 一起使用",
+        "這樣可以讓你的工作流程更加完整"
+      ],
+      "visual_title": "搭配其他工具",
+      "visual_subtitle": "Airtable 或 Notion，讓工作流程更完整",
+      "badge_text": "搭配建議",
+      "nodes": [
+        {
+          "label": "Airtable",
+          "sub": "數據管理",
+          "tag": "無",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "Notion",
+          "sub": "知識管理",
+          "tag": "無",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "n8n",
+          "sub": "工作流程",
+          "tag": "無",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "搭配其他工具",
+      "callout_body": "數據與知識管理，更完整的工作流程",
+      "code_lines": [
+        "git clone https://github.com/enescingoz/awesome-n8n-templates.gi",
+        "cd awesome-n8n-templates"
+      ],
+      "ai_image_prompt": "Progressive pipeline showing data management, knowledge management, and workflow automation slots",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "我的搭配建議",
+      "layout_type": "live_web_screenshot_spotlight",
+      "voice_style": "explainer",
+      "clauses": [
+        "這些模板可以幫你快速開始",
+        "像是 Gmail、Telegram、Slack 等等",
+        "都可以找到適合的模板來快速搭建工作流程"
+      ],
+      "visual_title": "n8n 模板",
+      "visual_subtitle": "快速搭建工作流程的模板",
+      "badge_text": "280+ 模板",
+      "nodes": [
+        {
+          "label": "Gmail",
+          "sub": "Email 管理",
+          "tag": "無",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "Telegram",
+          "sub": "即時通訊",
+          "tag": "無",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "Slack",
+          "sub": "團隊協作",
+          "tag": "無",
+          "icon": "users",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "n8n 模板",
+      "callout_body": "快速搭建工作流程",
+      "code_lines": [
+        "curl -fsSL https://get.n8n.io | sh",
+        "docker volume create n8n_data"
+      ],
+      "ai_image_prompt": "Screenshot spotlight of n8n templates page with various workflow examples highlighted",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "我的搭配建議",
+      "layout_type": "kpi_financial_cards",
+      "voice_style": "explainer",
+      "clauses": [
+        "另外，如果你需要更多進階功能",
+        "可以考慮使用像 salacoste",
+        "的 n8n 工作流程生成器",
+        "它可以利用自然語言來建立工作流程"
+      ],
+      "visual_title": "進階功能",
+      "visual_subtitle": "使用 salacoste 的 n8n 工作流程生成器",
+      "badge_text": "進階功能",
+      "nodes": [
+        {
+          "label": "自然語言",
+          "sub": "建立工作流程",
+          "tag": "無",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "Claude AI",
+          "sub": "輔助工作流程",
+          "tag": "無",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "Cursor IDE",
+          "sub": "編輯工作流程",
+          "tag": "無",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "進階功能",
+      "callout_body": "利用自然語言建立工作流程",
+      "code_lines": [
+        "npm install -g @kernel.salacoste/n8n-workflow-builder",
+        "npx @kernel.salacoste/n8n-workflow-builder --version"
+      ],
+      "ai_image_prompt": "KPI cards showcasing advanced features like natural language workflow creation, AI assistance, and IDE integration",
+      "source_ids": [
+        "S5"
+      ],
+      "sfx_cue": "pop"
+    }
+  ],
+  "short_title": "不花錢升級開發流 #Shorts",
+  "short_hook_banner": "GitHub 21萬",
+  "short_cta_target_title": "不花錢升級開發流！n8n 新手實戰",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "hook",
+      "clauses": [
+        "你知道嗎，n8n 已經有 21 萬顆星星了",
+        "這是一個超強大的自動化工具"
+      ],
+      "headline": "n8n 神奇自動化",
+      "sub_caption": "GitHub 上有 21 萬顆星星！",
+      "highlight_badge": "211,995 GitHub 星",
+      "nodes": [
+        {
+          "label": "GitHub Stars",
+          "sub": "超多人支持的開源工具",
+          "tag": "211,995",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "開源社群",
+          "sub": "活躍的社群讓你找到解決方案更快",
+          "tag": "",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "AI 能力",
+          "sub": "內建 AI 功能讓你自動化更智能",
+          "tag": "",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "n8n 是基於，Node.js 和 TypeScript",
+        "你可以用視覺化流程圖輕鬆設定自動化"
+      ],
+      "headline": "核心技術",
+      "sub_caption": "Node.js 和 TypeScript 組成",
+      "highlight_badge": "視覺化流程圖",
+      "nodes": [
+        {
+          "label": "Node.js",
+          "sub": "後端框架",
+          "tag": "",
+          "icon": "cpu",
+          "trend": "neutral"
+        },
+        {
+          "label": "TypeScript",
+          "sub": "強型別語言",
+          "tag": "",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "視覺化流程圖",
+          "sub": "拖拉放便於操作",
+          "tag": "",
+          "icon": "layers",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_live_source_proof",
+      "voice_style": "explainer",
+      "clauses": [
+        "安裝 n8n 很簡單",
+        "只要一行指令就能搞定，真的超方便"
+      ],
+      "headline": "三步安裝",
+      "sub_caption": "一行指令就安裝好",
+      "highlight_badge": "curl -fsSL https",
+      "nodes": [
+        {
+          "label": "n8n",
+          "sub": "我們的主角 Gary 正在安裝 n8n",
+          "tag": "26,554 Stars",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "三步安裝實戰",
+          "sub": "表示很多人都在用",
+          "tag": "實戰重點",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "使用 n8n 時要注意",
+        "資料遺失問題常常發生",
+        "一定要小心處理"
+      ],
+      "headline": "避坑技巧",
+      "sub_caption": "小心資料遺失",
+      "highlight_badge": "資料遺失",
+      "nodes": [
+        {
+          "label": "忘記建立 Docker 卷",
+          "sub": "資料可能會遺失",
+          "tag": "資料遺失",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "記得建立 Docker 卷",
+          "sub": "資料安全無虞",
+          "tag": "資料安全",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "和其他自動化工具相比",
+        "n8n 有著更豐富的整合功能和更好的效能表現"
+      ],
+      "headline": "比一比",
+      "sub_caption": "比 Zapier 整合更好",
+      "highlight_badge": "211,995 GitHub S",
+      "nodes": [
+        {
+          "label": "Zapier",
+          "sub": "雲端服務",
+          "tag": "付費",
+          "icon": "sparkles",
+          "trend": "neutral"
+        },
+        {
+          "label": "Integromat",
+          "sub": "雲端服務",
+          "tag": "付費",
+          "icon": "sparkles",
+          "trend": "neutral"
+        },
+        {
+          "label": "n8n",
+          "sub": "雲端或本地部署",
+          "tag": "免費版",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "n8n 可以和許多工具搭配使用",
+        "像是 AI 啓動套件和自動化模板"
+      ],
+      "headline": "搭配建議",
+      "sub_caption": "多種搭配選擇",
+      "highlight_badge": "搭配建議",
+      "nodes": [
+        {
+          "label": "Airtable",
+          "sub": "數據管理",
+          "tag": "無",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "Notion",
+          "sub": "知識管理",
+          "tag": "無",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "n8n",
+          "sub": "工作流程",
+          "tag": "無",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "完整實戰步驟，指令模板跟公開查證來源我都整理在長片裡了",
+        "現在直接點擊左下角關聯影片看完整版"
+      ],
+      "headline": "看完整版",
+      "sub_caption": "詳細教學等你來",
+      "highlight_badge": "詳細教學",
+      "nodes": [
+        {
+          "label": "Airtable",
+          "sub": "數據管理",
+          "tag": "無",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "Notion",
+          "sub": "知識管理",
+          "tag": "無",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "n8n",
+          "sub": "工作流程",
+          "tag": "無",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "distinct English 3D dark studio diorama prompt",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": true
+    }
+  ]
+}
