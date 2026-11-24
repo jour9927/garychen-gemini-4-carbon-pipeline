@@ -19,7 +19,8 @@ print(best / 'garychen_g4c')
 # Clean up our own earlier /local-scratch or /content dir if /dev/shm wins so root / stays free
 if [ "$ROOT" != "/local-scratch/garychen_g4c" ]; then rm -rf /local-scratch/garychen_g4c 2>/dev/null || true; fi
 if [ "$ROOT" != "/content/garychen_g4c" ]; then rm -rf /content/garychen_g4c 2>/dev/null || true; fi
-mkdir -p "$ROOT"/{bin,logs,refs,jobs,hf_cache,torch_cache,site_pkgs,tmp,pip_cache}
+mkdir -p "$ROOT"/{bin,logs,refs,jobs,hf_cache,torch_cache,tmp,pip_cache}
+rm -rf "$ROOT/site_pkgs" 2>/dev/null || true
 export TMPDIR="$ROOT/tmp"
 export PIP_CACHE_DIR="$ROOT/pip_cache"
 export HF_HOME="$ROOT/hf_cache"
@@ -38,7 +39,7 @@ set -euo pipefail
 export TMPDIR="$ROOT/tmp"
 export PIP_CACHE_DIR="$ROOT/pip_cache"
 export PIP_DISABLE_PIP_VERSION_CHECK=1
-python3 -m pip install -q --no-cache-dir --upgrade --target "$ROOT/site_pkgs" soundfile opencc-python-reimplemented faster-whisper f5-tts
+python3 -m pip install -q --no-cache-dir soundfile opencc-python-reimplemented faster-whisper f5-tts
 touch "$ROOT/.deps_ready"
 INST
 chmod +x "$ROOT/install_deps.sh"
@@ -47,7 +48,17 @@ pkill -f "[g]arychen_worker_19743.py" || true
 pkill -f "[g]arychen_cf_19743" || true
 sleep 0.4
 
-if [ ! -f "$ROOT/.deps_ready" ]; then
+if [ ! -f "$ROOT/.deps_ready_sys" ]; then
+  rm -f "$ROOT/.deps_ready"
+  cat <<INST2 > "$ROOT/install_deps.sh"
+#!/usr/bin/env bash
+set -euo pipefail
+export TMPDIR="$ROOT/tmp"
+export PIP_CACHE_DIR="$ROOT/pip_cache"
+export PIP_DISABLE_PIP_VERSION_CHECK=1
+python3 -m pip install -q --no-cache-dir soundfile opencc-python-reimplemented faster-whisper f5-tts
+touch "$ROOT/.deps_ready_sys" "$ROOT/.deps_ready"
+INST2
   nohup bash "$ROOT/install_deps.sh" > "$ROOT/logs/install.log" 2>&1 < /dev/null &
 fi
 
@@ -62,7 +73,6 @@ if [ ! -x "$CF" ]; then
   chmod +x "$CF"
 fi
 
-export PYTHONPATH="$ROOT/site_pkgs:${PYTHONPATH:-}"
 nohup python3 -u "$ROOT/garychen_worker_19743.py" \
   --work-dir "$ROOT" --port "$PORT" --token "$TOKEN" \
   > "$ROOT/logs/worker.log" 2>&1 < /dev/null &
