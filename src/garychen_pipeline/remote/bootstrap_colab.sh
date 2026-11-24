@@ -1,22 +1,29 @@
 #!/usr/bin/env bash
-# Clean plain-text bootstrapper for Garychen Gemini 4 Carbon Heavy Worker on Colab RTX PRO 6000 (:19743)
+# Clean plain-text bootstrapper for Garychen Gemini 4 Carbon V2 Heavy Worker on Colab RTX PRO 6000 (:19743)
 set -euo pipefail
 
 TOKEN="${GC_WORKER_TOKEN:-gc_rtx6000_carbon_2026}"
 PORT="${GC_WORKER_PORT:-19743}"
-REPO_RAW="${GC_REPO_RAW:-https://raw.githubusercontent.com/jour9927/garychen-gemini-4-carbon-pipeline/main}"
+REPO_SHA="${GC_REPO_SHA:-main}"
+REPO_RAW="https://raw.githubusercontent.com/jour9927/garychen-gemini-4-carbon-pipeline/${REPO_SHA}"
 
-if [ -d "/local-scratch" ] && [ -w "/local-scratch" ]; then
-  ROOT="/local-scratch/garychen_g4c"
-else
-  ROOT="/content/garychen_g4c"
-fi
+# Pick mount with maximum free space (/local-scratch vs /content vs /dev/shm)
+ROOT=$(python3 -c "
+import os, shutil
+from pathlib import Path
+cands = [Path('/local-scratch'), Path('/dev/shm'), Path('/content'), Path('/tmp')]
+best = max([p for p in cands if p.exists() and os.access(p, os.W_OK)], key=lambda p: shutil.disk_usage(str(p)).free)
+print(best / 'garychen_g4c')
+")
 
-rm -rf "$ROOT/.venv"
-mkdir -p "$ROOT"/{bin,logs,refs,jobs,hf_cache,torch_cache,site_pkgs}
-if [ "$ROOT" != "/content/garychen_g4c" ] && [ ! -e "/content/garychen_g4c" ]; then
-  ln -s "$ROOT" /content/garychen_g4c
-fi
+# Clean up our own earlier /local-scratch or /content dir if /dev/shm wins so root / stays free
+if [ "$ROOT" != "/local-scratch/garychen_g4c" ]; then rm -rf /local-scratch/garychen_g4c 2>/dev/null || true; fi
+if [ "$ROOT" != "/content/garychen_g4c" ]; then rm -rf /content/garychen_g4c 2>/dev/null || true; fi
+mkdir -p "$ROOT"/{bin,logs,refs,jobs,hf_cache,torch_cache,site_pkgs,tmp,pip_cache}
+export TMPDIR="$ROOT/tmp"
+export PIP_CACHE_DIR="$ROOT/pip_cache"
+export HF_HOME="$ROOT/hf_cache"
+export TORCH_HOME="$ROOT/torch_cache"
 
 curl -fsSL "$REPO_RAW/src/garychen_pipeline/remote/colab_rtx6000_worker.py" -o "$ROOT/garychen_worker_19743.py"
 chmod +x "$ROOT/garychen_worker_19743.py"
@@ -28,8 +35,10 @@ done
 cat <<INST > "$ROOT/install_deps.sh"
 #!/usr/bin/env bash
 set -euo pipefail
+export TMPDIR="$ROOT/tmp"
+export PIP_CACHE_DIR="$ROOT/pip_cache"
 export PIP_DISABLE_PIP_VERSION_CHECK=1
-python3 -m pip install -q --upgrade --target "$ROOT/site_pkgs" soundfile opencc-python-reimplemented faster-whisper f5-tts
+python3 -m pip install -q --no-cache-dir --upgrade --target "$ROOT/site_pkgs" soundfile opencc-python-reimplemented faster-whisper f5-tts
 touch "$ROOT/.deps_ready"
 INST
 chmod +x "$ROOT/install_deps.sh"
@@ -78,4 +87,4 @@ done
 cat <<JSON > "$ROOT/ready.json"
 {"url": "$URL", "port": $PORT, "token": "$TOKEN", "work": "$ROOT"}
 JSON
-echo "GARYCHEN_RTX6000_READY={\"url\": \"$URL\", \"port\": $PORT, \"token\": \"$TOKEN\", \"work\": \"$ROOT\"}"
+echo "GARYCHEN_V2_READY={\"url\": \"$URL\", \"port\": $PORT, \"token\": \"$TOKEN\", \"work\": \"$ROOT\"}"

@@ -365,7 +365,7 @@ def build_long_beat_html(
                     f'<div style="width:50px;height:50px;border-radius:50%;background:{"#EB8B1B" if act else "#3F3F46"};color:{"#141414" if act else "#FFF"};display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;">{i+1}</div>'
                     f'<div><div style="font-size:26px;font-weight:700;">{esc(nd.label)}</div>'
                     f'<div style="font-size:20px;color:#A1A1AA;margin-top:4px;">{esc(nd.sub)}</div></div></div>'
-                    f'{f"<span class=\\"pill pill-orange\\">{esc(nd.tag)}</span>" if nd.tag else ""}'
+                    f"{f'<span class=\"pill pill-orange\">{esc(nd.tag)}</span>' if nd.tag else ''}"
                     f'</div>'
                 )
         img_tag = f'<img src="{ai_uri}" style="width:100%;height:390px;object-fit:cover;border-radius:18px;display:block;"/>' if ai_uri else ""
@@ -404,7 +404,7 @@ def build_long_beat_html(
                     f'<div class="card {"active" if is_act else ""}" style="flex:1;height:330px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;">'
                     f'<div style="align-self:flex-start;display:flex;align-items:center;justify-content:space-between;width:100%;">'
                     f'<span style="width:36px;height:36px;border-radius:50%;background:{"#EB8B1B" if is_act else "#3F3F46"};color:{"#141414" if is_act else "#E4E4E7"};display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:19px;">{i+1}</span>'
-                    f'{f"<span class=\\"pill pill-muted\\">{esc(nd.tag)}</span>" if nd.tag else ""}</div>'
+                    f"{f'<span class=\"pill pill-muted\">{esc(nd.tag)}</span>' if nd.tag else ''}</div>"
                     f'<div style="width:78px;height:78px;border-radius:22px;background:rgba(235,139,27,0.13);display:flex;align-items:center;justify-content:center;">'
                     f'{svg_icon(nd.icon, 42, "#EB8B1B" if is_act else "#D4D4D8")}</div>'
                     f'<div><div style="font-size:27px;font-weight:700;">{esc(nd.label)}</div>'
@@ -470,7 +470,7 @@ def build_long_beat_html(
                 f'{svg_icon("check" if lt == "checklist_two_tier_defense" else nd.icon, 34, "#4ADE80" if act else "#71717A")}</div>'
                 f'<div style="font-size:29px;font-weight:700;">{esc(nd.label)}</div>'
                 f'<div style="font-size:21px;color:#A1A1AA;margin-top:12px;line-height:1.5;">{esc(nd.sub)}</div>'
-                f'{f"<div style=\\"margin-top:20px;\\"><span class=\\"pill pill-orange\\">{esc(nd.tag)}</span></div>" if nd.tag else ""}'
+                f"{f'<div style=\"margin-top:20px;\"><span class=\"pill pill-orange\">{esc(nd.tag)}</span></div>' if nd.tag else ''}"
                 f'</div>'
             )
         stage_inner = f"""
@@ -574,7 +574,7 @@ def build_short_beat_html(
                     f'{svg_icon(nd.icon, 30, "#EB8B1B")}</div>'
                     f'<div><div style="font-size:30px;font-weight:700;">{esc(nd.label)}</div>'
                     f'<div style="font-size:22px;color:#A1A1AA;margin-top:3px;">{esc(nd.sub)}</div></div></div>'
-                    f'{f"<span class=\\"pill pill-orange\\" style=\\"font-size:21px;\\">{esc(nd.tag)}</span>" if nd.tag else ""}'
+                    f"{f'<span class=\"pill pill-orange\" style=\"font-size:21px;\">{esc(nd.tag)}</span>' if nd.tag else ''}"
                     f'</div>'
                 )
         src_line = f"公開來源 [{esc(s0.source_id)}] {esc(s0.domain)} · {esc(s0.title[:24])}" if s0 else ""

@@ -98,8 +98,10 @@ class GarychenLongRenderer:
         if Path(CHROME_APP_BIN).exists():
             launch_kwargs["executable_path"] = CHROME_APP_BIN
 
+        tmp_html_file = out_mp4.parent / "_render_stage_long.html"
+        out_mp4.parent.mkdir(parents=True, exist_ok=True)
         with sync_playwright() as p:
-            browser = p.chromium.launch(**launch_kwargs)
+            browser = p.chromium.launch(**launch_kwargs, args=["--allow-file-access-from-files"])
             page = browser.new_page(viewport={"width": W, "height": H, "device_scale_factor": 1})
             for beat_id, step_i in needed_states:
                 beat = beats_by_id[beat_id]
@@ -111,7 +113,9 @@ class GarychenLongRenderer:
                     sources_by_id=sources_by_id,
                     tokens=self.t,
                 )
-                page.set_content(html_doc, wait_until="load")
+                tmp_html_file.write_text(html_doc, encoding="utf-8")
+                page.goto(tmp_html_file.resolve().as_uri(), wait_until="load")
+                page.evaluate("() => document.fonts.ready")
                 png_bytes = page.screenshot(type="png")
                 im = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
                 if avatar_im is not None:
@@ -128,13 +132,16 @@ class GarychenLongRenderer:
                 sources_by_id=sources_by_id,
                 tokens=self.t,
             )
-            page.set_content(thumb_html, wait_until="load")
+            tmp_html_file.write_text(thumb_html, encoding="utf-8")
+            page.goto(tmp_html_file.resolve().as_uri(), wait_until="load")
+            page.evaluate("() => document.fonts.ready")
             t_im = Image.open(io.BytesIO(page.screenshot(type="png"))).convert("RGBA")
             if avatar_im is not None:
                 t_im.alpha_composite(avatar_im, (1648, 810))
             thumbnail_png.parent.mkdir(parents=True, exist_ok=True)
             t_im.convert("RGB").save(str(thumbnail_png))
             browser.close()
+        tmp_html_file.unlink(missing_ok=True)
 
         sub_cache: dict[str, tuple[np.ndarray, np.ndarray]] = {}
         for c in line_cues:

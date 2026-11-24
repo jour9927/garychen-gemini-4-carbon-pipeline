@@ -78,8 +78,10 @@ class GarychenShortsRenderer:
         if Path(CHROME_APP_BIN).exists():
             launch_kwargs["executable_path"] = CHROME_APP_BIN
 
+        tmp_html_file = out_mp4.parent / "_render_stage_short.html"
+        out_mp4.parent.mkdir(parents=True, exist_ok=True)
         with sync_playwright() as p:
-            browser = p.chromium.launch(**launch_kwargs)
+            browser = p.chromium.launch(**launch_kwargs, args=["--allow-file-access-from-files"])
             page = browser.new_page(viewport={"width": W, "height": H, "device_scale_factor": 1})
             for beat_id, step_i in needed_states:
                 sb = sbeats_by_id[beat_id]
@@ -92,10 +94,13 @@ class GarychenShortsRenderer:
                     sources_by_id=sources_by_id,
                     tokens=self.t,
                 )
-                page.set_content(html_doc, wait_until="load")
+                tmp_html_file.write_text(html_doc, encoding="utf-8")
+                page.goto(tmp_html_file.resolve().as_uri(), wait_until="load")
+                page.evaluate("() => document.fonts.ready")
                 im = Image.open(io.BytesIO(page.screenshot(type="png"))).convert("RGB")
                 state_frames[(beat_id, step_i)] = np.array(im, dtype=np.uint8)
             browser.close()
+        tmp_html_file.unlink(missing_ok=True)
 
         sub_cache: dict[str, tuple[np.ndarray, np.ndarray]] = {}
         for c in line_cues:

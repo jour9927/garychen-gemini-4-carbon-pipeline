@@ -116,16 +116,17 @@ def get_whisper_model():
 
 
 def get_qwen_llm():
+    free_model_if_tight(24000, ("sdxl_pipe", "f5_tts", "whisper"))
     with MODEL_LOCK:
         if "qwen_llm" in MODELS:
             return MODELS["qwen_llm"]
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
         st = gpu_stats()
-        if st["cuda_available"] and st["free_mb"] >= 34000:
+        if st["cuda_available"] and st["free_mb"] >= 64000:
             model_id = "Qwen/Qwen2.5-14B-Instruct"
             dev = "cuda"
-        elif st["cuda_available"] and st["free_mb"] >= 18000:
+        elif st["cuda_available"] and st["free_mb"] >= 19000:
             model_id = "Qwen/Qwen2.5-7B-Instruct"
             dev = "cuda"
         else:
@@ -142,7 +143,25 @@ def get_qwen_llm():
         return MODELS["qwen_llm"]
 
 
+def free_model_if_tight(needed_mb: int, drop_keys: tuple[str, ...]):
+    import gc
+    import torch
+    if not torch.cuda.is_available():
+        return
+    st = gpu_stats()
+    if st["free_mb"] >= needed_mb:
+        return
+    with MODEL_LOCK:
+        for k in drop_keys:
+            if k in MODELS:
+                MODELS.pop(k, None)
+    gc.collect()
+    torch.cuda.empty_cache()
+
+
 def get_sdxl_pipe(force_cpu: bool = False):
+    if not force_cpu:
+        free_model_if_tight(26000, ("qwen_llm",))
     with MODEL_LOCK:
         target_dev = "cpu" if force_cpu else pick_device(min_cuda_mb=9500)
         cached = MODELS.get("sdxl_pipe")
@@ -291,6 +310,7 @@ def run_job(job_id: str, kind: str, payload: dict):
                 JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"text": txt_out, "model": model_id, "device": dev})
 
         elif kind in ("tts_paragraphs", "tts_batch"):
+            free_model_if_tight(24000, ("qwen_llm", "sdxl_pipe"))
             ref_wav = REFS_DIR / payload["ref_name"]
             if not ref_wav.exists():
                 raise FileNotFoundError(f"Missing reference wav: {ref_wav}")
@@ -506,6 +526,8 @@ def main():
     AUTH_TOKEN = args.token
     for d in (WORK_DIR, REFS_DIR, JOBS_DIR, CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
+    os.environ["HF_HOME"] = str(CACHE_DIR)
+    os.environ["TORCH_HOME"] = str(WORK_DIR / "torch_cache")
     print(f"[garychen-worker-v2] listening on 0.0.0.0:{PORT} work={WORK_DIR}", flush=True)
     ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
 
