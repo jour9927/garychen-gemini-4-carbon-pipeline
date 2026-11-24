@@ -21,12 +21,9 @@ console = Console()
 
 def _fmt_vtt_ts(sec: float) -> str:
     ms = int(round(sec * 1000))
-    h = ms // 3600000
-    ms %= 3600000
-    m = ms // 60000
-    ms %= 60000
-    s = ms // 1000
-    ms %= 1000
+    h, ms = divmod(ms, 3600000)
+    m, ms = divmod(ms, 60000)
+    s, ms = divmod(ms, 1000)
     return f"{h:02d}:{m:02d}:{s:02d}.{ms:03d}"
 
 
@@ -48,8 +45,11 @@ def write_webvtt(cues: list[dict], out_vtt: Path):
 
 class GarychenUnattendedPipeline:
     """
-    Master Unattended Orchestrator (lives on local machine 本機 first).
-    Saves checkpoints after every stage so remote GPU disconnection never loses state.
+    V2 Studio Unattended Orchestrator:
+      - Entity-filtered precision web crawling + real Playwright dark-mode screenshots
+      - Multi-pass Qwen2.5-14B-Instruct Garychen persona script & 18-beat progressive storyboard
+      - Continuous sentence PyTorch F5-TTS + Whisper CUDA word-level alignment + subtle motion SFX
+      - 22-step SDXL Base 1152x768 3D dioramas + HTML5/CSS3/SVG headless Chromium 60fps Long & Funnel Shorts
     """
 
     def __init__(self, outputs_root: Path | None = None):
@@ -70,34 +70,41 @@ class GarychenUnattendedPipeline:
         num_chapters: int = 6,
     ) -> dict:
         ts_slug = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-        # 1. Unattended Topic Discovery & Selection
-        console.rule("[bold orange3]Stage 1/7 · 無人值守選題 (Unattended Topic Scout)")
+        console.rule("[bold orange3]Stage 1/7 · 無人值守選題 (Unattended Topic Scout V2)")
         topic: TopicCandidate = self.scout.pick_unattended(custom_topic=custom_topic, category=category, seed_urls=seed_urls)
         ep_id = episode_id or f"{ts_slug}_{re.sub(r'[^a-zA-Z0-9]+', '_', topic.topic_id).strip('_')[:20]}"
         ep_dir = self.outputs_root / ep_id
         ep_dir.mkdir(parents=True, exist_ok=True)
         (ep_dir / "topic.json").write_text(topic.model_dump_json(indent=2), encoding="utf-8")
-        console.print(f"[green]✓ Selected Topic:[/green] {topic.title} [dim](score={topic.score}, cat={topic.category})[/dim]")
+        console.print(f"[green]✓ Topic:[/green] {topic.title} [dim](entity={topic.primary_entity}, cat={topic.category})[/dim]")
 
-        # 2. Live Public Web Crawling & Source Verification
-        console.rule("[bold orange3]Stage 2/7 · 公開資訊爬蟲與來源查證 (Public Web Crawler)")
+        console.rule("[bold orange3]Stage 2/7 · 精準公開資訊爬蟲 + 實時網頁截圖 (Precision Crawler & Live Captures)")
         sources_file = ep_dir / "crawled_sources.json"
         if sources_file.exists():
             sources = [CrawledSource.model_validate(x) for x in json.loads(sources_file.read_text(encoding="utf-8"))]
         else:
             crawler = PublicInfoCrawler()
             try:
-                sources = crawler.gather_dossier(queries=topic.seed_queries, seed_urls=topic.seed_urls, min_sources=5)
+                sources = crawler.gather_dossier(
+                    queries=topic.seed_queries,
+                    primary_entity=topic.primary_entity,
+                    seed_urls=topic.seed_urls,
+                    tickers=topic.tickers,
+                    screenshots_dir=ep_dir / "source_screenshots",
+                )
             finally:
                 crawler.close()
             sources_file.write_text(
                 json.dumps([s.model_dump() for s in sources], ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
-        console.print(f"[green]✓ Crawled {len(sources)} public sources:[/green] " + ", ".join(f"[{s.source_id}] {s.domain}" for s in sources))
+        n_scr = sum(1 for s in sources if s.screenshot_path)
+        console.print(
+            f"[green]✓ Verified {len(sources)} primary sources ({n_scr} live dark-mode screenshots):[/green] "
+            + ", ".join(f"[{s.source_id}] {s.domain}" for s in sources)
+        )
 
-        # 3. Garychen Persona AI Scriptwriting (Long + Corresponding Shorts Funnel)
-        console.rule("[bold orange3]Stage 3/7 · AI 產稿與雙規分鏡腳本 (Long + Funnel Shorts Script)")
+        console.rule("[bold orange3]Stage 3/7 · Qwen2.5-14B 多階段編劇與漸進式分鏡導演 (18+ Progressive Beats)")
         script_file = ep_dir / "episode_script.json"
         if script_file.exists():
             script = EpisodeScript.model_validate_json(script_file.read_text(encoding="utf-8"))
@@ -109,68 +116,45 @@ class GarychenUnattendedPipeline:
                 num_chapters=num_chapters,
             )
             script_file.write_text(script.model_dump_json(indent=2), encoding="utf-8")
-        console.print(f"[green]✓ Generated Long Title:[/green] {script.title} ({len(script.scenes)} scenes)")
-        console.print(f"[green]✓ Generated Funnel Short:[/green] {script.short_title} ({len(script.short_scenes)} vertical scenes)")
+        console.print(f"[green]✓ Long Script:[/green] {script.title} ({len(script.beats)} progressive beats across {len(script.chapters)} chapters)")
+        console.print(f"[green]✓ Funnel Short:[/green] {script.short_title} ({len(script.short_beats)} vertical beats)")
 
-        # 4. PyTorch Voice Cloning (RTX PRO 6000 Priority -> B850 -> Local Cache)
-        console.rule("[bold orange3]Stage 4/7 · PyTorch 本人聲音克隆配音 (RTX PRO 6000 Priority)")
-        long_tts_items: list[dict] = []
-        for sc in script.scenes:
-            for l_idx, ln in enumerate(sc.narration_lines):
-                long_tts_items.append(
-                    {
-                        "id": f"{sc.scene_id}_l{l_idx + 1:02d}",
-                        "scene_id": sc.scene_id,
-                        "line_idx": l_idx,
-                        "voice_style": sc.voice_style,
-                        "text": ln,
-                    }
-                )
-        long_synth, tts_backend_long = self.voice_cloner.synthesize_lines(long_tts_items, ep_dir / "audio_long")
-        for orig, syn in zip(long_tts_items, long_synth):
-            syn["scene_id"] = orig["scene_id"]
-            syn["line_idx"] = orig["line_idx"]
+        console.rule("[bold orange3]Stage 4/7 · 整句自然語氣 PyTorch 聲音克隆 + Whisper 字級對齊 + 細膩轉場音效")
+        long_beat_reqs = [
+            {"id": b.beat_id, "clauses": b.clauses, "voice_style": b.voice_style, "sfx_cue": b.sfx_cue}
+            for b in script.beats
+        ]
+        long_synth, tts_backend = self.voice_cloner.synthesize_beats(long_beat_reqs, ep_dir / "audio_long")
         long_master_wav = ep_dir / "long_master.wav"
-        long_dur, long_cues = self.voice_cloner.concat_master_track(long_synth, long_master_wav)
+        long_dur, long_cues = self.voice_cloner.build_master_timeline(long_synth, long_master_wav)
         write_webvtt(long_cues, ep_dir / "long_subtitles.vtt")
-        console.print(f"[green]✓ Long Voiceover Mastered:[/green] {long_dur:.1f}s (-21.0 LUFS) via [cyan]{tts_backend_long}[/cyan]")
+        console.print(f"[green]✓ Long Voiceover + SFX Mastered:[/green] {long_dur:.1f}s ({len(long_cues)} Whisper-aligned cues, -21.0 LUFS) via [cyan]{tts_backend}[/cyan]")
 
-        short_tts_items: list[dict] = []
-        for sc in script.short_scenes:
-            for l_idx, ln in enumerate(sc.narration_lines):
-                short_tts_items.append(
-                    {
-                        "id": f"{sc.scene_id}_l{l_idx + 1:02d}",
-                        "scene_id": sc.scene_id,
-                        "line_idx": l_idx,
-                        "voice_style": sc.voice_style,
-                        "text": ln,
-                    }
-                )
-        short_synth, tts_backend_short = self.voice_cloner.synthesize_lines(short_tts_items, ep_dir / "audio_short")
-        for orig, syn in zip(short_tts_items, short_synth):
-            syn["scene_id"] = orig["scene_id"]
-            syn["line_idx"] = orig["line_idx"]
+        short_beat_reqs = [
+            {"id": sb.beat_id, "clauses": sb.clauses, "voice_style": sb.voice_style, "sfx_cue": "pop"}
+            for sb in script.short_beats
+        ]
+        short_synth, tts_backend_s = self.voice_cloner.synthesize_beats(short_beat_reqs, ep_dir / "audio_short")
         short_master_wav = ep_dir / "short_master.wav"
-        short_dur, short_cues = self.voice_cloner.concat_master_track(
-            short_synth, short_master_wav, inter_line_pause=0.11, inter_scene_pause=0.25
+        short_dur, short_cues = self.voice_cloner.build_master_timeline(
+            short_synth, short_master_wav, inter_beat_pause=0.16, chapter_pause=0.22
         )
         write_webvtt(short_cues, ep_dir / "short_subtitles.vtt")
-        console.print(f"[green]✓ Shorts Voiceover Mastered:[/green] {short_dur:.1f}s (-21.0 LUFS) via [cyan]{tts_backend_short}[/cyan]")
+        console.print(f"[green]✓ Shorts Voiceover + SFX Mastered:[/green] {short_dur:.1f}s ({len(short_cues)} cues, -21.0 LUFS) via [cyan]{tts_backend_s}[/cyan]")
 
-        # 5. PyTorch AI Image Generation (RTX PRO 6000 Priority)
-        console.rule("[bold orange3]Stage 5/7 · PyTorch AI 產圖 (RTX PRO 6000 Priority)")
+        console.rule("[bold orange3]Stage 5/7 · 22-Step SDXL Base 高畫質 3D 暗黑琥珀場景插圖生成")
+        AI_LAYOUTS = {"ai_editorial_split_card", "hub_ecosystem_radiate", "live_web_screenshot_spotlight"}
         img_reqs: list[dict] = []
-        for idx, sc in enumerate(script.scenes):
-            img_reqs.append({"id": sc.scene_id, "prompt": sc.ai_image_prompt, "width": 768, "height": 512, "seed": 3100 + idx * 19})
-        for idx, ssc in enumerate(script.short_scenes):
-            if not ssc.is_cta:
-                img_reqs.append({"id": ssc.scene_id, "prompt": ssc.ai_image_prompt, "width": 640, "height": 512, "seed": 5200 + idx * 23})
+        for idx, b in enumerate(script.beats):
+            if b.layout_type in AI_LAYOUTS or idx == 0:
+                img_reqs.append({"id": b.beat_id, "prompt": b.ai_image_prompt, "width": 1152, "height": 768, "steps": 22, "seed": 4100 + idx * 29})
+        for idx, sb in enumerate(script.short_beats):
+            if not sb.is_cta:
+                img_reqs.append({"id": sb.beat_id, "prompt": sb.ai_image_prompt, "width": 1024, "height": 768, "steps": 20, "seed": 6200 + idx * 37})
         img_map, img_backend = self.image_gen.generate_batch(img_reqs, ep_dir / "images")
-        console.print(f"[green]✓ Generated {len(img_map)} AI Illustrations[/green] via [cyan]{img_backend}[/cyan]")
+        console.print(f"[green]✓ Generated {len(img_map)} Studio 3D Illustrations[/green] via [cyan]{img_backend}[/cyan]")
 
-        # 6. Render 1920x1080 @ 60fps Long Video + Thumbnail
-        console.rule("[bold orange3]Stage 6/7 · 1920x1080 @ 60fps 長片動態合成渲染")
+        console.rule("[bold orange3]Stage 6/7 · HTML5 + CSS3 + SVG + Chromium 1920x1080 @ 60fps 漸進式動畫渲染")
         long_mp4 = ep_dir / "garychen_long.mp4"
         thumb_png = ep_dir / "thumbnail.png"
         self.long_renderer.encode_video(
@@ -183,10 +167,9 @@ class GarychenUnattendedPipeline:
             out_mp4=long_mp4,
             thumbnail_png=thumb_png,
         )
-        console.print(f"[green]✓ Rendered Long Video:[/green] {long_mp4} ({long_mp4.stat().st_size / (1024*1024):.2f} MB)")
+        console.print(f"[green]✓ Rendered V2 Long Video:[/green] {long_mp4} ({long_mp4.stat().st_size / (1024*1024):.2f} MB)")
 
-        # 7. Render 1080x1920 @ 60fps Corresponding Funnel Short + Publish Pack
-        console.rule("[bold orange3]Stage 7/7 · 1080x1920 @ 60fps 對應推流 Shorts 合成與上架包")
+        console.rule("[bold orange3]Stage 7/7 · HTML5 + CSS3 + SVG 1080x1920 @ 60fps 對應推流 Shorts 渲染與上架包")
         short_mp4 = ep_dir / "garychen_short_funnel.mp4"
         self.short_renderer.encode_short(
             script=script,
@@ -210,31 +193,34 @@ class GarychenUnattendedPipeline:
             "publish_pack_md": str(publish_md),
             "long_duration_sec": long_dur,
             "short_duration_sec": short_dur,
+            "beats_count": len(script.beats),
+            "cues_count": len(long_cues),
             "sources_count": len(sources),
-            "tts_backend": tts_backend_long,
+            "live_screenshots_count": n_scr,
+            "tts_backend": tts_backend,
             "image_backend": img_backend,
         }
         (ep_dir / "run_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-        console.print(f"[bold green]🎉 Unattended Episode Complete![/bold green] -> {ep_dir}")
+        console.print(f"[bold green]🎉 V2 Studio Episode Complete![/bold green] -> {ep_dir}")
         return summary
 
     @staticmethod
     def _write_publish_pack(ep_dir: Path, script: EpisodeScript, long_cues: list[dict], sources: list[CrawledSource]) -> Path:
-        # Compute exact chapter start timestamps from first cue of each scene
-        scene_starts: dict[str, float] = {}
+        beat_starts: dict[str, float] = {}
         for c in long_cues:
-            sid = c["scene_id"]
-            if sid not in scene_starts:
-                scene_starts[sid] = c["start"]
+            bid = c["beat_id"]
+            if bid not in beat_starts:
+                beat_starts[bid] = c["start"]
+        chap_starts: dict[int, tuple[str, float]] = {}
+        for b in script.beats:
+            if b.chapter_index not in chap_starts:
+                chap_starts[b.chapter_index] = (b.chapter_title, beat_starts.get(b.beat_id, 0.0))
+
         chap_lines = []
-        for idx, sc in enumerate(script.scenes):
-            st = 0.0 if idx == 0 else scene_starts.get(sc.scene_id, 0.0)
-            chap_lines.append(f"{_fmt_yt_chap_ts(st)} {sc.chapter_title}")
+        for idx, (ctitle, csec) in sorted(chap_starts.items()):
+            chap_lines.append(f"{_fmt_yt_chap_ts(0.0 if idx == 1 else csec)} {ctitle}")
 
-        src_lines = []
-        for s in sources:
-            src_lines.append(f"- [{s.source_id}] {s.title} ({s.domain})：{s.url}")
-
+        src_lines = [f"- [{s.source_id}] {s.title} ({s.domain})：{s.url}" for s in sources]
         md = [
             f"# {script.title}",
             "",
@@ -247,7 +233,7 @@ class GarychenUnattendedPipeline:
             "📌 時間戳",
             *chap_lines,
             "",
-            "🌐 本集引用公開資訊與資料來源",
+            "🌐 本集爬蟲查證公開資訊與資料來源",
             *src_lines,
             "",
             "📢 追蹤我的頻道",
@@ -256,7 +242,7 @@ class GarychenUnattendedPipeline:
             " ".join(script.hashtags),
             "```",
             "",
-            f"## 📱 對應推流 Shorts 標題與關聯設定",
+            "## 📱 對應推流 Shorts 標題與關聯設定",
             f"- **Shorts 標題**：`{script.short_title}`",
             f"- **關聯影片 (Related Video)**：綁定本集長片《{script.title}》作為左下角推流入口",
             "",

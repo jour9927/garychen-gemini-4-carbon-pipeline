@@ -44,59 +44,97 @@ class CrawledSource(BaseModel):
     published_date: str = ""
     retrieved_at: str = ""
     source_type: str = "web"
+    relevance_score: float = 1.0
+    screenshot_path: str = ""
     key_facts: list[str] = Field(default_factory=list)
     metrics: list[str] = Field(default_factory=list)
+    code_or_commands: list[str] = Field(default_factory=list)
     excerpt: str = ""
 
 
 class TopicCandidate(BaseModel):
     topic_id: str
     title: str
+    primary_entity: str = ""
     category: Literal["ai_agent", "vibe_coding", "ai_fundamentals", "us_stocks"] = "ai_agent"
     hook_angle: str
     why_now: str
     score: float = 0.0
     seed_queries: list[str] = Field(default_factory=list)
     seed_urls: list[str] = Field(default_factory=list)
+    tickers: list[str] = Field(default_factory=list)
 
 
-SceneLayoutType = Literal[
-    "hero_comparison_cards",
-    "hub_spoke_ecosystem",
-    "terminal_code_window",
-    "step_pipeline_flow",
-    "split_ai_illustration_callout",
-    "versus_debate_matrix",
-    "checklist_architecture_box",
-    "crawled_evidence_spotlight",
+BeatLayoutType = Literal[
+    "claude_terminal_progressive",
+    "pricing_strikethrough_reveal",
+    "chapter_roadmap_agenda",
+    "progressive_slot_pipeline",
+    "hub_ecosystem_radiate",
+    "github_pr_checks_mock",
+    "live_web_screenshot_spotlight",
+    "ai_editorial_split_card",
+    "before_after_stamp_compare",
+    "kpi_financial_cards",
+    "branch_merge_diagram",
+    "checklist_two_tier_defense",
+    "versus_debate_columns",
+    "summary_three_pillars",
 ]
 
 
-class SceneSpec(BaseModel):
-    scene_id: str
-    chapter_index: int = 1
+class VisualNode(BaseModel):
+    label: str
+    sub: str = ""
+    tag: str = ""
+    icon: str = "sparkles"
+    trend: Literal["up", "down", "neutral"] = "neutral"
+
+
+class VisualBeat(BaseModel):
+    """
+    A 6–12 second beat inside a chapter.
+    Contains 2–4 spoken clauses (`clauses`). As each clause is spoken, `progressive_step` advances 0 -> 1 -> 2 -> 3,
+    triggering dashed-slot fills, terminal typing, dimming/strikethrough, or node highlights every ~2 seconds!
+    """
+    beat_id: str
+    chapter_index: int
     total_chapters: int = 6
     chapter_title: str
-    layout_type: SceneLayoutType
+    layout_type: BeatLayoutType
     voice_style: Literal["hook", "explainer", "warm"] = "explainer"
-    narration_lines: list[str]
+    clauses: list[str]
     visual_title: str
     visual_subtitle: str = ""
     badge_text: str = ""
-    nodes: list[dict] = Field(default_factory=list)
+    nodes: list[VisualNode] = Field(default_factory=list)
     callout_title: str = ""
     callout_body: str = ""
+    code_lines: list[str] = Field(default_factory=list)
     ai_image_prompt: str = ""
     source_ids: list[str] = Field(default_factory=list)
+    sfx_cue: Literal["none", "pop", "terminal", "whoosh", "stamp"] = "pop"
 
 
-class ShortSceneSpec(BaseModel):
-    scene_id: str
+ShortBeatLayoutType = Literal[
+    "short_shock_metric_hero",
+    "short_progressive_flow",
+    "short_before_after_versus",
+    "short_live_source_proof",
+    "short_code_or_steps",
+    "short_funnel_cta",
+]
+
+
+class ShortBeatSpec(BaseModel):
+    beat_id: str
+    layout_type: ShortBeatLayoutType = "short_progressive_flow"
     voice_style: Literal["hook", "explainer", "warm"] = "hook"
-    narration_lines: list[str]
+    clauses: list[str]
     headline: str
+    sub_caption: str = ""
     highlight_badge: str = ""
-    bullet_points: list[str] = Field(default_factory=list)
+    nodes: list[VisualNode] = Field(default_factory=list)
     ai_image_prompt: str = ""
     source_ids: list[str] = Field(default_factory=list)
     is_cta: bool = False
@@ -110,11 +148,11 @@ class EpisodeScript(BaseModel):
     youtube_description_summary: str
     hashtags: list[str] = Field(default_factory=list)
     chapters: list[str] = Field(default_factory=list)
-    scenes: list[SceneSpec]
+    beats: list[VisualBeat]
     short_title: str
     short_hook_banner: str
     short_cta_target_title: str
-    short_scenes: list[ShortSceneSpec]
+    short_beats: list[ShortBeatSpec]
 
 
 class RemoteNodeEndpoint(BaseModel):
@@ -153,7 +191,6 @@ def load_cluster_endpoints() -> list[RemoteNodeEndpoint]:
                 priority=0,
             ),
         )
-    # B850 persistent Tailscale SSH / HTTP node
     nodes.append(
         RemoteNodeEndpoint(
             name="b850_tailscale",

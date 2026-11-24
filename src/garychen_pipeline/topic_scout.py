@@ -2,18 +2,29 @@ from __future__ import annotations
 
 import json
 import re
-from pathlib import Path
 
 import httpx
 
 from .config import REF_CHANNEL_DIR, TopicCandidate
 
+TICKER_MAP = {
+    "nvidia": "NVDA",
+    "輝達": "NVDA",
+    "meta": "META",
+    "google": "GOOGL",
+    "alphabet": "GOOGL",
+    "amazon": "AMZN",
+    "microsoft": "MSFT",
+    "apple": "AAPL",
+    "tsmc": "TSM",
+    "台積電": "TSM",
+    "tesla": "TSLA",
+    "amd": "AMD",
+}
+
 
 class UnattendedTopicScout:
-    """
-    Discovers trending AI Agent / Vibe Coding / Engineering / US Stock topics from live public feeds,
-    filters out topics already covered on @garychenai, and automatically picks the top candidate in unattended mode.
-    """
+    """Discovers high-signal AI Agent / Vibe Coding / US Stocks topics and extracts exact primary entities & tickers."""
 
     def __init__(self):
         self.existing_titles = self._load_existing_channel_titles()
@@ -32,103 +43,69 @@ class UnattendedTopicScout:
                         pass
         return titles
 
-    def _is_duplicate(self, candidate_title: str) -> bool:
-        c_tokens = set(re.findall(r"[a-zA-Z0-9]{3,}", candidate_title.lower()))
-        for t in self.existing_titles:
-            t_tokens = set(re.findall(r"[a-zA-Z0-9]{3,}", t.lower()))
-            if c_tokens and len(c_tokens & t_tokens) >= 3:
-                return True
-        return False
+    def _is_duplicate(self, entity: str) -> bool:
+        e_low = entity.lower()
+        return any(e_low in t.lower() for t in self.existing_titles if len(e_low) >= 4)
 
     def discover_candidates(self, category_filter: str | None = None, limit: int = 5) -> list[TopicCandidate]:
         candidates: list[TopicCandidate] = []
         client = httpx.Client(timeout=10.0, follow_redirects=True)
         try:
-            # 1. Live GitHub Trending AI Agent / MCP / Workflow ecosystems
             gh_queries = [
                 ("mcp server agent", "ai_agent"),
                 ("browser use ai agent", "ai_agent"),
-                ("ai coding workflow eval", "vibe_coding"),
+                ("ai coding workflow", "vibe_coding"),
             ]
             for q, cat in gh_queries:
                 if category_filter and category_filter != cat:
                     continue
                 r = client.get(
                     "https://api.github.com/search/repositories",
-                    params={"q": f"{q} stars:>1500", "sort": "updated", "order": "desc", "per_page": 5},
-                    headers={"User-Agent": "GarychenScout/1.0"},
+                    params={"q": f"{q} stars:>2500", "sort": "stars", "order": "desc", "per_page": 5},
+                    headers={"User-Agent": "GarychenScout/2.0"},
                 )
                 if r.status_code == 200:
                     for item in r.json().get("items", []):
                         name = item.get("name", "")
                         full_name = item.get("full_name", "")
-                        stars = item.get("stargazers_count", 0)
+                        stars = int(item.get("stargazers_count") or 0)
                         desc = (item.get("description") or "").strip()
-                        title = f"MCP 與開源 AI Agent 新神器：{name} 實戰拆解（{stars:,} Stars 背後的工作流設計）"
                         if self._is_duplicate(name):
                             continue
-                        score = min(98.0, 72.0 + min(20.0, stars / 2500.0) + (5.0 if desc else 0.0))
+                        score = min(98.5, 75.0 + min(20.0, stars / 4000.0))
                         candidates.append(
                             TopicCandidate(
-                                topic_id=f"gh_{name.lower()[:18]}",
-                                title=title,
+                                topic_id=f"gh_{re.sub(r'[^a-z0-9]+', '_', name.lower())[:18]}",
+                                title=f"不花錢打造最強瀏覽器 AI Agent！{name} 新手實戰教學（{stars:,} Stars 開源神器）",
+                                primary_entity=name,
                                 category=cat,  # type: ignore[arg-type]
-                                hook_angle=f"為什麼開發者都在瘋傳 {full_name}？不用重寫底層，直接讓 AI Agent 自動接管外部工具與資料！",
-                                why_now=f"GitHub 已突破 {stars:,} Stars，近期密集更新：{desc[:100]}",
+                                hook_angle=f"為什麼 {full_name} 能在 GitHub 狂飆 {stars:,} 顆星？教你怎麼讓 AI Agent 直接幫你操作瀏覽器、抓資料跟自動填表！",
+                                why_now=f"GitHub 突破 {stars:,} Stars：{desc[:110]}",
                                 score=round(score, 2),
-                                seed_queries=[full_name, f"{name} AI agent", "Model Context Protocol workflow"],
+                                seed_queries=[full_name, f"{name} MCP", f"{name} browser agent"],
                                 seed_urls=[item.get("html_url", "")],
                             )
                         )
-
-            # 2. Live Hacker News high-signal AI / Engineering / Infra breakthroughs
-            r_hn = client.get(
-                "https://hn.algolia.com/api/v1/search",
-                params={"query": "Model Context Protocol OR AI Agent workflow", "tags": "story", "numericFilters": "points>80", "hitsPerPage": 6},
-            )
-            if r_hn.status_code == 200:
-                for hit in r_hn.json().get("hits", []):
-                    htitle = (hit.get("title") or "").strip()
-                    pts = int(hit.get("points") or 0)
-                    hurl = hit.get("url") or f"https://news.ycombinator.com/item?id={hit.get('objectID')}"
-                    if not htitle or self._is_duplicate(htitle):
-                        continue
-                    cat = "vibe_coding" if any(k in htitle.lower() for k in ("code", "git", "test", "cli")) else "ai_agent"
-                    if category_filter and category_filter != cat:
-                        continue
-                    candidates.append(
-                        TopicCandidate(
-                            topic_id=f"hn_{hit.get('objectID')}",
-                            title=f"工程師都在討論的 AI 工作流變革：{htitle[:46]} 深度解析",
-                            category=cat,  # type: ignore[arg-type]
-                            hook_angle=f"在 Hacker News 衝上 {pts} 分的熱門議題，正在改變我們使用 AI Agent 的標準做法。",
-                            why_now=f"HN {pts} Points 熱議中，具備明確公開數據與實戰架構可拆解",
-                            score=round(min(96.0, 74.0 + pts / 25.0), 2),
-                            seed_queries=[htitle, "MCP server AI agent", "Anthropic Model Context Protocol"],
-                            seed_urls=[hurl],
-                        )
-                    )
         except Exception:
             pass
         finally:
             client.close()
 
-        # Curated evergreen high-fit fallback if offline/rate-limited
         if not candidates:
             candidates.append(
                 TopicCandidate(
-                    topic_id="mcp_agent_stack_2026",
-                    title="從零搞懂 MCP (Model Context Protocol)：為什麼它是 AI Agent 串接萬物的終極標準？",
+                    topic_id="mcp_servers_guide",
+                    title="從零搞懂 MCP (Model Context Protocol)：讓 Claude 與 AI Agent 一鍵串接所有工具！",
+                    primary_entity="modelcontextprotocol",
                     category="ai_agent",
-                    hook_angle="以前每換一個 AI 工具就要重接一次 API，現在只要一套 MCP Server，Claude、Cursor 跟開源 Agent 全部直接互通！",
-                    why_now="MCP 生態系開源工具全面爆發，非技術人員與開發者都能無痛打造個人自動化工作流",
+                    hook_angle="以前每換一個 AI 就要重接一次 API，現在只要掛上 MCP Server，資料庫、GitHub 跟瀏覽器全部直接打通！",
+                    why_now="Anthropic 推出的開源標準 MCP 成為 AI Agent 串接工具的事實標準",
                     score=95.0,
-                    seed_queries=["Model Context Protocol MCP servers", "modelcontextprotocol servers", "MCP AI Agent"],
+                    seed_queries=["modelcontextprotocol/servers", "Model Context Protocol MCP"],
                     seed_urls=["https://github.com/modelcontextprotocol/servers"],
                 )
             )
 
-        # Deduplicate & sort descending by score
         uniq: dict[str, TopicCandidate] = {}
         for c in sorted(candidates, key=lambda x: x.score, reverse=True):
             if c.topic_id not in uniq:
@@ -137,16 +114,26 @@ class UnattendedTopicScout:
 
     def pick_unattended(self, custom_topic: str | None = None, category: str | None = None, seed_urls: list[str] | None = None) -> TopicCandidate:
         if custom_topic:
-            cat = category or ("us_stocks" if any(w in custom_topic for w in ("美股", "財報", "股價", "估值", "NVIDIA", "Meta", "Google", "Amazon")) else "ai_agent")
-            return TopicCandidate(
-                topic_id=re.sub(r"[^a-zA-Z0-9]+", "_", custom_topic.lower()).strip("_")[:24] or "custom_topic",
-                title=custom_topic,
-                category=cat,  # type: ignore[arg-type]
-                hook_angle=f"今天用最白話的方式，結合最新爬蟲公開數據與官方來源，帶你一次搞懂：{custom_topic}",
-                why_now="使用者指定主題或排程自動觸發",
-                score=100.0,
-                seed_queries=[custom_topic, f"{custom_topic} GitHub", f"{custom_topic} official"],
-                seed_urls=seed_urls or [],
+            cat = category or (
+                "us_stocks"
+                if any(w in custom_topic.lower() for w in ("美股", "財報", "股價", "估值", "nvidia", "meta", "google", "amazon", "護城河"))
+                else "ai_agent"
             )
-        ranked = self.discover_candidates(category_filter=category, limit=5)
-        return ranked[0]
+            tickers = [sym for kw, sym in TICKER_MAP.items() if kw in custom_topic.lower()]
+            if cat == "us_stocks" and not tickers:
+                tickers = ["NVDA", "META", "GOOGL"]
+            eng_words = re.findall(r"[A-Za-z][A-Za-z0-9_.-]{2,}", custom_topic)
+            entity = eng_words[0] if eng_words else custom_topic[:12]
+            return TopicCandidate(
+                topic_id=re.sub(r"[^a-zA-Z0-9]+", "_", (entity or "topic").lower()).strip("_")[:20] or "custom_ep",
+                title=custom_topic,
+                primary_entity=entity,
+                category=cat,  # type: ignore[arg-type]
+                hook_angle=custom_topic,
+                why_now="即時公開數據與架構深度拆解",
+                score=100.0,
+                seed_queries=[entity, custom_topic[:24]],
+                seed_urls=seed_urls or [],
+                tickers=list(dict.fromkeys(tickers)),
+            )
+        return self.discover_candidates(category_filter=category, limit=5)[0]
