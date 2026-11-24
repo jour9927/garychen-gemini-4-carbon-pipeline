@@ -1,0 +1,53 @@
+[
+  {
+    "source_id": "S1",
+    "title": "GitHub - NVIDIA/TensorRT-LLM: TensorRT LLM provides users with an easy-to-use Python API t",
+    "url": "https://github.com/NVIDIA/TensorRT-LLM",
+    "domain": "github.com",
+    "published_date": "2026-11-25",
+    "retrieved_at": "2026-11-24T16:00:38Z",
+    "source_type": "official_doc",
+    "key_facts": [
+      "GitHub - NVIDIA/TensorRT-LLM: TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs. TensorRT LLM also contains components to create Python and C++ runtimes that orchestrate the inference execution in a performant way. · GitHub",
+      "TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inferen",
+      "Notifications You must be signed in to change notification settings",
+      "Star 15.1k ( 15.1k ) You must be signed in to star a repository"
+    ],
+    "metrics": [],
+    "excerpt": "Notifications You must be signed in to change notification settings Star 15.1k ( 15.1k ) You must be signed in to star a repository Architecture | Performance | Examples | Documentation | Roadmap [11/17] NVFP4 MLA: Unified 4-bit KV Cache Storage and Attention Compute in TensorRT LLM ✨ ➡️ link [11/17] NVFP4 MLA: Unified 4-bit KV Cache Storage and Attention Compute in TensorRT LLM ✨ ➡️ link [11/11] Dense DWDP: Extending Distributed Weight Data Para"
+  },
+  {
+    "source_id": "S2",
+    "title": "arXiv: Shaderous: A Browser-based Hydrodynamics Code for Physics Research and Teaching",
+    "url": "http://arxiv.org/abs/2611.31162v1",
+    "domain": "arxiv.org",
+    "published_date": "2026-11-23",
+    "retrieved_at": "2026-11-24T16:00:41Z",
+    "source_type": "research_paper",
+    "key_facts": [
+      "arXiv 研究論文（2026-11-23，作者：James Guillochon）：Shaderous: A Browser-based Hydrodynamics Code for Physics Research and Teaching",
+      "核心發現摘要：Shaderous is a three-dimensional code for compressible gas dynamics and magnetohydrodynamics that runs in WebGPU compute shaders in a web browser on any vendor's GPU. It combines a"
+    ],
+    "metrics": [
+      "arXiv Preprint"
+    ],
+    "excerpt": "Shaderous is a three-dimensional code for compressible gas dynamics and magnetohydrodynamics that runs in WebGPU compute shaders in a web browser on any vendor's GPU. It combines an unsplit MUSCL-Hancock scheme and HLLC fluxes with a multigrid Poisson solver, block-structured adaptive mesh refinement with per-block timesteps, constrained transport with HLLD fluxes, point masses with sinks, gray radiation transport wi"
+  },
+  {
+    "source_id": "S3",
+    "title": "arXiv: FATCAT: Fault Injection Attacks Targeting Chip-level Alignment",
+    "url": "http://arxiv.org/abs/2611.31129v1",
+    "domain": "arxiv.org",
+    "published_date": "2026-11-23",
+    "retrieved_at": "2026-11-24T16:00:41Z",
+    "source_type": "research_paper",
+    "key_facts": [
+      "arXiv 研究論文（2026-11-23，作者：Peter Horvath, Ilia Shumailov, Zhuoran Liu）：FATCAT: Fault Injection Attacks Targeting Chip-level Alignment",
+      "核心發現摘要：Model alignment is the primary safety and security mechanism for enforcing refusal of malicious prompts in modern foundation models; yet, existing adversarial evaluations implicitl"
+    ],
+    "metrics": [
+      "arXiv Preprint"
+    ],
+    "excerpt": "Model alignment is the primary safety and security mechanism for enforcing refusal of malicious prompts in modern foundation models; yet, existing adversarial evaluations implicitly assume underlying hardware integrity. In this paper, we present FATCAT, the first physical fault-injection attacks capable of eliminating refusal in modern large language and vision-language models. Specifically, we present a non-invasive"
+  }
+]

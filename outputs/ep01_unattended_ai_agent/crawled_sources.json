@@ -1,0 +1,205 @@
+[
+  {
+    "source_id": "S1",
+    "title": "GitHub - browser-use/browser-use: Open-source Python library for AI browser agents, plus B",
+    "url": "https://github.com/browser-use/browser-use",
+    "domain": "github.com",
+    "published_date": "2026-11-24",
+    "retrieved_at": "2026-11-24T15:48:15Z",
+    "source_type": "official_doc",
+    "key_facts": [
+      "GitHub - browser-use/browser-use: Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. · GitHub",
+      "Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. - browser-use/browser-use",
+      "Notifications You must be signed in to change notification settings",
+      "Star 122k ( 122k ) You must be signed in to star a repository"
+    ],
+    "metrics": [],
+    "excerpt": "Notifications You must be signed in to change notification settings Star 122k ( 122k ) You must be signed in to star a repository Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. The model, a REPL and CDP. That's the whole agent. Find an available slot, pick a date and time, handle the CAPTCHA, and book a driving test. Path 1: Fully Hosted Cloud : Scale up with a fully hosted agent"
+  },
+  {
+    "source_id": "S2",
+    "title": "GitHub: animate-css/animate.css (83,060 ★)",
+    "url": "https://github.com/animate-css/animate.css",
+    "domain": "github.com",
+    "published_date": "2024-07-29",
+    "retrieved_at": "2026-11-24T15:48:16Z",
+    "source_type": "github_repo",
+    "key_facts": [
+      "GitHub 開源專案 animate-css/animate.css 累積 83,060 Stars 與 15,940 Forks（主要語言：CSS）",
+      "官方專案定位：🍿 A cross-browser library of CSS animations. As easy to use as an easy thing.",
+      "If you need the old docs - v3.x.x and under - you can find it here.",
+      "_Just-add-water CSS animation_",
+      "npm install animate.css --save"
+    ],
+    "metrics": [
+      "83,060 Stars",
+      "15,940 Forks",
+      "CSS"
+    ],
+    "excerpt": "GitHub 開源專案 animate-css/animate.css 累積 83,060 Stars 與 15,940 Forks（主要語言：CSS） | 官方專案定位：🍿 A cross-browser library of CSS animations. As easy to use as an easy thing. | If you need the old docs - v3.x.x and under - you can find it here. | _Just-add-water CSS animation_ | npm install animate.css --save"
+  },
+  {
+    "source_id": "S3",
+    "title": "GitHub: Alishahryar1/free-claude-code (72,992 ★)",
+    "url": "https://github.com/Alishahryar1/free-claude-code",
+    "domain": "github.com",
+    "published_date": "2026-11-24",
+    "retrieved_at": "2026-11-24T15:48:16Z",
+    "source_type": "github_repo",
+    "key_facts": [
+      "GitHub 開源專案 Alishahryar1/free-claude-code 累積 72,992 Stars 與 11,330 Forks（主要語言：Python）",
+      "官方專案定位：Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, ",
+      "<source media=\"(prefers-color-scheme: light)\" srcset=\"assets/free-claude-code-wordmark-light.svg\"",
+      "<img src=\"assets/free-claude-code-wordmark-dark.svg\" alt=\"Free Claude Code\" width=\"610\"",
+      "- Route any supported harness to models from any supported provider."
+    ],
+    "metrics": [
+      "72,992 Stars",
+      "11,330 Forks",
+      "Python"
+    ],
+    "excerpt": "GitHub 開源專案 Alishahryar1/free-claude-code 累積 72,992 Stars 與 11,330 Forks（主要語言：Python） | 官方專案定位：Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app,  | <source media=\"(prefers-color-scheme: light)\" srcset=\"assets/free-claude-code-wordmark-light.svg\" | <img src=\"assets/free-claude-code-wordmark-dark.svg\" alt=\"Free Claude Code\" width=\"610\" | - Route any supported harness to models from any supported provider."
+  },
+  {
+    "source_id": "S4",
+    "title": "Tor Browser User Manual",
+    "url": "https://blog.torproject.org/blog/announcing-tor-browser-user-manual",
+    "domain": "blog.torproject.org",
+    "published_date": "2016-11-02",
+    "retrieved_at": "2026-11-24T15:48:18Z",
+    "source_type": "tech_discussion",
+    "key_facts": [
+      "Hacker News 社群熱議（134 Points / 18 則技術討論）：Tor Browser User Manual",
+      "Announcing the Tor Browser User Manual | The Tor Project",
+      "The community team is excited to announce the new Tor Browser User Manual! The manual is...",
+      "The community team is excited to announce the new Tor Browser User Manual !"
+    ],
+    "metrics": [
+      "134 HN Points",
+      "18 留言"
+    ],
+    "excerpt": "The community team is excited to announce the new Tor Browser User Manual ! The manual is currently only available in English. We will be adding more languages in the near future, as well as adding the manual to Transifex . Please note that the comment area below has been archived. more users , more safer. * in the customization area , i add the option \"home\". i do not know if this option resets t"
+  },
+  {
+    "source_id": "S5",
+    "title": "Why do all browsers' user agents start with \"Mozilla/\"? (2008)",
+    "url": "https://stackoverflow.com/questions/1114254/why-do-all-browsers-user-agents-start-with-mozilla",
+    "domain": "stackoverflow.com",
+    "published_date": "2025-06-22",
+    "retrieved_at": "2026-11-24T15:48:18Z",
+    "source_type": "tech_discussion",
+    "key_facts": [
+      "Hacker News 社群熱議（116 Points / 62 則技術討論）：Why do all browsers' user agents start with \"Mozilla/\"? (2008)"
+    ],
+    "metrics": [
+      "116 HN Points",
+      "62 留言"
+    ],
+    "excerpt": "Why do all browsers' user agents start with \"Mozilla/\"? (2008)"
+  },
+  {
+    "source_id": "S6",
+    "title": "GitHub: bytedance/UI-TARS-desktop (39,592 ★)",
+    "url": "https://github.com/bytedance/UI-TARS-desktop",
+    "domain": "github.com",
+    "published_date": "2026-10-09",
+    "retrieved_at": "2026-11-24T15:48:19Z",
+    "source_type": "github_repo",
+    "key_facts": [
+      "GitHub 開源專案 bytedance/UI-TARS-desktop 累積 39,592 Stars 與 4,058 Forks（主要語言：TypeScript）",
+      "官方專案定位：The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra",
+      "<img alt=\"Agent TARS Banner\" src=\"./images/tars.png\"",
+      "English | 简体中文(./README.zh-CN.md)",
+      "<th width=\"50%\" align=\"center\"<a href=\"agent-tars\"Agent TARS</a</th"
+    ],
+    "metrics": [
+      "39,592 Stars",
+      "4,058 Forks",
+      "TypeScript"
+    ],
+    "excerpt": "GitHub 開源專案 bytedance/UI-TARS-desktop 累積 39,592 Stars 與 4,058 Forks（主要語言：TypeScript） | 官方專案定位：The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra | <img alt=\"Agent TARS Banner\" src=\"./images/tars.png\" | English | 简体中文(./README.zh-CN.md) | <th width=\"50%\" align=\"center\"<a href=\"agent-tars\"Agent TARS</a</th"
+  },
+  {
+    "source_id": "S7",
+    "title": "GitHub: jackwener/OpenCLI (31,256 ★)",
+    "url": "https://github.com/jackwener/OpenCLI",
+    "domain": "github.com",
+    "published_date": "2026-11-07",
+    "retrieved_at": "2026-11-24T15:48:20Z",
+    "source_type": "github_repo",
+    "key_facts": [
+      "GitHub 開源專案 jackwener/OpenCLI 累積 31,256 Stars 與 3,063 Forks（主要語言：JavaScript）",
+      "官方專案定位：Make Any Website into CLI & Use your logged-in browser by AI agent.",
+      "Convert any website into a CLI & run Browser Use on your logged-in Chrome.",
+      "Turn websites and browser sessions into deterministic interfaces for humans and AI agents.",
+      "Or run Browser Use against any page — navigate, fill forms, click, extract, automate."
+    ],
+    "metrics": [
+      "31,256 Stars",
+      "3,063 Forks",
+      "JavaScript"
+    ],
+    "excerpt": "GitHub 開源專案 jackwener/OpenCLI 累積 31,256 Stars 與 3,063 Forks（主要語言：JavaScript） | 官方專案定位：Make Any Website into CLI & Use your logged-in browser by AI agent. | Convert any website into a CLI & run Browser Use on your logged-in Chrome. | Turn websites and browser sessions into deterministic interfaces for humans and AI agents. | Or run Browser Use against any page — navigate, fill forms, click, extract, automate."
+  },
+  {
+    "source_id": "S8",
+    "title": "Redesigning UI for AI Agent browser use",
+    "url": "https://news.ycombinator.com/item?id=42744823",
+    "domain": "news.ycombinator.com",
+    "published_date": "2025-01-18",
+    "retrieved_at": "2026-11-24T15:48:22Z",
+    "source_type": "tech_discussion",
+    "key_facts": [
+      "Hacker News 社群熱議（2 Points / 1 則技術討論）：Redesigning UI for AI Agent browser use"
+    ],
+    "metrics": [
+      "2 HN Points",
+      "1 留言"
+    ],
+    "excerpt": "Redesigning UI for AI Agent browser use"
+  },
+  {
+    "source_id": "S9",
+    "title": "Browser Agent Benchmark: Comparing LLM models for web automation",
+    "url": "https://browser-use.com/posts/ai-browser-agent-benchmark",
+    "domain": "browser-use.com",
+    "published_date": "2026-01-31",
+    "retrieved_at": "2026-11-24T15:48:22Z",
+    "source_type": "tech_discussion",
+    "key_facts": [
+      "Hacker News 社群熱議（13 Points / 5 則技術討論）：Browser Agent Benchmark: Comparing LLM models for web automation",
+      "Browser Agent Benchmark: Comparing LLM Models for Web Automation",
+      "BU Bench V1 (January 2026): every major LLM on 100 hard browser tasks. Browser Use Cloud scored 78%, 16 points ahead of the best open-source model at the time.",
+      "BU Bench V1 (January 2026): every major LLM on 100 hard browser tasks. Browser Use Cloud scored 78%, 16 points ahead of the best open-source model at the time."
+    ],
+    "metrics": [
+      "13 HN Points",
+      "5 留言",
+      "78%",
+      "87%"
+    ],
+    "excerpt": "BU Bench V1 (January 2026): every major LLM on 100 hard browser tasks. Browser Use Cloud scored 78%, 16 points ahead of the best open-source model at the time. This is our first open source benchmark. BU Bench V1: 100 hand-selected tasks that are hard but possible, drawn from five established sources. The task set is encrypted to prevent LLM training contamination. We hand-labeled 200 traces and m"
+  },
+  {
+    "source_id": "S10",
+    "title": "GitHub: microsoft/mcp-for-beginners (17,715 ★)",
+    "url": "https://github.com/microsoft/mcp-for-beginners",
+    "domain": "github.com",
+    "published_date": "2026-11-21",
+    "retrieved_at": "2026-11-24T15:48:23Z",
+    "source_type": "github_repo",
+    "key_facts": [
+      "GitHub 開源專案 microsoft/mcp-for-beginners 累積 17,715 Stars 與 5,704 Forks（主要語言：Jupyter Notebook）",
+      "官方專案定位：This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET,",
+      "Follow these steps to get started using these resources:",
+      "1. Fork the Repository: Click !GitHub forks",
+      "2. Clone the Repository:   git clone https://github.com/microsoft/mcp-for-beginners.git"
+    ],
+    "metrics": [
+      "17,715 Stars",
+      "5,704 Forks",
+      "Jupyter Notebook"
+    ],
+    "excerpt": "GitHub 開源專案 microsoft/mcp-for-beginners 累積 17,715 Stars 與 5,704 Forks（主要語言：Jupyter Notebook） | 官方專案定位：This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, | Follow these steps to get started using these resources: | 1. Fork the Repository: Click !GitHub forks | 2. Clone the Repository:   git clone https://github.com/microsoft/mcp-for-beginners.git"
+  }
+]

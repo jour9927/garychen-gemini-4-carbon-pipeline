@@ -13,6 +13,11 @@ configs/colab_token.txt
 configs/colab_endpoint.json
 .env
 
-# Scratch / intermediate temp frames
+# Scratch / intermediate temp frames & heavy rendered media (JSON/MD/VTT/Thumbnails ARE tracked)
 outputs/*/frames_tmp/
 outputs/*/short_frames_tmp/
+outputs/*/qa_frames/
+outputs/*/*.mp4
+outputs/*/*.wav
+outputs/*/audio_long/
+outputs/*/audio_short/

@@ -27,6 +27,19 @@ def _font(path: Path, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.load_default()  # type: ignore[return-value]
 
 
+def _smart_clip(text: str, max_chars: int) -> str:
+    text = text.strip()
+    if len(text) <= max_chars:
+        return text
+    cut = text[:max_chars]
+    # Avoid cutting inside an ASCII word
+    if cut[-1].isascii() and cut[-1].isalnum() and text[max_chars].isascii() and text[max_chars].isalnum():
+        last_sp = max(cut.rfind(" "), cut.rfind("/"), cut.rfind("-"), cut.rfind("："))
+        if last_sp >= max_chars // 2:
+            cut = cut[:last_sp]
+    return cut.rstrip(" /-:：,，")
+
+
 def _fit_image_rounded(img_path: str | None, w: int, h: int, radius: int = 22) -> Image.Image:
     if img_path and Path(img_path).exists():
         im = Image.open(img_path).convert("RGBA")
@@ -135,14 +148,14 @@ class GarychenLongRenderer:
         if cited_sources:
             s0 = cited_sources[0]
             date_part = f" · {s0.published_date}" if s0.published_date else ""
-            src_label = f"來源 [{s0.source_id}] {s0.domain}{date_part}｜{s0.title[:26]}"
+            src_label = f"來源 [{s0.source_id}] {s0.domain}{date_part}｜{_smart_clip(s0.title, 26)}"
             sb = draw.textbbox((0, 0), src_label, font=self.f_src)
-            pw = (sb[2] - sb[0]) + 36
+            pw = (sb[2] - sb[0]) + 42
             px1 = W - pw - 32
             _draw_glow_rect(canvas, (px1, 18, W - 32, 56), radius=19, fill_rgba=(20, 20, 22, 230), border_rgb=(85, 85, 92), border_w=1)
             draw = ImageDraw.Draw(canvas)
-            draw.ellipse((px1 + 13, 32, px1 + 23, 42), fill=(*orange, 255))
-            draw.text((px1 + 30, 25), src_label, font=self.f_src, fill=(220, 220, 225, 255))
+            draw.ellipse((px1 + 14, 32, px1 + 24, 42), fill=(*orange, 255))
+            draw.text((px1 + 32, 25), src_label, font=self.f_src, fill=(220, 220, 225, 255))
 
         # 4. Scene Main Content Area (Y = 85 .. 890)
         nodes = scene.nodes[:4] if scene.nodes else [{"label": scene.visual_title, "sub": scene.visual_subtitle, "tag": scene.badge_text}]
@@ -215,7 +228,7 @@ class GarychenLongRenderer:
             self._draw_wrapped(d, cb, 1022, 672, 740, self.f_card_sub, (235, 235, 240))
             if cited_sources:
                 s0 = cited_sources[0]
-                d.text((1022, 762), f"🔗 查證網址：{s0.url[:58]}", font=self.f_src, fill=(*muted, 255))
+                d.text((1022, 762), f"▸ 查證網址：{_smart_clip(s0.url, 58)}", font=self.f_src, fill=(*muted, 255))
 
         elif lt == "terminal_code_window":
             # Exact macOS dark terminal window (`aCvEYcz/frame_2s.jpg` & `280s.jpg`)
@@ -373,13 +386,19 @@ class GarychenLongRenderer:
         # 6. Bottom Rounded Dark Subtitle Pill (`Y = 922 .. 1019`, fill `#090909`)
         if subtitle_text:
             d = ImageDraw.Draw(canvas)
-            tb = d.textbbox((0, 0), subtitle_text, font=self.f_sub)
+            sub_font = self.f_sub
+            tb = d.textbbox((0, 0), subtitle_text, font=sub_font)
             tw = tb[2] - tb[0]
-            pw = min(1760, max(360, tw + 84))
+            if tw > 1640:
+                sub_font = _font(FONT_BOLD, 32)
+                tb = d.textbbox((0, 0), subtitle_text, font=sub_font)
+                tw = tb[2] - tb[0]
+            pw = min(1780, max(360, tw + 84))
             px1 = (W - pw) // 2
             py1, py2 = 922, 1019
             d.rounded_rectangle((px1, py1, px1 + pw, py2), radius=16, fill=(9, 9, 9, 242))
-            self._center_text(d, subtitle_text, W // 2, py1 + 22, self.f_sub, (255, 255, 255))
+            th = tb[3] - tb[1]
+            self._center_text(d, subtitle_text, W // 2, py1 + (97 - th) // 2 - 4, sub_font, (255, 255, 255))
 
         return canvas.convert("RGB")
 

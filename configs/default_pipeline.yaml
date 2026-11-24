@@ -1,0 +1,40 @@
+channel:
+  name: "Gary Chen"
+  handle: "@garychenai"
+  url: "https://www.youtube.com/@garychenai"
+  language: "zh-TW"
+  skool_cta: "https://www.skool.com/gary-chen"
+
+design_tokens:
+  bg_tutorial_hex: "#262626"
+  bg_stock_hex: "#1E1E1E"
+  accent_orange_hex: "#EB8B1B"
+  subtitle_pill_hex: "#090909"
+  top_bar_track_hex: "#333534"
+  long_resolution: [1920, 1080]
+  short_resolution: [1080, 1920]
+  fps: 60
+  target_lufs: -21.0
+
+compute_cluster:
+  master_node:
+    name: "alan-hub"
+    role: "Master orchestrator, crawler, scriptwriter, local asset vault, 60fps VideoToolbox compositor"
+  heavy_gpu_primary:
+    name: "colab_rtx_pro_6000"
+    gpu: "NVIDIA RTX PRO 6000 Blackwell Server Edition (96GB)"
+    port: 19743
+    role: "Primary PyTorch F5-TTS voice cloning & PyTorch Diffusers SDXL-Turbo AI image generation"
+  persistent_tailscale_node:
+    name: "b850"
+    tailscale_ip: "100.100.230.119"
+    tailscale_hostname: "b850-ubuntu"
+    ssh_user: "alan-eagle"
+    ssh_wrapper: "./bin/ssh-b850"
+    worker_port: 18793
+    role: "Persistent Tailscale SSH reachable mirror & failover worker"
+
+unattended_defaults:
+  chapters: 6
+  min_crawled_sources: 5
+  generate_funnel_short: true

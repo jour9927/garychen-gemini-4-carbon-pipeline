@@ -1,0 +1,365 @@
+{
+  "episode_id": "ep02_us_stocks_analysis",
+  "title": "NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析",
+  "category": "us_stocks",
+  "avatar_mode": true,
+  "youtube_description_summary": "今天用最白話的方式，結合最新爬蟲公開數據與官方來源，帶你一次搞懂：NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析",
+  "hashtags": [
+    "#AIAgent",
+    "#AI教學",
+    "#GaryChen",
+    "#自動化工作流",
+    "#Shorts"
+  ],
+  "chapters": [
+    "01 核心解析 1",
+    "02 核心解析 2",
+    "03 核心解析 3",
+    "04 核心解析 4",
+    "05 核心解析 5",
+    "06 核心解析 6"
+  ],
+  "scenes": [
+    {
+      "scene_id": "scene_01",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 1",
+      "layout_type": "hero_comparison_cards",
+      "voice_style": "hook",
+      "narration_lines": [
+        "第 1 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據",
+        "GitHub - NVIDIA/TensorRT-LLM: TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs. TensorRT LLM also contains components to create Python and C++ runtimes that orchestrate the inference execution in a performant way. · GitHub",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "NVIDIA Blackwell",
+      "visual_subtitle": "GitHub - NVIDIA/TensorRT",
+      "badge_text": "實戰必學",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "自動化"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "高效率"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "可驗證"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of us_stocks workflow automation glowing amber nodes",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "scene_id": "scene_02",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 2",
+      "layout_type": "hub_spoke_ecosystem",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 2 個重點我們來看實戰細節",
+        "根據 arxiv.org 的最新數據",
+        "arXiv 研究論文（2026-11-23",
+        "作者：James Guillochon）：Shaderous: A Browser-based Hydrodynamics Code for Physics Research and Teaching",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "NVIDIA Blackwell",
+      "visual_subtitle": "arXiv 研究論文（2026-11-23，作者",
+      "badge_text": "arXiv Preprint",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "arXiv Preprint"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "Step 2"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Step 3"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of us_stocks workflow automation glowing amber nodes",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "scene_id": "scene_03",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 3",
+      "layout_type": "split_ai_illustration_callout",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 3 個重點我們來看實戰細節",
+        "根據 arxiv.org 的最新數據",
+        "arXiv 研究論文（2026-11-23",
+        "作者：Peter Horvath",
+        "Ilia Shumailov",
+        "Zhuoran Liu）：FATCAT: Fault Injection Attacks Targeting Chip-level Alignment",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "NVIDIA Blackwell",
+      "visual_subtitle": "arXiv 研究論文（2026-11-23，作者",
+      "badge_text": "arXiv Preprint",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "arXiv Preprint"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "Step 2"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Step 3"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of us_stocks workflow automation glowing amber nodes",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "scene_id": "scene_04",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 4",
+      "layout_type": "step_pipeline_flow",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 4 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據",
+        "GitHub - NVIDIA/TensorRT-LLM: TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs. TensorRT LLM also contains components to create Python and C++ runtimes that orchestrate the inference execution in a performant way. · GitHub",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "NVIDIA Blackwell",
+      "visual_subtitle": "GitHub - NVIDIA/TensorRT",
+      "badge_text": "實戰必學",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "自動化"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "高效率"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "可驗證"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of us_stocks workflow automation glowing amber nodes",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "scene_id": "scene_05",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 5",
+      "layout_type": "terminal_code_window",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 5 個重點我們來看實戰細節",
+        "根據 arxiv.org 的最新數據",
+        "arXiv 研究論文（2026-11-23",
+        "作者：James Guillochon）：Shaderous: A Browser-based Hydrodynamics Code for Physics Research and Teaching",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "NVIDIA Blackwell",
+      "visual_subtitle": "arXiv 研究論文（2026-11-23，作者",
+      "badge_text": "arXiv Preprint",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "arXiv Preprint"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "Step 2"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Step 3"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of us_stocks workflow automation glowing amber nodes",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "scene_id": "scene_06",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 6",
+      "layout_type": "crawled_evidence_spotlight",
+      "voice_style": "warm",
+      "narration_lines": [
+        "第 6 個重點我們來看實戰細節",
+        "根據 arxiv.org 的最新數據",
+        "arXiv 研究論文（2026-11-23",
+        "作者：Peter Horvath",
+        "Ilia Shumailov",
+        "Zhuoran Liu）：FATCAT: Fault Injection Attacks Targeting Chip-level Alignment",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "NVIDIA Blackwell",
+      "visual_subtitle": "arXiv 研究論文（2026-11-23，作者",
+      "badge_text": "arXiv Preprint",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "arXiv Preprint"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "Step 2"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Step 3"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of us_stocks workflow automation glowing amber nodes",
+      "source_ids": [
+        "S3"
+      ]
+    }
+  ],
+  "short_title": "NVIDIA Blackwell 算力資本支出與美股科技｜精華速看 #Shorts",
+  "short_hook_banner": "核心解析 1",
+  "short_cta_target_title": "NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析",
+  "short_scenes": [
+    {
+      "scene_id": "short_01",
+      "voice_style": "hook",
+      "narration_lines": [
+        "今天用最白話的方式",
+        "結合最新爬蟲公開數據與官方來源",
+        "帶你一次搞懂：NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析"
+      ],
+      "headline": "NVIDIA Blackwell",
+      "highlight_badge": "實戰必學",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 1",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "scene_id": "short_02",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 2 個重點我們來看實戰細節",
+        "根據 arxiv.org 的最新數據"
+      ],
+      "headline": "NVIDIA Blackwell",
+      "highlight_badge": "arXiv Preprint",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 2",
+      "source_ids": [
+        "S2"
+      ],
+      "is_cta": false
+    },
+    {
+      "scene_id": "short_03",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 3 個重點我們來看實戰細節",
+        "根據 arxiv.org 的最新數據"
+      ],
+      "headline": "NVIDIA Blackwell",
+      "highlight_badge": "arXiv Preprint",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 3",
+      "source_ids": [
+        "S3"
+      ],
+      "is_cta": false
+    },
+    {
+      "scene_id": "short_04",
+      "voice_style": "warm",
+      "narration_lines": [
+        "這套架構還有三個新手最容易踩坑的細節",
+        "我已經把完整實戰步驟跟公開數據整理在長片裡",
+        "馬上點擊左下角關聯影片看完整版"
+      ],
+      "headline": "點擊左下角看完整教學",
+      "highlight_badge": "完整長片已上線",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 4",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": true
+    }
+  ]
+}

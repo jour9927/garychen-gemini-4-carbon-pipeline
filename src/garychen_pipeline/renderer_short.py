@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 from .config import ASSETS_DIR, CrawledSource, DesignTokens, EpisodeScript, ShortSceneSpec
-from .renderer_long import FONT_BOLD, FONT_MED, _draw_glow_rect, _fit_image_rounded, _font, _hex_rgb
+from .renderer_long import FONT_BOLD, FONT_MED, _draw_glow_rect, _fit_image_rounded, _font, _hex_rgb, _smart_clip
 
 
 class GarychenShortsRenderer:
@@ -59,7 +59,9 @@ class GarychenShortsRenderer:
         draw.text((142, 93), f"GARY CHEN｜{script.short_hook_banner}", font=self.f_top, fill=(255, 255, 255))
 
         # 2. Big Punchy Headline + Metric Highlight Badge (Y=185..345)
-        self._center_text(draw, s_scene.headline[:15], W // 2, 188, self.f_h1, (255, 255, 255))
+        hl_txt = _smart_clip(s_scene.headline, 18)
+        hl_font = self.f_h1 if len(hl_txt) <= 13 else _font(FONT_BOLD, 46)
+        self._center_text(draw, hl_txt, W // 2, 192, hl_font, (255, 255, 255))
         if s_scene.highlight_badge:
             bb = draw.textbbox((0, 0), s_scene.highlight_badge, font=self.f_badge)
             bw = (bb[2] - bb[0]) + 48
@@ -74,7 +76,7 @@ class GarychenShortsRenderer:
             thumb = _fit_image_rounded(str(long_thumb_path), W - 176, 490, radius=22)
             canvas.alpha_composite(thumb, (88, 392))
             draw = ImageDraw.Draw(canvas)
-            self._center_text(draw, "📺 完整長片已上線（含完整步驟與數據來源）", W // 2, 902, self.f_src, orange)
+            self._center_text(draw, "✦ 完整長片已上線（含完整步驟與數據來源）", W // 2, 902, self.f_src, orange)
         else:
             _draw_glow_rect(canvas, (64, 365, W - 64, 955), radius=32, fill_rgba=(34, 34, 38, 255), border_rgb=orange, border_w=3, glow=True)
             art = _fit_image_rounded(ai_img_path, W - 168, 505, radius=24)
@@ -82,7 +84,7 @@ class GarychenShortsRenderer:
             draw = ImageDraw.Draw(canvas)
             if cited:
                 s0 = cited[0]
-                src_str = f"🌐 公開資料來源：[{s0.source_id}] {s0.domain} · {s0.title[:22]}"
+                src_str = f"● 公開資料來源：[{s0.source_id}] {s0.domain} · {_smart_clip(s0.title, 24)}"
                 self._center_text(draw, src_str, W // 2, 906, self.f_src, muted)
 
         # 4. Stacked Takeaway Cards OR Funnel Pointer Box (Y=990..1340)
@@ -90,7 +92,7 @@ class GarychenShortsRenderer:
             _draw_glow_rect(canvas, (64, 1000, W - 64, 1320), radius=28, fill_rgba=(28, 28, 32, 255), border_rgb=orange, border_w=3, glow=True)
             draw = ImageDraw.Draw(canvas)
             self._center_text(draw, "想直接照抄完整設定與架構？", W // 2, 1042, self.f_cta, (255, 255, 255))
-            self._center_text(draw, script.short_cta_target_title[:22], W // 2, 1118, self.f_bullet, orange)
+            self._center_text(draw, _smart_clip(script.short_cta_target_title, 24), W // 2, 1118, self.f_bullet, orange)
             draw.rounded_rectangle((130, 1196, W - 130, 1282), radius=43, fill=(*orange, 255))
             self._center_text(draw, "↙ 點擊左下角「關聯影片」看完整版", W // 2, 1216, self.f_cta, (16, 16, 16))
         else:
@@ -107,17 +109,23 @@ class GarychenShortsRenderer:
                 draw = ImageDraw.Draw(canvas)
                 draw.ellipse((94, by + 23, 142, by + 71), fill=(*green, 255) if is_act else (*orange, 255))
                 self._center_text(draw, "✓" if is_act else str(idx_b + 1), 118, by + 26, self.f_badge, (18, 18, 18))
-                draw.text((168, by + 24), btxt[:20], font=self.f_bullet, fill=(255, 255, 255))
+                draw.text((168, by + 24), _smart_clip(btxt, 22), font=self.f_bullet, fill=(255, 255, 255))
 
-        # 5. Safe-Zone Shorts Subtitle Pill (Y=1375..1480)
+        # 5. Safe-Zone Shorts Subtitle Pill (Y=1375..1480) with dynamic auto-fit font sizing
         if subtitle_text:
             draw = ImageDraw.Draw(canvas)
-            tb = draw.textbbox((0, 0), subtitle_text, font=self.f_sub)
-            tw = tb[2] - tb[0]
-            pw = min(980, max(320, tw + 74))
+            sub_font = self.f_sub
+            for candidate_sz in (44, 36, 30, 25):
+                sub_font = _font(FONT_BOLD, candidate_sz)
+                tb = draw.textbbox((0, 0), subtitle_text, font=sub_font)
+                if (tb[2] - tb[0]) <= W - 150:
+                    break
+            tb = draw.textbbox((0, 0), subtitle_text, font=sub_font)
+            tw, th = tb[2] - tb[0], tb[3] - tb[1]
+            pw = min(996, max(320, tw + 72))
             px = (W - pw) // 2
             draw.rounded_rectangle((px, 1375, px + pw, 1482), radius=18, fill=(9, 9, 9, 245))
-            self._center_text(draw, subtitle_text, W // 2, 1400, self.f_sub, (255, 255, 255))
+            self._center_text(draw, subtitle_text, W // 2, 1375 + (107 - th) // 2 - 4, sub_font, (255, 255, 255))
 
         return canvas.convert("RGB")
 

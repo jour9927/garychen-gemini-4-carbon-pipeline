@@ -1,0 +1,16 @@
+{
+  "topic_id": "gh_browser-use",
+  "title": "MCP 與開源 AI Agent 新神器：browser-use 實戰拆解（121,926 Stars 背後的工作流設計）",
+  "category": "ai_agent",
+  "hook_angle": "為什麼開發者都在瘋傳 browser-use/browser-use？不用重寫底層，直接讓 AI Agent 自動接管外部工具與資料！",
+  "why_now": "GitHub 已突破 121,926 Stars，近期密集更新：Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hos",
+  "score": 97.0,
+  "seed_queries": [
+    "browser-use/browser-use",
+    "browser-use AI agent",
+    "Model Context Protocol workflow"
+  ],
+  "seed_urls": [
+    "https://github.com/browser-use/browser-use"
+  ]
+}

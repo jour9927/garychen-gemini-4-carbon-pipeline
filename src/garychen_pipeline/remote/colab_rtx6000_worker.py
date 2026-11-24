@@ -137,6 +137,23 @@ def get_whisper_model():
         return MODELS["whisper"]
 
 
+def get_qwen_llm():
+    with MODEL_LOCK:
+        if "qwen_llm" in MODELS:
+            return MODELS["qwen_llm"]
+        import torch
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+        st = gpu_stats()
+        model_id = "Qwen/Qwen2.5-7B-Instruct" if (st["cuda_available"] and st["free_mb"] >= 18000) else "Qwen/Qwen2.5-3B-Instruct"
+        dev = "cuda" if (st["cuda_available"] and st["free_mb"] >= 9000) else "cpu"
+        dtype = torch.bfloat16
+        tok = AutoTokenizer.from_pretrained(model_id)
+        mdl = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=dtype, device_map={"": 0} if dev == "cuda" else "cpu")
+        mdl.eval()
+        MODELS["qwen_llm"] = (dev, model_id, tok, mdl)
+        return MODELS["qwen_llm"]
+
+
 def postprocess_voice_wav(wav_path: Path, target_sr: int = 44100):
     """Trim leading/trailing dead air and normalize to Garychen's signature -21 LUFS crisp studio profile."""
     import numpy as np
@@ -295,6 +312,31 @@ def run_job(job_id: str, kind: str, payload: dict):
                 seg_list.append({"start": round(s.start, 3), "end": round(s.end, 3), "text": s.text.strip()})
             with JOBS_LOCK:
                 JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"segments": seg_list, "device": dev})
+
+        elif kind == "llm_chat":
+            import torch
+            dev, model_id, tok, mdl = get_qwen_llm()
+            msgs = [
+                {"role": "system", "content": payload.get("system_prompt", "")},
+                {"role": "user", "content": payload.get("user_prompt", "")},
+            ]
+            prompt_txt = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+            inputs = tok([prompt_txt], return_tensors="pt").to(dev)
+            max_new = min(4096, int(payload.get("max_tokens", 3200)))
+            temp = float(payload.get("temperature", 0.55))
+            with torch.inference_mode():
+                gen_ids = mdl.generate(
+                    **inputs,
+                    max_new_tokens=max_new,
+                    do_sample=(temp > 0.05),
+                    temperature=max(0.1, temp),
+                    top_p=0.9,
+                    pad_token_id=tok.eos_token_id,
+                )
+            out_ids = gen_ids[0][inputs.input_ids.shape[1] :]
+            txt_out = tok.decode(out_ids, skip_special_tokens=True).strip()
+            with JOBS_LOCK:
+                JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"text": txt_out, "model": model_id, "device": dev})
 
         else:
             raise ValueError(f"Unsupported job kind: {kind}")

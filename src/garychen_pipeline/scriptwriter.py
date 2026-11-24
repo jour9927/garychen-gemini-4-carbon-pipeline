@@ -3,11 +3,12 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from typing import Any
 
 import httpx
 
-from .config import CrawledSource, EpisodeScript, SceneLayoutType, SceneSpec, ShortSceneSpec, TopicCandidate
+from .config import CrawledSource, EpisodeScript, SceneLayoutType, SceneSpec, ShortSceneSpec, TopicCandidate, load_cluster_endpoints
 
 ALL_LAYOUTS: list[SceneLayoutType] = [
     "hero_comparison_cards",
@@ -93,7 +94,43 @@ class GarychenScriptwriter:
             except Exception:
                 pass
 
-        # 2. Local Ollama Qwen3:8b (runs 100% unattended on Apple M3 Pro GPU)
+        # 1b. RTX PRO 6000 Colab PyTorch Qwen2.5-7B-Instruct GPU Worker (high-speed heavy compute priority)
+        for ep in load_cluster_endpoints():
+            if "colab" not in ep.name:
+                continue
+            try:
+                headers = {"Authorization": f"Bearer {ep.token}"}
+                with httpx.Client(timeout=30.0) as client:
+                    hr = client.get(f"{ep.url}/health", timeout=6.0)
+                    if hr.status_code != 200 or not hr.json().get("gpu", {}).get("cuda_available"):
+                        continue
+                    sub = client.post(
+                        f"{ep.url}/job/submit",
+                        headers=headers,
+                        json={
+                            "kind": "llm_chat",
+                            "system_prompt": system_prompt,
+                            "user_prompt": user_prompt,
+                            "max_tokens": 3200,
+                            "temperature": 0.55,
+                        },
+                    )
+                    if sub.status_code != 200:
+                        continue
+                    jid = sub.json()["job_id"]
+                    t0 = time.time()
+                    while time.time() - t0 < 240:
+                        time.sleep(2.0)
+                        sr = client.get(f"{ep.url}/job/status/{jid}", headers=headers)
+                        st = sr.json()
+                        if st.get("status") == "done":
+                            return self._extract_json(st["result"]["text"])
+                        if st.get("status") == "error":
+                            break
+            except Exception:
+                pass
+
+        # 2. Local Ollama Qwen3:8b fallback (unconstrained JSON for 5x faster generation)
         with httpx.Client(timeout=180.0) as client:
             r = client.post(
                 f"{self.ollama_url}/api/chat",
@@ -101,11 +138,10 @@ class GarychenScriptwriter:
                     "model": self.ollama_model,
                     "stream": False,
                     "think": False,
-                    "format": "json",
-                    "options": {"temperature": 0.55, "num_ctx": 8192, "num_predict": 4096},
+                    "options": {"temperature": 0.5, "num_ctx": 8192, "num_predict": 2600},
                     "messages": [
                         {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
+                        {"role": "user", "content": user_prompt + "\n只輸出純 JSON，不要輸出任何解釋文字。"},
                     ],
                 },
             )

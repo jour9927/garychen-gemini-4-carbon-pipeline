@@ -1,0 +1,16 @@
+{
+  "topic_id": "nvidia_blackwell",
+  "title": "NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析",
+  "category": "us_stocks",
+  "hook_angle": "今天用最白話的方式，結合最新爬蟲公開數據與官方來源，帶你一次搞懂：NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析",
+  "why_now": "使用者指定主題或排程自動觸發",
+  "score": 100.0,
+  "seed_queries": [
+    "NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析",
+    "NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析 GitHub",
+    "NVIDIA Blackwell 算力資本支出與美股科技七巨頭財報護城河深度解析 official"
+  ],
+  "seed_urls": [
+    "https://github.com/NVIDIA/TensorRT-LLM"
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "episode_id": "ep01_unattended_ai_agent",
+  "title": "MCP 與開源 AI Agent 新神器：browser-use 實戰拆解（121,926 Stars 背後的工作流設計）",
+  "category": "ai_agent",
+  "avatar_mode": false,
+  "youtube_description_summary": "為什麼開發者都在瘋傳 browser-use/browser-use？不用重寫底層，直接讓 AI Agent 自動接管外部工具與資料！",
+  "hashtags": [
+    "#AIAgent",
+    "#AI教學",
+    "#GaryChen",
+    "#自動化工作流",
+    "#Shorts"
+  ],
+  "chapters": [
+    "01 核心解析 1",
+    "02 核心解析 2",
+    "03 核心解析 3",
+    "04 核心解析 4",
+    "05 核心解析 5",
+    "06 核心解析 6"
+  ],
+  "scenes": [
+    {
+      "scene_id": "scene_01",
+      "chapter_index": 1,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 1",
+      "layout_type": "hero_comparison_cards",
+      "voice_style": "hook",
+      "narration_lines": [
+        "第 1 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據",
+        "GitHub - browser-use/browser-use: Open-source Python library for AI browser agents",
+        "plus Browser Use Cloud: stealth browsers and a hosted agent API. · GitHub",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "MCP 與開源 AI Agent",
+      "visual_subtitle": "GitHub - browser-use/bro",
+      "badge_text": "實戰必學",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "自動化"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "高效率"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "可驗證"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of ai_agent workflow automation glowing amber nodes",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "scene_id": "scene_02",
+      "chapter_index": 2,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 2",
+      "layout_type": "hub_spoke_ecosystem",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 2 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據",
+        "GitHub 開源專案 animate-css/animate.css 累積 83",
+        "060 Stars 與 15",
+        "940 Forks（主要語言：CSS）",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "MCP 與開源 AI Agent",
+      "visual_subtitle": "GitHub 開源專案 animate-css/",
+      "badge_text": "83,060 Stars",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "83,060 Stars"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "15,940 Forks"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "CSS"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of ai_agent workflow automation glowing amber nodes",
+      "source_ids": [
+        "S2"
+      ]
+    },
+    {
+      "scene_id": "scene_03",
+      "chapter_index": 3,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 3",
+      "layout_type": "split_ai_illustration_callout",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 3 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據",
+        "GitHub 開源專案 Alishahryar1/free-claude-code 累積 72",
+        "992 Stars 與 11",
+        "330 Forks（主要語言：Python）",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "MCP 與開源 AI Agent",
+      "visual_subtitle": "GitHub 開源專案 Alishahryar1",
+      "badge_text": "72,992 Stars",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "72,992 Stars"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "11,330 Forks"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Python"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of ai_agent workflow automation glowing amber nodes",
+      "source_ids": [
+        "S3"
+      ]
+    },
+    {
+      "scene_id": "scene_04",
+      "chapter_index": 4,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 4",
+      "layout_type": "step_pipeline_flow",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 4 個重點我們來看實戰細節",
+        "根據 blog.torproject.org 的最新數據",
+        "Hacker News 社群熱議（134 Points / 18 則技術討論）：Tor Browser User Manual",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "MCP 與開源 AI Agent",
+      "visual_subtitle": "Hacker News 社群熱議（134 Poi",
+      "badge_text": "134 HN Points",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "134 HN Points"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "18 留言"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Step 3"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of ai_agent workflow automation glowing amber nodes",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "scene_id": "scene_05",
+      "chapter_index": 5,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 5",
+      "layout_type": "terminal_code_window",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 5 個重點我們來看實戰細節",
+        "根據 stackoverflow.com 的最新數據",
+        "Hacker News 社群熱議（116 Points / 62 則技術討論）：Why do all browsers' user agents start with \"Mozilla/\"",
+        "(2008)",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "MCP 與開源 AI Agent",
+      "visual_subtitle": "Hacker News 社群熱議（116 Poi",
+      "badge_text": "116 HN Points",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "116 HN Points"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "62 留言"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "Step 3"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of ai_agent workflow automation glowing amber nodes",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "scene_id": "scene_06",
+      "chapter_index": 6,
+      "total_chapters": 6,
+      "chapter_title": "核心解析 6",
+      "layout_type": "crawled_evidence_spotlight",
+      "voice_style": "warm",
+      "narration_lines": [
+        "第 6 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據",
+        "GitHub 開源專案 bytedance/UI-TARS-desktop 累積 39",
+        "592 Stars 與 4",
+        "058 Forks（主要語言：TypeScript）",
+        "對我們日常工作流來說",
+        "這能大幅減少重複踩坑的時間"
+      ],
+      "visual_title": "MCP 與開源 AI Agent",
+      "visual_subtitle": "GitHub 開源專案 bytedance/UI",
+      "badge_text": "39,592 Stars",
+      "nodes": [
+        {
+          "label": "痛點拆解",
+          "sub": "傳統手動流程耗時易錯",
+          "tag": "39,592 Stars"
+        },
+        {
+          "label": "核心架構",
+          "sub": "標準化串接工具與上下文",
+          "tag": "4,058 Forks"
+        },
+        {
+          "label": "實戰落地",
+          "sub": "自動執行檢查與結果驗證",
+          "tag": "TypeScript"
+        }
+      ],
+      "callout_title": "Gary 實戰筆記",
+      "callout_body": "這能大幅減少重複踩坑的時間",
+      "ai_image_prompt": "3D isometric dark studio icon of ai_agent workflow automation glowing amber nodes",
+      "source_ids": [
+        "S6"
+      ]
+    }
+  ],
+  "short_title": "MCP 與開源 AI Agent 新神器：browser｜精華速看 #Shorts",
+  "short_hook_banner": "核心解析 1",
+  "short_cta_target_title": "MCP 與開源 AI Agent 新神器：browser-use 實戰拆解（121,926 Stars 背後的工作流設計）",
+  "short_scenes": [
+    {
+      "scene_id": "short_01",
+      "voice_style": "hook",
+      "narration_lines": [
+        "為什麼開發者都在瘋傳 browser-use/browser-use",
+        "不用重寫底層",
+        "直接讓 AI Agent 自動接管外部工具與資料"
+      ],
+      "headline": "MCP 與開源 AI Agent",
+      "highlight_badge": "實戰必學",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 1",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "scene_id": "short_02",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 2 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據"
+      ],
+      "headline": "MCP 與開源 AI Agent",
+      "highlight_badge": "83,060 Stars",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 2",
+      "source_ids": [
+        "S2"
+      ],
+      "is_cta": false
+    },
+    {
+      "scene_id": "short_03",
+      "voice_style": "explainer",
+      "narration_lines": [
+        "第 3 個重點我們來看實戰細節",
+        "根據 github.com 的最新數據"
+      ],
+      "headline": "MCP 與開源 AI Agent",
+      "highlight_badge": "72,992 Stars",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 3",
+      "source_ids": [
+        "S3"
+      ],
+      "is_cta": false
+    },
+    {
+      "scene_id": "short_04",
+      "voice_style": "warm",
+      "narration_lines": [
+        "這套架構還有三個新手最容易踩坑的細節",
+        "我已經把完整實戰步驟跟公開數據整理在長片裡",
+        "馬上點擊左下角關聯影片看完整版"
+      ],
+      "headline": "點擊左下角看完整教學",
+      "highlight_badge": "完整長片已上線",
+      "bullet_points": [
+        "痛點拆解：傳統手動流程耗時易錯",
+        "核心架構：標準化串接工具與上下",
+        "實戰落地：自動執行檢查與結果驗"
+      ],
+      "ai_image_prompt": "vertical sleek 3D glowing AI agent cube module dark studio amber rim light, scene 4",
+      "source_ids": [
+        "S4"
+      ],
+      "is_cta": true
+    }
+  ]
+}
