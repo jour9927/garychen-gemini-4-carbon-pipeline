@@ -44,9 +44,9 @@ touch "$ROOT/.deps_ready"
 INST
 chmod +x "$ROOT/install_deps.sh"
 
-pkill -f "[g]arychen_worker_19743.py" || true
-pkill -f "[g]arychen_cf_19743" || true
-sleep 0.4
+pkill -9 -f "[g]arychen_worker_19743.py" || true
+pkill -9 -f "[g]arychen_cf_19743" || true
+sleep 0.5
 
 if [ ! -f "$ROOT/.deps_ready_sys" ]; then
   rm -f "$ROOT/.deps_ready"
@@ -73,8 +73,8 @@ if [ ! -x "$CF" ]; then
   chmod +x "$CF"
 fi
 
-TORCH_LIB=$(python3 -c "import os, torch; print(os.path.join(os.path.dirname(torch.__file__), 'lib'))" 2>/dev/null || true)
-export LD_LIBRARY_PATH="${TORCH_LIB}:/usr/local/nvidia/lib64:/usr/local/cuda/lib64:${LD_LIBRARY_PATH:-}"
+NVIDIA_LIBS=$(python3 -c "import glob, os, site; sp=site.getsitepackages()[0]; print(':'.join(glob.glob(sp+'/nvidia/*/lib') + glob.glob(sp+'/torch/lib')))" 2>/dev/null || true)
+export LD_LIBRARY_PATH="${NVIDIA_LIBS}:/usr/local/nvidia/lib64:/usr/local/cuda/lib64:${LD_LIBRARY_PATH:-}"
 nohup python3 -u "$ROOT/garychen_worker_19743.py" \
   --work-dir "$ROOT" --port "$PORT" --token "$TOKEN" \
   > "$ROOT/logs/worker.log" 2>&1 < /dev/null &
