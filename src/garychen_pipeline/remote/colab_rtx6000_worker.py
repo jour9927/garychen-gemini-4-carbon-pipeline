@@ -101,18 +101,23 @@ def get_f5_tts(force_cpu: bool = False):
         return MODELS["f5_tts"]
 
 
-def get_whisper_model():
+def get_whisper_model(force_cpu: bool = False):
     with MODEL_LOCK:
-        if "whisper" in MODELS:
-            return MODELS["whisper"]
+        key = "whisper_cpu" if force_cpu else "whisper"
+        if key in MODELS:
+            return MODELS[key]
         from faster_whisper import WhisperModel
         st = gpu_stats()
-        dev = "cuda" if (st["cuda_available"] and st["free_mb"] >= 3200) else "cpu"
+        dev = "cpu" if force_cpu else ("cuda" if (st["cuda_available"] and st["free_mb"] >= 3200) else "cpu")
         model_size = "medium" if dev == "cuda" else "base"
         ctype = "float16" if dev == "cuda" else "int8"
-        wm = WhisperModel(model_size, device=dev, compute_type=ctype, cpu_threads=min(16, os.cpu_count() or 4))
-        MODELS["whisper"] = (dev, wm)
-        return MODELS["whisper"]
+        try:
+            wm = WhisperModel(model_size, device=dev, compute_type=ctype, cpu_threads=min(16, os.cpu_count() or 4))
+        except Exception:
+            dev = "cpu"
+            wm = WhisperModel("base", device="cpu", compute_type="int8", cpu_threads=min(16, os.cpu_count() or 4))
+        MODELS[key] = (dev, wm)
+        return MODELS[key]
 
 
 def get_qwen_llm():
@@ -208,8 +213,14 @@ def align_clauses_with_whisper(wav_path: Path, clauses: list[str], total_dur: fl
     for each spoken subtitle clause inside a continuous natural-prosody paragraph WAV!
     """
     y16 = load_wav_16k_np(wav_path)
-    _, wm = get_whisper_model()
-    segs, _ = wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)
+    try:
+        _, wm = get_whisper_model(force_cpu=False)
+        segs_iter, _ = wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)
+        segs = list(segs_iter)
+    except Exception:
+        _, wm = get_whisper_model(force_cpu=True)
+        segs_iter, _ = wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)
+        segs = list(segs_iter)
     words: list[tuple[float, float, str]] = []
     full_asr = []
     for s in segs:
@@ -410,8 +421,12 @@ def run_job(job_id: str, kind: str, payload: dict):
             in_wav = job_dir / "input.wav"
             in_wav.write_bytes(base64.b64decode(payload["wav_b64"]))
             y16 = load_wav_16k_np(in_wav)
-            dev, wm = get_whisper_model()
-            segs, _ = wm.transcribe(y16, language="zh", word_timestamps=True)
+            try:
+                dev, wm = get_whisper_model(force_cpu=False)
+                segs = list(wm.transcribe(y16, language="zh", word_timestamps=True)[0])
+            except Exception:
+                dev, wm = get_whisper_model(force_cpu=True)
+                segs = list(wm.transcribe(y16, language="zh", word_timestamps=True)[0])
             seg_list = [{"start": round(s.start, 3), "end": round(s.end, 3), "text": s.text.strip()} for s in segs]
             with JOBS_LOCK:
                 JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"segments": seg_list, "device": dev})

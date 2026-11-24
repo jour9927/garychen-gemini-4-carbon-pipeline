@@ -73,6 +73,8 @@ if [ ! -x "$CF" ]; then
   chmod +x "$CF"
 fi
 
+TORCH_LIB=$(python3 -c "import os, torch; print(os.path.join(os.path.dirname(torch.__file__), 'lib'))" 2>/dev/null || true)
+export LD_LIBRARY_PATH="${TORCH_LIB}:/usr/local/nvidia/lib64:/usr/local/cuda/lib64:${LD_LIBRARY_PATH:-}"
 nohup python3 -u "$ROOT/garychen_worker_19743.py" \
   --work-dir "$ROOT" --port "$PORT" --token "$TOKEN" \
   > "$ROOT/logs/worker.log" 2>&1 < /dev/null &
