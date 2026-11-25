@@ -50,12 +50,23 @@ class GarychenVoiceCloner:
             if len(cached_list) == len(beat_items) and all(Path(x["wav_path"]).exists() for x in cached_list):
                 return cached_list, "local_disk_cache"
 
+        healthy_eps: list[tuple[int, RemoteNodeEndpoint, list[str]]] = []
         for ep in load_cluster_endpoints():
             try:
-                hr = httpx.get(f"{ep.url}/health", timeout=6.0)
+                hr = httpx.get(f"{ep.url}/health", timeout=5.0)
                 if hr.status_code != 200:
                     continue
-                caps = hr.json().get("capabilities") or []
+                hj = hr.json()
+                gpu = hj.get("gpu") or {}
+                has_fast_cuda = bool(gpu.get("cuda_available") and int(gpu.get("free_mb", 0)) >= 2400)
+                rank = 0 if ("colab" in ep.name and has_fast_cuda) else (1 if has_fast_cuda else (2 if "mps" in ep.name else 3))
+                healthy_eps.append((rank, ep, hj.get("capabilities") or []))
+            except Exception:
+                pass
+        healthy_eps.sort(key=lambda t: t[0])
+
+        for _, ep, caps in healthy_eps:
+            try:
                 job_kind = "tts_paragraphs" if "tts_paragraphs" in caps else "tts_batch"
                 print(f"[voice_cloner] Dispatching {len(beat_items)} bilingual paragraph beats ({job_kind}) to {ep.name}", flush=True)
                 self._ensure_refs_uploaded(ep)

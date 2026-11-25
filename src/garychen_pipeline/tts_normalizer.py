@@ -81,26 +81,29 @@ def _int_to_zh(n: int) -> str:
             if approx_q == 10:
                 return f"{_int_to_zh(wan + 1)}萬"
             if approx_q > 0:
-                return f"{_int_to_zh(wan)}萬{DIGITS_ZH[approx_q]}千"
+                q_word = "兩" if approx_q == 2 else DIGITS_ZH[approx_q]
+                return f"{_int_to_zh(wan)}萬{q_word}千"
             return f"{_int_to_zh(wan)}萬"
         if rem < 1000:
             return f"{_int_to_zh(wan)}萬零{_int_to_zh(rem)}"
         return f"{_int_to_zh(wan)}萬{_int_to_zh(rem)}"
     if n >= 1000:
         q, rem = divmod(n, 1000)
+        q_word = "兩" if q == 2 else DIGITS_ZH[q]
         if rem == 0:
-            return f"{DIGITS_ZH[q]}千"
+            return f"{q_word}千"
         if rem < 100:
-            return f"{DIGITS_ZH[q]}千零{_int_to_zh(rem)}"
-        return f"{DIGITS_ZH[q]}千{_int_to_zh(rem)}"
+            return f"{q_word}千零{_int_to_zh(rem)}"
+        return f"{q_word}千{_int_to_zh(rem)}"
     if n >= 100:
         b, rem = divmod(n, 100)
+        b_word = "兩" if b == 2 else DIGITS_ZH[b]
         if rem == 0:
-            return f"{DIGITS_ZH[b]}百"
+            return f"{b_word}百"
         if rem < 10:
-            return f"{DIGITS_ZH[b]}百零{DIGITS_ZH[rem]}"
+            return f"{b_word}百零{DIGITS_ZH[rem]}"
         sh, ge = divmod(rem, 10)
-        return f"{DIGITS_ZH[b]}百{DIGITS_ZH[sh]}十" + (DIGITS_ZH[ge] if ge else "")
+        return f"{b_word}百{DIGITS_ZH[sh]}十" + (DIGITS_ZH[ge] if ge else "")
     if n >= 10:
         sh, ge = divmod(n, 10)
         prefix = "十" if sh == 1 else f"{DIGITS_ZH[sh]}十"
@@ -170,7 +173,9 @@ def to_spoken_tts_text(display_text: str) -> str:
         s,
     )
 
-    # 4. Percentages (+94%, -10%, 37.6%)
+    # 4. Percentages (+94%, -10%, 37.6%) — avoid double verb after 年增/上漲/下跌
+    s = re.sub(r"(年增|季增|成長|上漲|增加|提升|飆升|高達)\s*\+", r"\1 ", s)
+    s = re.sub(r"(年減|季減|下跌|下滑|減少|縮水)\s*-", r"\1 ", s)
     s = re.sub(
         r"\+(\d+(?:\.\d+)?)%",
         lambda m: f"成長百分之{_num_str_to_zh(m.group(1))}",

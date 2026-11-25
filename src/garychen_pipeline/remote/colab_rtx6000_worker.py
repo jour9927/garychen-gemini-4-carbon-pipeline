@@ -33,6 +33,7 @@ CACHE_DIR = WORK_DIR / "hf_cache"
 AUTH_TOKEN = os.environ.get("GC_WORKER_TOKEN", "gc_rtx6000_carbon_2026")
 PORT = int(os.environ.get("GC_WORKER_PORT", "19743"))
 
+os.environ.setdefault("PYTORCH_ENABLE_MPS_FALLBACK", "1")
 os.environ.setdefault("HF_HOME", str(CACHE_DIR))
 os.environ.setdefault("TORCH_HOME", str(WORK_DIR / "torch_cache"))
 
@@ -72,6 +73,14 @@ def pick_device(min_cuda_mb: int) -> str:
 
 def free_model_if_tight(needed_mb: int, drop_keys: tuple[str, ...]):
     import torch
+    if hasattr(torch.backends, "mps") and torch.backends.mps.is_available() and not torch.cuda.is_available():
+        with MODEL_LOCK:
+            dropped = [MODELS.pop(k, None) for k in drop_keys]
+        if any(x is not None for x in dropped):
+            gc.collect()
+            if hasattr(torch, "mps") and hasattr(torch.mps, "empty_cache"):
+                torch.mps.empty_cache()
+        return
     if not torch.cuda.is_available():
         return
     st = gpu_stats()
@@ -100,6 +109,31 @@ def normalize_zh_for_tts(text: str) -> str:
     return text
 
 
+def patch_torchaudio_soundfile():
+    """Bypass broken torchcodec shared-lib loader in torchaudio>=2.9 by routing load/save through soundfile."""
+    try:
+        import numpy as np
+        import soundfile as sf
+        import torch
+        import torchaudio
+
+        def _sf_load(uri, frame_offset=0, num_frames=-1, normalize=True, channels_first=True, format=None, buffer_size=4096, backend=None):
+            data, sr = sf.read(str(uri), start=frame_offset, frames=num_frames if num_frames > 0 else -1, dtype="float32", always_2d=True)
+            t = torch.from_numpy(np.ascontiguousarray(data.T if channels_first else data))
+            return t, int(sr)
+
+        def _sf_save(uri, src, sample_rate, channels_first=True, format=None, encoding=None, bits_per_sample=None, buffer_size=4096, backend=None, compression=None):
+            arr = src.detach().cpu().numpy()
+            if arr.ndim == 2 and channels_first:
+                arr = arr.T
+            sf.write(str(uri), arr, int(sample_rate))
+
+        torchaudio.load = _sf_load
+        torchaudio.save = _sf_save
+    except Exception:
+        pass
+
+
 def get_f5_tts(force_cpu: bool = False):
     with MODEL_LOCK:
         target_dev = "cpu" if force_cpu else pick_device(min_cuda_mb=2400)
@@ -107,6 +141,7 @@ def get_f5_tts(force_cpu: bool = False):
         if cached is not None and cached[0] == target_dev:
             return cached
         import torch
+        patch_torchaudio_soundfile()
         from f5_tts.api import F5TTS
         if target_dev == "cpu":
             torch.set_num_threads(min(32, max(4, (os.cpu_count() or 8) - 4)))
@@ -175,7 +210,8 @@ def get_sdxl_pipe(force_cpu: bool = False):
             return cached
         import torch
         from diffusers import AutoPipelineForText2Image, DPMSolverMultistepScheduler
-        if target_dev == "cuda":
+        if target_dev in ("cuda", "mps"):
+            run_dtype = torch.bfloat16 if target_dev == "mps" else torch.float16
             pipe = AutoPipelineForText2Image.from_pretrained(
                 "stabilityai/stable-diffusion-xl-base-1.0",
                 torch_dtype=torch.float16,
@@ -183,9 +219,9 @@ def get_sdxl_pipe(force_cpu: bool = False):
                 use_safetensors=True,
             )
             pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config, use_karras_sigmas=True)
-            pipe.to("cuda")
+            pipe.to(target_dev, dtype=run_dtype)
             pipe.set_progress_bar_config(disable=True)
-            MODELS["sdxl_pipe"] = ("cuda", "sdxl_base", pipe)
+            MODELS["sdxl_pipe"] = (target_dev, "sdxl_base", pipe)
         else:
             dtype = torch.bfloat16 if target_dev == "cpu" else torch.float16
             pipe = AutoPipelineForText2Image.from_pretrained("stabilityai/sdxl-turbo", torch_dtype=dtype)
@@ -328,6 +364,7 @@ def run_job(job_id: str, kind: str, payload: dict):
             speed = float(payload.get("speed", 1.01))
             nfe = int(payload.get("nfe_step", 48))
             dev, tts = get_f5_tts()
+            eff_nfe = min(nfe, 32) if dev == "mps" else nfe
             outputs = []
             for idx, item in enumerate(items):
                 seg_id = str(item["id"])
@@ -342,7 +379,7 @@ def run_job(job_id: str, kind: str, payload: dict):
                     gen_text=gen_text,
                     file_wave=str(out_wav),
                     speed=float(item.get("speed", speed)),
-                    nfe_step=nfe,
+                    nfe_step=eff_nfe,
                     cfg_strength=2.0,
                     sway_sampling_coef=-1.0,
                     remove_silence=False,
@@ -381,6 +418,7 @@ def run_job(job_id: str, kind: str, payload: dict):
 
         elif kind == "image_batch":
             import torch
+            free_model_if_tight(14000, ("f5_tts", "qwen_llm"))
             dev, mode_name, pipe = get_sdxl_pipe()
             items = payload["items"]
             outputs = []
@@ -392,6 +430,8 @@ def run_job(job_id: str, kind: str, payload: dict):
                 img_id = str(item["id"])
                 w = (int(item.get("width", 1216 if mode_name == "sdxl_base" else 768)) // 8) * 8
                 h = (int(item.get("height", 832 if mode_name == "sdxl_base" else 512)) // 8) * 8
+                if dev == "mps":
+                    w, h = min(w, 1024), min(h, 768)
                 seed = int(item.get("seed", 3030 + idx * 37))
                 prompt = (
                     f"{item['prompt']}, centered object floating on pure solid matte dark charcoal #242426 void background, "
@@ -400,10 +440,11 @@ def run_job(job_id: str, kind: str, payload: dict):
                 )
                 gen = torch.Generator(device="cpu").manual_seed(seed)
                 if mode_name == "sdxl_base":
+                    eff_steps = min(int(item.get("steps", 28)), 20) if dev == "mps" else int(item.get("steps", 28))
                     img = pipe(
                         prompt=prompt,
                         negative_prompt=neg_prompt,
-                        num_inference_steps=int(item.get("steps", 28)),
+                        num_inference_steps=eff_steps,
                         guidance_scale=6.5,
                         width=w,
                         height=h,
@@ -543,7 +584,11 @@ def main():
     AUTH_TOKEN = args.token
     for d in (WORK_DIR, REFS_DIR, JOBS_DIR, CACHE_DIR):
         d.mkdir(parents=True, exist_ok=True)
-    os.environ["HF_HOME"] = str(CACHE_DIR)
+    default_hf = Path.home() / ".cache/huggingface"
+    if (default_hf / "hub").exists() and "HF_HOME" not in os.environ:
+        os.environ["HF_HOME"] = str(default_hf)
+    else:
+        os.environ["HF_HOME"] = str(CACHE_DIR)
     os.environ["TORCH_HOME"] = str(WORK_DIR / "torch_cache")
     print(f"[garychen-worker-v3] listening on 0.0.0.0:{PORT} work={WORK_DIR}", flush=True)
     ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()

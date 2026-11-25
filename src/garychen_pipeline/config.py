@@ -209,4 +209,12 @@ def load_cluster_endpoints() -> list[RemoteNodeEndpoint]:
                 priority=2,
             )
         )
+    nodes.append(
+        RemoteNodeEndpoint(
+            name="alan_hub_m3_pro_mps",
+            url="http://127.0.0.1:19744",
+            token="gc_mps_carbon_2026",
+            priority=3,
+        )
+    )
     return sorted(nodes, key=lambda x: x.priority)

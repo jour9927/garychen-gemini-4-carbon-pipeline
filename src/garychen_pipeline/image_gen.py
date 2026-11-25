@@ -30,7 +30,10 @@ class GarychenImageGenerator:
         if len(cached) == len(items) and items:
             return cached, "local_disk_cache"
 
-        for ep in load_cluster_endpoints():
+        eps = load_cluster_endpoints()
+        # Prefer >=9.5GB free CUDA (Colab RTX PRO 6000) first, then 36GB M3 Pro MPS (SDXL Base 1.0), then b850
+        eps_img = sorted(eps, key=lambda e: (0 if "colab" in e.name else (1 if "mps" in e.name else 2)))
+        for ep in eps_img:
             try:
                 hr = httpx.get(f"{ep.url}/health", timeout=6.0)
                 if hr.status_code != 200:
@@ -46,7 +49,7 @@ class GarychenImageGenerator:
                     sub.raise_for_status()
                     jid = sub.json()["job_id"]
                     t0 = time.time()
-                    while time.time() - t0 < 600:
+                    while time.time() - t0 < 900:
                         time.sleep(2.0)
                         sr = client.get(f"{ep.url}/job/status/{jid}", headers=headers)
                         sr.raise_for_status()

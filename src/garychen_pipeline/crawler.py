@@ -69,7 +69,7 @@ def _fmt_usd_yi(val_usd: float) -> str:
 
 def _extract_metrics(text: str) -> list[str]:
     patterns = [
-        r"\$[\d,]+(?:\.\d+)?\s*(?:B|M|K|億|萬|兆|/mo|/month|/月)?",
+        r"\$\d[\d,]*(?:\.\d+)?\s*(?:B|M|K|億|萬|兆|/mo|/month|/月)?",
         r"[+-]?\d+(?:\.\d+)?\s*(?:%|倍|x|X|億|萬|K\s*stars|stars|tokens|GB|TB)",
     ]
     found: list[str] = []
@@ -112,11 +112,31 @@ class PublicInfoCrawler:
 
     @staticmethod
     def _entity_tokens(entity: str, queries: list[str]) -> list[str]:
+        alias_map = {
+            "nvda": ["nvda", "nvidia"],
+            "meta": ["meta", "llama"],
+            "googl": ["googl", "google", "alphabet"],
+            "amzn": ["amzn", "amazon", "aws"],
+            "msft": ["msft", "microsoft", "azure"],
+            "tsm": ["tsm", "tsmc"],
+        }
+        ent_toks = [t.lower() for t in re.findall(r"[a-zA-Z0-9_-]{3,}", entity)]
+        stop = {
+            "mcp", "agent", "agents", "workflow", "official", "github", "the", "and", "for", "with", "how",
+            "earnings", "moat", "revenue", "capex", "valuation", "stock", "stocks", "market", "analysis", "deep", "dive", "inference",
+        }
+        specific_ent: list[str] = []
+        for t in ent_toks:
+            if t not in stop:
+                for ex in alias_map.get(t, [t]):
+                    if ex not in specific_ent:
+                        specific_ent.append(ex)
+        if specific_ent:
+            return specific_ent
         raw = " ".join([entity] + queries[:2])
         toks = [t.lower() for t in re.findall(r"[a-zA-Z0-9_-]{3,}", raw)]
-        stop = {"mcp", "agent", "agents", "workflow", "official", "github", "the", "and", "for", "with", "how", "earnings", "moat"}
         specific = [t for t in toks if t not in stop]
-        return specific or toks[:3]
+        return specific or toks[:2]
 
     def _is_relevant(self, title: str, url: str, excerpt: str, required_tokens: list[str], category: str = "ai_agent") -> float:
         blob = f"{title} {url} {excerpt}".lower()
@@ -232,60 +252,79 @@ class PublicInfoCrawler:
         return out
 
     def fetch_market_quotes(self, tickers: list[str]) -> list[CrawledSource]:
-        """Fetches real market price, 52-week high/low, and 1Y return via Yahoo Finance V8 + Stooq CSV fallback."""
+        """Fetches real market price, 52-week high/low, and P/E multiple via CNBC Quote API + Yahoo Finance V8 + Stooq fallback."""
         out: list[CrawledSource] = []
         for sym in tickers[:3]:
-            price, high52, low52, chg_1y, latest_date = None, None, None, 0.0, dt.date.today().isoformat()
-            # Try Yahoo Finance V8 first
-            for host in ("query2.finance.yahoo.com", "query1.finance.yahoo.com"):
-                try:
-                    r = self.client.get(f"https://{host}/v8/finance/chart/{sym}?range=1y&interval=1d", timeout=8.0)
-                    if r.status_code == 200:
-                        res = (r.json().get("chart", {}).get("result") or [None])[0]
-                        if res:
-                            meta = res.get("meta", {})
-                            price = float(meta.get("regularMarketPrice") or 0) or None
-                            prev = float(meta.get("chartPreviousClose") or price or 1)
-                            high52 = float(meta.get("fiftyTwoWeekHigh") or price or 0)
-                            low52 = float(meta.get("fiftyTwoWeekLow") or price or 0)
-                            if price and prev:
-                                chg_1y = (price - prev) / prev * 100.0
-                            break
-                except Exception:
-                    continue
+            price, high52, low52, chg_1y, pe_val, mktcap_str, latest_date = None, None, None, 0.0, None, "", dt.date.today().isoformat()
+            # 1. CNBC Institutional Real-Time Quote API (includes P/E, 52W range, Market Cap!)
+            try:
+                cnbc_u = (
+                    f"https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol"
+                    f"?symbols={sym.upper()}&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=1&output=json"
+                )
+                rc = self.client.get(cnbc_u, timeout=8.0)
+                if rc.status_code == 200:
+                    q_list = rc.json().get("FormattedQuoteResult", {}).get("FormattedQuote") or []
+                    if q_list:
+                        q = q_list[0]
+                        p_raw = str(q.get("last") or "").replace(",", "").strip()
+                        if p_raw:
+                            price = float(p_raw)
+                        hi_s = str(q.get("yrhiprice") or "").replace(",", "").strip()
+                        lo_s = str(q.get("yrloprice") or "").replace(",", "").strip()
+                        high52 = float(hi_s) if hi_s else price
+                        low52 = float(lo_s) if lo_s else price
+                        pe_s = str(q.get("pe") or "").replace(",", "").strip()
+                        if pe_s and re.match(r"^\d+(\.\d+)?$", pe_s):
+                            pe_val = float(pe_s)
+                        mktcap_str = str(q.get("mktcapView") or "").strip()
+                        cp_s = str(q.get("change_pct") or "").replace("%", "").replace("+", "").strip()
+                        if cp_s and re.match(r"^-?\d+(\.\d+)?$", cp_s):
+                            chg_1y = float(cp_s)
+            except Exception:
+                pass
 
-            # Fallback to Stooq daily OHLC CSV (zero API key, zero rate limit!)
+            # 2. Try Yahoo Finance V8 fallback
             if not price:
-                try:
-                    r_st = self.client.get(f"https://stooq.com/q/d/l/?s={sym.lower()}.us&i=d", timeout=10.0)
-                    if r_st.status_code == 200 and "Close" in r_st.text:
-                        rows = list(csv.DictReader(io.StringIO(r_st.text)))
-                        rows_1y = rows[-252:] if len(rows) >= 2 else rows
-                        if rows_1y:
-                            price = float(rows_1y[-1]["Close"])
-                            first_p = float(rows_1y[0]["Close"])
-                            high52 = max(float(x["High"]) for x in rows_1y)
-                            low52 = min(float(x["Low"]) for x in rows_1y)
-                            chg_1y = (price - first_p) / first_p * 100.0 if first_p else 0.0
-                            latest_date = rows_1y[-1].get("Date") or latest_date
-                except Exception:
-                    pass
+                for host in ("query2.finance.yahoo.com", "query1.finance.yahoo.com"):
+                    try:
+                        r = self.client.get(f"https://{host}/v8/finance/chart/{sym}?range=1y&interval=1d", timeout=8.0)
+                        if r.status_code == 200:
+                            res = (r.json().get("chart", {}).get("result") or [None])[0]
+                            if res:
+                                meta = res.get("meta", {})
+                                price = float(meta.get("regularMarketPrice") or 0) or None
+                                prev = float(meta.get("chartPreviousClose") or price or 1)
+                                high52 = float(meta.get("fiftyTwoWeekHigh") or price or 0)
+                                low52 = float(meta.get("fiftyTwoWeekLow") or price or 0)
+                                if price and prev:
+                                    chg_1y = (price - prev) / prev * 100.0
+                                break
+                    except Exception:
+                        continue
 
             if price:
-                pub_url = f"https://finance.yahoo.com/quote/{sym}"
-                fact = f"{sym} 公開市場股價報 ${price:,.2f} 美金，近 52 週區間 ${low52:,.2f} – ${high52:,.2f}（近一年累計變動 {chg_1y:+.1f}%）"
+                pub_url = f"https://www.cnbc.com/quotes/{sym.upper()}"
+                pe_clause = f"，本益比（P/E）約 {pe_val:.1f}x" if pe_val else ""
+                mc_clause = f"，總市值 {mktcap_str}" if mktcap_str else ""
+                fact = f"{sym.upper()} 公開市場股價報 ${price:,.2f} 美金，52 週高低點區間 ${low52:,.2f} – ${high52:,.2f}{pe_clause}{mc_clause}"
+                m_list = [f"${price:,.2f}"]
+                if pe_val:
+                    m_list.append(f"PE {pe_val:.1f}x")
+                if high52:
+                    m_list.append(f"52W高 ${high52:,.0f}")
                 out.append(
                     CrawledSource(
                         source_id=f"mkt_{sym.lower()}",
-                        title=f"{sym} 市場即時報價 (${price:,.2f} / 1Y {chg_1y:+.1f}%)",
+                        title=f"CNBC 公開市場報價與估值：{sym.upper()} (${price:,.2f}{f' / PE {pe_val:.1f}x' if pe_val else ''})",
                         url=pub_url,
-                        domain="finance.yahoo.com",
+                        domain="cnbc.com",
                         published_date=latest_date,
                         retrieved_at=_now_iso(),
                         source_type="market_data",
                         relevance_score=0.99,
                         key_facts=[fact],
-                        metrics=[f"${price:,.2f}", f"{chg_1y:+.1f}%", f"52W High ${high52:,.0f}"],
+                        metrics=m_list,
                         excerpt=fact,
                     )
                 )
@@ -351,7 +390,7 @@ class PublicInfoCrawler:
                     for line in r.text.splitlines():
                         lc = re.sub(r"[#*`>\[\]]+", "", line).strip()
                         lc = re.sub(r"\(https?://[^\)]+\)", "", lc).strip()
-                        if 30 <= len(lc) <= 140 and not lc.lower().startswith(("http", "!", "badge", "license", "<img", "<div", "<p", "<a")):
+                        if 30 <= len(lc) <= 140 and not lc.lower().startswith(("http", "!", "badge", "license", "<")):
                             bullets.append(lc)
                         if len(bullets) >= 6:
                             break
@@ -628,11 +667,19 @@ class PublicInfoCrawler:
                     seen_urls.add(u)
                     sources.append(item)
 
-        # 1. For US Stocks: Official SEC EDGAR 10-K XBRL + Live Market Quotes FIRST!
+        # 1. For US Stocks: Official SEC EDGAR 10-K XBRL + Live Market Quotes + Hyperscaler Peer CapEx!
         if tickers or category == "us_stocks":
-            t_list = tickers or ["NVDA"]
-            _add(self.fetch_sec_edgar_financials(t_list))
-            _add(self.fetch_market_quotes(t_list))
+            t_list = list(tickers or ["NVDA"])
+            if "NVDA" in [x.upper() for x in t_list] and len(t_list) == 1:
+                peer_sec = self.fetch_sec_edgar_financials(["MSFT", "META"])
+                for ps in peer_sec:
+                    ps.relevance_score = 0.94
+                _add(self.fetch_sec_edgar_financials(t_list))
+                _add(self.fetch_market_quotes(t_list))
+                _add(peer_sec)
+            else:
+                _add(self.fetch_sec_edgar_financials(t_list))
+                _add(self.fetch_market_quotes(t_list))
 
         # 2. Seed URLs
         for u in (seed_urls or []):

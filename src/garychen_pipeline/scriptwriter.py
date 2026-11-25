@@ -168,7 +168,7 @@ class GarychenScriptwriter:
       - US Stocks Deep-Dive architecture (7 chapters × 3-4 beats, SEC 10-K KPIs, 1st vs 2nd level thinking, 3 moats, PE/DCF valuation, Gary 聊美股 disclaimer outro)
     """
 
-    def __init__(self, ollama_url: str = "http://127.0.0.1:11434", ollama_model: str = "qwen3:8b"):
+    def __init__(self, ollama_url: str = "http://127.0.0.1:11434", ollama_model: str = "qwen2.5:14b"):
         self.ollama_url = os.environ.get("GC_OLLAMA_URL", ollama_url).rstrip("/")
         self.ollama_model = os.environ.get("GC_OLLAMA_MODEL", ollama_model)
 
@@ -208,14 +208,13 @@ class GarychenScriptwriter:
             except Exception:
                 pass
 
-        with httpx.Client(timeout=150.0) as client:
+        with httpx.Client(timeout=240.0) as client:
             r = client.post(
                 f"{self.ollama_url}/api/chat",
                 json={
                     "model": self.ollama_model,
                     "stream": False,
-                    "think": False,
-                    "options": {"temperature": 0.45, "num_ctx": 8192, "num_predict": max_tokens},
+                    "options": {"temperature": 0.45, "num_ctx": 6144, "num_predict": max_tokens},
                     "messages": [
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt + "\n請只輸出純 JSON 物件。"},
@@ -401,7 +400,7 @@ class GarychenScriptwriter:
                 "  ]\n"
                 "}"
             )
-            chunk_data = self._call_llm_json(sys_prompt, pass2_prompt, max_tokens=3800)
+            chunk_data = self._call_llm_json(sys_prompt, pass2_prompt, max_tokens=2400)
             raw_beats = chunk_data.get("beats") or []
             for b_idx, rb in enumerate(raw_beats):
                 if not isinstance(rb, dict):
@@ -608,6 +607,11 @@ class GarychenScriptwriter:
         s_title = taiwanize_text(str(short_plan.get("short_title") or f"{ep_title[:22]}｜精華速看 #Shorts"))
         if "#Shorts" not in s_title and "#shorts" not in s_title:
             s_title = f"{s_title} #Shorts"
+
+        try:
+            httpx.post(f"{self.ollama_url}/api/generate", json={"model": self.ollama_model, "keep_alive": 0}, timeout=4.0)
+        except Exception:
+            pass
 
         return EpisodeScript(
             episode_id=episode_id,
