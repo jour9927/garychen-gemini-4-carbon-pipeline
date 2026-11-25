@@ -1,0 +1,1616 @@
+{
+  "episode_id": "v3_ep02_nvda_earnings_master",
+  "title": "NVDA 財報 / 三大護城河",
+  "thumbnail_line1": "NVDA 財報",
+  "thumbnail_line2": "三大護城河",
+  "category": "us_stocks",
+  "avatar_mode": true,
+  "youtube_description_summary": "NVIDIA 財報後暴跌，我卻加倉！拆解營收引擎、CapEx 第二層思考、AI 時代三大護城河與估值推算，華爾街漏看的關鍵數據與飛輪效應！",
+  "hashtags": [
+    "#GaryChen",
+    "#NVDA財報",
+    "#AI護城河",
+    "#美股投資",
+    "#CapEx分析"
+  ],
+  "chapters": [
+    "01 市場恐慌與預期差",
+    "02 營收引擎拆解",
+    "03 財報關鍵數據",
+    "04 CapEx 第二層思考",
+    "05 AI 三大護城河",
+    "06 估值推算與情境",
+    "07 風險與我的觀點"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與預期差",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "hook",
+      "clauses": [
+        "財報一出市場直接跳水",
+        "大家都怕 NVIDIA 資本支出燒太多",
+        "但實際數據看下來營收成長超乎預期",
+        "營業利益率高達 60.4%"
+      ],
+      "spoken_clauses": [
+        "財報一出市場直接跳水",
+        "大家都怕 Nvidia 資本支出燒太多",
+        "但實際數據看下來營收成長超乎預期",
+        "營業利益率高達 百分之六十點四"
+      ],
+      "visual_title": "市場情緒 vs 財報實力",
+      "visual_subtitle": "預期差的真相",
+      "badge_text": "$2,159 億",
+      "nodes": [
+        {
+          "label": "全年總營收",
+          "sub": "年增 +65.5%",
+          "tag": "成長",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "賺錢能力強",
+          "tag": "利潤",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "但實際數據看下來營收成長超乎預期",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "華爾街怕什麼？",
+      "callout_body": "怕 NVIDIA 資本支出燒過頭，但實際是賺錢引擎。",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與預期差",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "explainer",
+      "clauses": [
+        "市場看到 CapEx 增加就慌",
+        "但這只是 NVIDIA 在加速佈局 AI 未來",
+        "營運現金流強勁",
+        "根本不是在燒錢"
+      ],
+      "spoken_clauses": [
+        "市場看到 資本支出 增加就慌",
+        "但這只是 Nvidia 在加速佈局 AI 未來",
+        "營運現金流強勁",
+        "根本不是在燒錢"
+      ],
+      "visual_title": "CapEx 與現金流的對比",
+      "visual_subtitle": "投資 vs 燃料",
+      "badge_text": "營益率 60.4%",
+      "nodes": [
+        {
+          "label": "CapEx $60.4 億",
+          "sub": "投資未來",
+          "tag": "佈局",
+          "metric": "60.4x",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流 $1,027 億",
+          "sub": "賺錢能力強",
+          "tag": "現金",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "營運現金流強勁",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "CapEx 是投資不是燒錢",
+      "callout_body": "現金流強勁，投資未來才是正道。",
+      "code_lines": [],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與預期差",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "warm",
+      "clauses": [
+        "市場一看到財報跌",
+        "就慌了，但實際上 NVIDIA 的營收成長和利潤表現遠超預期",
+        "這不是壞消息，而是華爾街的短期情緒反應",
+        "長期看還是有強大護城河"
+      ],
+      "spoken_clauses": [
+        "市場一看到財報跌",
+        "就慌了，但實際上 Nvidia 的營收成長和利潤表現遠超預期",
+        "這不是壞消息，而是華爾街的短期情緒反應",
+        "長期看還是有強大護城河"
+      ],
+      "visual_title": "預期差 vs 長期價值",
+      "visual_subtitle": "市場恐慌 vs 企業實力",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "全年總營收",
+          "sub": "年增 +65.5%",
+          "tag": "成長",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "PE 16.7x",
+          "sub": "估值合理",
+          "tag": "價值",
+          "metric": "16.7x",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這不是壞消息，而是華爾街的短期情",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "市場恐慌是短期現象",
+      "callout_body": "長期看 NVIDIA 的成長與利潤，還是值得加倉。",
+      "code_lines": [],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "營收引擎拆解",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "NVIDIA 的營收引擎其實分三塊",
+        "資料中心算力、網路互連跟軟硬整合",
+        "這三塊加起來才是真正的賺錢機器",
+        "資料中心算力是現在 AI 跑起來的主力"
+      ],
+      "spoken_clauses": [
+        "Nvidia 的營收引擎其實分三塊",
+        "資料中心算力、網路互連跟軟硬整合",
+        "這三塊加起來才是真正的賺錢機器",
+        "資料中心算力是現在 AI 跑起來的主力"
+      ],
+      "visual_title": "營收引擎三塊",
+      "visual_subtitle": "資料中心算力、網路互連、軟硬整合",
+      "badge_text": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "資料中心算力",
+          "sub": "AI 跑起來的主力",
+          "tag": "核心",
+          "metric": "$1,500 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "網路互連",
+          "sub": "資料中心內部連線設備",
+          "tag": "穩定",
+          "metric": "$300 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "軟硬整合",
+          "sub": "晶片加軟體一起賣",
+          "tag": "高毛利",
+          "metric": "$359 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "資料中心算力才是 NVIDIA 真正的賺錢引擎。",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "營收引擎拆解",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "拆開網路互連業務來看",
+        "Spectrum-X 跟 InfiniBand",
+        "讓上萬顆 GPU 能像單一超級電腦一樣協同運算",
+        "光是網路設備就貢獻數百億美金高毛利營收"
+      ],
+      "spoken_clauses": [
+        "拆開網路互連業務來看",
+        "Spectrum-X 跟 InfiniBand",
+        "讓上萬顆 G P U 能像單一超級電腦一樣協同運算",
+        "光是網路設備就貢獻數百億美金高毛利營收"
+      ],
+      "visual_title": "資料中心算力",
+      "visual_subtitle": "AI 跑起來的主力",
+      "badge_text": "CapEx $1,159 億",
+      "nodes": [
+        {
+          "label": "晶片銷售",
+          "sub": "每塊都能賣出高價",
+          "tag": "核心",
+          "metric": "$1,500 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "長期合作",
+          "sub": "客戶還得長期買",
+          "tag": "穩定",
+          "metric": "10 年以上",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "技術門檻",
+          "sub": "不容易被取代",
+          "tag": "護城河",
+          "metric": "PE 16.7x",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "資料中心算力是 NVIDIA 真正的賺錢引擎。",
+      "code_lines": [],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "營收引擎拆解",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "hook",
+      "clauses": [
+        "第三塊則是企業級軟體與推論微服務 NIM",
+        "把硬體算力跟軟體授權綁成長期訂閱飛輪",
+        "讓整體營業利益率穩穩站在 60.4% 的驚人水準"
+      ],
+      "spoken_clauses": [
+        "第三塊則是企業級軟體與推論微服務 NIM",
+        "把硬體算力跟軟體授權綁成長期訂閱飛輪",
+        "讓整體營業利益率穩穩站在 百分之六十點四 的驚人水準"
+      ],
+      "visual_title": "營收引擎三塊",
+      "visual_subtitle": "資料中心算力、網路互連、軟硬整合",
+      "badge_text": "PE 16.7x",
+      "nodes": [
+        {
+          "label": "資料中心算力",
+          "sub": "AI 跑起來的主力",
+          "tag": "核心",
+          "metric": "$1,500 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "網路互連",
+          "sub": "資料中心內部連線設備",
+          "tag": "穩定",
+          "metric": "$300 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "軟硬整合",
+          "sub": "晶片加軟體一起賣",
+          "tag": "高毛利",
+          "metric": "$359 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "資料中心算力才是 NVIDIA 真正的賺錢引擎。",
+      "code_lines": [],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "財報關鍵數據",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "NVIDIA 2026 年營收 $2,159 億 美金",
+        "年增 +65.5% 真的是嚇人",
+        "這代表他們在 AI 算力這塊完全佔據主場",
+        "每塊晶片都賣出好價錢"
+      ],
+      "spoken_clauses": [
+        "Nvidia 二零二六 年營收 兩千一百五十九億美金 美金",
+        "年增 百分之六十五點五 真的是嚇人",
+        "這代表他們在 AI 算力這塊完全佔據主場",
+        "每塊晶片都賣出好價錢"
+      ],
+      "visual_title": "營收爆增 65.5%",
+      "visual_subtitle": "全年總營收 $2,159 億",
+      "badge_text": "$155.38",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "年增 +65.5%",
+          "tag": "營收引擎",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "高達 60.4%",
+          "tag": "利潤結構",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這代表他們在 AI 算力這塊完全佔據",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "營收與利潤雙飛",
+      "callout_body": "營收爆增 +65.5%，營業利益率 60.4%，這不是短期衝刺，是長期賺錢模式",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "財報關鍵數據",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "hook",
+      "clauses": [
+        "營運現金流 OCF $1,027 億 美金",
+        "這代表 NVIDIA 不只是在賺錢",
+        "還能把錢賺回來再投資",
+        "這種現金流體質"
+      ],
+      "spoken_clauses": [
+        "營運現金流 營運現金流 一千零二十七億美金 美金",
+        "這代表 Nvidia 不只是在賺錢",
+        "還能把錢賺回來再投資",
+        "這種現金流體質"
+      ],
+      "visual_title": "現金流強勁",
+      "visual_subtitle": "OCF $1,027 億",
+      "badge_text": "$2,159 億",
+      "nodes": [
+        {
+          "label": "營運現金流",
+          "sub": "強勁造血能力",
+          "tag": "現金流體質",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "本益比",
+          "sub": "PE 16.7x",
+          "tag": "估值合理性",
+          "metric": "16.7x",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "還能把錢賺回來再投資",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "現金流是護城河",
+      "callout_body": "OCF $1,027 億，這不是短期現象，是長期現金流穩定的體現",
+      "code_lines": [],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "財報關鍵數據",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "再把資本支出跟營運現金流放在一起對比",
+        "全年營運現金流高達 $1,027 億美金",
+        "而自身資本支出僅 $60.4 億美金",
+        "代表超過九成獲利都是實打實的自由現金流"
+      ],
+      "spoken_clauses": [
+        "再把資本支出跟營運現金流放在一起對比",
+        "全年營運現金流高達 一千零二十七億美金美金",
+        "而自身資本支出僅 六十點四億美金美金",
+        "代表超過九成獲利都是實打實的自由現金流"
+      ],
+      "visual_title": "營收引擎三塊",
+      "visual_subtitle": "資料中心 + 網路互連 + 軟硬整合",
+      "badge_text": "營益率 60.4%",
+      "nodes": [
+        {
+          "label": "資料中心",
+          "sub": "AI 算力主力",
+          "tag": "核心業務",
+          "metric": "$1,200 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "網路互連",
+          "sub": "穩定需求",
+          "tag": "護城河",
+          "metric": "$500 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "軟硬整合",
+          "sub": "客戶買得更貴",
+          "tag": "附加價值",
+          "metric": "$459 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "三塊加起來才是重點",
+      "callout_body": "資料中心 + 網路互連 + 軟硬整合，這三塊加起來才是 NVIDIA 真正的賺錢模式",
+      "code_lines": [],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "CapEx 第二層思考",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "華爾街第一層思考總擔心雲端巨頭買太多晶片會消化不良",
+        "但如果翻開微軟最新 10-K 年報",
+        "全年營收達 $3,318 億美金、營業利益率 46.8%",
+        "雲端客戶是在用真金白銀擴建算力基建"
+      ],
+      "spoken_clauses": [
+        "華爾街第一層思考總擔心雲端巨頭買太多晶片會消化不良",
+        "但如果翻開微軟最新 十-K 年報",
+        "全年營收達 三千三百一十八億美金美金、營業利益率 百分之四十六點八",
+        "雲端客戶是在用真金白銀擴建算力基建"
+      ],
+      "visual_title": "CapEx 第二層思考",
+      "visual_subtitle": "算力飛輪的關鍵轉化",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "NVIDIA 2026 CapEx",
+          "sub": "60.4 億 美金",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流 OCF",
+          "sub": "1,027 億 美金",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這套架構在真實負載下展現出極高的",
+          "tag": "營益率 42.3%",
+          "metric": "營益率 42.3%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "飛輪效應",
+      "callout_body": "CapEx 不是燒錢，而是把賺到的錢再投資，加速算力飛輪",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "CapEx 第二層思考",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "hook",
+      "clauses": [
+        "微軟與 Meta 都用 CapEx 建立算力飛輪",
+        "但 NVIDIA 把 CapEx 轉化為 AI 算力主場",
+        "這就是第二層思考的差異",
+        "不是隻看支出，而是看如何用錢賺更多錢"
+      ],
+      "spoken_clauses": [
+        "微軟與 Meta 都用 資本支出 建立算力飛輪",
+        "但 Nvidia 把 資本支出 轉化為 AI 算力主場",
+        "這就是第二層思考的差異",
+        "不是隻看支出，而是看如何用錢賺更多錢"
+      ],
+      "visual_title": "CapEx 轉化飛輪",
+      "visual_subtitle": "微軟 vs NVIDIA 的差異",
+      "badge_text": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "微軟 FY26 CapEx",
+          "sub": "1,159 億 美金",
+          "tag": "CapEx",
+          "metric": "$1,159 億",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "Meta FY25 CapEx",
+          "sub": "697 億 美金",
+          "tag": "CapEx",
+          "metric": "$697 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA 2026 CapEx",
+          "sub": "60.4 億 美金",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA OCF",
+          "sub": "1,027 億 美金",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪差異",
+      "callout_body": "CapEx 不是燒錢，而是把賺到的錢再投資，加速算力飛輪",
+      "code_lines": [],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "CapEx 第二層思考",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "warm",
+      "clauses": [
+        "再對照公開市場報價",
+        "NVDA 股價在 $155.38 美金附近震盪",
+        "對應高雙位數的獲利成長率",
+        "市場其實把短期景氣波動的折價提前反映在股價裡了"
+      ],
+      "spoken_clauses": [
+        "再對照公開市場報價",
+        "Nvidia 股價在 一百五十五點三八美金 美金附近震盪",
+        "對應高雙位數的獲利成長率",
+        "市場其實把短期景氣波動的折價提前反映在股價裡了"
+      ],
+      "visual_title": "CapEx 飛輪效應",
+      "visual_subtitle": "NVIDIA 的長期戰略",
+      "badge_text": "CapEx $1,159 億",
+      "nodes": [
+        {
+          "label": "CapEx 轉化",
+          "sub": "60.4 億 美金",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "1,027 億 美金",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "AI 算力主場",
+          "sub": "2,159 億 美金",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪效應",
+      "callout_body": "CapEx 不是燒錢，而是把賺到的錢再投資，加速算力飛輪",
+      "code_lines": [],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "AI 三大護城河",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "CUDA 開發者生態轉換成本是 NVIDIA 最強護城河",
+        "因為全球 90% 的 AI 模型都用 CUDA 設計",
+        "這就像把門閂焊死在地基上",
+        "別人想進來都難，更別說複製"
+      ],
+      "spoken_clauses": [
+        "CUDA 開發者生態轉換成本是 Nvidia 最強護城河",
+        "因為全球 百分之九十 的 AI 模型都用 CUDA 設計",
+        "這就像把門閂焊死在地基上",
+        "別人想進來都難，更別說複製"
+      ],
+      "visual_title": "CUDA 生態鎖死",
+      "visual_subtitle": "90% AI 模型用 CUDA",
+      "badge_text": "PE 16.7x",
+      "nodes": [
+        {
+          "label": "CUDA",
+          "sub": "全球 AI 模型開發者生態",
+          "tag": "生態鎖死",
+          "metric": "2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "現金流護城河",
+          "sub": "因為全球 90% 的 AI 模型都用 CUDA",
+          "tag": "+65.5%",
+          "metric": "$+65.5 億",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這就像把門閂焊死在地基上",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "生態鎖死",
+      "callout_body": "CUDA 是 NVIDIA 最強護城河",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "AI 三大護城河",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "NVLink 機櫃級系統整合是 NVIDIA 的第二層護城河",
+        "這不是單純的晶片",
+        "而是整體架構的整合能力",
+        "別人要複製這套系統整合"
+      ],
+      "spoken_clauses": [
+        "NVLink 機櫃級系統整合是 Nvidia 的第二層護城河",
+        "這不是單純的晶片",
+        "而是整體架構的整合能力",
+        "別人要複製這套系統整合"
+      ],
+      "visual_title": "NVLink 系統整合",
+      "visual_subtitle": "機櫃級整合能力",
+      "badge_text": "$155.38",
+      "nodes": [
+        {
+          "label": "NVLink",
+          "sub": "機櫃級系統整合",
+          "tag": "整合能力",
+          "metric": "+65.5%",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "現金流護城河",
+          "sub": "這不是單純的晶片",
+          "tag": "+65.5%",
+          "metric": "$+65.5 億",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "而是整體架構的整合能力",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "整合能力",
+      "callout_body": "NVLink 是 NVIDIA 的系統整合護城河",
+      "code_lines": [],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "AI 三大護城河",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "hook",
+      "clauses": [
+        "一年一迭代的產品節奏是 NVIDIA 的第三層護城河",
+        "這不是隨便說說",
+        "而是他們能持續推出新產品",
+        "讓競爭對手只能追在後頭"
+      ],
+      "spoken_clauses": [
+        "一年一迭代的產品節奏是 Nvidia 的第三層護城河",
+        "這不是隨便說說",
+        "而是他們能持續推出新產品",
+        "讓競爭對手只能追在後頭"
+      ],
+      "visual_title": "產品節奏快",
+      "visual_subtitle": "一年一迭代",
+      "badge_text": "$2,159 億",
+      "nodes": [
+        {
+          "label": "產品節奏",
+          "sub": "一年一迭代",
+          "tag": "創新速度",
+          "metric": "16.7x",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "現金流護城河",
+          "sub": "這不是隨便說說",
+          "tag": "+65.5%",
+          "metric": "$+65.5 億",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "而是他們能持續推出新產品",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "創新速度",
+      "callout_body": "一年一迭代是 NVIDIA 的創新護城河",
+      "code_lines": [],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值推算與情境",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們先來看 PE 16.7x 的本益比",
+        "這是目前市場給 NVDA 的評估",
+        "但這只是現在的價格",
+        "未來的價值要怎麼算"
+      ],
+      "spoken_clauses": [
+        "我們先來看 本益比 十六點七倍 的本益比",
+        "這是目前市場給 Nvidia 的評估",
+        "但這只是現在的價格",
+        "未來的價值要怎麼算"
+      ],
+      "visual_title": "PE 推算三情境",
+      "visual_subtitle": "悲觀／基準／樂觀",
+      "badge_text": "16.7x",
+      "nodes": [
+        {
+          "label": "悲觀情境",
+          "sub": "營收成長 40%",
+          "tag": "PE 12x",
+          "metric": "12x",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "基準情境",
+          "sub": "營收成長 30%",
+          "tag": "PE 14x",
+          "metric": "14x",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "樂觀情境",
+          "sub": "營收成長 50%",
+          "tag": "PE 10x",
+          "metric": "10x",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "安全邊際",
+      "callout_body": "現在的 PE 16.7x 位於樂觀情境的上限，但距離悲觀情境還有 40% 的安全距離。",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值推算與情境",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "hook",
+      "clauses": [
+        "如果用悲觀、基準與樂觀三種情境推演",
+        "就算未來算力增速放緩到兩成",
+        "靠著 60.4% 營益率與龐大裝機量更新需求",
+        "現金流依然具備極厚的安全邊際"
+      ],
+      "spoken_clauses": [
+        "如果用悲觀、基準與樂觀三種情境推演",
+        "就算未來算力增速放緩到兩成",
+        "靠著 百分之六十點四 營益率與龐大裝機量更新需求",
+        "現金流依然具備極厚的安全邊際"
+      ],
+      "visual_title": "OCF 看估值",
+      "visual_subtitle": "自由現金流是價值根基",
+      "badge_text": "16.7x",
+      "nodes": [
+        {
+          "label": "營運現金流",
+          "sub": "OCF $1,027",
+          "tag": "自由現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "CapEx 費用",
+          "sub": "投資 $60.4",
+          "tag": "再投資",
+          "metric": "$60.4 億",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "自由現金流",
+          "sub": "淨賺 $966",
+          "tag": "價值創造",
+          "metric": "$966 億",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "價值創造",
+      "callout_body": "自由現金流 $966 億 是 NVDA 的價值根基，不是隻看 PE，而是看錢能不能持續賺回來。",
+      "code_lines": [],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值推算與情境",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "最後我們用三大護城河來看 NVDA 的價值",
+        "CUDA 生態、NVLink 整合、產品節奏",
+        "這三塊護城河不是單純的技術優勢",
+        "而是讓競爭對手難以複製的價值護城河"
+      ],
+      "spoken_clauses": [
+        "最後我們用三大護城河來看 Nvidia 的價值",
+        "CUDA 生態、NVLink 整合、產品節奏",
+        "這三塊護城河不是單純的技術優勢",
+        "而是讓競爭對手難以複製的價值護城河"
+      ],
+      "visual_title": "三大護城河",
+      "visual_subtitle": "價值永續的根基",
+      "badge_text": "16.7x",
+      "nodes": [
+        {
+          "label": "CUDA 生態",
+          "sub": "90% AI 模型用 CUDA",
+          "tag": "生態鎖定",
+          "metric": "90% ★",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVLink 整合",
+          "sub": "系統整合能力",
+          "tag": "技術壁壘",
+          "metric": "$2,159 億",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "產品節奏",
+          "sub": "一年一迭代",
+          "tag": "創新速度",
+          "metric": "+65.5%",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "價值永續",
+      "callout_body": "三大護城河不是短期優勢，而是長期價值的根基，這就是為什麼 PE 16.7x 有安全邊際。",
+      "code_lines": [],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_19",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "風險與我的觀點",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "hook",
+      "clauses": [
+        "自研晶片競爭是第一大風險",
+        "現在英特爾與 AMD 都在加速 AI 晶片佈局",
+        "如果 NVIDIA 不持續加大 CapEx",
+        "很難守住 AI 算力主場"
+      ],
+      "spoken_clauses": [
+        "自研晶片競爭是第一大風險",
+        "現在英特爾與 AMD 都在加速 AI 晶片佈局",
+        "如果 Nvidia 不持續加大 資本支出",
+        "很難守住 AI 算力主場"
+      ],
+      "visual_title": "自研晶片競爭",
+      "visual_subtitle": "英特爾與 AMD 加速佈局",
+      "badge_text": "CapEx $1,159 億",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "CapEx $60.4",
+          "tag": "AI 算力",
+          "metric": "2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "英特爾",
+          "sub": "AI 晶片加速",
+          "tag": "競爭對手",
+          "metric": "CapEx $60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "如果 NVIDIA 不持續加大 CapEx",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "自研晶片戰爭正在加劇，CapEx 要持續投入才能守住主場",
+      "code_lines": [],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_20",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "風險與我的觀點",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "explainer",
+      "clauses": [
+        "毛利率波動是第二大風險",
+        "雖然現在營益率高達 60.4%",
+        "但 AI 晶片市場規模擴張速度如果不如預期",
+        "可能會影響整體毛利率"
+      ],
+      "spoken_clauses": [
+        "毛利率波動是第二大風險",
+        "雖然現在營益率高達 百分之六十點四",
+        "但 AI 晶片市場規模擴張速度如果不如預期",
+        "可能會影響整體毛利率"
+      ],
+      "visual_title": "毛利率波動",
+      "visual_subtitle": "產業週期影響",
+      "badge_text": "PE 16.7x",
+      "nodes": [
+        {
+          "label": "營益率",
+          "sub": "60.4%",
+          "tag": "毛利率",
+          "metric": "1,304 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "產業週期",
+          "sub": "規模擴張速度",
+          "tag": "風險",
+          "metric": "16.7x",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "但 AI 晶片市場規模擴張速度如果不",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "毛利率波動與產業週期息息相關，要持續觀察市場擴張速度",
+      "code_lines": [],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_21",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "風險與我的觀點",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "最後還是要提醒大家持續追蹤雲端巨頭自研晶片進度與毛利率",
+        "如果你喜歡這種把財報跟底層邏輯拆開來看的分析",
+        "記得按讚訂閱追蹤 Gary 聊美股",
+        "本片內容僅供研究參考不構成投資建議，我們下次見"
+      ],
+      "spoken_clauses": [
+        "最後還是要提醒大家持續追蹤雲端巨頭自研晶片進度與毛利率",
+        "如果你喜歡這種把財報跟底層邏輯拆開來看的分析",
+        "記得按讚訂閱追蹤 Gary 聊美股",
+        "本片內容僅供研究參考不構成投資建議，我們下次見"
+      ],
+      "visual_title": "監管週期",
+      "visual_subtitle": "全球政策影響",
+      "badge_text": "$155.38",
+      "nodes": [
+        {
+          "label": "AI 晶片",
+          "sub": "全球監管趨嚴",
+          "tag": "政策風險",
+          "metric": "16.7x",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "應用場景",
+          "sub": "倫理與政策",
+          "tag": "系統性風險",
+          "metric": "CapEx $60.4 億",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "記得按讚訂閱追蹤 Gary 聊美股",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "監管週期是系統性風險，影響 AI 晶片的應用與規模",
+      "code_lines": [],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    }
+  ],
+  "short_title": "NVDA 財報 / 三大護城河 #Shorts",
+  "short_hook_banner": "NVDA 財報爆雷",
+  "short_cta_target_title": "NVDA 財報 / 三大護城河",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "hook",
+      "clauses": [
+        "NVIDIA 財報一出直接跳水",
+        "但營收暴增 65.5%"
+      ],
+      "spoken_clauses": [
+        "Nvidia 財報一出直接跳水",
+        "但營收暴增 百分之六十五點五"
+      ],
+      "headline": "財報跳水暴增",
+      "sub_caption": "市場恐慌，數據卻嚇人",
+      "highlight_badge": "$2,159 億",
+      "nodes": [
+        {
+          "label": "全年總營收",
+          "sub": "年增 +65.5%",
+          "tag": "成長",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "賺錢能力強",
+          "tag": "利潤",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "但實際數據看下來營收成長超乎預期",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of NVIDIA logo with financial data",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_progressive_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "NVIDIA 營收分三塊",
+        "資料中心、網路互連、軟硬整合，全都強"
+      ],
+      "spoken_clauses": [
+        "Nvidia 營收分三塊",
+        "資料中心、網路互連、軟硬整合，全都強"
+      ],
+      "headline": "營收三引擎",
+      "sub_caption": "資料中心成最大驅動力",
+      "highlight_badge": "營收三引擎",
+      "nodes": [
+        {
+          "label": "資料中心算力",
+          "sub": "AI 跑起來的主力",
+          "tag": "核心",
+          "metric": "$1,500 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "網路互連",
+          "sub": "資料中心內部連線設備",
+          "tag": "穩定",
+          "metric": "$300 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "軟硬整合",
+          "sub": "晶片加軟體一起賣",
+          "tag": "高毛利",
+          "metric": "$359 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of NVIDIA data center servers",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_live_source_proof",
+      "voice_style": "explainer",
+      "clauses": [
+        "營運現金流 $1,027 億",
+        "現金造血能力強到嚇人"
+      ],
+      "spoken_clauses": [
+        "營運現金流 一千零二十七億美金",
+        "現金造血能力強到嚇人"
+      ],
+      "headline": "現金流嚇人",
+      "sub_caption": "OCF $1,027 億",
+      "highlight_badge": "$1,027 億",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "年增 +65.5%",
+          "tag": "營收引擎",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "高達 60.4%",
+          "tag": "利潤結構",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這代表他們在 AI 算力這塊完全佔據",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of cash flow chart",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_before_after_versus",
+      "voice_style": "explainer",
+      "clauses": [
+        "CapEx $60.4 億，但第二層思考顯示實際投入更少"
+      ],
+      "spoken_clauses": [
+        "資本支出 六十點四億美金，但第二層思考顯示實際投入更少"
+      ],
+      "headline": "CapEx 第二層",
+      "sub_caption": "SEC 查證 $2,159 億",
+      "highlight_badge": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "NVIDIA 2026 CapEx",
+          "sub": "60.4 億 美金",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流 OCF",
+          "sub": "1,027 億 美金",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這套架構在真實負載下展現出極高的",
+          "tag": "營益率 42.3%",
+          "metric": "營益率 42.3%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of CapEx analysis",
+      "source_ids": [
+        "S4"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_code_or_steps",
+      "voice_style": "explainer",
+      "clauses": [
+        "CUDA 生態轉換成本高",
+        "全球 90% AI 模型都用 CUDA 設計"
+      ],
+      "spoken_clauses": [
+        "CUDA 生態轉換成本高",
+        "全球 百分之九十 AI 模型都用 CUDA 設計"
+      ],
+      "headline": "CUDA 護城河",
+      "sub_caption": "90% AI 模型用 CUDA",
+      "highlight_badge": "90% AI 模型",
+      "nodes": [
+        {
+          "label": "CUDA",
+          "sub": "全球 AI 模型開發者生態",
+          "tag": "生態鎖死",
+          "metric": "2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "現金流護城河",
+          "sub": "因為全球 90% 的 AI 模型都用 CUDA",
+          "tag": "+65.5%",
+          "metric": "$+65.5 億",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "這就像把門閂焊死在地基上",
+          "tag": "營益率 60.4%",
+          "metric": "營益率 60.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of CUDA ecosystem",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "目前 PE 16.7x，但未來成長空間還很大"
+      ],
+      "spoken_clauses": [
+        "目前 本益比 十六點七倍，但未來成長空間還很大"
+      ],
+      "headline": "PE 16.7x",
+      "sub_caption": "估值合理，成長空間大",
+      "highlight_badge": "16.7x",
+      "nodes": [
+        {
+          "label": "悲觀情境",
+          "sub": "營收成長 40%",
+          "tag": "PE 12x",
+          "metric": "12x",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "基準情境",
+          "sub": "營收成長 30%",
+          "tag": "PE 14x",
+          "metric": "14x",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "樂觀情境",
+          "sub": "營收成長 50%",
+          "tag": "PE 10x",
+          "metric": "10x",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of PE chart",
+      "source_ids": [
+        "S2"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_progressive_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "自研晶片競爭是第一大風險",
+        "現在英特爾與 AMD 都在加速 AI 晶片佈局",
+        "如果 NVIDIA 不持續加大 CapEx"
+      ],
+      "spoken_clauses": [
+        "自研晶片競爭是第一大風險",
+        "現在英特爾與 AMD 都在加速 AI 晶片佈局",
+        "如果 Nvidia 不持續加大 資本支出"
+      ],
+      "headline": "第三個細節",
+      "sub_caption": "自研晶片競爭風險",
+      "highlight_badge": "自研晶片",
+      "nodes": [
+        {
+          "label": "NVIDIA",
+          "sub": "CapEx $60.4",
+          "tag": "AI 算力",
+          "metric": "2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "英特爾",
+          "sub": "AI 晶片加速",
+          "tag": "競爭對手",
+          "metric": "CapEx $60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "如果 NVIDIA 不持續加大 CapEx",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of chip competition",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_08",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "我已經把完整拆解步驟",
+        "真實數據跟避坑清單整理在完整長片裡",
+        "現在直接點畫面左下角的關聯影片就能看完整版"
+      ],
+      "spoken_clauses": [
+        "我已經把完整拆解步驟",
+        "真實數據跟避坑清單整理在完整長片裡",
+        "現在直接點畫面左下角的關聯影片就能看完整版"
+      ],
+      "headline": "完整長片",
+      "sub_caption": "點左下看完整版",
+      "highlight_badge": "完整長片",
+      "nodes": [
+        {
+          "label": "AI 晶片",
+          "sub": "全球監管趨嚴",
+          "tag": "政策風險",
+          "metric": "16.7x",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "應用場景",
+          "sub": "倫理與政策",
+          "tag": "系統性風險",
+          "metric": "CapEx $60.4 億",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出效率",
+          "sub": "記得按讚訂閱追蹤 Gary 聊美股",
+          "tag": "營益率 46.8%",
+          "metric": "營益率 46.8%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "3D dark studio metaphor of YouTube shorts CTA",
+      "source_ids": [
+        "S4"
+      ],
+      "is_cta": true
+    }
+  ]
+}

@@ -1,0 +1,1658 @@
+{
+  "episode_id": "v3_ep01_ai_agent_master",
+  "title": "瀏覽器 AI Agent / 零成本實戰",
+  "thumbnail_line1": "瀏覽器 AI Agent",
+  "thumbnail_line2": "零成本實戰教學",
+  "category": "ai_agent",
+  "avatar_mode": false,
+  "youtube_description_summary": "Gary 教你用 browser-use 做瀏覽器 AI Agent，零成本跑自動化，從部署到串接 AI，實戰 Gary 的記帳與發票整理，不花錢也能搞定！",
+  "hashtags": [
+    "#GaryChen",
+    "#瀏覽器AI",
+    "#零成本實戰",
+    "#browseruse",
+    "#自動化工作流"
+  ],
+  "chapters": [
+    "01 為啥要學它",
+    "02 架構拆解",
+    "03 Gary 實戰情境",
+    "04 從零部署",
+    "05 串接 AI 與工具",
+    "06 跟付費方案差在哪",
+    "07 踩坑與搭配法"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為啥要學它",
+      "layout_type": "app_squircles_strikethrough",
+      "voice_style": "hook",
+      "clauses": [
+        "現在主流 AI Agent 每個月都要 $20 到 $200 的訂閱費",
+        "這錢花得冤枉，而且還不一定用得上",
+        "但今天我們要介紹的這個開源專案",
+        "完全不收錢，還能幫你做很多事情"
+      ],
+      "spoken_clauses": [
+        "現在主流 AI Agent 每個月都要 二十到兩百美金的訂閱費",
+        "這錢花得冤枉，而且還不一定用得上",
+        "但今天我們要介紹的這個開源專案",
+        "完全不收錢，還能幫你做很多事情"
+      ],
+      "visual_title": "瀏覽器 AI Agent / 零成本實戰",
+      "visual_subtitle": "免費開源的瀏覽器 AI Agent",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use/browser-use",
+          "sub": "GitHub 官方開源專案",
+          "tag": "開源",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "這錢花得冤枉，而且還不一定用得上",
+          "tag": "13,639 Forks",
+          "metric": "13,639 Forks",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "但今天我們要介紹的這個開源專案",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "這不是付費方案，而是免費開源的瀏覽器 AI Agent。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為啥要學它",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "這個 AI Agent 能幫你自動處理網頁操作",
+        "比如說自動點擊、填表、甚至自動搜尋資訊",
+        "完全不用手動操作",
+        "這樣你就能省下很多時間"
+      ],
+      "spoken_clauses": [
+        "這個 AI Agent 能幫你自動處理網頁操作",
+        "比如說自動點擊、填表、甚至自動搜尋資訊",
+        "完全不用手動操作",
+        "這樣你就能省下很多時間"
+      ],
+      "visual_title": "瀏覽器 AI Agent / 零成本實戰",
+      "visual_subtitle": "自動化網頁操作，省時間",
+      "badge_text": "自動化網頁操作",
+      "nodes": [
+        {
+          "label": "自動點擊",
+          "sub": "不用手動點擊網頁",
+          "tag": "自動化",
+          "metric": "122K ★",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "自動搜尋",
+          "sub": "不用手動搜尋資訊",
+          "tag": "自動化",
+          "metric": "122K ★",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "完全不用手動操作",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "這不是付費方案，而是免費開源的瀏覽器 AI Agent。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為啥要學它",
+      "layout_type": "agenda_four_steps",
+      "voice_style": "warm",
+      "clauses": [
+        "今天這支影片我們會從零開始",
+        "教你怎麼部署這個 AI Agent",
+        "並串接 AI 與工具",
+        "最後比較它跟付費方案的差異"
+      ],
+      "spoken_clauses": [
+        "今天這支影片我們會從零開始",
+        "教你怎麼部署這個 AI Agent",
+        "並串接 AI 與工具",
+        "最後比較它跟付費方案的差異"
+      ],
+      "visual_title": "瀏覽器 AI Agent / 零成本實戰",
+      "visual_subtitle": "四個實戰重點，零成本上手",
+      "badge_text": "從零部署 + 串接 AI 與工具",
+      "nodes": [
+        {
+          "label": "架構拆解",
+          "sub": "拆解 browser-use 的 Python",
+          "tag": "01",
+          "metric": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "Gary 實戰情境",
+          "sub": "講 Gary 用 browser-use 自動",
+          "tag": "02",
+          "metric": "02",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "從零部署",
+          "sub": "手把手教你在電腦跑",
+          "tag": "03",
+          "metric": "03",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "串接 AI 與工具",
+          "sub": "教如何把 AI 模型串進瀏覽器",
+          "tag": "04",
+          "metric": "04",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "這不是付費方案，而是免費開源的瀏覽器 AI Agent。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "架構拆解",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "傳統爬蟲是靠文字抓取",
+        "但網頁會動態變更",
+        "一有更新就抓不到",
+        "這邊的 AI Agent 不只是抓文字"
+      ],
+      "spoken_clauses": [
+        "傳統爬蟲是靠文字抓取",
+        "但網頁會動態變更",
+        "一有更新就抓不到",
+        "這邊的 AI Agent 不只是抓文字"
+      ],
+      "visual_title": "傳統爬蟲 vs AI Agent",
+      "visual_subtitle": "為啥改版就不壞",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 結構樹",
+          "sub": "看懂網頁骨架",
+          "tag": "視覺理解",
+          "metric": "122K ★",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "AI Agent",
+          "sub": "像人一樣看網頁",
+          "tag": "雙引擎",
+          "metric": "122K ★",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "一有更新就抓不到",
+          "tag": "31,539 ★",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "DOM 結構樹 + 視覺理解 = 看懂網頁的 AI 腦",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "架構拆解",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "warm",
+      "clauses": [
+        "這邊的 AI Agent 用兩個引擎一起工作",
+        "一個是 DOM 結構樹",
+        "一個是視覺理解",
+        "就像人看網頁一樣"
+      ],
+      "spoken_clauses": [
+        "這邊的 AI Agent 用兩個引擎一起工作",
+        "一個是 DOM 結構樹",
+        "一個是視覺理解",
+        "就像人看網頁一樣"
+      ],
+      "visual_title": "雙引擎看網頁",
+      "visual_subtitle": "像人一樣理解網頁",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 結構樹",
+          "sub": "網頁骨架分析",
+          "tag": "解析",
+          "metric": "122K ★",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "視覺理解",
+          "sub": "像人一樣看網頁",
+          "tag": "AI",
+          "metric": "122K ★",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "一個是視覺理解",
+          "tag": "31,539 ★",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "雙引擎 = 看懂網頁的 AI 腦",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "架構拆解",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "hook",
+      "clauses": [
+        "接著看架構拆解的另一個關鍵細節",
+        "根據公開查證資料顯示",
+        "根據公開論文實測在複雜動態網頁的成功率大幅領先",
+        "這也是實戰時最能拉開差距的地方"
+      ],
+      "spoken_clauses": [
+        "接著看架構拆解的另一個關鍵細節",
+        "根據公開查證資料顯示",
+        "根據公開論文實測在複雜動態網頁的成功率大幅領先",
+        "這也是實戰時最能拉開差距的地方"
+      ],
+      "visual_title": "AI Agent 看網頁",
+      "visual_subtitle": "像人一樣理解網頁",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 結構樹",
+          "sub": "網頁骨架分析",
+          "tag": "解析",
+          "metric": "122K ★",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "視覺理解",
+          "sub": "像人一樣看網頁",
+          "tag": "AI",
+          "metric": "122K ★",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "arXiv 架構與實測論文（",
+          "tag": "31,539 ★",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "雙引擎 = 看懂網頁的 AI 腦",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰情境",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "Gary 每個月都要處理一堆電子發票",
+        "以前是手動下載、整理、輸入資料庫",
+        "現在用 AI Agent 自動登入後臺",
+        "下載所有發票，然後自動解析金額跟日期"
+      ],
+      "spoken_clauses": [
+        "Gary 每個月都要處理一堆電子發票",
+        "以前是手動下載、整理、輸入資料庫",
+        "現在用 AI Agent 自動登入後臺",
+        "下載所有發票，然後自動解析金額跟日期"
+      ],
+      "visual_title": "自動整理發票",
+      "visual_subtitle": "從下載到資料庫一步到位",
+      "badge_text": "0 次手動操作",
+      "nodes": [
+        {
+          "label": "自動下載發票",
+          "sub": "登入後臺抓取 PDF",
+          "tag": "瀏覽器",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "解析金額與日期",
+          "sub": "AI 認出文字格式",
+          "tag": "資料處理",
+          "metric": "13.6K Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "存進資料庫",
+          "sub": "自動更新 Excel/SQL",
+          "tag": "自動化",
+          "metric": "121K ★",
+          "icon": "database",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "省下幾個小時",
+      "callout_body": "不用再手動輸入，AI 會自動完成所有流程",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰情境",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "Gary 用 AI Agent 來比價",
+        "自動打開各大電商網站",
+        "抓取商品價格，然後用 AI 比較哪個最便宜",
+        "最後直接把結果整理成表格"
+      ],
+      "spoken_clauses": [
+        "Gary 用 AI Agent 來比價",
+        "自動打開各大電商網站",
+        "抓取商品價格，然後用 AI 比較哪個最便宜",
+        "最後直接把結果整理成表格"
+      ],
+      "visual_title": "自動比價與整理",
+      "visual_subtitle": "從網站到 Slack 一步到位",
+      "badge_text": "0 次手動點擊",
+      "nodes": [
+        {
+          "label": "打開電商網站",
+          "sub": "自動登入帳號",
+          "tag": "瀏覽器",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "抓取商品價格",
+          "sub": "AI 認出文字與數字",
+          "tag": "資料處理",
+          "metric": "13.6K Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "整理成表格",
+          "sub": "自動發送到 Slack/Telegram",
+          "tag": "自動化",
+          "metric": "121K ★",
+          "icon": "database",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "省下幾個小時",
+      "callout_body": "不用再手動輸入，AI 會自動完成所有流程",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰情境",
+      "layout_type": "github_pr_checks_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "Gary 用 AI Agent 自動處理 GitHub 的 PR",
+        "比如說自動檢查程式碼格式、執行測試",
+        "還能自動回覆評論",
+        "這樣他就不用花時間一個個看 PR"
+      ],
+      "spoken_clauses": [
+        "Gary 用 AI Agent 自動處理 GitHub 的 P R",
+        "比如說自動檢查程式碼格式、執行測試",
+        "還能自動回覆評論",
+        "這樣他就不用花時間一個個看 P R"
+      ],
+      "visual_title": "自動處理 GitHub PR",
+      "visual_subtitle": "從檢查到回覆一步到位",
+      "badge_text": "0 次手動檢查",
+      "nodes": [
+        {
+          "label": "自動檢查格式",
+          "sub": "AI 認出程式碼規範",
+          "tag": "瀏覽器",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "執行測試",
+          "sub": "自動跑 unit test",
+          "tag": "資料處理",
+          "metric": "13.6K Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "自動回覆評論",
+          "sub": "AI 生成回覆內容",
+          "tag": "自動化",
+          "metric": "121K ★",
+          "icon": "database",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "省下幾個小時",
+      "callout_body": "不用再手動輸入，AI 會自動完成所有流程",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "從零部署",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們要從頭開始搞這個 AI Agent",
+        "先在自己的電腦裝 Python 環境",
+        "然後用 pip 安裝 browser-use 套件",
+        "這整個過程完全免費"
+      ],
+      "spoken_clauses": [
+        "我們要從頭開始搞這個 AI Agent",
+        "先在自己的電腦裝 Python 環境",
+        "然後用 pip 安裝 browser-use 套件",
+        "這整個過程完全免費"
+      ],
+      "visual_title": "零成本部署第一步",
+      "visual_subtitle": "Python 環境準備與安裝",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "AI 瀏覽器Agent",
+          "tag": "開源",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "先在自己的電腦裝 Python 環境",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "然後用 pip 安裝 browser-use",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "只要 pip install 一個指令，就能啟動 AI Agent 的本機環境。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "從零部署",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "安裝完套件後，我們在終端機貼上官方這一行指令",
+        "啟動瀏覽器 Agent 的主程式",
+        "然後會看到一個暗色介面彈出來",
+        "這就是 AI Agent 的控制檯"
+      ],
+      "spoken_clauses": [
+        "安裝完套件後，我們在終端機貼上官方這一行指令",
+        "啟動瀏覽器 Agent 的主程式",
+        "然後會看到一個暗色介面彈出來",
+        "這就是 AI Agent 的控制檯"
+      ],
+      "visual_title": "啟動暗色介面",
+      "visual_subtitle": "瀏覽器Agent控制檯啟動",
+      "badge_text": "零成本部署",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "AI 瀏覽器Agent",
+          "tag": "開源",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "啟動瀏覽器 Agent 的主程式",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "然後會看到一個暗色介面彈出來",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "啟動後會看到暗色介面，這就是 AI Agent 的控制檯，可以執行網頁任務。",
+      "code_lines": [
+        "uvicorn main:app --host 127.0.0.1 --port 8888"
+      ],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S6"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "從零部署",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來我們要執行第一個自動搜尋任務",
+        "只要在控制檯用白話輸入你想自動搜尋的任務目標",
+        "AI 會自動打開瀏覽器",
+        "搜尋最新的 AI 趨勢"
+      ],
+      "spoken_clauses": [
+        "接下來我們要執行第一個自動搜尋任務",
+        "只要在控制檯用白話輸入你想自動搜尋的任務目標",
+        "AI 會自動打開瀏覽器",
+        "搜尋最新的 AI 趨勢"
+      ],
+      "visual_title": "執行第一個任務",
+      "visual_subtitle": "自動搜尋最新 AI 趨勢",
+      "badge_text": "零成本部署",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "AI 瀏覽器Agent",
+          "tag": "開源",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "只要在控制檯輸入 task: \"search",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "AI 會自動打開瀏覽器",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "只要輸入 task 指令，AI 會自動執行網頁搜尋任務，完全不用手動操作。",
+      "code_lines": [
+        "task: \"search for latest AI trends\""
+      ],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "串接 AI 與工具",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "要讓 AI 用不同模型做事",
+        "其實只要在設定檔改一行指令就好",
+        "比如說要換成 Claude",
+        "只要把模型參數改成 Claude 或本機免費模型就能跑"
+      ],
+      "spoken_clauses": [
+        "要讓 AI 用不同模型做事",
+        "其實只要在設定檔改一行指令就好",
+        "比如說要換成 Claude",
+        "只要把模型參數改成 Claude 或本機免費模型就能跑"
+      ],
+      "visual_title": "切換 AI 模型",
+      "visual_subtitle": "一行指令搞定",
+      "badge_text": "0 成本",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "支援 Claude/OpenAI/本地模型",
+          "tag": "AI 模型切換",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "其實只要在設定檔改一行指令就好",
+          "tag": "0 Forks",
+          "metric": "0 Forks",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "比如說要換成 Claude",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "模型切換就是改一行設定檔，不影響流程",
+      "code_lines": [
+        "model: \"claude-3\""
+      ],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "串接 AI 與工具",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "抓完資料後要推播到 Slack 或 Telegram",
+        "其實就是加個通知指令",
+        "比如說在終端機輸入 notify: \"slack@channel\"",
+        "這樣 AI 會自動把結果發到指定頻道"
+      ],
+      "spoken_clauses": [
+        "抓完資料後要推播到 Slack 或 Telegram",
+        "其實就是加個通知指令",
+        "比如說在終端機輸入 notify: \"slack channel\"",
+        "這樣 AI 會自動把結果發到指定頻道"
+      ],
+      "visual_title": "自動推播通知",
+      "visual_subtitle": "零手動操作",
+      "badge_text": "自動化",
+      "nodes": [
+        {
+          "label": "notify: \"slack@",
+          "sub": "自動發送到 Slack",
+          "tag": "通知整合",
+          "metric": "122K ★",
+          "icon": "slack",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "其實就是加個通知指令",
+          "tag": "0 Forks",
+          "metric": "0 Forks",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "比如說在終端機輸入 notify: \"",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "通知指令就是流程的最後一步，完全自動",
+      "code_lines": [
+        "notify: \"slack@channel\""
+      ],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "串接 AI 與工具",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "如果要串接本機模型",
+        "比如 Ollama，就加一句 model: \"ollama\"",
+        "然後在設定檔指定模型路徑",
+        "這樣 AI 會直接用你電腦上的模型"
+      ],
+      "spoken_clauses": [
+        "如果要串接本機模型",
+        "比如 Ollama，就加一句 model: \"ollama\"",
+        "然後在設定檔指定模型路徑",
+        "這樣 AI 會直接用你電腦上的模型"
+      ],
+      "visual_title": "本機模型串接",
+      "visual_subtitle": "不連網不花錢",
+      "badge_text": "本機運行",
+      "nodes": [
+        {
+          "label": "model: \"ollama\"",
+          "sub": "指定本機模型路徑",
+          "tag": "本機模型",
+          "metric": "122K ★",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "比如 Ollama，就加一句 model: \"",
+          "tag": "0 Forks",
+          "metric": "0 Forks",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "然後在設定檔指定模型路徑",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "本機模型就是把 AI 放在你電腦上，不連網也不花錢",
+      "code_lines": [
+        "model: \"ollama\""
+      ],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "跟付費方案差在哪",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "開源本機跑最適合處理敏感資料",
+        "比如說 Gary 要處理客戶信用卡資訊",
+        "完全不用連網，隱私有保障",
+        "而且成本幾乎是零"
+      ],
+      "spoken_clauses": [
+        "開源本機跑最適合處理敏感資料",
+        "比如說 Gary 要處理客戶信用卡資訊",
+        "完全不用連網，隱私有保障",
+        "而且成本幾乎是零"
+      ],
+      "visual_title": "隱私 vs 成本",
+      "visual_subtitle": "本地跑 vs 雲端版",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "本地跑",
+          "tag": "隱私",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "Browser Use Cloud",
+          "sub": "雲端版",
+          "tag": "模型更新",
+          "metric": "122K ★",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "完全不用連網，隱私有保障",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "隱私與模型更新",
+      "callout_body": "本地跑不連網最安全，但模型更新慢，雲端版模型最新但要付錢。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "跟付費方案差在哪",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "雲端版每小時 $0.06 計費",
+        "適合短時間任務",
+        "比如說 Gary 要跑個小時的自動化流程",
+        "錢不多，但長時間跑下來會累積成本"
+      ],
+      "spoken_clauses": [
+        "雲端版每小時 零元免費.六 計費",
+        "適合短時間任務",
+        "比如說 Gary 要跑個小時的自動化流程",
+        "錢不多，但長時間跑下來會累積成本"
+      ],
+      "visual_title": "雲端版穩定度",
+      "visual_subtitle": "短時間 vs 長時間",
+      "badge_text": "$0.06/小時",
+      "nodes": [
+        {
+          "label": "Browser Use Cloud",
+          "sub": "雲端版",
+          "tag": "穩定度",
+          "metric": "122K ★",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "本地跑",
+          "sub": "本機版",
+          "tag": "成本",
+          "metric": "122K ★",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "比如說 Gary 要跑個小時的自動化流",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "穩定度與成本",
+      "callout_body": "雲端版穩定度不穩定，長時間跑會貴，本地跑成本低但模型更新慢。",
+      "code_lines": [
+        "uvicorn main:app --host 127.0.0.1 --port 8888"
+      ],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S6"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "跟付費方案差在哪",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "高價商業方案雖然功能齊全",
+        "但價格貴到嚇人",
+        "比如說有些方案一個月要 $500 起跳",
+        "而且他們的模型更新也不一定比雲端版快"
+      ],
+      "spoken_clauses": [
+        "高價商業方案雖然功能齊全",
+        "但價格貴到嚇人",
+        "比如說有些方案一個月要 五百美金 起跳",
+        "而且他們的模型更新也不一定比雲端版快"
+      ],
+      "visual_title": "高價商業方案",
+      "visual_subtitle": "功能齊全 vs 價格貴",
+      "badge_text": "$500+/月",
+      "nodes": [
+        {
+          "label": "高價商業方案",
+          "sub": "功能齊全",
+          "tag": "價格",
+          "metric": "122K ★",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "本地跑",
+          "sub": "本機版",
+          "tag": "隱私",
+          "metric": "122K ★",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "比如說有些方案一個月要 $500 起跳",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "功能 vs 價格",
+      "callout_body": "高價方案功能多但貴到嚇人，本地跑便宜又安全，雲端版中間取平衡。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S6"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_19",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "踩坑與搭配法",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "登入 Session 保存最容易出問題",
+        "因為瀏覽器 Agent 會自動關閉",
+        "如果沒設定好會導致資料斷掉",
+        "Gary 之前就因為這問題搞到半夜"
+      ],
+      "spoken_clauses": [
+        "登入 Session 保存最容易出問題",
+        "因為瀏覽器 Agent 會自動關閉",
+        "如果沒設定好會導致資料斷掉",
+        "Gary 之前就因為這問題搞到半夜"
+      ],
+      "visual_title": "Session 保存陷阱",
+      "visual_subtitle": "資料斷掉的痛點",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "自動關閉 Session",
+          "tag": "登入問題",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "因為瀏覽器 Agent 會自動關閉",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "如果沒設定好會導致資料斷掉",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "Session 保存是新手最容易踩的坑，資料斷掉比 bug 更可怕。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_20",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "踩坑與搭配法",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "反爬蟲驗證碼是另一個大雷區",
+        "AI 會被網站識別成機器",
+        "Gary 之前就因為這問題卡住",
+        "結果發現是因為網站用了 Google reCAPTCHA"
+      ],
+      "spoken_clauses": [
+        "反爬蟲驗證碼是另一個大雷區",
+        "AI 會被網站識別成機器",
+        "Gary 之前就因為這問題卡住",
+        "結果發現是因為網站用了 Google reCAPTCHA"
+      ],
+      "visual_title": "反爬蟲驗證碼",
+      "visual_subtitle": "AI 被關進監獄",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "反爬蟲驗證碼",
+          "tag": "網站防禦",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "AI 會被網站識別成機器",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "Gary 之前就因為這問題卡住",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "反爬蟲驗證碼是 AI 被關進監獄的罪魁禍首，本地執行是唯一解。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    },
+    {
+      "beat_id": "beat_21",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "踩坑與搭配法",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "那以上就是今天的實戰內容",
+        "如果你覺得鋪天蓋地的 AI 資訊讓你眼花撩亂",
+        "歡迎加入我在下方資訊欄整理的 AI 實戰營社群",
+        "這支影片用到的設定清單跟模板都在裡面，那我們下次見"
+      ],
+      "spoken_clauses": [
+        "那以上就是今天的實戰內容",
+        "如果你覺得鋪天蓋地的 AI 資訊讓你眼花撩亂",
+        "歡迎加入我在下方資訊欄整理的 AI 實戰營社群",
+        "這支影片用到的設定清單跟模板都在裡面，那我們下次見"
+      ],
+      "visual_title": "Token 消耗控制",
+      "visual_subtitle": "AI 被限流的痛點",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Token 消耗控制",
+          "tag": "成本問題",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "如果你覺得鋪天蓋地的 AI 資訊讓你",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "歡迎加入我在下方資訊欄整理的 AI",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "核心洞察",
+      "callout_body": "Token 消耗控制是 AI 被限流的罪魁禍首，本地執行是唯一解。",
+      "code_lines": [
+        "pip install browser-use"
+      ],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "pop"
+    }
+  ],
+  "short_title": "瀏覽器 AI Agent / 零成本實戰 #Shorts",
+  "short_hook_banner": "0成本AI Agent",
+  "short_cta_target_title": "瀏覽器 AI Agent / 零成本實戰",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "hook",
+      "clauses": [
+        "現在主流 AI Agent 每月要 $20 到 $200",
+        "這錢花得冤枉，還不一定用得上"
+      ],
+      "spoken_clauses": [
+        "現在主流 AI Agent 每月要 二十到兩百美金",
+        "這錢花得冤枉，還不一定用得上"
+      ],
+      "headline": "AI Agent 0 成本",
+      "sub_caption": "用開源本機跑最省錢",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use/browser-use",
+          "sub": "GitHub 官方開源專案",
+          "tag": "開源",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "這錢花得冤枉，而且還不一定用得上",
+          "tag": "13,639 Forks",
+          "metric": "13,639 Forks",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "但今天我們要介紹的這個開源專案",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "傳統爬蟲是靠文字抓取",
+        "但網頁會動態變更，抓不到資料"
+      ],
+      "spoken_clauses": [
+        "傳統爬蟲是靠文字抓取",
+        "但網頁會動態變更，抓不到資料"
+      ],
+      "headline": "網頁動態抓取難",
+      "sub_caption": "瀏覽器 Agent 會自動關閉",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 結構樹",
+          "sub": "看懂網頁骨架",
+          "tag": "視覺理解",
+          "metric": "122K ★",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "AI Agent",
+          "sub": "像人一樣看網頁",
+          "tag": "雙引擎",
+          "metric": "122K ★",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "一有更新就抓不到",
+          "tag": "31,539 ★",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_live_source_proof",
+      "voice_style": "explainer",
+      "clauses": [
+        "Gary 每個月要處理一堆電子發票",
+        "以前是手動下載、整理、輸入資料庫"
+      ],
+      "spoken_clauses": [
+        "Gary 每個月要處理一堆電子發票",
+        "以前是手動下載、整理、輸入資料庫"
+      ],
+      "headline": "Gary 實戰情境",
+      "sub_caption": "0 次手動操作",
+      "highlight_badge": "0 次手動操作",
+      "nodes": [
+        {
+          "label": "自動下載發票",
+          "sub": "登入後臺抓取 PDF",
+          "tag": "瀏覽器",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "解析金額與日期",
+          "sub": "AI 認出文字格式",
+          "tag": "資料處理",
+          "metric": "13.6K Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "存進資料庫",
+          "sub": "自動更新 Excel/SQL",
+          "tag": "自動化",
+          "metric": "121K ★",
+          "icon": "database",
+          "trend": "up"
+        }
+      ],
+      "ai_image_prompt": "sleek 3D architectural glass shield vault guarding glowing golden compute cores on dark charcoal #222224 surface, soft rim lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們要從頭開始搞這個 AI Agent",
+        "先在自己的電腦裝 Python 環境"
+      ],
+      "spoken_clauses": [
+        "我們要從頭開始搞這個 AI Agent",
+        "先在自己的電腦裝 Python 環境"
+      ],
+      "headline": "從零部署",
+      "sub_caption": "自己電腦跑最安全",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "AI 瀏覽器Agent",
+          "tag": "開源",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "先在自己的電腦裝 Python 環境",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "然後用 pip 安裝 browser-use",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "minimalist 3D precision balance scale weighing a compact glowing amber AI core against heavy dark iron blocks on #222224 stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "要讓 AI 用不同模型做事",
+        "其實只要在設定檔改一行指令就好"
+      ],
+      "spoken_clauses": [
+        "要讓 AI 用不同模型做事",
+        "其實只要在設定檔改一行指令就好"
+      ],
+      "headline": "串接 AI 與工具",
+      "sub_caption": "0 成本改模型",
+      "highlight_badge": "0 成本",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "支援 Claude/OpenAI/本地模型",
+          "tag": "AI 模型切換",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "其實只要在設定檔改一行指令就好",
+          "tag": "0 Forks",
+          "metric": "0 Forks",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "比如說要換成 Claude",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "isometric 3D flywheel turbine with glowing orange energy rings accelerating on matte black #1E1E1E pedestal, Cinema4D Octane studio lighting, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "開源本機跑最適合處理敏感資料",
+        "比如說 Gary 要處理客戶信用卡資訊"
+      ],
+      "spoken_clauses": [
+        "開源本機跑最適合處理敏感資料",
+        "比如說 Gary 要處理客戶信用卡資訊"
+      ],
+      "headline": "敏感資料處理",
+      "sub_caption": "本機跑最安全",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "本地跑",
+          "tag": "隱私",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "Browser Use Cloud",
+          "sub": "雲端版",
+          "tag": "模型更新",
+          "metric": "122K ★",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "完全不用連網，隱私有保障",
+          "tag": "Python",
+          "metric": "31,539 ★",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "clean 3D server cluster rack with warm amber telemetry light bars floating on #222224 dark matte background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_shock_metric_hero",
+      "voice_style": "explainer",
+      "clauses": [
+        "登入 Session 保存最容易出問題",
+        "因為瀏覽器 Agent 會自動關閉"
+      ],
+      "spoken_clauses": [
+        "登入 Session 保存最容易出問題",
+        "因為瀏覽器 Agent 會自動關閉"
+      ],
+      "headline": "踩坑與搭配法",
+      "sub_caption": "Session 保存難",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "自動關閉 Session",
+          "tag": "登入問題",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "因為瀏覽器 Agent 會自動關閉",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "如果沒設定好會導致資料斷掉",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "minimalist 3D dark studio conveyor belt carrying glowing amber and cyan data cubes through an orange scanner gate on #262626 charcoal stage, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_08",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "我已經把完整拆解步驟",
+        "真實數據跟避坑清單整理在完整長片裡",
+        "現在直接點畫面左下角的關聯影片就能看完整版"
+      ],
+      "spoken_clauses": [
+        "我已經把完整拆解步驟",
+        "真實數據跟避坑清單整理在完整長片裡",
+        "現在直接點畫面左下角的關聯影片就能看完整版"
+      ],
+      "headline": "完整長片在這",
+      "sub_caption": "點左下看完整版",
+      "highlight_badge": "完整長片",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Token 消耗控制",
+          "tag": "成本問題",
+          "metric": "122K ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "自動化執行層",
+          "sub": "如果你覺得鋪天蓋地的 AI 資訊讓你",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接",
+          "sub": "歡迎加入我在下方資訊欄整理的 AI",
+          "tag": "69 HN pts",
+          "metric": "69 HN pts",
+          "icon": "zap",
+          "trend": "neutral"
+        }
+      ],
+      "ai_image_prompt": "tactile 3D matte gunmetal modular nodes connected by warm glowing #EB8B1B fiber-optic bridges, isometric product render on #262626 background, clean conceptual metaphor for browser-use, strictly no text or letters",
+      "source_ids": [
+        "S8"
+      ],
+      "is_cta": true
+    }
+  ]
+}

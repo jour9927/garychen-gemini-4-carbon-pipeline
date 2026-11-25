@@ -58,7 +58,8 @@ class GarychenVoiceCloner:
                     continue
                 hj = hr.json()
                 gpu = hj.get("gpu") or {}
-                has_fast_cuda = bool(gpu.get("cuda_available") and int(gpu.get("free_mb", 0)) >= 2400)
+                loaded = hj.get("loaded_models") or []
+                has_fast_cuda = bool(gpu.get("cuda_available") and (int(gpu.get("free_mb", 0)) >= 2400 or "f5_tts" in loaded))
                 rank = 0 if ("colab" in ep.name and has_fast_cuda) else (1 if has_fast_cuda else (2 if "mps" in ep.name else 3))
                 healthy_eps.append((rank, ep, hj.get("capabilities") or []))
             except Exception:

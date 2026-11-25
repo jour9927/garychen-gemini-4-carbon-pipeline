@@ -71,8 +71,12 @@ class GarychenUnattendedPipeline:
     ) -> dict:
         ts_slug = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
         console.rule("[bold orange3]Stage 1/7 · 無人值守選題 (Unattended Topic Scout V3)")
-        topic: TopicCandidate = self.scout.pick_unattended(custom_topic=custom_topic, category=category, seed_urls=seed_urls)
-        ep_id = episode_id or f"{ts_slug}_{re.sub(r'[^a-zA-Z0-9]+', '_', topic.topic_id).strip('_')[:20]}"
+        if episode_id and not custom_topic and (self.outputs_root / episode_id / "topic.json").exists():
+            topic = TopicCandidate.model_validate_json((self.outputs_root / episode_id / "topic.json").read_text(encoding="utf-8"))
+            ep_id = episode_id
+        else:
+            topic = self.scout.pick_unattended(custom_topic=custom_topic, category=category, seed_urls=seed_urls)
+            ep_id = episode_id or f"{ts_slug}_{re.sub(r'[^a-zA-Z0-9]+', '_', topic.topic_id).strip('_')[:20]}"
         ep_dir = self.outputs_root / ep_id
         ep_dir.mkdir(parents=True, exist_ok=True)
         (ep_dir / "topic.json").write_text(topic.model_dump_json(indent=2), encoding="utf-8")

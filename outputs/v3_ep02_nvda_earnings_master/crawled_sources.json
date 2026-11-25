@@ -1,0 +1,104 @@
+[
+  {
+    "source_id": "S1",
+    "title": "SEC EDGAR 10-K 官方財報：NVIDIA Corp. (NVDA)",
+    "url": "https://www.sec.gov/edgar/browse/?CIK=1045810",
+    "domain": "sec.gov",
+    "published_date": "2026-01-25",
+    "retrieved_at": "2026-11-25T07:18:05Z",
+    "source_type": "sec_filing",
+    "relevance_score": 1.0,
+    "screenshot_path": "outputs/v3_ep02_nvda_earnings_master/source_screenshots/S1.png",
+    "key_facts": [
+      "SEC 10-K 官方年報（截至 2026-01-25）：全年總營收 $2,159 億 美金（年增 +65.5%）",
+      "營業利益達 $1,304 億 美金，營業利益率高達 60.4%",
+      "全年淨利 $1,201 億 美金（年增 +64.7%）",
+      "營運現金流（OCF）達 $1,027 億 美金，現金造血能力強勁",
+      "資本支出（CapEx）為 $60.4 億 美金（年變動 +86.7%）"
+    ],
+    "metrics": [
+      "$2,159 億",
+      "+65.5%",
+      "營益率 60.4%",
+      "OCF $1,027 億",
+      "CapEx $60.4 億"
+    ],
+    "code_or_commands": [],
+    "excerpt": "SEC 10-K 官方年報（截至 2026-01-25）：全年總營收 $2,159 億 美金（年增 +65.5%） | 營業利益達 $1,304 億 美金，營業利益率高達 60.4% | 全年淨利 $1,201 億 美金（年增 +64.7%） | 營運現金流（OCF）達 $1,027 億 美金，現金造血能力強勁 | 資本支出（CapEx）為 $60.4 億 美金（年變動 +86.7%）"
+  },
+  {
+    "source_id": "S2",
+    "title": "CNBC 公開市場報價與估值：NVDA ($155.38 / PE 16.7x)",
+    "url": "https://www.cnbc.com/quotes/NVDA",
+    "domain": "cnbc.com",
+    "published_date": "2026-11-25",
+    "retrieved_at": "2026-11-25T07:18:05Z",
+    "source_type": "market_data",
+    "relevance_score": 0.99,
+    "screenshot_path": "outputs/v3_ep02_nvda_earnings_master/source_screenshots/S2.png",
+    "key_facts": [
+      "NVDA 公開市場股價報 $155.38 美金，52 週高低點區間 $124.50 – $243.37，本益比（P/E）約 16.7x，總市值 3.745T"
+    ],
+    "metrics": [
+      "$155.38",
+      "PE 16.7x",
+      "52W高 $243"
+    ],
+    "code_or_commands": [],
+    "excerpt": "NVDA 公開市場股價報 $155.38 美金，52 週高低點區間 $124.50 – $243.37，本益比（P/E）約 16.7x，總市值 3.745T"
+  },
+  {
+    "source_id": "S3",
+    "title": "SEC EDGAR 10-K 官方財報：Microsoft Corp. (MSFT)",
+    "url": "https://www.sec.gov/edgar/browse/?CIK=789019",
+    "domain": "sec.gov",
+    "published_date": "2026-06-30",
+    "retrieved_at": "2026-11-25T07:18:03Z",
+    "source_type": "sec_filing",
+    "relevance_score": 0.94,
+    "screenshot_path": "outputs/v3_ep02_nvda_earnings_master/source_screenshots/S3.png",
+    "key_facts": [
+      "SEC 10-K 官方年報（截至 2026-06-30）：全年總營收 $3,318 億 美金（年增 +17.8%）",
+      "營業利益達 $1,552 億 美金，營業利益率高達 46.8%",
+      "全年淨利 $1,337 億 美金（年增 +31.3%）",
+      "營運現金流（OCF）達 $1,829 億 美金，現金造血能力強勁",
+      "資本支出（CapEx）為 $1,159 億 美金（年變動 +79.6%）"
+    ],
+    "metrics": [
+      "$3,318 億",
+      "+17.8%",
+      "營益率 46.8%",
+      "OCF $1,829 億",
+      "CapEx $1,159 億"
+    ],
+    "code_or_commands": [],
+    "excerpt": "SEC 10-K 官方年報（截至 2026-06-30）：全年總營收 $3,318 億 美金（年增 +17.8%） | 營業利益達 $1,552 億 美金，營業利益率高達 46.8% | 全年淨利 $1,337 億 美金（年增 +31.3%） | 營運現金流（OCF）達 $1,829 億 美金，現金造血能力強勁 | 資本支出（CapEx）為 $1,159 億 美金（年變動 +79.6%）"
+  },
+  {
+    "source_id": "S4",
+    "title": "SEC EDGAR 10-K 官方財報：Meta Platforms, Inc. (META)",
+    "url": "https://www.sec.gov/edgar/browse/?CIK=1326801",
+    "domain": "sec.gov",
+    "published_date": "2025-12-31",
+    "retrieved_at": "2026-11-25T07:18:04Z",
+    "source_type": "sec_filing",
+    "relevance_score": 0.94,
+    "screenshot_path": "outputs/v3_ep02_nvda_earnings_master/source_screenshots/S4.png",
+    "key_facts": [
+      "SEC 10-K 官方年報（截至 2025-12-31）：全年總營收 $2,010 億 美金（年增 +22.2%）",
+      "營業利益達 $833 億 美金，營業利益率高達 41.4%",
+      "全年淨利 $605 億 美金（年增 -3.1%）",
+      "營運現金流（OCF）達 $1,158 億 美金，現金造血能力強勁",
+      "資本支出（CapEx）為 $697 億 美金（年變動 +87.1%）"
+    ],
+    "metrics": [
+      "$2,010 億",
+      "+22.2%",
+      "營益率 41.4%",
+      "OCF $1,158 億",
+      "CapEx $697 億"
+    ],
+    "code_or_commands": [],
+    "excerpt": "SEC 10-K 官方年報（截至 2025-12-31）：全年總營收 $2,010 億 美金（年增 +22.2%） | 營業利益達 $833 億 美金，營業利益率高達 41.4% | 全年淨利 $605 億 美金（年增 -3.1%） | 營運現金流（OCF）達 $1,158 億 美金，現金造血能力強勁 | 資本支出（CapEx）為 $697 億 美金（年變動 +87.1%）"
+  }
+]

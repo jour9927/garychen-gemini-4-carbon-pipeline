@@ -143,7 +143,17 @@ def to_spoken_tts_text(display_text: str) -> str:
     s = re.sub(r"`[^`]+`", "這行指令", s)
     s = re.sub(r"\b(?:curl|pip|npm|npx|docker|git)\s+-[a-zA-Z]+\s+\S+.*", "終端機安裝指令", s)
 
-    # 2. Arrows & ranges (e.g. $20-$200, 24%→30%)
+    # 2. Arrows & ranges (e.g. $20-$200/月, 24%→30%)
+    s = re.sub(
+        r"(每月|每個月)([^\n，。]{0,6}?)\$(\d[\d,]*(?:\.\d+)?)\s*[-–~至到]\s*\$?(\d[\d,]*(?:\.\d+)?)\s*(?:/\s*月|每月|月)?",
+        lambda m: f"{m.group(1)}{m.group(2)}{_num_str_to_zh(m.group(3))}到{_num_str_to_zh(m.group(4))}美金",
+        s,
+    )
+    s = re.sub(
+        r"\$(\d[\d,]*(?:\.\d+)?)\s*[-–~至到]\s*\$?(\d[\d,]*(?:\.\d+)?)\s*(/\s*月)",
+        lambda m: f"每月{_num_str_to_zh(m.group(1))}到{_num_str_to_zh(m.group(2))}美金",
+        s,
+    )
     s = re.sub(
         r"\$(\d[\d,]*(?:\.\d+)?)\s*[-–~至到]\s*\$?(\d[\d,]*(?:\.\d+)?)",
         lambda m: f"{_num_str_to_zh(m.group(1))}到{_num_str_to_zh(m.group(2))}美金",

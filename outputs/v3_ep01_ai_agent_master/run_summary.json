@@ -1,0 +1,18 @@
+{
+  "episode_id": "v3_ep01_ai_agent_master",
+  "episode_dir": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master",
+  "long_title": "瀏覽器 AI Agent / 零成本實戰",
+  "short_title": "瀏覽器 AI Agent / 零成本實戰 #Shorts",
+  "long_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/garychen_long.mp4",
+  "short_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/garychen_short_funnel.mp4",
+  "thumbnail_png": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/thumbnail.png",
+  "publish_pack_md": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/youtube_publish_pack.md",
+  "long_duration_sec": 199.407,
+  "short_duration_sec": 41.105,
+  "beats_count": 21,
+  "cues_count": 84,
+  "sources_count": 8,
+  "live_screenshots_count": 4,
+  "tts_backend": "local_disk_cache",
+  "image_backend": "alan_hub_m3_pro_mps:mps:realvis_lightning"
+}

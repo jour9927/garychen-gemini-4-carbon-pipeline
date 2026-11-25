@@ -49,6 +49,12 @@ def render_studio_thumbnail(script: EpisodeScript, out_png: Path):
           </div>
         </div>"""
 
+    def _vis_units(s: str) -> float:
+        return sum(0.56 if ch.isascii() else 1.0 for ch in s)
+
+    max_u = max(_vis_units(script.thumbnail_line1), _vis_units(script.thumbnail_line2), 1.0)
+    font_px = 144 if max_u <= 7.2 else (124 if max_u <= 8.8 else (106 if max_u <= 10.6 else 92))
+
     html_doc = f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><style>
       @font-face {{ font-family: 'GarySans'; src: url('file://{FONT_BOLD}') format('opentype'); font-weight: 700; }}
       @font-face {{ font-family: 'GaryMono'; src: url('file://{FONT_MONO}') format('truetype'); font-weight: 700; }}
@@ -59,8 +65,8 @@ def render_studio_thumbnail(script: EpisodeScript, out_png: Path):
         font-family: 'GarySans', sans-serif; position: relative; color: #FFF;
       }}
       .big-stroke {{
-        font-size: 146px; font-weight: 700; line-height: 1.13; letter-spacing: -2px;
-        -webkit-text-stroke: 22px #09090B;
+        font-size: {font_px}px; font-weight: 700; line-height: 1.14; letter-spacing: -2px; white-space: nowrap;
+        -webkit-text-stroke: 20px #09090B;
         paint-order: stroke fill;
         filter: drop-shadow(0 14px 22px rgba(0,0,0,0.72));
       }}

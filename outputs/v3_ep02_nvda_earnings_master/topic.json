@@ -1,0 +1,18 @@
+{
+  "topic_id": "nvda",
+  "title": "NVIDIA 財報與算力資本支出深度解析：華爾街漏看的三大護城河與估值推算",
+  "primary_entity": "NVDA",
+  "category": "us_stocks",
+  "hook_angle": "NVIDIA 財報與算力資本支出深度解析：華爾街漏看的三大護城河與估值推算",
+  "why_now": "公開財報數據、市場預期差與護城河深度拆解",
+  "score": 100.0,
+  "seed_queries": [
+    "NVDA earnings revenue capex",
+    "NVDA moat valuation",
+    "NVIDIA 財報與算力資本支出深度解析：華爾街"
+  ],
+  "seed_urls": [],
+  "tickers": [
+    "NVDA"
+  ]
+}

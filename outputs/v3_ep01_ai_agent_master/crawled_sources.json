@@ -1,26 +1,26 @@
 [
   {
     "source_id": "S1",
-    "title": "browser-use/browser-use (121,959 ★)",
+    "title": "browser-use/browser-use (121,960 ★)",
     "url": "https://github.com/browser-use/browser-use",
     "domain": "github.com",
     "published_date": "2026-11-24",
-    "retrieved_at": "2026-11-25T04:29:11Z",
+    "retrieved_at": "2026-11-25T04:40:42Z",
     "source_type": "github_primary",
     "relevance_score": 0.98,
-    "screenshot_path": "",
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/source_screenshots/S1.png",
     "key_facts": [
-      "GitHub 官方開源儲存庫 browser-use/browser-use：121,959 Stars、13,637 Forks（主要語言 Python）",
+      "GitHub 官方開源儲存庫 browser-use/browser-use：121,960 Stars、13,639 Forks（主要語言 Python）",
       "官方定位：Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
       "最新正式版本 1.0.8（發布於 2026-11-22）",
-      "<!-- mcp-name: com.browser-use/browser-use --",
-      "<source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/user-attachments/assets/2ccdb752-22fb-41c7-8948-857fc1ad7e24\"",
-      "<source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/user-attachments/assets/774a46d5-27a0-490c-b7d0-e65fcbbfa358\"",
-      "<source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.com/user-attachments/assets/9955dda9-ede3-4971-8ee0-91cbc3850125\""
+      "● task: \"book the earliest driving test\"",
+      "● model writes a cell          new_tab(url); bu.click(41); js(...)",
+      "● REPL runs it on Chrome (CDP) → output back to the model",
+      "The model, a REPL and CDP. That's the whole agent."
     ],
     "metrics": [
-      "121,959 ★",
-      "13,637 Forks",
+      "121,960 ★",
+      "13,639 Forks",
       "Python"
     ],
     "code_or_commands": [
@@ -30,7 +30,7 @@
       "✓ finish(result)",
       "Anyone with the link can control the browser."
     ],
-    "excerpt": "GitHub 官方開源儲存庫 browser-use/browser-use：121,959 Stars、13,637 Forks（主要語言 Python） | 官方定位：Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. | 最新正式版本 1.0.8（發布於 2026-11-22） | <!-- mcp-name: com.browser-use/browser-use --"
+    "excerpt": "GitHub 官方開源儲存庫 browser-use/browser-use：121,960 Stars、13,639 Forks（主要語言 Python） | 官方定位：Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. | 最新正式版本 1.0.8（發布於 2026-11-22） | ● task: \"book the earliest driving test\""
   },
   {
     "source_id": "S2",
@@ -38,7 +38,7 @@
     "url": "https://browser-use.com",
     "domain": "browser-use.com",
     "published_date": "2026-11-25",
-    "retrieved_at": "2026-11-25T04:29:16Z",
+    "retrieved_at": "2026-11-25T04:40:42Z",
     "source_type": "official_doc",
     "relevance_score": 0.97,
     "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/source_screenshots/S2.png",
@@ -58,9 +58,9 @@
     "url": "https://github.com/browser-use/video-use",
     "domain": "github.com",
     "published_date": "2026-10-08",
-    "retrieved_at": "2026-11-25T04:29:17Z",
+    "retrieved_at": "2026-11-25T04:40:43Z",
     "source_type": "github_repo",
-    "relevance_score": 0.92,
+    "relevance_score": 0.8,
     "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/source_screenshots/S3.png",
     "key_facts": [
       "生態系開源專案 browser-use/video-use（31,539 Stars / 3,657 Forks）",
@@ -84,14 +84,34 @@
   },
   {
     "source_id": "S4",
+    "title": "Nested Browser-Use Learning for Agentic Information Seeking",
+    "url": "http://arxiv.org/abs/2512.23647v1",
+    "domain": "arxiv.org",
+    "published_date": "2025-12-29",
+    "retrieved_at": "2026-11-25T04:40:45Z",
+    "source_type": "research_paper",
+    "relevance_score": 0.8,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/source_screenshots/S4.png",
+    "key_facts": [
+      "arXiv 架構與實測論文（2025-12-29）：Nested Browser-Use Learning for Agentic Information Seeking",
+      "關鍵結論：Information-seeking (IS) agents have achieved strong performance across a range of wide and deep search tasks, yet their tool use remains largely restricted to API-level snippet re"
+    ],
+    "metrics": [
+      "arXiv 論文"
+    ],
+    "code_or_commands": [],
+    "excerpt": "Information-seeking (IS) agents have achieved strong performance across a range of wide and deep search tasks, yet their tool use remains largely restricted to API-level snippet retrieval and URL-based page fetching, limiting access to the richer information available through real browsing. While full browser interaction could unlock deeper capabilities, its fine-grained control and verbose page c"
+  },
+  {
+    "source_id": "S5",
     "title": "twtrubiks/browser-use-tutorial (5 ★)",
     "url": "https://github.com/twtrubiks/browser-use-tutorial",
     "domain": "github.com",
     "published_date": "2025-06-22",
-    "retrieved_at": "2026-11-25T04:29:22Z",
+    "retrieved_at": "2026-11-25T04:40:45Z",
     "source_type": "github_repo",
-    "relevance_score": 0.92,
-    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/source_screenshots/S4.png",
+    "relevance_score": 0.8,
+    "screenshot_path": "",
     "key_facts": [
       "生態系開源專案 twtrubiks/browser-use-tutorial（5 Stars / 0 Forks）",
       "深入 browser-use 的多模態自動化革命",
@@ -113,15 +133,15 @@
     "excerpt": "生態系開源專案 twtrubiks/browser-use-tutorial（5 Stars / 0 Forks） | 深入 browser-use 的多模態自動化革命 | 賦予瀏覽器 AI 大腦：深入 browser-use 的多模態自動化革命 🧠 | Youtube Tutorial - 賦予瀏覽器 AI 大腦：深入 browser-use 的多模態自動化革命 🧠"
   },
   {
-    "source_id": "S5",
+    "source_id": "S6",
     "title": "AgenticA5/A5-Browser-Use (246 ★)",
     "url": "https://github.com/AgenticA5/A5-Browser-Use",
     "domain": "github.com",
     "published_date": "2025-04-10",
-    "retrieved_at": "2026-11-25T04:29:24Z",
+    "retrieved_at": "2026-11-25T04:40:47Z",
     "source_type": "github_repo",
-    "relevance_score": 0.92,
-    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v3_ep01_ai_agent_master/source_screenshots/S5.png",
+    "relevance_score": 0.8,
+    "screenshot_path": "",
     "key_facts": [
       "生態系開源專案 AgenticA5/A5-Browser-Use（246 Stars / 44 Forks）",
       "Your commands control the browser - made easy | Chrome Extension and RESTful API for Browser-Use",
@@ -143,14 +163,14 @@
     "excerpt": "生態系開源專案 AgenticA5/A5-Browser-Use（246 Stars / 44 Forks） | Your commands control the browser - made easy | Chrome Extension and RESTful API for Browser-Use | A5-Browser-Use Chrome Extension and Server for Agentic AI Workflows | Your commands control the browser - made easy. Supports various large language model providers, including OpenAI, Gemini, and Ollama."
   },
   {
-    "source_id": "S6",
+    "source_id": "S7",
     "title": "Show HN: Workflow Use – Deterministic, self-healing browser automation (RPA 2.0)",
     "url": "https://github.com/browser-use/workflow-use",
     "domain": "github.com",
     "published_date": "2025-05-16",
-    "retrieved_at": "2026-11-25T04:29:26Z",
+    "retrieved_at": "2026-11-25T04:40:48Z",
     "source_type": "hn_discussion",
-    "relevance_score": 0.9,
+    "relevance_score": 0.8,
     "screenshot_path": "",
     "key_facts": [
       "媒體與社群焦點（69 Points / 23 則討論）：Show HN: Workflow Use – Deterministic, self-healing browser automation (RPA 2.0)",
@@ -164,14 +184,14 @@
     "excerpt": "Notifications You must be signed in to change notification settings Star 4.3k ( 4.3k ) You must be signed in to star a repository ⚙️ Create and run workflows (RPA 2.0) Automatically generate workflows from natural language! Describe your task, we run browser-use once, then create a reusable semantic workflow stored in a database. Describe : Give a task in natural language Execute : Browser-use completes the task once"
   },
   {
-    "source_id": "S7",
+    "source_id": "S8",
     "title": "Show HN: I wrote an open-source browser alternative for Computer Use for any LLM",
     "url": "https://github.com/gregpr07/browser-use",
     "domain": "github.com",
     "published_date": "2024-11-05",
-    "retrieved_at": "2026-11-25T04:29:27Z",
+    "retrieved_at": "2026-11-25T04:40:48Z",
     "source_type": "hn_discussion",
-    "relevance_score": 0.9,
+    "relevance_score": 0.8,
     "screenshot_path": "",
     "key_facts": [
       "媒體與社群焦點（180 Points / 72 則討論）：Show HN: I wrote an open-source browser alternative for Computer Use for any LLM",
@@ -183,25 +203,5 @@
     ],
     "code_or_commands": [],
     "excerpt": "Notifications You must be signed in to change notification settings Star 122k ( 122k ) You must be signed in to star a repository Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. The model, a REPL and CDP. That's the whole agent. Find an available slot, pick a date and time, handle the CAPTCHA, and book a driving test. Explore more demos and prompts ↗ "
-  },
-  {
-    "source_id": "S8",
-    "title": "Nested Browser-Use Learning for Agentic Information Seeking",
-    "url": "http://arxiv.org/abs/2512.23647v1",
-    "domain": "arxiv.org",
-    "published_date": "2025-12-29",
-    "retrieved_at": "2026-11-25T04:29:20Z",
-    "source_type": "research_paper",
-    "relevance_score": 0.89,
-    "screenshot_path": "",
-    "key_facts": [
-      "arXiv 架構與實測論文（2025-12-29）：Nested Browser-Use Learning for Agentic Information Seeking",
-      "關鍵結論：Information-seeking (IS) agents have achieved strong performance across a range of wide and deep search tasks, yet their tool use remains largely restricted to API-level snippet re"
-    ],
-    "metrics": [
-      "arXiv 論文"
-    ],
-    "code_or_commands": [],
-    "excerpt": "Information-seeking (IS) agents have achieved strong performance across a range of wide and deep search tasks, yet their tool use remains largely restricted to API-level snippet retrieval and URL-based page fetching, limiting access to the richer information available through real browsing. While full browser interaction could unlock deeper capabilities, its fine-grained control and verbose page c"
   }
 ]

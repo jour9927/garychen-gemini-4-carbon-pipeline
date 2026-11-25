@@ -169,6 +169,7 @@ class PublicInfoCrawler:
                 us_gaap = r.json().get("facts", {}).get("us-gaap", {})
 
                 def latest_annual_pair(tags: tuple[str, ...]) -> tuple[float | None, float | None, str]:
+                    best: tuple[str, float | None, float | None] = ("", None, None)
                     for tg in tags:
                         units = us_gaap.get(tg, {}).get("units", {}).get("USD", [])
                         annuals = [
@@ -177,13 +178,11 @@ class PublicInfoCrawler:
                         ]
                         if not annuals:
                             continue
-                        # Deduplicate by fiscal end date, taking latest filed
                         by_end: dict[str, dict] = {}
                         for u in annuals:
                             end_d = str(u.get("end", ""))
                             if len(end_d) == 10:
                                 start_d = str(u.get("start", ""))
-                                # Keep full-year (~330..380 days) entries
                                 if start_d:
                                     try:
                                         days = (dt.date.fromisoformat(end_d) - dt.date.fromisoformat(start_d)).days
@@ -193,11 +192,10 @@ class PublicInfoCrawler:
                                         pass
                                 by_end[end_d] = u
                         ordered = [by_end[k] for k in sorted(by_end.keys())]
-                        if len(ordered) >= 2:
-                            return float(ordered[-1]["val"]), float(ordered[-2]["val"]), ordered[-1]["end"]
-                        if len(ordered) == 1:
-                            return float(ordered[-1]["val"]), None, ordered[-1]["end"]
-                    return None, None, ""
+                        if ordered and ordered[-1]["end"] > best[0]:
+                            prev_v = float(ordered[-2]["val"]) if len(ordered) >= 2 else None
+                            best = (ordered[-1]["end"], float(ordered[-1]["val"]), prev_v)
+                    return best[1], best[2], best[0]
 
                 rev_cur, rev_prev, fy_end = latest_annual_pair(("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"))
                 op_cur, op_prev, _ = latest_annual_pair(("OperatingIncomeLoss",))
@@ -626,15 +624,38 @@ class PublicInfoCrawler:
                         continue
                     try:
                         page = ctx.new_page()
-                        page.goto(src.url, wait_until="domcontentloaded", timeout=11000)
-                        page.wait_for_timeout(1100)
-                        page.evaluate(
-                            """() => {
-                                for (const sel of ['[id*="cookie"]', '[class*="cookie"]', '[aria-label*="cookie"]', '[class*="consent"]']) {
-                                    document.querySelectorAll(sel).forEach(el => el.style.display = 'none');
-                                }
-                            }"""
-                        )
+                        if src.domain == "sec.gov":
+                            rows_html = "".join(
+                                f'<div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #2A2A32;font-size:21px;">'
+                                f'<span style="color:#D4D4D8;">{html.escape(f)}</span>'
+                                f'<span style="color:#4ADE80;font-family:monospace;font-weight:700;">10-K XBRL ✓</span></div>'
+                                for f in src.key_facts[:5]
+                            )
+                            sec_html = f"""<!DOCTYPE html><html><body style="margin:0;width:1440px;height:900px;background:#141418;color:#F4F4F5;font-family:-apple-system,sans-serif;padding:48px 64px;box-sizing:border-box;">
+                              <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #EB8B1B;padding-bottom:22px;margin-bottom:32px;">
+                                <div>
+                                  <div style="font-size:16px;color:#EB8B1B;font-weight:700;letter-spacing:1.2px;">U.S. SECURITIES AND EXCHANGE COMMISSION · EDGAR XBRL API</div>
+                                  <div style="font-size:34px;font-weight:700;margin-top:8px;">{html.escape(src.title)}</div>
+                                </div>
+                                <div style="background:#1F2937;border:1px solid #374151;padding:10px 20px;border-radius:10px;font-family:monospace;font-size:18px;color:#93C5FD;">FORM 10-K · {html.escape(src.published_date)}</div>
+                              </div>
+                              <div style="display:flex;gap:22px;margin-bottom:32px;">
+                                {''.join(f'<div style="flex:1;background:#1E1E24;border:1px solid #32323C;border-radius:16px;padding:22px;"><div style="font-size:15px;color:#9CA3AF;">US-GAAP VERIFIED</div><div style="font-size:32px;font-weight:700;color:#4ADE80;margin-top:8px;">{html.escape(m)}</div></div>' for m in src.metrics[:4])}
+                              </div>
+                              <div style="background:#1A1A20;border:1px solid #2E2E38;border-radius:18px;overflow:hidden;">{rows_html}</div>
+                              <div style="margin-top:22px;font-family:monospace;font-size:15px;color:#71717A;">Endpoint: {html.escape(src.url)} · Retrieved {html.escape(src.retrieved_at)}</div>
+                            </body></html>"""
+                            page.set_content(sec_html, wait_until="load")
+                        else:
+                            page.goto(src.url, wait_until="domcontentloaded", timeout=11000)
+                            page.wait_for_timeout(1100)
+                            page.evaluate(
+                                """() => {
+                                    for (const sel of ['[id*="cookie"]', '[class*="cookie"]', '[aria-label*="cookie"]', '[class*="consent"]']) {
+                                        document.querySelectorAll(sel).forEach(el => el.style.display = 'none');
+                                    }
+                                }"""
+                            )
                         page.screenshot(path=str(out_png), clip={"x": 0, "y": 0, "width": 1440, "height": 900})
                         page.close()
                         if out_png.exists() and out_png.stat().st_size > 8000:

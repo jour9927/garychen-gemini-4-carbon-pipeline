@@ -136,8 +136,13 @@ def patch_torchaudio_soundfile():
 
 def get_f5_tts(force_cpu: bool = False):
     with MODEL_LOCK:
-        target_dev = "cpu" if force_cpu else pick_device(min_cuda_mb=2400)
         cached = MODELS.get("f5_tts")
+        if cached is not None:
+            if not force_cpu and cached[0] in ("cuda", "mps"):
+                return cached
+            if force_cpu and cached[0] == "cpu":
+                return cached
+        target_dev = "cpu" if force_cpu else pick_device(min_cuda_mb=2200)
         if cached is not None and cached[0] == target_dev:
             return cached
         import torch
@@ -210,6 +215,20 @@ def get_sdxl_pipe(force_cpu: bool = False):
             return cached
         import torch
         from diffusers import AutoPipelineForText2Image, DPMSolverMultistepScheduler
+        if target_dev == "mps":
+            realvis_snaps = sorted((Path.home() / ".cache/huggingface/hub/models--SG161222--RealVisXL_V5.0_Lightning/snapshots").glob("*"))
+            if realvis_snaps:
+                pipe = AutoPipelineForText2Image.from_pretrained(
+                    str(realvis_snaps[-1]),
+                    torch_dtype=torch.float16,
+                    variant="fp16",
+                    use_safetensors=True,
+                    local_files_only=True,
+                )
+                pipe.to("mps", dtype=torch.bfloat16)
+                pipe.set_progress_bar_config(disable=True)
+                MODELS["sdxl_pipe"] = ("mps", "realvis_lightning", pipe)
+                return MODELS["sdxl_pipe"]
         if target_dev in ("cuda", "mps"):
             run_dtype = torch.bfloat16 if target_dev == "mps" else torch.float16
             pipe = AutoPipelineForText2Image.from_pretrained(
@@ -439,19 +458,30 @@ def run_job(job_id: str, kind: str, payload: dict):
                     "plenty of clean dark empty margin around edges, strictly zero text or letters"
                 )
                 gen = torch.Generator(device="cpu").manual_seed(seed)
-                if mode_name == "sdxl_base":
-                    eff_steps = min(int(item.get("steps", 28)), 20) if dev == "mps" else int(item.get("steps", 28))
-                    img = pipe(
-                        prompt=prompt,
-                        negative_prompt=neg_prompt,
-                        num_inference_steps=eff_steps,
-                        guidance_scale=6.5,
-                        width=w,
-                        height=h,
-                        generator=gen,
-                    ).images[0]
-                else:
-                    img = pipe(prompt=prompt, num_inference_steps=4, guidance_scale=0.0, width=w, height=h, generator=gen).images[0]
+                with MODEL_LOCK:
+                    if mode_name == "realvis_lightning":
+                        img = pipe(
+                            prompt=prompt,
+                            negative_prompt=neg_prompt,
+                            num_inference_steps=6,
+                            guidance_scale=2.0,
+                            width=w,
+                            height=h,
+                            generator=gen,
+                        ).images[0]
+                    elif mode_name == "sdxl_base":
+                        eff_steps = min(int(item.get("steps", 28)), 20) if dev == "mps" else int(item.get("steps", 28))
+                        img = pipe(
+                            prompt=prompt,
+                            negative_prompt=neg_prompt,
+                            num_inference_steps=eff_steps,
+                            guidance_scale=6.5,
+                            width=w,
+                            height=h,
+                            generator=gen,
+                        ).images[0]
+                    else:
+                        img = pipe(prompt=prompt, num_inference_steps=4, guidance_scale=0.0, width=w, height=h, generator=gen).images[0]
                 out_png = job_dir / f"{img_id}.png"
                 img.save(str(out_png))
                 outputs.append({"id": img_id, "rel_path": f"{job_id}/{out_png.name}", "device": f"{dev}:{mode_name}"})
@@ -459,6 +489,12 @@ def run_job(job_id: str, kind: str, payload: dict):
                     JOBS[job_id]["progress"] = f"{idx + 1}/{len(items)}"
             with JOBS_LOCK:
                 JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"outputs": outputs, "device": f"{dev}:{mode_name}"})
+            if dev == "mps":
+                with MODEL_LOCK:
+                    MODELS.pop("sdxl_pipe", None)
+                gc.collect()
+                if hasattr(torch, "mps") and hasattr(torch.mps, "empty_cache"):
+                    torch.mps.empty_cache()
 
         elif kind == "whisper_align":
             in_wav = job_dir / "input.wav"
