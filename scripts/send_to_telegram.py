@@ -131,11 +131,11 @@ def send_episode_saved_messages(ep_dir: Path):
 
     thumb_png = ep_dir / "thumbnail.png"
     if thumb_png.exists():
-        _send_one(thumb_png, f"🖼 V3 YouTube 封面縮圖｜{summary['long_title']}")
-    _send_one(long_mp4, f"📺 V3 16:9 完整長片 (1080p60)｜{summary['long_title']}")
-    _send_one(short_mp4, f"📱 V3 9:16 對應推流 Shorts (1080x1920 @ 60fps)｜{summary['short_title']}")
+        _send_one(thumb_png, f"🖼 V4 YouTube 封面縮圖｜{summary['long_title']}")
+    _send_one(long_mp4, f"📺 V4 16:9 完整長片 (1080p60 Remotion)｜{summary['long_title']}")
+    _send_one(short_mp4, f"📱 V4 9:16 純 Remotion 對應推流 Shorts (1080x1920 @ 60fps)｜{summary['short_title']}")
     if pub_md.exists():
-        _send_one(pub_md, f"📄 V3 YouTube 上架資訊包｜{summary['episode_id']}")
+        _send_one(pub_md, f"📄 V4 YouTube 上架資訊包｜{summary['episode_id']}")
 
 
 def main():
@@ -143,7 +143,7 @@ def main():
     ap.add_argument("--saved-messages", action="store_true", help="Send directly to macOS Telegram Desktop Saved Messages")
     ap.add_argument("--token", default=os.environ.get("GC_TG_BOT_TOKEN") or os.environ.get("FIVERR_TG_BOT_TOKEN", ""))
     ap.add_argument("--chat-id", default=None)
-    ap.add_argument("--episodes", nargs="*", default=["v3_ep01_ai_agent_master", "v3_ep02_nvda_earnings_master"])
+    ap.add_argument("--episodes", nargs="*", default=["v4_ep01_ai_agent_remotion", "v4_ep02_nvda_remotion"])
     args = ap.parse_args()
     if args.saved_messages:
         for ep in args.episodes:

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "garychen-gemini4-carbon"
-version = "1.0.0"
-description = "Garychen (@garychenai) Unattended Long + Shorts AI Video Production Pipeline (Crawler + Source Citation + LLM Script + PyTorch Voice Cloning + PyTorch Image Gen + 60fps Motion Renderer)"
+version = "4.0.0"
+description = "Garychen (@garychenai) V4 Studio Unattended Long + Pure-Remotion Shorts Production Pipeline (Multi-Year SEC/GitHub Crawler + Two-Stage Scriptwriter + Qwen3-TTS Taiwanese Voice Cloning + Studio Foley + 60fps Remotion Motion Engine)"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -19,6 +19,10 @@ dependencies = [
     "numpy>=1.26.0",
     "soundfile>=0.12.1",
     "yt-dlp>=2026.11.0",
+    "json-repair>=0.30.0",
+    "playwright>=1.45.0",
+    "huggingface-hub>=0.34.0,<1.0",
+    "diffusers>=0.32.0,<0.36.0",
 ]
 
 [project.scripts]

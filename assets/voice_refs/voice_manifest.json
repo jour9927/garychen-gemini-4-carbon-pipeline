@@ -28,5 +28,15 @@
     "style": "warm",
     "actual_duration": 8.44,
     "sample_rate": 24000
+  },
+  {
+    "name": "gary_stocks.wav",
+    "src": "reference_channel/videos/78_KWAvlqxNVAk/KWAvlqxNVAk.mp4",
+    "start": 29.5,
+    "duration": 7.18,
+    "ref_text": "市場怕的是兩件事，第一，2026年資本支出直接翻倍到1350億，利潤率可能會被嚴重壓縮。",
+    "style": "stocks",
+    "actual_duration": 7.18,
+    "sample_rate": 24000
   }
 ]

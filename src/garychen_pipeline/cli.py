@@ -25,7 +25,7 @@ def cmd_health():
 
     for ep in load_cluster_endpoints():
         try:
-            r = httpx.get(f"{ep.url}/health", timeout=6.0)
+            r = httpx.get(f"{ep.url}/health", timeout=6.0, trust_env=False)
             if r.status_code == 200:
                 d = r.json()
                 g = d.get("gpu", {})
@@ -42,7 +42,7 @@ def cmd_health():
             t.add_row(str(ep.priority), ep.name, ep.url, "[red]OFFLINE[/red]", str(e)[:60])
 
     try:
-        r_ol = httpx.get("http://127.0.0.1:11434/api/tags", timeout=3.0)
+        r_ol = httpx.get("http://127.0.0.1:11434/api/tags", timeout=3.0, trust_env=False)
         models = [m["name"] for m in r_ol.json().get("models", [])]
         t.add_row("Local", "alan-hub Ollama", "http://127.0.0.1:11434", "[green]ONLINE[/green]", ", ".join(models))
     except Exception as e:

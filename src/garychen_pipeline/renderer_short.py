@@ -9,18 +9,27 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw
 
-from .config import CrawledSource, DesignTokens, EpisodeScript
+from .config import CrawledSource, DesignTokens, EpisodeScript, ShortBeatSpec
 from .crawler import CHROME_APP_BIN
-from .html_renderer import FONT_BOLD, build_short_beat_html
-from .renderer_long import _font, _hex_rgb, composite_roi, extract_rgba_roi
+from .html_renderer import CAM_VIEWPORT_SHORT, FONT_BOLD, build_short_beat_html
+from .renderer_long import (
+    _ease_in_out_cubic,
+    _font,
+    _hex_rgb,
+    composite_horizontal_wipe,
+    composite_roi,
+    composite_typing_reveal,
+    extract_rgba_roi,
+    render_camera_viewport_60fps,
+)
 
 
 class GarychenShortsRenderer:
     """
-    V3 True Layer-Spring 1080x1920 @ 60fps Traffic-Funnel Shorts Compositor:
-      - Renders 8 vertical scenes with independent transparent RGBA step layers
-      - Animates 60fps spring entrances (`+28px -> 0px`) synced to Whisper clause timestamps
-      - Ends with Long-Video Thumbnail + Animated Bottom-Left Related Video CTA
+    V4 Pure-Remotion 1080x1920 @ 60fps Traffic-Funnel Shorts Compositor:
+      - 10 rapid vertical Remotion motion-graphics scenes (zero generic AI picture boxes!)
+      - 60fps live typing, 60fps SVG curve wipes, 60fps browser zoom + cursor click, and 60fps spring reveals
+      - Ends with Studio Portrait Thumbnail + Animated Bottom-Left Related Video CTA
     """
 
     def __init__(self, tokens: DesignTokens | None = None):
@@ -62,15 +71,18 @@ class GarychenShortsRenderer:
         W, H, FPS = self.t.short_width, self.t.short_height, self.t.fps
         total_frames = max(1, int(round(total_duration * FPS)))
         sources_by_id = {s.source_id: s for s in sources}
+        sbeats_by_id: dict[str, ShortBeatSpec] = {sb.beat_id: sb for sb in script.short_beats}
         orange_np = np.array(_hex_rgb(self.t.accent_orange_hex), dtype=np.uint8)
         bg_rgb_val = _hex_rgb(self.t.bg_stock_hex if script.avatar_mode else self.t.bg_tutorial_hex)
 
         base_frames: dict[str, np.ndarray] = {}
         step_rois: dict[tuple[str, int], tuple[int, int, int, int, np.ndarray, np.ndarray] | None] = {}
-        settled_frames: dict[tuple[str, int], np.ndarray] = {}
+        wipe_rois: dict[str, tuple[int, int, int, int, np.ndarray, np.ndarray] | None] = {}
+        typing_rois: dict[str, tuple[int, int, int, int, np.ndarray, np.ndarray] | None] = {}
+        cam_sources: dict[str, np.ndarray] = {}
 
         out_mp4.parent.mkdir(parents=True, exist_ok=True)
-        tmp_html_file = out_mp4.parent / "_render_stage_short_v3.html"
+        tmp_html_file = out_mp4.parent / "_render_stage_short_v4.html"
         launch_kwargs = {"headless": True}
         if Path(CHROME_APP_BIN).exists():
             launch_kwargs["executable_path"] = CHROME_APP_BIN
@@ -79,6 +91,13 @@ class GarychenShortsRenderer:
             browser = p.chromium.launch(**launch_kwargs, args=["--allow-file-access-from-files"])
             page = browser.new_page(viewport={"width": W, "height": H, "device_scale_factor": 1})
             for sb in script.short_beats:
+                if sb.layout_type in ("short_browser_zoom_proof", "short_live_source_proof"):
+                    for sid in sb.source_ids:
+                        s_obj = sources_by_id.get(sid)
+                        if s_obj and s_obj.screenshot_path and Path(s_obj.screenshot_path).exists():
+                            cam_sources[sb.beat_id] = np.array(Image.open(s_obj.screenshot_path).convert("RGB"), dtype=np.uint8)
+                            break
+
                 html_doc, n_steps = build_short_beat_html(
                     script=script,
                     sbeat=sb,
@@ -91,30 +110,51 @@ class GarychenShortsRenderer:
                 page.goto(tmp_html_file.resolve().as_uri(), wait_until="load")
                 page.evaluate("() => document.fonts.ready")
 
-                page.evaluate(
+                flags = page.evaluate(
                     """() => {
                         document.body.classList.remove('transparent-pass');
-                        document.querySelectorAll('[data-step]').forEach(el => { el.style.opacity = '0'; });
+                        document.querySelectorAll('[data-step],[data-wipe],[data-typing]').forEach(el => { el.style.opacity = '0'; });
+                        return {
+                            wipe: document.querySelectorAll('[data-wipe]').length > 0,
+                            typing: document.querySelectorAll('[data-typing]').length > 0
+                        };
                     }"""
                 )
-                b_arr = np.array(Image.open(io.BytesIO(page.screenshot(type="png"))).convert("RGB"), dtype=np.uint8)
-                base_frames[sb.beat_id] = b_arr
+                base_frames[sb.beat_id] = np.array(Image.open(io.BytesIO(page.screenshot(type="png"))).convert("RGB"), dtype=np.uint8)
 
-                running = b_arr.copy()
                 for s_i in range(n_steps):
                     page.evaluate(
                         """(targetStep) => {
                             document.body.classList.add('transparent-pass');
+                            document.querySelectorAll('[data-wipe],[data-typing]').forEach(el => { el.style.opacity = '0'; });
                             document.querySelectorAll('[data-step]').forEach(el => {
                                 el.style.opacity = (el.getAttribute('data-step') === String(targetStep)) ? '1' : '0';
                             });
                         }""",
                         s_i,
                     )
-                    roi = extract_rgba_roi(page.screenshot(type="png", omit_background=True))
-                    step_rois[(sb.beat_id, s_i)] = roi
-                    composite_roi(running, roi, dy=0, alpha_mul=1.0)
-                    settled_frames[(sb.beat_id, s_i)] = running.copy()
+                    step_rois[(sb.beat_id, s_i)] = extract_rgba_roi(page.screenshot(type="png", omit_background=True))
+
+                if flags.get("wipe"):
+                    page.evaluate(
+                        """() => {
+                            document.body.classList.add('transparent-pass');
+                            document.querySelectorAll('[data-step],[data-typing]').forEach(el => { el.style.opacity = '0'; });
+                            document.querySelectorAll('[data-wipe]').forEach(el => { el.style.opacity = '1'; });
+                        }"""
+                    )
+                    wipe_rois[sb.beat_id] = extract_rgba_roi(page.screenshot(type="png", omit_background=True))
+
+                if flags.get("typing"):
+                    page.evaluate(
+                        """() => {
+                            document.body.classList.add('transparent-pass');
+                            document.querySelectorAll('[data-step],[data-wipe]').forEach(el => { el.style.opacity = '0'; });
+                            document.querySelectorAll('[data-typing]').forEach(el => { el.style.opacity = '1'; });
+                        }"""
+                    )
+                    typing_rois[sb.beat_id] = extract_rgba_roi(page.screenshot(type="png", omit_background=True))
+
             browser.close()
         tmp_html_file.unlink(missing_ok=True)
 
@@ -124,7 +164,7 @@ class GarychenShortsRenderer:
             if txt and txt not in sub_cache:
                 sub_cache[txt] = self._render_subtitle_band(txt)
 
-        vcodec = ["-c:v", "h264_videotoolbox", "-b:v", "5500k", "-profile:v", "high"] if platform.system() == "Darwin" else [
+        vcodec = ["-c:v", "h264_videotoolbox", "-b:v", "5800k", "-profile:v", "high"] if platform.system() == "Darwin" else [
             "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-profile:v", "high"
         ]
         cmd = [
@@ -164,26 +204,38 @@ class GarychenShortsRenderer:
                         step_enter_f = f_idx
 
                     b_id, s_i = cur_key
-                    max_s = s_i
-                    while (b_id, max_s) not in settled_frames and max_s > 0:
-                        max_s -= 1
-
+                    sb_obj = sbeats_by_id[b_id]
                     step_age = f_idx - step_enter_f
                     beat_age = f_idx - beat_enter_f
+                    beat_sec = beat_age / float(FPS)
 
+                    frame = base_frames[b_id].copy()
+
+                    if b_id in cam_sources:
+                        render_camera_viewport_60fps(frame, cam_sources[b_id], CAM_VIEWPORT_SHORT, [0.44, 0.34, 1.32], beat_sec, 4.5)
+                    if b_id in wipe_rois:
+                        w_prog = _ease_in_out_cubic(min(1.0, max(0.0, (beat_sec - 0.08) / 1.45)))
+                        composite_horizontal_wipe(frame, wipe_rois[b_id], w_prog)
+                    if b_id in typing_rois:
+                        t_prog = min(1.0, max(0.0, (beat_sec - 0.06) / 1.45))
+                        composite_typing_reveal(frame, typing_rois[b_id], t_prog, beat_sec)
+
+                    for prev_s in range(s_i):
+                        composite_roi(frame, step_rois.get((b_id, prev_s)), dy=0, alpha_mul=1.0)
+
+                    bounce_dy = int(round(6.0 * math.sin(beat_sec * 4.5))) if (sb_obj.is_cta and s_i >= 1) else 0
                     if 0 <= step_age < 18:
-                        prev_canvas = base_frames[b_id].copy() if max_s == 0 else settled_frames[(b_id, max_s - 1)].copy()
                         u = step_age / 18.0
-                        spring = 1.0 - math.exp(-6.8 * u) * math.cos(3.1 * u)
-                        dy = int(round(28.0 * (1.0 - spring)))
-                        a_mul = min(1.0, u / 0.22)
-                        composite_roi(prev_canvas, step_rois.get((b_id, max_s)), dy=dy, alpha_mul=a_mul)
-                        frame = prev_canvas
-                        if 0 <= beat_age < 7:
-                            ba = (beat_age + 1) / 7.0
-                            frame = (solid_bg * (1.0 - ba) + frame * ba).astype(np.uint8)
+                        spring = 1.0 - math.exp(-6.6 * u) * math.cos(3.3 * u)
+                        dy = int(round(30.0 * (1.0 - spring))) + bounce_dy
+                        a_mul = min(1.0, u / 0.20)
+                        composite_roi(frame, step_rois.get((b_id, s_i)), dy=dy, alpha_mul=a_mul)
                     else:
-                        frame = settled_frames[(b_id, max_s)].copy()
+                        composite_roi(frame, step_rois.get((b_id, s_i)), dy=bounce_dy, alpha_mul=1.0)
+
+                    if 0 <= beat_age < 6:
+                        ba = (beat_age + 1) / 6.0
+                        frame = (solid_bg * (1.0 - ba) + frame * ba).astype(np.uint8)
 
                     if (cue["start"] - 0.03) <= t_sec <= (cue["end"] + 0.14) and cue["text"] in sub_cache:
                         s_rgb, s_a = sub_cache[cue["text"]]
@@ -198,5 +250,5 @@ class GarychenShortsRenderer:
                 rc = proc.wait()
         if rc != 0:
             stderr_out = err_log_path.read_text(encoding="utf-8", errors="ignore")
-            raise RuntimeError(f"FFmpeg short V3 encode failed (rc={rc}): {stderr_out[-400:]}")
+            raise RuntimeError(f"FFmpeg short V4 encode failed (rc={rc}): {stderr_out[-400:]}")
         err_log_path.unlink(missing_ok=True)

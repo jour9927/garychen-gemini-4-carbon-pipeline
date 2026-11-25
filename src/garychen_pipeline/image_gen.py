@@ -35,12 +35,17 @@ class GarychenImageGenerator:
         eps_img = sorted(eps, key=lambda e: (0 if "colab" in e.name else (1 if "mps" in e.name else 2)))
         for ep in eps_img:
             try:
-                hr = httpx.get(f"{ep.url}/health", timeout=6.0)
+                hr = httpx.get(f"{ep.url}/health", timeout=6.0, trust_env=False)
                 if hr.status_code != 200:
+                    continue
+                hj = hr.json()
+                gpu = hj.get("gpu") or {}
+                if gpu.get("cuda_available") and int(gpu.get("free_mb", 0)) < 8500 and "sdxl_pipe" not in (hj.get("loaded_models") or []):
+                    print(f"[image_gen] Skipping busy CUDA node {ep.name} (free_mb={gpu.get('free_mb')})", flush=True)
                     continue
                 print(f"[image_gen] Dispatching {len(items)} AI images to {ep.name} ({ep.url})", flush=True)
                 headers = {"Authorization": f"Bearer {ep.token}"}
-                with httpx.Client(timeout=60.0) as client:
+                with httpx.Client(timeout=60.0, trust_env=False) as client:
                     sub = client.post(
                         f"{ep.url}/job/submit",
                         headers=headers,

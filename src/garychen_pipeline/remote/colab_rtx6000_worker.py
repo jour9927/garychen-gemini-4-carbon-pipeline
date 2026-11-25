@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Garychen Gemini 4 Carbon V3 — Studio-Grade RTX PRO 6000 (96GB Blackwell) Heavy GPU Worker.
+Garychen Gemini 4 Carbon V4 — Studio-Grade Heavy GPU Worker (RTX PRO 6000 / RTX 5070 Ti / Apple M3 Pro MPS).
 
-V3 Upgrades:
-  1. `llm_chat`: Automatically loads `Qwen/Qwen2.5-32B-Instruct` (bfloat16 CUDA SDPA) when >=68GB VRAM free!
-  2. `tts_paragraphs`: Synthesizes phonetic `spoken_clauses` with `F5TTS_v1_Base` (`nfe_step=48, sway_sampling_coef=-1.0`)
-     and aligns Whisper word-level timestamps back onto `clauses` (display subtitles) with zero digit/symbol slurring!
-  3. `image_batch`: 28-step `stable-diffusion-xl-base-1.0` (DPMSolverMultistep + Karras, 1216x832) seamless dark-matte #262626 dioramas!
+V4 Upgrades:
+  1. `qwen3_tts`: Priority-1 `Qwen/Qwen3-TTS-12Hz-1.7B-Base` native Traditional Chinese + English code-switching
+     voice cloning (`bfloat16` SDPA, batched `batch_size=4`, cached `voice_clone_prompt` per style) — 100% authentic
+     Taiwanese Mandarin accent with ZERO `pypinyin` / `OpenCC("t2s")` Mainland accent distortion!
+  2. `llm_chat`: Loads `Qwen/Qwen2.5-32B-Instruct` (or 14B/7B) on CUDA when VRAM permits.
+  3. `image_batch`: `RealVisXL_V5.0_Lightning` / `SDXL Base 1.0` seamless dark-charcoal `#242424` editorial scenes.
 """
 from __future__ import annotations
 
@@ -41,10 +42,11 @@ JOBS: dict[str, dict] = {}
 JOBS_LOCK = threading.Lock()
 MODEL_LOCK = threading.Lock()
 MODELS: dict[str, object] = {}
+VOICE_PROMPTS: dict[str, object] = {}
 
 
 def gpu_stats() -> dict:
-    info = {"cuda_available": False, "gpu_name": "cpu", "total_mb": 0, "free_mb": 0, "cpus": os.cpu_count() or 4}
+    info = {"cuda_available": False, "mps_available": False, "gpu_name": "cpu", "total_mb": 0, "free_mb": 0, "cpus": os.cpu_count() or 4}
     try:
         import torch
         if torch.cuda.is_available():
@@ -55,9 +57,19 @@ def gpu_stats() -> dict:
                 total_mb=int(tot_b // (1024 * 1024)),
                 free_mb=int(free_b // (1024 * 1024)),
             )
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            info.update(mps_available=True, gpu_name="apple_metal_mps", total_mb=36864, free_mb=18432)
     except Exception:
         pass
     return info
+
+
+def has_qwen3_tts_pkg() -> bool:
+    try:
+        import qwen_tts  # noqa: F401
+        return True
+    except Exception:
+        return False
 
 
 def pick_device(min_cuda_mb: int) -> str:
@@ -76,6 +88,8 @@ def free_model_if_tight(needed_mb: int, drop_keys: tuple[str, ...]):
     if hasattr(torch.backends, "mps") and torch.backends.mps.is_available() and not torch.cuda.is_available():
         with MODEL_LOCK:
             dropped = [MODELS.pop(k, None) for k in drop_keys]
+            if "qwen3_tts" in drop_keys:
+                VOICE_PROMPTS.clear()
         if any(x is not None for x in dropped):
             gc.collect()
             if hasattr(torch, "mps") and hasattr(torch.mps, "empty_cache"):
@@ -89,11 +103,21 @@ def free_model_if_tight(needed_mb: int, drop_keys: tuple[str, ...]):
     with MODEL_LOCK:
         for k in drop_keys:
             MODELS.pop(k, None)
+        if "qwen3_tts" in drop_keys:
+            VOICE_PROMPTS.clear()
     gc.collect()
     torch.cuda.empty_cache()
 
 
-def normalize_zh_for_tts(text: str) -> str:
+def clean_tw_tts_text(text: str) -> str:
+    """Preserves authentic Traditional Chinese & English terms without Mainland t2s conversion!"""
+    text = re.sub(r"\s+", " ", str(text or "")).strip()
+    if text and text[-1] not in "。！？!?.,":
+        text += "。"
+    return text
+
+
+def normalize_zh_for_f5(text: str) -> str:
     try:
         from opencc import OpenCC
         cc = MODELS.get("opencc_t2s")
@@ -103,14 +127,10 @@ def normalize_zh_for_tts(text: str) -> str:
         text = cc.convert(text)
     except Exception:
         pass
-    text = re.sub(r"\s+", " ", text).strip()
-    if text and text[-1] not in "。！？!?.,":
-        text += "。"
-    return text
+    return clean_tw_tts_text(text)
 
 
 def patch_torchaudio_soundfile():
-    """Bypass broken torchcodec shared-lib loader in torchaudio>=2.9 by routing load/save through soundfile."""
     try:
         import numpy as np
         import soundfile as sf
@@ -132,6 +152,41 @@ def patch_torchaudio_soundfile():
         torchaudio.save = _sf_save
     except Exception:
         pass
+
+
+def _resolve_qwen3_tts_source() -> str:
+    local_dir = WORK_DIR / "qwen3_tts_1b7"
+    if (local_dir / "model.safetensors").exists():
+        return str(local_dir)
+    hf_snaps = sorted((Path.home() / ".cache/huggingface/hub/models--Qwen--Qwen3-TTS-12Hz-1.7B-Base/snapshots").glob("*"))
+    for sn in reversed(hf_snaps):
+        if (sn / "model.safetensors").exists():
+            return str(sn)
+    return "Qwen/Qwen3-TTS-12Hz-1.7B-Base"
+
+
+def get_qwen3_tts():
+    with MODEL_LOCK:
+        cached = MODELS.get("qwen3_tts")
+        if cached is not None and cached[0] in ("cuda", "mps"):
+            return cached
+        import torch
+        from qwen_tts import Qwen3TTSModel
+        target_dev = pick_device(min_cuda_mb=4600)
+        if cached is not None and cached[0] == target_dev:
+            return cached
+        src_path = _resolve_qwen3_tts_source()
+        dtype = torch.bfloat16 if target_dev in ("cuda", "mps") else torch.float32
+        dev_map = "cuda:0" if target_dev == "cuda" else target_dev
+        mdl = Qwen3TTSModel.from_pretrained(
+            src_path,
+            device_map=dev_map,
+            dtype=dtype,
+            attn_implementation="sdpa",
+        )
+        MODELS["qwen3_tts"] = (target_dev, mdl)
+        VOICE_PROMPTS.clear()
+        return MODELS["qwen3_tts"]
 
 
 def get_f5_tts(force_cpu: bool = False):
@@ -175,7 +230,7 @@ def get_whisper_model(force_cpu: bool = False):
 
 
 def get_qwen_llm():
-    free_model_if_tight(28000, ("sdxl_pipe",))
+    free_model_if_tight(28000, ("sdxl_pipe", "qwen3_tts"))
     with MODEL_LOCK:
         if "qwen_llm" in MODELS:
             return MODELS["qwen_llm"]
@@ -207,7 +262,7 @@ def get_qwen_llm():
 
 def get_sdxl_pipe(force_cpu: bool = False):
     if not force_cpu:
-        free_model_if_tight(14000, ("qwen_llm",))
+        free_model_if_tight(14000, ("qwen_llm", "qwen3_tts", "f5_tts"))
     with MODEL_LOCK:
         target_dev = "cpu" if force_cpu else pick_device(min_cuda_mb=9500)
         cached = MODELS.get("sdxl_pipe")
@@ -288,7 +343,6 @@ def align_clauses_with_whisper(
     if len(display_clauses) == 1 or not words:
         return [{"text": display_clauses[0], "rel_start": 0.0, "rel_end": round(total_dur, 3)}], asr_text
 
-    # Weight cursor by spoken syllable length (`spoken_clauses`) so expanded spoken numbers get accurate time share!
     weight_src = spoken_clauses if len(spoken_clauses) == len(display_clauses) else display_clauses
     clause_weights = [max(2, len(re.sub(r"\s+", "", c))) for c in weight_src]
     tot_w = sum(clause_weights)
@@ -301,8 +355,8 @@ def align_clauses_with_whisper(
         next_cum = cum_w + clause_weights[idx]
         w_start_idx = min(n_words - 1, int(round((cum_w / tot_w) * n_words)))
         w_end_idx = min(n_words - 1, max(w_start_idx, int(round((next_cum / tot_w) * n_words)) - 1))
-        rs = prev_end if idx > 0 else max(0.0, words[0][0] - 0.05)
-        re_t = total_dur if idx == len(display_clauses) - 1 else min(total_dur, max(rs + 0.50, words[w_end_idx][1] + 0.04))
+        rs = prev_end if idx > 0 else max(0.0, words[0][0] - 0.04)
+        re_t = total_dur if idx == len(display_clauses) - 1 else min(total_dur, max(rs + 0.45, words[w_end_idx][1] + 0.03))
         aligned.append({"text": disp_cl, "rel_start": round(rs, 3), "rel_end": round(re_t, 3)})
         prev_end = re_t
         cum_w = next_cum
@@ -310,17 +364,17 @@ def align_clauses_with_whisper(
     return aligned, asr_text
 
 
-def postprocess_voice_wav(wav_path: Path, target_sr: int = 44100) -> float:
+def postprocess_voice_wav(wav_path: Path, target_sr: int = 44100, speed_factor: float = 1.0) -> float:
     import numpy as np
     import soundfile as sf
-    data, sr = sf.read(str(wav_path))
+    data, sr = sf.read(str(wav_path), dtype="float32")
     if data.ndim > 1:
         data = data.mean(axis=1)
     thresh = 10 ** (-48.0 / 20.0)
     idx = np.where(np.abs(data) > thresh)[0]
     if len(idx) > 10:
-        s = max(0, int(idx[0]) - int(0.06 * sr))
-        e = min(len(data), int(idx[-1]) + int(0.12 * sr))
+        s = max(0, int(idx[0]) - int(0.05 * sr))
+        e = min(len(data), int(idx[-1]) + int(0.10 * sr))
         data = data[s:e]
     rms = float(np.sqrt(np.mean(data ** 2)) + 1e-9)
     target_rms = 10 ** (-20.5 / 20.0)
@@ -331,11 +385,15 @@ def postprocess_voice_wav(wav_path: Path, target_sr: int = 44100) -> float:
         data = np.tanh(data / max_peak) * max_peak
     tmp_out = wav_path.with_suffix(".norm.wav")
     sf.write(str(tmp_out), data, sr, subtype="PCM_16")
-    if sr != target_sr:
-        subprocess.run(["ffmpeg", "-y", "-i", str(tmp_out), "-ar", str(target_sr), "-ac", "1", str(wav_path)], check=True, capture_output=True)
-        tmp_out.unlink(missing_ok=True)
-    else:
-        tmp_out.replace(wav_path)
+    af_filters = []
+    if abs(speed_factor - 1.0) >= 0.015:
+        af_filters.append(f"atempo={min(1.25, max(0.85, speed_factor)):.3f}")
+    cmd = ["ffmpeg", "-y", "-i", str(tmp_out)]
+    if af_filters:
+        cmd.extend(["-af", ",".join(af_filters)])
+    cmd.extend(["-ar", str(target_sr), "-ac", "1", str(wav_path)])
+    subprocess.run(cmd, check=True, capture_output=True)
+    tmp_out.unlink(missing_ok=True)
     return round(sf.info(str(wav_path)).duration, 3)
 
 
@@ -373,89 +431,134 @@ def run_job(job_id: str, kind: str, payload: dict):
             with JOBS_LOCK:
                 JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"text": txt_out, "model": model_id, "device": dev})
 
-        elif kind in ("tts_paragraphs", "tts_batch"):
+        elif kind in ("qwen3_tts", "tts_paragraphs", "tts_batch"):
+            import soundfile as sf
             free_model_if_tight(10000, ("sdxl_pipe",))
             ref_wav = REFS_DIR / payload["ref_name"]
             if not ref_wav.exists():
                 raise FileNotFoundError(f"Missing reference wav: {ref_wav}")
-            ref_text = normalize_zh_for_tts(payload["ref_text"])
             items = payload["items"]
-            speed = float(payload.get("speed", 1.01))
-            nfe = int(payload.get("nfe_step", 48))
-            dev, tts = get_f5_tts()
-            eff_nfe = min(nfe, 32) if dev == "mps" else nfe
+            speed = float(payload.get("speed", 1.03))
+            use_qwen3 = has_qwen3_tts_pkg() and kind != "f5_only"
+
             outputs = []
-            for idx, item in enumerate(items):
-                seg_id = str(item["id"])
-                disp_clauses = item.get("clauses") or [item["text"]]
-                spok_clauses = item.get("spoken_clauses") or disp_clauses
-                full_spoken = item.get("text") or "，".join(spok_clauses)
-                gen_text = normalize_zh_for_tts(full_spoken)
-                out_wav = job_dir / f"{seg_id}.wav"
-                tts.infer(
-                    ref_file=str(ref_wav),
-                    ref_text=ref_text,
-                    gen_text=gen_text,
-                    file_wave=str(out_wav),
-                    speed=float(item.get("speed", speed)),
-                    nfe_step=eff_nfe,
-                    cfg_strength=2.0,
-                    sway_sampling_coef=-1.0,
-                    remove_silence=False,
-                )
-                dur = postprocess_voice_wav(out_wav, target_sr=44100)
-                clean_chars = max(1, len(re.sub(r"\s+", "", full_spoken)))
-                if dur / clean_chars > 0.48 and clean_chars >= 8:
+            if use_qwen3:
+                dev, qtts = get_qwen3_tts()
+                raw_ref_text = str(payload["ref_text"]).strip()
+                prompt_key = f"{payload['ref_name']}::{raw_ref_text}"
+                with MODEL_LOCK:
+                    v_prompt = VOICE_PROMPTS.get(prompt_key)
+                    if v_prompt is None:
+                        ry, rsr = sf.read(str(ref_wav), dtype="float32")
+                        if ry.ndim > 1:
+                            ry = ry.mean(axis=1)
+                        v_prompt = qtts.create_voice_clone_prompt(ref_audio=(ry, int(rsr)), ref_text=raw_ref_text)
+                        VOICE_PROMPTS[prompt_key] = v_prompt
+
+                batch_sz = 2 if dev in ("cuda", "mps") else 1
+                for b_start in range(0, len(items), batch_sz):
+                    chunk = items[b_start : b_start + batch_sz]
+                    texts_batch = []
+                    for item in chunk:
+                        spok_clauses = item.get("spoken_clauses") or item.get("clauses") or [item["text"]]
+                        full_spoken = item.get("text") or "，".join(spok_clauses)
+                        texts_batch.append(clean_tw_tts_text(full_spoken))
+                    max_chars = max(len(t) for t in texts_batch)
+                    # 12Hz codec: ~3.2 tokens per Chinese char; hard-cap prevents runaway open-end EOS loops!
+                    max_tok = max(96, min(260, int(max_chars * 3.8) + 32))
+                    with MODEL_LOCK:
+                        wavs, out_sr = qtts.generate_voice_clone(
+                            text=texts_batch,
+                            language=["Chinese"] * len(texts_batch),
+                            voice_clone_prompt=v_prompt,
+                            non_streaming_mode=True,
+                            max_new_tokens=max_tok,
+                            repetition_penalty=1.08,
+                        )
+                    for sub_i, (item, w_arr) in enumerate(zip(chunk, wavs)):
+                        seg_id = str(item["id"])
+                        disp_clauses = item.get("clauses") or [item["text"]]
+                        spok_clauses = item.get("spoken_clauses") or disp_clauses
+                        out_wav = job_dir / f"{seg_id}.wav"
+                        sf.write(str(out_wav), w_arr, int(out_sr))
+                        item_spd = float(item.get("speed", speed))
+                        dur = postprocess_voice_wav(out_wav, target_sr=44100, speed_factor=item_spd)
+                        aligned_clauses, asr_txt = align_clauses_with_whisper(out_wav, disp_clauses, spok_clauses, dur)
+                        outputs.append(
+                            {
+                                "id": seg_id,
+                                "rel_path": f"{job_id}/{out_wav.name}",
+                                "duration": dur,
+                                "aligned_clauses": aligned_clauses,
+                                "asr_text": asr_txt,
+                                "device": f"{dev}:qwen3_tts_1.7b",
+                            }
+                        )
+                        with JOBS_LOCK:
+                            JOBS[job_id]["progress"] = f"{b_start + sub_i + 1}/{len(items)}"
+                dev_tag = f"{dev}:qwen3_tts_1.7b"
+            else:
+                ref_text = normalize_zh_for_f5(payload["ref_text"])
+                nfe = int(payload.get("nfe_step", 48))
+                dev, tts = get_f5_tts()
+                eff_nfe = min(nfe, 32) if dev == "mps" else nfe
+                for idx, item in enumerate(items):
+                    seg_id = str(item["id"])
+                    disp_clauses = item.get("clauses") or [item["text"]]
+                    spok_clauses = item.get("spoken_clauses") or disp_clauses
+                    full_spoken = item.get("text") or "，".join(spok_clauses)
+                    gen_text = normalize_zh_for_f5(full_spoken)
+                    out_wav = job_dir / f"{seg_id}.wav"
                     tts.infer(
                         ref_file=str(ref_wav),
                         ref_text=ref_text,
                         gen_text=gen_text,
                         file_wave=str(out_wav),
-                        speed=min(1.10, float(item.get("speed", speed)) + 0.04),
-                        nfe_step=48,
+                        speed=float(item.get("speed", speed)),
+                        nfe_step=eff_nfe,
                         cfg_strength=2.0,
                         sway_sampling_coef=-1.0,
                         remove_silence=False,
                     )
-                    dur = postprocess_voice_wav(out_wav, target_sr=44100)
+                    dur = postprocess_voice_wav(out_wav, target_sr=44100, speed_factor=1.0)
+                    aligned_clauses, asr_txt = align_clauses_with_whisper(out_wav, disp_clauses, spok_clauses, dur)
+                    outputs.append(
+                        {
+                            "id": seg_id,
+                            "rel_path": f"{job_id}/{out_wav.name}",
+                            "duration": dur,
+                            "aligned_clauses": aligned_clauses,
+                            "asr_text": asr_txt,
+                            "device": f"{dev}:f5_tts",
+                        }
+                    )
+                    with JOBS_LOCK:
+                        JOBS[job_id]["progress"] = f"{idx + 1}/{len(items)}"
+                dev_tag = f"{dev}:f5_tts"
 
-                aligned_clauses, asr_txt = align_clauses_with_whisper(out_wav, disp_clauses, spok_clauses, dur)
-                outputs.append(
-                    {
-                        "id": seg_id,
-                        "rel_path": f"{job_id}/{out_wav.name}",
-                        "duration": dur,
-                        "aligned_clauses": aligned_clauses,
-                        "asr_text": asr_txt,
-                        "device": dev,
-                    }
-                )
-                with JOBS_LOCK:
-                    JOBS[job_id]["progress"] = f"{idx + 1}/{len(items)}"
             with JOBS_LOCK:
-                JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"outputs": outputs, "device": dev})
+                JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"outputs": outputs, "device": dev_tag})
 
         elif kind == "image_batch":
             import torch
-            free_model_if_tight(14000, ("f5_tts", "qwen_llm"))
+            free_model_if_tight(14000, ("qwen3_tts", "f5_tts", "qwen_llm"))
             dev, mode_name, pipe = get_sdxl_pipe()
             items = payload["items"]
             outputs = []
             neg_prompt = (
                 "text, letters, words, numbers, watermark, signature, frame, border, white background, bright background, "
-                "blurry, messy clutter, cartoon childish, deformed, ugly, oversaturated neon"
+                "blurry, messy clutter, deformed, ugly, oversaturated neon, sci-fi turbine"
             )
             for idx, item in enumerate(items):
                 img_id = str(item["id"])
-                w = (int(item.get("width", 1216 if mode_name == "sdxl_base" else 768)) // 8) * 8
-                h = (int(item.get("height", 832 if mode_name == "sdxl_base" else 512)) // 8) * 8
+                w = (int(item.get("width", 1024)) // 8) * 8
+                h = (int(item.get("height", 768)) // 8) * 8
                 if dev == "mps":
                     w, h = min(w, 1024), min(h, 768)
                 seed = int(item.get("seed", 3030 + idx * 37))
                 prompt = (
-                    f"{item['prompt']}, centered object floating on pure solid matte dark charcoal #242426 void background, "
-                    "warm amber #EB8B1B accent rim glow, Cinema4D Redshift minimalist studio product render, "
-                    "plenty of clean dark empty margin around edges, strictly zero text or letters"
+                    f"{item['prompt']}, clean editorial dark-mode minimalist illustration on pure solid matte #242424 charcoal background, "
+                    "warm amber #EB8B1B desk lamp glow, subtle flat geometric craft, generous empty #242424 margin around edges, strictly zero text"
                 )
                 gen = torch.Generator(device="cpu").manual_seed(seed)
                 with MODEL_LOCK:
@@ -470,12 +573,12 @@ def run_job(job_id: str, kind: str, payload: dict):
                             generator=gen,
                         ).images[0]
                     elif mode_name == "sdxl_base":
-                        eff_steps = min(int(item.get("steps", 28)), 20) if dev == "mps" else int(item.get("steps", 28))
+                        eff_steps = min(int(item.get("steps", 26)), 20) if dev == "mps" else int(item.get("steps", 26))
                         img = pipe(
                             prompt=prompt,
                             negative_prompt=neg_prompt,
                             num_inference_steps=eff_steps,
-                            guidance_scale=6.5,
+                            guidance_scale=6.2,
                             width=w,
                             height=h,
                             generator=gen,
@@ -544,18 +647,21 @@ class Handler(BaseHTTPRequestHandler):
             du = shutil.disk_usage(str(WORK_DIR))
             with JOBS_LOCK:
                 active = [k for k, v in JOBS.items() if v.get("status") in ("queued", "running")]
+            caps = ["llm_chat", "tts_paragraphs", "tts_batch", "image_batch", "whisper_align"]
+            if has_qwen3_tts_pkg():
+                caps.insert(0, "qwen3_tts")
             self._send_json(
                 200,
                 {
                     "ok": True,
-                    "service": "garychen_gemini4_carbon_worker_v3",
+                    "service": "garychen_gemini4_carbon_worker_v4",
                     "port": PORT,
                     "work_dir": str(WORK_DIR),
                     "disk_free_gb": round(du.free / (1024 ** 3), 2),
                     "gpu": gpu_stats(),
                     "loaded_models": list(MODELS.keys()),
                     "active_jobs": active,
-                    "capabilities": ["llm_chat", "tts_paragraphs", "tts_batch", "image_batch", "whisper_align"],
+                    "capabilities": caps,
                 },
             )
             return
@@ -626,7 +732,7 @@ def main():
     else:
         os.environ["HF_HOME"] = str(CACHE_DIR)
     os.environ["TORCH_HOME"] = str(WORK_DIR / "torch_cache")
-    print(f"[garychen-worker-v3] listening on 0.0.0.0:{PORT} work={WORK_DIR}", flush=True)
+    print(f"[garychen-worker-v4] listening on 0.0.0.0:{PORT} work={WORK_DIR}", flush=True)
     ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
 
 

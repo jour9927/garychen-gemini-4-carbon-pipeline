@@ -7,6 +7,10 @@ DIGITS_ZH = "零一二三四五六七八九"
 ACRONYM_SPOKEN_MAP = [
     (r"\bn8n\b", "N eight N"),
     (r"\bCI/CD\b", "C I C D"),
+    (r"\bSEC\b", "S E C"),
+    (r"\bCUDA\b", "CUDA"),
+    (r"\bNVLink\b", "N V Link"),
+    (r"\bDOM\b", "D O M"),
     (r"\bCI\b", "C I"),
     (r"\bCD\b", "C D"),
     (r"\bPRs\b", "P R"),
@@ -214,9 +218,21 @@ def to_spoken_tts_text(display_text: str) -> str:
         s,
     )
 
-    # 6. Version numbers (v2.49.5 -> 二點四九版)
+    # 5b. Trillion / Billion suffixes without $ (3.422T -> 三點四二兆美金)
     s = re.sub(
-        r"\bv?(\d+)\.(\d+)(?:\.\d+)?\b",
+        r"\b(\d+(?:\.\d+)?)\s*T\b",
+        lambda m: f"{_num_str_to_zh(m.group(1))}兆美金",
+        s,
+    )
+
+    # 6. Version numbers ONLY when prefixed by v/V or multi-dot semver (v2.49.5 or 1.2.3 -> 二點四九版)
+    s = re.sub(
+        r"\b[vV](\d+)\.(\d+)(?:\.\d+)?\b",
+        lambda m: f"{_num_str_to_zh(m.group(1))}點{''.join(DIGITS_ZH[int(c)] for c in m.group(2))}版",
+        s,
+    )
+    s = re.sub(
+        r"\b(\d+)\.(\d+)\.(\d+)\b",
         lambda m: f"{_num_str_to_zh(m.group(1))}點{''.join(DIGITS_ZH[int(c)] for c in m.group(2))}版",
         s,
     )
@@ -232,8 +248,10 @@ def to_spoken_tts_text(display_text: str) -> str:
         s,
     )
 
-    # 9. Clean up symbols & extra spaces
+    # 9. Clean up symbols, duplicate units, & extra spaces
     s = s.replace("★", "顆星").replace("/", "、").replace("｜", "，").replace("|", "，")
+    s = re.sub(r"美金\s*(?:美元|美金)", "美金", s)
+    s = re.sub(r"免費\s*免費", "免費", s)
     s = re.sub(r"[#@*_~<>[\]{}()]", " ", s)
     s = re.sub(r"\s+", " ", s).strip()
     return s

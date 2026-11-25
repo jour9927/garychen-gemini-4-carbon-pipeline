@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import csv
 import datetime as dt
 import html
-import io
 import re
 from pathlib import Path
+from typing import Any
 from urllib.parse import quote_plus, urlparse
 import xml.etree.ElementTree as ET
 
@@ -19,9 +18,8 @@ HEADERS = {
     "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
 }
 
-# SEC EDGAR requires a descriptive User-Agent header per https://www.sec.gov/os/accessing-edgar-data
 SEC_HEADERS = {
-    "User-Agent": "GaryChenResearchPipeline/3.0 (contact@garychenai.com)",
+    "User-Agent": "GaryChenResearchPipeline/4.0 (contact@garychenai.com)",
     "Accept": "application/json",
 }
 
@@ -60,7 +58,6 @@ def _clean_text(s: str) -> str:
 
 
 def _fmt_usd_yi(val_usd: float) -> str:
-    """Formats raw USD into Garychen's signature `$X,XXX 億` (hundreds of millions USD) string."""
     yi = val_usd / 1e8
     if abs(yi) >= 100:
         return f"${yi:,.0f} 億"
@@ -85,23 +82,23 @@ def _extract_metrics(text: str) -> list[str]:
 
 def _extract_commands(md_text: str) -> list[str]:
     cmds: list[str] = []
-    for m in re.finditer(r"```(?:bash|sh|zsh|shell|python)?\n(.*?)```", md_text, re.DOTALL):
+    for m in re.finditer(r"```(?:bash|sh|zsh|shell|python|ts|typescript|js)?\n(.*?)```", md_text, re.DOTALL):
         for ln in m.group(1).splitlines():
             ln = ln.strip()
-            if ln and not ln.startswith("#") and 6 <= len(ln) <= 68:
+            if ln and not ln.startswith("#") and 6 <= len(ln) <= 72:
                 cmds.append(ln)
-                if len(cmds) >= 5:
+                if len(cmds) >= 8:
                     return cmds
     return cmds
 
 
 class PublicInfoCrawler:
     """
-    V3 Precision Domain Crawler:
-      - Official SEC EDGAR 10-K / 10-Q XBRL financial statement extractor (`data.sec.gov`) for US Stocks
-      - Dual live stock price & 52-week range extractor (Stooq market feed + Yahoo Finance chart API)
-      - Primary GitHub repo + README + latest release + official docs crawler for AI/Engineering tutorials
-      - Strict relevance & noise filtering + 1440x900 Retina dark-mode browser screenshot capture!
+    V4 Studio Multi-Series & Deep Repo Crawler:
+      - Multi-year (5-year FY22..FY26) SEC EDGAR 10-K XBRL time-series extractor (`time_series`: revenue_yi, op_margin_pct, capex_yi)
+      - CNBC Real-Time Institutional Quote + P/E + Market Cap + 52-week range
+      - GitHub Primary Repo + Real Pull Requests (`#PR title`) + README Quickstart Code + Release Tags
+      - Multi-view 1600x1000 Retina Dark-Mode Browser Captures (Hero + Scrolled README/Docs + Dark SEC Terminal)
     """
 
     def __init__(self, timeout: float = 14.0):
@@ -143,7 +140,6 @@ class PublicInfoCrawler:
         if any(b in blob for b in BLOCKED_NOISE_PATTERNS):
             return 0.0
         if category == "us_stocks":
-            # For financial analysis, reject narrow CV/graphics papers unrelated to datacenter/architecture/economics
             fin_terms = ("blackwell", "inference", "datacenter", "throughput", "gpu", "revenue", "capex", "cloud", "earnings", "stock", "market", "architecture", "tensorrt")
             if "arxiv.org" in url.lower() and not any(ft in blob for ft in fin_terms):
                 return 0.0
@@ -155,7 +151,7 @@ class PublicInfoCrawler:
         return min(1.0, 0.55 + 0.25 * hits)
 
     def fetch_sec_edgar_financials(self, tickers: list[str]) -> list[CrawledSource]:
-        """Pulls 100% official, auditable SEC 10-K / 10-Q XBRL metrics (Revenue, Gross Profit, Operating Income, OCF, CapEx)."""
+        """Pulls 5-year official SEC 10-K XBRL time series + YoY deltas for animated Remotion growth & leverage curves."""
         out: list[CrawledSource] = []
         for sym in tickers[:2]:
             cik_info = SEC_CIK_MAP.get(sym.upper())
@@ -168,48 +164,74 @@ class PublicInfoCrawler:
                     continue
                 us_gaap = r.json().get("facts", {}).get("us-gaap", {})
 
-                def latest_annual_pair(tags: tuple[str, ...]) -> tuple[float | None, float | None, str]:
-                    best: tuple[str, float | None, float | None] = ("", None, None)
+                def annual_series(tags: tuple[str, ...]) -> list[tuple[str, float]]:
+                    merged_by_year: dict[str, tuple[str, float]] = {}
                     for tg in tags:
                         units = us_gaap.get(tg, {}).get("units", {}).get("USD", [])
-                        annuals = [
-                            u for u in units
-                            if u.get("form") in ("10-K", "20-F") and u.get("fp") == "FY" and isinstance(u.get("val"), (int, float))
-                        ]
-                        if not annuals:
-                            continue
-                        by_end: dict[str, dict] = {}
-                        for u in annuals:
+                        for u in units:
+                            if u.get("form") not in ("10-K", "20-F") or not isinstance(u.get("val"), (int, float)):
+                                continue
                             end_d = str(u.get("end", ""))
-                            if len(end_d) == 10:
-                                start_d = str(u.get("start", ""))
-                                if start_d:
-                                    try:
-                                        days = (dt.date.fromisoformat(end_d) - dt.date.fromisoformat(start_d)).days
-                                        if not (330 <= days <= 385):
-                                            continue
-                                    except Exception:
-                                        pass
-                                by_end[end_d] = u
-                        ordered = [by_end[k] for k in sorted(by_end.keys())]
-                        if ordered and ordered[-1]["end"] > best[0]:
-                            prev_v = float(ordered[-2]["val"]) if len(ordered) >= 2 else None
-                            best = (ordered[-1]["end"], float(ordered[-1]["val"]), prev_v)
-                    return best[1], best[2], best[0]
+                            start_d = str(u.get("start", ""))
+                            if len(end_d) != 10:
+                                continue
+                            if start_d:
+                                try:
+                                    days = (dt.date.fromisoformat(end_d) - dt.date.fromisoformat(start_d)).days
+                                    if not (330 <= days <= 385):
+                                        continue
+                                except Exception:
+                                    continue
+                            yr_key = end_d[:4]
+                            prev = merged_by_year.get(yr_key)
+                            if prev is None or end_d >= prev[0]:
+                                merged_by_year[yr_key] = (end_d, float(u["val"]))
+                    ordered = [merged_by_year[k] for k in sorted(merged_by_year.keys())]
+                    return ordered[-5:]
 
-                rev_cur, rev_prev, fy_end = latest_annual_pair(("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"))
-                op_cur, op_prev, _ = latest_annual_pair(("OperatingIncomeLoss",))
-                ni_cur, ni_prev, _ = latest_annual_pair(("NetIncomeLoss",))
-                ocf_cur, ocf_prev, _ = latest_annual_pair(("NetCashProvidedByUsedInOperatingActivities",))
-                capex_cur, capex_prev, _ = latest_annual_pair(("PaymentsToAcquireProductiveAssets", "PaymentsToAcquirePropertyPlantAndEquipment"))
+                rev_seq = annual_series(("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"))
+                op_seq = annual_series(("OperatingIncomeLoss",))
+                ni_seq = annual_series(("NetIncomeLoss",))
+                ocf_seq = annual_series(("NetCashProvidedByUsedInOperatingActivities",))
+                capex_seq = annual_series(("PaymentsToAcquireProductiveAssets", "PaymentsToAcquirePropertyPlantAndEquipment"))
 
-                if not rev_cur:
+                if not rev_seq:
                     continue
+
+                fy_end, rev_cur = rev_seq[-1]
+                rev_prev = rev_seq[-2][1] if len(rev_seq) >= 2 else None
+                op_cur = op_seq[-1][1] if op_seq else None
+                ni_cur = ni_seq[-1][1] if ni_seq else None
+                ni_prev = ni_seq[-2][1] if len(ni_seq) >= 2 else None
+                ocf_cur = ocf_seq[-1][1] if ocf_seq else None
+                capex_cur = capex_seq[-1][1] if capex_seq else None
+                capex_prev = capex_seq[-2][1] if len(capex_seq) >= 2 else None
+
+                # Build clean 5-year time_series in `$億` and `%`
+                op_by_yr = {d[:4]: v for d, v in op_seq}
+                capex_by_yr = {d[:4]: v for d, v in capex_seq}
+                ts_rev_yi: list[list[Any]] = []
+                ts_margin: list[list[Any]] = []
+                ts_capex_yi: list[list[Any]] = []
+                for end_d, rv in rev_seq:
+                    yk = end_d[:4]
+                    lbl = f"FY{yk[-2:]}"
+                    rv_yi = round(rv / 1e8, 1)
+                    ts_rev_yi.append([lbl, rv_yi, _fmt_usd_yi(rv)])
+                    if yk in op_by_yr and rv > 0:
+                        mg = round(op_by_yr[yk] / rv * 100.0, 1)
+                        ts_margin.append([lbl, mg, f"{mg:.1f}%"])
+                    if yk in capex_by_yr:
+                        cx_yi = round(capex_by_yr[yk] / 1e8, 1)
+                        ts_capex_yi.append([lbl, cx_yi, _fmt_usd_yi(capex_by_yr[yk])])
 
                 facts: list[str] = []
                 metrics: list[str] = []
                 rev_yoy = ((rev_cur - rev_prev) / abs(rev_prev) * 100.0) if rev_prev else 0.0
                 facts.append(f"SEC 10-K 官方年報（截至 {fy_end}）：全年總營收 {_fmt_usd_yi(rev_cur)} 美金（年增 {rev_yoy:+.1f}%）")
+                if len(ts_rev_yi) >= 3:
+                    traj_str = " → ".join(f"{x[0]} {x[2]}" for x in ts_rev_yi[-4:])
+                    facts.append(f"多年度營收成長軌跡：{traj_str}")
                 metrics.append(_fmt_usd_yi(rev_cur))
                 if rev_prev:
                     metrics.append(f"{rev_yoy:+.1f}%")
@@ -222,7 +244,7 @@ class PublicInfoCrawler:
                     ni_yoy = ((ni_cur - ni_prev) / abs(ni_prev) * 100.0) if ni_prev else 0.0
                     facts.append(f"全年淨利 {_fmt_usd_yi(ni_cur)} 美金（年增 {ni_yoy:+.1f}%）")
                 if ocf_cur:
-                    facts.append(f"營運現金流（OCF）達 {_fmt_usd_yi(ocf_cur)} 美金，現金造血能力強勁")
+                    facts.append(f"營運現金流（OCF）達 {_fmt_usd_yi(ocf_cur)} 美金")
                     metrics.append(f"OCF {_fmt_usd_yi(ocf_cur)}")
                 if capex_cur:
                     capex_yoy = ((capex_cur - capex_prev) / abs(capex_prev) * 100.0) if capex_prev else 0.0
@@ -242,6 +264,11 @@ class PublicInfoCrawler:
                         relevance_score=1.0,
                         key_facts=facts,
                         metrics=metrics[:5],
+                        time_series={
+                            "revenue_yi": ts_rev_yi,
+                            "op_margin_pct": ts_margin,
+                            "capex_yi": ts_capex_yi,
+                        },
                         excerpt=" | ".join(facts),
                     )
                 )
@@ -250,11 +277,9 @@ class PublicInfoCrawler:
         return out
 
     def fetch_market_quotes(self, tickers: list[str]) -> list[CrawledSource]:
-        """Fetches real market price, 52-week high/low, and P/E multiple via CNBC Quote API + Yahoo Finance V8 + Stooq fallback."""
         out: list[CrawledSource] = []
         for sym in tickers[:3]:
-            price, high52, low52, chg_1y, pe_val, mktcap_str, latest_date = None, None, None, 0.0, None, "", dt.date.today().isoformat()
-            # 1. CNBC Institutional Real-Time Quote API (includes P/E, 52W range, Market Cap!)
+            price, high52, low52, pe_val, mktcap_str, latest_date = None, None, None, None, "", dt.date.today().isoformat()
             try:
                 cnbc_u = (
                     f"https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol"
@@ -276,13 +301,9 @@ class PublicInfoCrawler:
                         if pe_s and re.match(r"^\d+(\.\d+)?$", pe_s):
                             pe_val = float(pe_s)
                         mktcap_str = str(q.get("mktcapView") or "").strip()
-                        cp_s = str(q.get("change_pct") or "").replace("%", "").replace("+", "").strip()
-                        if cp_s and re.match(r"^-?\d+(\.\d+)?$", cp_s):
-                            chg_1y = float(cp_s)
             except Exception:
                 pass
 
-            # 2. Try Yahoo Finance V8 fallback
             if not price:
                 for host in ("query2.finance.yahoo.com", "query1.finance.yahoo.com"):
                     try:
@@ -292,11 +313,8 @@ class PublicInfoCrawler:
                             if res:
                                 meta = res.get("meta", {})
                                 price = float(meta.get("regularMarketPrice") or 0) or None
-                                prev = float(meta.get("chartPreviousClose") or price or 1)
                                 high52 = float(meta.get("fiftyTwoWeekHigh") or price or 0)
                                 low52 = float(meta.get("fiftyTwoWeekLow") or price or 0)
-                                if price and prev:
-                                    chg_1y = (price - prev) / prev * 100.0
                                 break
                     except Exception:
                         continue
@@ -331,7 +349,8 @@ class PublicInfoCrawler:
     def inspect_github_repo_direct(self, full_name: str) -> list[CrawledSource]:
         out: list[CrawledSource] = []
         try:
-            r = self.client.get(f"https://api.github.com/repos/{full_name}", headers={**HEADERS, "Accept": "application/vnd.github+json"})
+            gh_hdrs = {**HEADERS, "Accept": "application/vnd.github+json"}
+            r = self.client.get(f"https://api.github.com/repos/{full_name}", headers=gh_hdrs)
             if r.status_code != 200:
                 return out
             repo = r.json()
@@ -345,6 +364,7 @@ class PublicInfoCrawler:
 
             readme_bullets, cmds = self._fetch_github_readme(full_name)
             rel_fact = self._fetch_github_latest_release(full_name)
+            pr_items = self._fetch_github_recent_prs(full_name)
 
             facts = [f"GitHub 官方開源儲存庫 {full_name}：{stars:,} Stars、{forks:,} Forks（主要語言 {lang}）"]
             if desc:
@@ -362,10 +382,11 @@ class PublicInfoCrawler:
                     published_date=updated,
                     retrieved_at=_now_iso(),
                     source_type="github_primary",
-                    relevance_score=0.98,
+                    relevance_score=0.99,
                     key_facts=facts,
                     metrics=[f"{stars:,} ★", f"{forks:,} Forks", lang],
                     code_or_commands=cmds,
+                    pr_or_issue_items=pr_items,
                     excerpt=" | ".join(facts[:4]),
                 )
             )
@@ -377,6 +398,23 @@ class PublicInfoCrawler:
         except Exception:
             pass
         return out
+
+    def _fetch_github_recent_prs(self, full_name: str) -> list[str]:
+        prs: list[str] = []
+        try:
+            r = self.client.get(
+                f"https://api.github.com/repos/{full_name}/pulls?state=all&per_page=8",
+                headers={**HEADERS, "Accept": "application/vnd.github+json"},
+            )
+            if r.status_code == 200:
+                for pr in r.json()[:6]:
+                    num = pr.get("number")
+                    title = _clean_text(pr.get("title") or "")
+                    if num and title:
+                        prs.append(f"#{num} {title[:36]}")
+        except Exception:
+            pass
+        return prs
 
     def _fetch_github_readme(self, full_name: str) -> tuple[list[str], list[str]]:
         for branch in ("main", "master"):
@@ -598,7 +636,7 @@ class PublicInfoCrawler:
             return [], ""
 
     @staticmethod
-    def capture_source_screenshots(sources: list[CrawledSource], out_dir: Path, max_captures: int = 4):
+    def capture_source_screenshots(sources: list[CrawledSource], out_dir: Path, max_captures: int = 6):
         out_dir.mkdir(parents=True, exist_ok=True)
         try:
             from playwright.sync_api import sync_playwright
@@ -608,7 +646,7 @@ class PublicInfoCrawler:
             with sync_playwright() as p:
                 browser = p.chromium.launch(**launch_kwargs)
                 ctx = browser.new_context(
-                    viewport={"width": 1440, "height": 900},
+                    viewport={"width": 1600, "height": 1000},
                     color_scheme="dark",
                     device_scale_factor=1.5,
                     locale="zh-TW",
@@ -620,35 +658,39 @@ class PublicInfoCrawler:
                     out_png = out_dir / f"{src.source_id}.png"
                     if out_png.exists() and out_png.stat().st_size > 8000:
                         src.screenshot_path = str(out_png)
+                        scroll_png = out_dir / f"{src.source_id}_scroll.png"
+                        if scroll_png.exists() and scroll_png.stat().st_size > 8000:
+                            src.extra_screenshots = [str(scroll_png)]
                         captured += 1
                         continue
                     try:
                         page = ctx.new_page()
                         if src.domain == "sec.gov":
                             rows_html = "".join(
-                                f'<div style="display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #2A2A32;font-size:21px;">'
+                                f'<div style="display:flex;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #2A2A32;font-size:22px;">'
                                 f'<span style="color:#D4D4D8;">{html.escape(f)}</span>'
                                 f'<span style="color:#4ADE80;font-family:monospace;font-weight:700;">10-K XBRL ✓</span></div>'
                                 for f in src.key_facts[:5]
                             )
-                            sec_html = f"""<!DOCTYPE html><html><body style="margin:0;width:1440px;height:900px;background:#141418;color:#F4F4F5;font-family:-apple-system,sans-serif;padding:48px 64px;box-sizing:border-box;">
-                              <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #EB8B1B;padding-bottom:22px;margin-bottom:32px;">
+                            sec_html = f"""<!DOCTYPE html><html><body style="margin:0;width:1600px;height:1000px;background:#141418;color:#F4F4F5;font-family:-apple-system,sans-serif;padding:56px 72px;box-sizing:border-box;">
+                              <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #EB8B1B;padding-bottom:24px;margin-bottom:36px;">
                                 <div>
-                                  <div style="font-size:16px;color:#EB8B1B;font-weight:700;letter-spacing:1.2px;">U.S. SECURITIES AND EXCHANGE COMMISSION · EDGAR XBRL API</div>
-                                  <div style="font-size:34px;font-weight:700;margin-top:8px;">{html.escape(src.title)}</div>
+                                  <div style="font-size:17px;color:#EB8B1B;font-weight:700;letter-spacing:1.2px;">U.S. SECURITIES AND EXCHANGE COMMISSION · EDGAR XBRL API</div>
+                                  <div style="font-size:38px;font-weight:700;margin-top:8px;">{html.escape(src.title)}</div>
                                 </div>
-                                <div style="background:#1F2937;border:1px solid #374151;padding:10px 20px;border-radius:10px;font-family:monospace;font-size:18px;color:#93C5FD;">FORM 10-K · {html.escape(src.published_date)}</div>
+                                <div style="background:#1F2937;border:1px solid #374151;padding:12px 22px;border-radius:10px;font-family:monospace;font-size:19px;color:#93C5FD;">FORM 10-K · {html.escape(src.published_date)}</div>
                               </div>
-                              <div style="display:flex;gap:22px;margin-bottom:32px;">
-                                {''.join(f'<div style="flex:1;background:#1E1E24;border:1px solid #32323C;border-radius:16px;padding:22px;"><div style="font-size:15px;color:#9CA3AF;">US-GAAP VERIFIED</div><div style="font-size:32px;font-weight:700;color:#4ADE80;margin-top:8px;">{html.escape(m)}</div></div>' for m in src.metrics[:4])}
+                              <div style="display:flex;gap:24px;margin-bottom:36px;">
+                                {''.join(f'<div style="flex:1;background:#1E1E24;border:1px solid #32323C;border-radius:16px;padding:24px;"><div style="font-size:16px;color:#9CA3AF;">US-GAAP VERIFIED</div><div style="font-size:36px;font-weight:700;color:#4ADE80;margin-top:8px;">{html.escape(m)}</div></div>' for m in src.metrics[:4])}
                               </div>
                               <div style="background:#1A1A20;border:1px solid #2E2E38;border-radius:18px;overflow:hidden;">{rows_html}</div>
-                              <div style="margin-top:22px;font-family:monospace;font-size:15px;color:#71717A;">Endpoint: {html.escape(src.url)} · Retrieved {html.escape(src.retrieved_at)}</div>
+                              <div style="margin-top:24px;font-family:monospace;font-size:16px;color:#71717A;">Endpoint: {html.escape(src.url)} · Retrieved {html.escape(src.retrieved_at)}</div>
                             </body></html>"""
                             page.set_content(sec_html, wait_until="load")
+                            page.screenshot(path=str(out_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
                         else:
                             page.goto(src.url, wait_until="domcontentloaded", timeout=11000)
-                            page.wait_for_timeout(1100)
+                            page.wait_for_timeout(1200)
                             page.evaluate(
                                 """() => {
                                     for (const sel of ['[id*="cookie"]', '[class*="cookie"]', '[aria-label*="cookie"]', '[class*="consent"]']) {
@@ -656,7 +698,15 @@ class PublicInfoCrawler:
                                     }
                                 }"""
                             )
-                        page.screenshot(path=str(out_png), clip={"x": 0, "y": 0, "width": 1440, "height": 900})
+                            page.screenshot(path=str(out_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
+                            # Capture a 2nd scrolled-down view (README / architecture / chart table) so tours never repeat!
+                            if src.source_type in ("github_primary", "official_doc", "market_data"):
+                                page.evaluate("() => window.scrollBy(0, 780)")
+                                page.wait_for_timeout(450)
+                                scroll_png = out_dir / f"{src.source_id}_scroll.png"
+                                page.screenshot(path=str(scroll_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
+                                if scroll_png.exists() and scroll_png.stat().st_size > 8000:
+                                    src.extra_screenshots = [str(scroll_png)]
                         page.close()
                         if out_png.exists() and out_png.stat().st_size > 8000:
                             src.screenshot_path = str(out_png)
@@ -688,7 +738,6 @@ class PublicInfoCrawler:
                     seen_urls.add(u)
                     sources.append(item)
 
-        # 1. For US Stocks: Official SEC EDGAR 10-K XBRL + Live Market Quotes + Hyperscaler Peer CapEx!
         if tickers or category == "us_stocks":
             t_list = list(tickers or ["NVDA"])
             if "NVDA" in [x.upper() for x in t_list] and len(t_list) == 1:
@@ -702,7 +751,6 @@ class PublicInfoCrawler:
                 _add(self.fetch_sec_edgar_financials(t_list))
                 _add(self.fetch_market_quotes(t_list))
 
-        # 2. Seed URLs
         for u in (seed_urls or []):
             if "github.com/" in u:
                 m = re.search(r"github\.com/([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)", u)
@@ -713,7 +761,6 @@ class PublicInfoCrawler:
             if sc:
                 _add([sc])
 
-        # 3. Domain-appropriate public sources
         for q in queries[:3]:
             if category != "us_stocks":
                 _add(self.search_github_repos(q, req_tokens, category, limit=2))
@@ -728,6 +775,6 @@ class PublicInfoCrawler:
             src.source_id = f"S{i}"
 
         if screenshots_dir is not None and sources:
-            self.capture_source_screenshots(sources, screenshots_dir, max_captures=4)
+            self.capture_source_screenshots(sources, screenshots_dir, max_captures=5)
 
         return sources

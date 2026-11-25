@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Literal
+from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -13,10 +13,10 @@ REF_CHANNEL_DIR = PROJECT_ROOT / "reference_channel"
 
 
 class DesignTokens(BaseModel):
-    """Exact pixel & acoustic tokens reverse-engineered from @garychenai Remotion 1080p60 masters."""
-    bg_tutorial_hex: str = "#262626"
+    """Exact pixel, motion & acoustic tokens reverse-engineered from @garychenai Remotion 1080p60 masters."""
+    bg_tutorial_hex: str = "#242424"
     bg_stock_hex: str = "#1E1E1E"
-    card_bg_hex: str = "#2F2F32"
+    card_bg_hex: str = "#2E2E32"
     card_border_hex: str = "#424246"
     accent_orange_hex: str = "#EB8B1B"
     accent_gold_thumb_hex: str = "#FFC700"
@@ -43,9 +43,12 @@ class CrawledSource(BaseModel):
     source_type: str = "web"
     relevance_score: float = 1.0
     screenshot_path: str = ""
+    extra_screenshots: list[str] = Field(default_factory=list)
     key_facts: list[str] = Field(default_factory=list)
     metrics: list[str] = Field(default_factory=list)
     code_or_commands: list[str] = Field(default_factory=list)
+    pr_or_issue_items: list[str] = Field(default_factory=list)
+    time_series: dict[str, list[list[Any]]] = Field(default_factory=dict)
     excerpt: str = ""
 
 
@@ -63,16 +66,24 @@ class TopicCandidate(BaseModel):
 
 
 BeatLayoutType = Literal[
-    "claude_chat_dialog",
     "app_squircles_strikethrough",
-    "ecosystem_node_graph",
-    "protagonist_app_flow",
+    "claude_chat_dialog",
+    "slash_command_prompt_bar",
     "agenda_four_steps",
+    "code_editor_live_preview",
+    "protagonist_app_flow",
+    "ecosystem_node_graph",
+    "browser_ui_live_tour",
+    "github_pr_blast_radius",
+    "github_pr_checks_card",
+    "swarm_subagents_grid",
+    "before_after_workflow_card",
     "concept_hero_split_3d",
     "feature_pill_matrix",
-    "browser_ui_live_tour",
-    "github_pr_checks_card",
-    "before_after_workflow_card",
+    "animated_growth_curve",
+    "operating_leverage_chart",
+    "second_level_thinking_crowd",
+    "moat_shield_architecture",
     "stocks_kpi_asymmetric",
     "stocks_big_statement",
     "stocks_four_pillars",
@@ -91,17 +102,19 @@ class VisualNode(BaseModel):
 
 class VisualBeat(BaseModel):
     """
-    V3 Remotion Beat:
-    Renders a clean minimalist dark canvas (`layer_base` with exact-shape dashed ghost slots)
-    plus `len(clauses)` independent transparent RGBA step layers that spring-animate in at 60fps
-    synced to Whisper word-level timestamps!
+    V4 High-Density 60fps Remotion Beat:
+    Supports multi-step RGBA spring reveals PLUS continuous intra-beat 60fps animations:
+      - Smooth camera zoom & pan (`camera_focus`) + animated macOS pointer cursor glide & click ripple
+      - 60fps character-by-character live typing + blinking #EB8B1B cursor
+      - 60fps left-to-right progressive SVG curve & arrow wipe
+      - Top horizontal workflow pipeline indicator (`pipeline_steps` / `active_pipeline_idx`)
     """
     beat_id: str
     chapter_index: int
     total_chapters: int = 7
     chapter_title: str
     layout_type: BeatLayoutType
-    voice_style: Literal["hook", "explainer", "warm"] = "explainer"
+    voice_style: Literal["hook", "explainer", "warm", "stocks"] = "explainer"
     clauses: list[str]
     spoken_clauses: list[str] = Field(default_factory=list)
     visual_title: str = ""
@@ -111,12 +124,25 @@ class VisualBeat(BaseModel):
     callout_title: str = ""
     callout_body: str = ""
     code_lines: list[str] = Field(default_factory=list)
+    pipeline_steps: list[str] = Field(default_factory=list)
+    active_pipeline_idx: int = -1
+    chart_points: list[list[Any]] = Field(default_factory=list)
+    secondary_chart_points: list[list[Any]] = Field(default_factory=list)
+    camera_focus: list[float] = Field(default_factory=lambda: [0.42, 0.36, 1.30])
+    screenshot_override: str = ""
     ai_image_prompt: str = ""
     source_ids: list[str] = Field(default_factory=list)
-    sfx_cue: Literal["none", "pop", "terminal", "whoosh", "stamp"] = "pop"
+    sfx_cue: Literal["none", "pop", "thock", "typing", "terminal", "click", "whoosh", "stamp"] = "thock"
 
 
 ShortBeatLayoutType = Literal[
+    "short_squircles_hook",
+    "short_live_typing_card",
+    "short_browser_zoom_proof",
+    "short_growth_curve",
+    "short_versus_stamp",
+    "short_kpi_stack",
+    "short_second_level_crowd",
     "short_shock_metric_hero",
     "short_progressive_flow",
     "short_before_after_versus",
@@ -128,16 +154,19 @@ ShortBeatLayoutType = Literal[
 
 class ShortBeatSpec(BaseModel):
     beat_id: str
-    layout_type: ShortBeatLayoutType = "short_progressive_flow"
-    voice_style: Literal["hook", "explainer", "warm"] = "hook"
+    layout_type: ShortBeatLayoutType = "short_kpi_stack"
+    voice_style: Literal["hook", "explainer", "warm", "stocks"] = "hook"
     clauses: list[str]
     spoken_clauses: list[str] = Field(default_factory=list)
     headline: str
     sub_caption: str = ""
     highlight_badge: str = ""
     nodes: list[VisualNode] = Field(default_factory=list)
+    code_lines: list[str] = Field(default_factory=list)
+    chart_points: list[list[Any]] = Field(default_factory=list)
     ai_image_prompt: str = ""
     source_ids: list[str] = Field(default_factory=list)
+    sfx_cue: Literal["none", "thock", "typing", "click", "whoosh", "stamp"] = "thock"
     is_cta: bool = False
 
 

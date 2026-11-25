@@ -45,11 +45,14 @@ def write_webvtt(cues: list[dict], out_vtt: Path):
 
 class GarychenUnattendedPipeline:
     """
-    V3 Studio Unattended Orchestrator:
-      - SEC EDGAR XBRL + Live Market + GitHub/Docs/ArXiv Precision Crawler + Retina Dark-Mode Captures
-      - Qwen2.5-32B Genre-Specialized Director (7 deep chapters × 3 progressive beats + 8-beat 45s Funnel Short)
-      - Bilingual Phonetic Normalizer + 48-step F5-TTS + Whisper Word Alignment + Studio EQ (-20.5 LUFS)
-      - 28-step SDXL Base Vignette-Feathered 3D Dioramas + True 60fps Layer-Spring Remotion Compositor + Studio Portrait Thumbnail
+    V4 Studio Unattended Orchestrator:
+      1. Unattended Topic Scout
+      2. Multi-Year SEC 10-K XBRL Time-Series + Live CNBC Market + GitHub Repo/PRs + Multi-View 1600x1000 Dark Captures
+      3. Two-Stage Verbatim Gary Chen Prose + Anti-Slop Critic + 28-Beat Remotion Choreographer + 10-Beat Pure-Remotion Short
+      4. Qwen3-TTS-12Hz-1.7B-Base Native Taiwanese Voice Cloning + Studio Ambient Bed & Motivated Foley (-20.5 LUFS)
+      5. PyTorch Dark-Matte Editorial Scene Generation
+      6. High-Density 60fps Remotion Long Video (Camera Zoom/Cursor, Live Typing, Curve Wipes, Spring Reveals) + Portrait Thumbnail
+      7. Pure-Remotion 1080x1920 @ 60fps Traffic-Funnel Short + YouTube Publish Pack
     """
 
     def __init__(self, outputs_root: Path | None = None):
@@ -70,7 +73,7 @@ class GarychenUnattendedPipeline:
         num_chapters: int = 7,
     ) -> dict:
         ts_slug = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
-        console.rule("[bold orange3]Stage 1/7 · 無人值守選題 (Unattended Topic Scout V3)")
+        console.rule("[bold orange3]Stage 1/7 · 無人值守選題 (Unattended Topic Scout V4)")
         if episode_id and not custom_topic and (self.outputs_root / episode_id / "topic.json").exists():
             topic = TopicCandidate.model_validate_json((self.outputs_root / episode_id / "topic.json").read_text(encoding="utf-8"))
             ep_id = episode_id
@@ -82,7 +85,7 @@ class GarychenUnattendedPipeline:
         (ep_dir / "topic.json").write_text(topic.model_dump_json(indent=2), encoding="utf-8")
         console.print(f"[green]✓ Topic:[/green] {topic.title} [dim](entity={topic.primary_entity}, cat={topic.category}, tickers={topic.tickers})[/dim]")
 
-        console.rule("[bold orange3]Stage 2/7 · 深度領域爬蟲 (SEC 10-K / 即時股價 / GitHub / 實時暗色網頁截圖)")
+        console.rule("[bold orange3]Stage 2/7 · 多年度 SEC 10-K 時序 / GitHub PR / 多視角暗色截圖爬蟲")
         sources_file = ep_dir / "crawled_sources.json"
         if sources_file.exists():
             sources = [CrawledSource.model_validate(x) for x in json.loads(sources_file.read_text(encoding="utf-8"))]
@@ -103,13 +106,13 @@ class GarychenUnattendedPipeline:
                 json.dumps([s.model_dump() for s in sources], ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
-        n_scr = sum(1 for s in sources if s.screenshot_path)
+        n_scr = sum((1 if s.screenshot_path else 0) + len(s.extra_screenshots) for s in sources)
         console.print(
-            f"[green]✓ Verified {len(sources)} primary sources ({n_scr} live dark-mode screenshots):[/green] "
+            f"[green]✓ Verified {len(sources)} primary sources ({n_scr} distinct 1600x1000 dark views):[/green] "
             + ", ".join(f"[{s.source_id}] {s.domain}" for s in sources)
         )
 
-        console.rule("[bold orange3]Stage 3/7 · Qwen2.5-32B 分流導演與分鏡編排 (教學 vs 美股專屬劇本)")
+        console.rule("[bold orange3]Stage 3/7 · 雙階段白話編劇 + 反廢話審稿 + 28幕 Remotion 視覺編排")
         script_file = ep_dir / "episode_script.json"
         if script_file.exists():
             script = EpisodeScript.model_validate_json(script_file.read_text(encoding="utf-8"))
@@ -121,10 +124,10 @@ class GarychenUnattendedPipeline:
                 num_chapters=num_chapters,
             )
             script_file.write_text(script.model_dump_json(indent=2), encoding="utf-8")
-        console.print(f"[green]✓ Long Script:[/green] {script.title} ({len(script.beats)} beats / {len(script.chapters)} chapters)")
-        console.print(f"[green]✓ Funnel Short:[/green] {script.short_title} ({len(script.short_beats)} vertical beats)")
+        console.print(f"[green]✓ Long Script:[/green] {script.title} ({len(script.beats)} Remotion beats / {len(script.chapters)} chapters)")
+        console.print(f"[green]✓ Funnel Short:[/green] {script.short_title} ({len(script.short_beats)} Pure-Remotion vertical beats)")
 
-        console.rule("[bold orange3]Stage 4/7 · 雙語讀音正規化 + 48步 F5-TTS 聲音克隆 + Whisper 字級對齊")
+        console.rule("[bold orange3]Stage 4/7 · Qwen3-TTS 台灣原聲克隆 + 錄音室環境底噪與擬真 Foley 混音")
         long_beat_reqs = [
             {
                 "id": b.beat_id,
@@ -137,7 +140,9 @@ class GarychenUnattendedPipeline:
         ]
         long_synth, tts_backend = self.voice_cloner.synthesize_beats(long_beat_reqs, ep_dir / "audio_long")
         long_master_wav = ep_dir / "long_master.wav"
-        long_dur, long_cues = self.voice_cloner.build_master_timeline(long_synth, long_master_wav)
+        long_dur, long_cues = self.voice_cloner.build_master_timeline(
+            long_synth, long_master_wav, inter_beat_pause=0.20, chapter_pause=0.36, category=script.category
+        )
         write_webvtt(long_cues, ep_dir / "long_subtitles.vtt")
         console.print(f"[green]✓ Long Voiceover Mastered:[/green] {long_dur:.1f}s ({len(long_cues)} cues, -20.5 LUFS) via [cyan]{tts_backend}[/cyan]")
 
@@ -147,31 +152,27 @@ class GarychenUnattendedPipeline:
                 "clauses": sb.clauses,
                 "spoken_clauses": sb.spoken_clauses,
                 "voice_style": sb.voice_style,
-                "sfx_cue": "pop",
+                "sfx_cue": sb.sfx_cue,
             }
             for sb in script.short_beats
         ]
         short_synth, tts_backend_s = self.voice_cloner.synthesize_beats(short_beat_reqs, ep_dir / "audio_short")
         short_master_wav = ep_dir / "short_master.wav"
         short_dur, short_cues = self.voice_cloner.build_master_timeline(
-            short_synth, short_master_wav, inter_beat_pause=0.16, chapter_pause=0.22
+            short_synth, short_master_wav, inter_beat_pause=0.12, chapter_pause=0.18, category=script.category
         )
         write_webvtt(short_cues, ep_dir / "short_subtitles.vtt")
         console.print(f"[green]✓ Shorts Voiceover Mastered:[/green] {short_dur:.1f}s ({len(short_cues)} cues, -20.5 LUFS) via [cyan]{tts_backend_s}[/cyan]")
 
-        console.rule("[bold orange3]Stage 5/7 · 28-Step SDXL Base 無邊框暗色羽化 3D 場景插圖生成")
-        AI_LAYOUTS = {"concept_hero_split_3d", "browser_ui_live_tour"}
+        console.rule("[bold orange3]Stage 5/7 · PyTorch 暗色插畫生成 (精準點綴，零廉價貼圖感)")
         img_reqs: list[dict] = []
         for idx, b in enumerate(script.beats):
-            if b.layout_type in AI_LAYOUTS:
-                img_reqs.append({"id": b.beat_id, "prompt": b.ai_image_prompt, "width": 1216, "height": 832, "steps": 28, "seed": 5100 + idx * 31})
-        for idx, sb in enumerate(script.short_beats):
-            if not sb.is_cta:
-                img_reqs.append({"id": sb.beat_id, "prompt": sb.ai_image_prompt, "width": 1024, "height": 768, "steps": 24, "seed": 7200 + idx * 41})
-        img_map, img_backend = self.image_gen.generate_batch(img_reqs, ep_dir / "images")
-        console.print(f"[green]✓ Generated {len(img_map)} Studio 3D Illustrations[/green] via [cyan]{img_backend}[/cyan]")
+            if b.layout_type == "concept_hero_split_3d" and b.ai_image_prompt:
+                img_reqs.append({"id": b.beat_id, "prompt": b.ai_image_prompt, "width": 1024, "height": 768, "steps": 24, "seed": 5100 + idx * 31})
+        img_map, img_backend = (self.image_gen.generate_batch(img_reqs, ep_dir / "images") if img_reqs else ({}, "pure_remotion_svg"))
+        console.print(f"[green]✓ Generated {len(img_map)} Editorial Dark-Matte Illustrations[/green] via [cyan]{img_backend}[/cyan]")
 
-        console.rule("[bold orange3]Stage 6/7 · Remotion 圖層彈簧動畫 1920x1080 @ 60fps 合成 + 真人肖像封面圖")
+        console.rule("[bold orange3]Stage 6/7 · V4 60fps 高密度 Remotion 動態引擎 (運鏡/打字/成長曲線/彈簧) + 封面圖")
         long_mp4 = ep_dir / "garychen_long.mp4"
         thumb_png = ep_dir / "thumbnail.png"
         self.long_renderer.encode_video(
@@ -184,9 +185,9 @@ class GarychenUnattendedPipeline:
             out_mp4=long_mp4,
             thumbnail_png=thumb_png,
         )
-        console.print(f"[green]✓ Rendered V3 Long Video:[/green] {long_mp4} ({long_mp4.stat().st_size / (1024*1024):.2f} MB)")
+        console.print(f"[green]✓ Rendered V4 Long Video:[/green] {long_mp4} ({long_mp4.stat().st_size / (1024*1024):.2f} MB)")
 
-        console.rule("[bold orange3]Stage 7/7 · Remotion 圖層彈簧動畫 1080x1920 @ 60fps 對應推流 Shorts 合成")
+        console.rule("[bold orange3]Stage 7/7 · V4 純 Remotion 1080x1920 @ 60fps 對應推流 Shorts 合成")
         short_mp4 = ep_dir / "garychen_short_funnel.mp4"
         self.short_renderer.encode_short(
             script=script,
@@ -218,7 +219,7 @@ class GarychenUnattendedPipeline:
             "image_backend": img_backend,
         }
         (ep_dir / "run_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-        console.print(f"[bold green]🎉 V3 Studio Episode Complete![/bold green] -> {ep_dir}")
+        console.print(f"[bold green]🎉 V4 Studio Episode Complete![/bold green] -> {ep_dir}")
         return summary
 
     @staticmethod
