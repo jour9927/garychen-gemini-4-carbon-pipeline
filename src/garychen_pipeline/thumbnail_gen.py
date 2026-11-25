@@ -65,7 +65,7 @@ def render_studio_thumbnail(script: EpisodeScript, out_png: Path):
         filter: drop-shadow(0 14px 22px rgba(0,0,0,0.72));
       }}
     </style></head><body>
-      {f'<img src="{portrait_uri}" style="position:absolute;right:0;bottom:0;height:1080px;width:880px;object-fit:cover;z-index:5;"/>' if portrait_uri else ''}
+      {f'<img src="{portrait_uri}" style="position:absolute;right:0;bottom:0;height:1080px;width:836px;object-fit:contain;z-index:5;"/>' if portrait_uri else ''}
       <div style="position:absolute;left:84px;top:96px;z-index:10;max-width:1140px;">
         <div class="big-stroke" style="color:#FFC700;">{esc(script.thumbnail_line1)}</div>
         <div class="big-stroke" style="color:#FFFFFF;margin-top:8px;">{esc(script.thumbnail_line2)}</div>

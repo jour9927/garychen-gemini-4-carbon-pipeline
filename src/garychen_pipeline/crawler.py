@@ -183,7 +183,7 @@ class PublicInfoCrawler:
                 op_cur, op_prev, _ = latest_annual_pair(("OperatingIncomeLoss",))
                 ni_cur, ni_prev, _ = latest_annual_pair(("NetIncomeLoss",))
                 ocf_cur, ocf_prev, _ = latest_annual_pair(("NetCashProvidedByUsedInOperatingActivities",))
-                capex_cur, capex_prev, _ = latest_annual_pair(("PaymentsToAcquirePropertyPlantAndEquipment",))
+                capex_cur, capex_prev, _ = latest_annual_pair(("PaymentsToAcquireProductiveAssets", "PaymentsToAcquirePropertyPlantAndEquipment"))
 
                 if not rev_cur:
                     continue
