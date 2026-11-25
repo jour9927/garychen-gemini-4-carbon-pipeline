@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import csv
 import datetime as dt
 import html
+import io
 import re
 from pathlib import Path
 from urllib.parse import quote_plus, urlparse
@@ -17,15 +19,34 @@ HEADERS = {
     "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
 }
 
+# SEC EDGAR requires a descriptive User-Agent header per https://www.sec.gov/os/accessing-edgar-data
+SEC_HEADERS = {
+    "User-Agent": "GaryChenResearchPipeline/3.0 (contact@garychenai.com)",
+    "Accept": "application/json",
+}
+
+SEC_CIK_MAP = {
+    "NVDA": ("0001045810", "NVIDIA Corp."),
+    "META": ("0001326801", "Meta Platforms, Inc."),
+    "GOOGL": ("0001652044", "Alphabet Inc."),
+    "AMZN": ("0001018724", "Amazon.com, Inc."),
+    "MSFT": ("0000789019", "Microsoft Corp."),
+    "AAPL": ("0000320193", "Apple Inc."),
+    "TSLA": ("0001318605", "Tesla, Inc."),
+    "AMD": ("0000002488", "Advanced Micro Devices, Inc."),
+    "TSM": ("0001046179", "Taiwan Semiconductor Mfg."),
+}
+
 CHROME_APP_BIN = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
-# Noise domains / generic unrelated repos that must NEVER pollute technical/financial citations
 BLOCKED_NOISE_PATTERNS = (
     "animate-css",
     "torproject.org",
     "why-do-all-browsers-user-agents",
     "awesome-list",
     "free-programming-books",
+    "audio2face",
+    "facial animation",
 )
 
 
@@ -38,16 +59,24 @@ def _clean_text(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
+def _fmt_usd_yi(val_usd: float) -> str:
+    """Formats raw USD into Garychen's signature `$X,XXX 億` (hundreds of millions USD) string."""
+    yi = val_usd / 1e8
+    if abs(yi) >= 100:
+        return f"${yi:,.0f} 億"
+    return f"${yi:,.1f} 億"
+
+
 def _extract_metrics(text: str) -> list[str]:
     patterns = [
         r"\$[\d,]+(?:\.\d+)?\s*(?:B|M|K|億|萬|兆|/mo|/month|/月)?",
-        r"\d+(?:\.\d+)?\s*(?:%|倍|x|X|億|萬|K\s*stars|stars|tokens|GB|TB|ms)",
+        r"[+-]?\d+(?:\.\d+)?\s*(?:%|倍|x|X|億|萬|K\s*stars|stars|tokens|GB|TB)",
     ]
     found: list[str] = []
     for pat in patterns:
         for m in re.findall(pat, text):
             val = m.strip()
-            if val and val not in found and len(val) <= 26:
+            if val and val not in found and 2 <= len(val) <= 24:
                 found.append(val)
             if len(found) >= 6:
                 return found
@@ -59,7 +88,7 @@ def _extract_commands(md_text: str) -> list[str]:
     for m in re.finditer(r"```(?:bash|sh|zsh|shell|python)?\n(.*?)```", md_text, re.DOTALL):
         for ln in m.group(1).splitlines():
             ln = ln.strip()
-            if ln and not ln.startswith("#") and 6 <= len(ln) <= 72:
+            if ln and not ln.startswith("#") and 6 <= len(ln) <= 68:
                 cmds.append(ln)
                 if len(cmds) >= 5:
                     return cmds
@@ -68,14 +97,14 @@ def _extract_commands(md_text: str) -> list[str]:
 
 class PublicInfoCrawler:
     """
-    V2 Precision Crawler:
-      - Enforces strict entity & topic relevance filtering (zero off-topic noise)
-      - Crawls primary GitHub repo API + README + latest Releases + linked official homepage/docs
-      - Crawls entity-matched Hacker News discussions, ArXiv papers, and Yahoo Finance market quotes
-      - Captures real dark-mode 1440x900 browser screenshots via Playwright + local Chrome for authentic UI scenes!
+    V3 Precision Domain Crawler:
+      - Official SEC EDGAR 10-K / 10-Q XBRL financial statement extractor (`data.sec.gov`) for US Stocks
+      - Dual live stock price & 52-week range extractor (Stooq market feed + Yahoo Finance chart API)
+      - Primary GitHub repo + README + latest release + official docs crawler for AI/Engineering tutorials
+      - Strict relevance & noise filtering + 1440x900 Retina dark-mode browser screenshot capture!
     """
 
-    def __init__(self, timeout: float = 12.0):
+    def __init__(self, timeout: float = 14.0):
         self.client = httpx.Client(headers=HEADERS, timeout=timeout, follow_redirects=True)
 
     def close(self):
@@ -85,21 +114,182 @@ class PublicInfoCrawler:
     def _entity_tokens(entity: str, queries: list[str]) -> list[str]:
         raw = " ".join([entity] + queries[:2])
         toks = [t.lower() for t in re.findall(r"[a-zA-Z0-9_-]{3,}", raw)]
-        stop = {"mcp", "agent", "agents", "workflow", "official", "github", "the", "and", "for", "with", "how", "ai"}
+        stop = {"mcp", "agent", "agents", "workflow", "official", "github", "the", "and", "for", "with", "how", "earnings", "moat"}
         specific = [t for t in toks if t not in stop]
         return specific or toks[:3]
 
-    def _is_relevant(self, title: str, url: str, excerpt: str, required_tokens: list[str]) -> float:
-        u_low = url.lower()
-        if any(b in u_low for b in BLOCKED_NOISE_PATTERNS):
-            return 0.0
+    def _is_relevant(self, title: str, url: str, excerpt: str, required_tokens: list[str], category: str = "ai_agent") -> float:
         blob = f"{title} {url} {excerpt}".lower()
+        if any(b in blob for b in BLOCKED_NOISE_PATTERNS):
+            return 0.0
+        if category == "us_stocks":
+            # For financial analysis, reject narrow CV/graphics papers unrelated to datacenter/architecture/economics
+            fin_terms = ("blackwell", "inference", "datacenter", "throughput", "gpu", "revenue", "capex", "cloud", "earnings", "stock", "market", "architecture", "tensorrt")
+            if "arxiv.org" in url.lower() and not any(ft in blob for ft in fin_terms):
+                return 0.0
         if not required_tokens:
             return 0.8
         hits = sum(1 for tok in required_tokens if tok in blob)
         if hits == 0:
-            return 0.15
+            return 0.10
         return min(1.0, 0.55 + 0.25 * hits)
+
+    def fetch_sec_edgar_financials(self, tickers: list[str]) -> list[CrawledSource]:
+        """Pulls 100% official, auditable SEC 10-K / 10-Q XBRL metrics (Revenue, Gross Profit, Operating Income, OCF, CapEx)."""
+        out: list[CrawledSource] = []
+        for sym in tickers[:2]:
+            cik_info = SEC_CIK_MAP.get(sym.upper())
+            if not cik_info:
+                continue
+            cik, comp_name = cik_info
+            try:
+                r = httpx.get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json", headers=SEC_HEADERS, timeout=16.0)
+                if r.status_code != 200:
+                    continue
+                us_gaap = r.json().get("facts", {}).get("us-gaap", {})
+
+                def latest_annual_pair(tags: tuple[str, ...]) -> tuple[float | None, float | None, str]:
+                    for tg in tags:
+                        units = us_gaap.get(tg, {}).get("units", {}).get("USD", [])
+                        annuals = [
+                            u for u in units
+                            if u.get("form") in ("10-K", "20-F") and u.get("fp") == "FY" and isinstance(u.get("val"), (int, float))
+                        ]
+                        if not annuals:
+                            continue
+                        # Deduplicate by fiscal end date, taking latest filed
+                        by_end: dict[str, dict] = {}
+                        for u in annuals:
+                            end_d = str(u.get("end", ""))
+                            if len(end_d) == 10:
+                                start_d = str(u.get("start", ""))
+                                # Keep full-year (~330..380 days) entries
+                                if start_d:
+                                    try:
+                                        days = (dt.date.fromisoformat(end_d) - dt.date.fromisoformat(start_d)).days
+                                        if not (330 <= days <= 385):
+                                            continue
+                                    except Exception:
+                                        pass
+                                by_end[end_d] = u
+                        ordered = [by_end[k] for k in sorted(by_end.keys())]
+                        if len(ordered) >= 2:
+                            return float(ordered[-1]["val"]), float(ordered[-2]["val"]), ordered[-1]["end"]
+                        if len(ordered) == 1:
+                            return float(ordered[-1]["val"]), None, ordered[-1]["end"]
+                    return None, None, ""
+
+                rev_cur, rev_prev, fy_end = latest_annual_pair(("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"))
+                op_cur, op_prev, _ = latest_annual_pair(("OperatingIncomeLoss",))
+                ni_cur, ni_prev, _ = latest_annual_pair(("NetIncomeLoss",))
+                ocf_cur, ocf_prev, _ = latest_annual_pair(("NetCashProvidedByUsedInOperatingActivities",))
+                capex_cur, capex_prev, _ = latest_annual_pair(("PaymentsToAcquirePropertyPlantAndEquipment",))
+
+                if not rev_cur:
+                    continue
+
+                facts: list[str] = []
+                metrics: list[str] = []
+                rev_yoy = ((rev_cur - rev_prev) / abs(rev_prev) * 100.0) if rev_prev else 0.0
+                facts.append(f"SEC 10-K 官方年報（截至 {fy_end}）：全年總營收 {_fmt_usd_yi(rev_cur)} 美金（年增 {rev_yoy:+.1f}%）")
+                metrics.append(_fmt_usd_yi(rev_cur))
+                if rev_prev:
+                    metrics.append(f"{rev_yoy:+.1f}%")
+
+                if op_cur and rev_cur:
+                    op_margin = op_cur / rev_cur * 100.0
+                    facts.append(f"營業利益達 {_fmt_usd_yi(op_cur)} 美金，營業利益率高達 {op_margin:.1f}%")
+                    metrics.append(f"營益率 {op_margin:.1f}%")
+                if ni_cur:
+                    ni_yoy = ((ni_cur - ni_prev) / abs(ni_prev) * 100.0) if ni_prev else 0.0
+                    facts.append(f"全年淨利 {_fmt_usd_yi(ni_cur)} 美金（年增 {ni_yoy:+.1f}%）")
+                if ocf_cur:
+                    facts.append(f"營運現金流（OCF）達 {_fmt_usd_yi(ocf_cur)} 美金，現金造血能力強勁")
+                    metrics.append(f"OCF {_fmt_usd_yi(ocf_cur)}")
+                if capex_cur:
+                    capex_yoy = ((capex_cur - capex_prev) / abs(capex_prev) * 100.0) if capex_prev else 0.0
+                    facts.append(f"資本支出（CapEx）為 {_fmt_usd_yi(capex_cur)} 美金（年變動 {capex_yoy:+.1f}%）")
+                    metrics.append(f"CapEx {_fmt_usd_yi(capex_cur)}")
+
+                sec_url = f"https://www.sec.gov/edgar/browse/?CIK={int(cik)}"
+                out.append(
+                    CrawledSource(
+                        source_id=f"sec_{sym.lower()}",
+                        title=f"SEC EDGAR 10-K 官方財報：{comp_name} ({sym})",
+                        url=sec_url,
+                        domain="sec.gov",
+                        published_date=fy_end or dt.date.today().isoformat(),
+                        retrieved_at=_now_iso(),
+                        source_type="sec_filing",
+                        relevance_score=1.0,
+                        key_facts=facts,
+                        metrics=metrics[:5],
+                        excerpt=" | ".join(facts),
+                    )
+                )
+            except Exception:
+                continue
+        return out
+
+    def fetch_market_quotes(self, tickers: list[str]) -> list[CrawledSource]:
+        """Fetches real market price, 52-week high/low, and 1Y return via Yahoo Finance V8 + Stooq CSV fallback."""
+        out: list[CrawledSource] = []
+        for sym in tickers[:3]:
+            price, high52, low52, chg_1y, latest_date = None, None, None, 0.0, dt.date.today().isoformat()
+            # Try Yahoo Finance V8 first
+            for host in ("query2.finance.yahoo.com", "query1.finance.yahoo.com"):
+                try:
+                    r = self.client.get(f"https://{host}/v8/finance/chart/{sym}?range=1y&interval=1d", timeout=8.0)
+                    if r.status_code == 200:
+                        res = (r.json().get("chart", {}).get("result") or [None])[0]
+                        if res:
+                            meta = res.get("meta", {})
+                            price = float(meta.get("regularMarketPrice") or 0) or None
+                            prev = float(meta.get("chartPreviousClose") or price or 1)
+                            high52 = float(meta.get("fiftyTwoWeekHigh") or price or 0)
+                            low52 = float(meta.get("fiftyTwoWeekLow") or price or 0)
+                            if price and prev:
+                                chg_1y = (price - prev) / prev * 100.0
+                            break
+                except Exception:
+                    continue
+
+            # Fallback to Stooq daily OHLC CSV (zero API key, zero rate limit!)
+            if not price:
+                try:
+                    r_st = self.client.get(f"https://stooq.com/q/d/l/?s={sym.lower()}.us&i=d", timeout=10.0)
+                    if r_st.status_code == 200 and "Close" in r_st.text:
+                        rows = list(csv.DictReader(io.StringIO(r_st.text)))
+                        rows_1y = rows[-252:] if len(rows) >= 2 else rows
+                        if rows_1y:
+                            price = float(rows_1y[-1]["Close"])
+                            first_p = float(rows_1y[0]["Close"])
+                            high52 = max(float(x["High"]) for x in rows_1y)
+                            low52 = min(float(x["Low"]) for x in rows_1y)
+                            chg_1y = (price - first_p) / first_p * 100.0 if first_p else 0.0
+                            latest_date = rows_1y[-1].get("Date") or latest_date
+                except Exception:
+                    pass
+
+            if price:
+                pub_url = f"https://finance.yahoo.com/quote/{sym}"
+                fact = f"{sym} 公開市場股價報 ${price:,.2f} 美金，近 52 週區間 ${low52:,.2f} – ${high52:,.2f}（近一年累計變動 {chg_1y:+.1f}%）"
+                out.append(
+                    CrawledSource(
+                        source_id=f"mkt_{sym.lower()}",
+                        title=f"{sym} 市場即時報價 (${price:,.2f} / 1Y {chg_1y:+.1f}%)",
+                        url=pub_url,
+                        domain="finance.yahoo.com",
+                        published_date=latest_date,
+                        retrieved_at=_now_iso(),
+                        source_type="market_data",
+                        relevance_score=0.99,
+                        key_facts=[fact],
+                        metrics=[f"${price:,.2f}", f"{chg_1y:+.1f}%", f"52W High ${high52:,.0f}"],
+                        excerpt=fact,
+                    )
+                )
+        return out
 
     def inspect_github_repo_direct(self, full_name: str) -> list[CrawledSource]:
         out: list[CrawledSource] = []
@@ -110,7 +300,6 @@ class PublicInfoCrawler:
             repo = r.json()
             stars = int(repo.get("stargazers_count") or 0)
             forks = int(repo.get("forks_count") or 0)
-            issues = int(repo.get("open_issues_count") or 0)
             lang = repo.get("language") or "Python"
             desc = _clean_text(repo.get("description") or "")
             homepage = (repo.get("homepage") or "").strip()
@@ -122,7 +311,7 @@ class PublicInfoCrawler:
 
             facts = [f"GitHub 官方開源儲存庫 {full_name}：{stars:,} Stars、{forks:,} Forks（主要語言 {lang}）"]
             if desc:
-                facts.append(f"官方核心定位：{desc[:150]}")
+                facts.append(f"官方定位：{desc[:150]}")
             if rel_fact:
                 facts.append(rel_fact)
             facts.extend(readme_bullets[:4])
@@ -136,19 +325,17 @@ class PublicInfoCrawler:
                     published_date=updated,
                     retrieved_at=_now_iso(),
                     source_type="github_primary",
-                    relevance_score=1.0,
+                    relevance_score=0.98,
                     key_facts=facts,
-                    metrics=[f"{stars:,} Stars", f"{forks:,} Forks", lang, f"{issues} Issues"],
+                    metrics=[f"{stars:,} ★", f"{forks:,} Forks", lang],
                     code_or_commands=cmds,
                     excerpt=" | ".join(facts[:4]),
                 )
             )
-
-            # Follow official homepage/documentation site if present!
             if homepage and homepage.startswith("http") and "github.com" not in homepage:
-                hp_src = self.scrape_direct_url(homepage, label_prefix="官方網站與文件")
+                hp_src = self.scrape_direct_url(homepage, label_prefix="官方網站")
                 if hp_src:
-                    hp_src.relevance_score = 0.98
+                    hp_src.relevance_score = 0.97
                     out.append(hp_src)
         except Exception:
             pass
@@ -164,7 +351,7 @@ class PublicInfoCrawler:
                     for line in r.text.splitlines():
                         lc = re.sub(r"[#*`>\[\]]+", "", line).strip()
                         lc = re.sub(r"\(https?://[^\)]+\)", "", lc).strip()
-                        if 30 <= len(lc) <= 140 and not lc.lower().startswith(("http", "!", "badge", "license", "<img", "<div", "<p")):
+                        if 30 <= len(lc) <= 140 and not lc.lower().startswith(("http", "!", "badge", "license", "<img", "<div", "<p", "<a")):
                             bullets.append(lc)
                         if len(bullets) >= 6:
                             break
@@ -180,14 +367,13 @@ class PublicInfoCrawler:
                 d = r.json()
                 tag = d.get("tag_name") or ""
                 pub = (d.get("published_at") or "")[:10]
-                name = _clean_text(d.get("name") or tag)
                 if tag:
-                    return f"最新正式版本 {tag}（發布於 {pub}）：{name[:80]}"
+                    return f"最新正式版本 {tag}（發布於 {pub}）"
         except Exception:
             pass
         return ""
 
-    def search_github_repos(self, query: str, req_tokens: list[str], limit: int = 3) -> list[CrawledSource]:
+    def search_github_repos(self, query: str, req_tokens: list[str], category: str, limit: int = 3) -> list[CrawledSource]:
         out: list[CrawledSource] = []
         try:
             url = f"https://api.github.com/search/repositories?q={quote_plus(query)}&sort=stars&order=desc&per_page=6"
@@ -198,7 +384,7 @@ class PublicInfoCrawler:
                 full_name = repo.get("full_name", "")
                 desc = _clean_text(repo.get("description") or "")
                 html_url = repo.get("html_url", f"https://github.com/{full_name}")
-                rel = self._is_relevant(full_name, html_url, desc, req_tokens)
+                rel = self._is_relevant(full_name, html_url, desc, req_tokens, category)
                 if rel < 0.55:
                     continue
                 stars = int(repo.get("stargazers_count") or 0)
@@ -206,7 +392,7 @@ class PublicInfoCrawler:
                 lang = repo.get("language") or "Python"
                 updated = (repo.get("pushed_at") or repo.get("updated_at") or "")[:10]
                 readme_bullets, cmds = self._fetch_github_readme(full_name)
-                facts = [f"相關生態開源專案 {full_name}（{stars:,} Stars / {forks:,} Forks）"]
+                facts = [f"生態系開源專案 {full_name}（{stars:,} Stars / {forks:,} Forks）"]
                 if desc:
                     facts.append(desc[:140])
                 facts.extend(readme_bullets[:2])
@@ -219,9 +405,9 @@ class PublicInfoCrawler:
                         published_date=updated,
                         retrieved_at=_now_iso(),
                         source_type="github_repo",
-                        relevance_score=rel,
+                        relevance_score=min(0.92, rel),
                         key_facts=facts,
-                        metrics=[f"{stars:,} Stars", f"{forks:,} Forks", lang],
+                        metrics=[f"{stars:,} ★", f"{forks:,} Forks", lang],
                         code_or_commands=cmds,
                         excerpt=" | ".join(facts),
                     )
@@ -232,10 +418,10 @@ class PublicInfoCrawler:
             pass
         return out
 
-    def search_hackernews(self, query: str, req_tokens: list[str], limit: int = 3) -> list[CrawledSource]:
+    def search_hackernews(self, query: str, req_tokens: list[str], category: str, limit: int = 3) -> list[CrawledSource]:
         out: list[CrawledSource] = []
         try:
-            url = f"https://hn.algolia.com/api/v1/search?query={quote_plus(query)}&tags=story&hitsPerPage=10"
+            url = f"https://hn.algolia.com/api/v1/search?query={quote_plus(query)}&tags=story&hitsPerPage=12"
             r = self.client.get(url)
             if r.status_code != 200:
                 return out
@@ -243,19 +429,18 @@ class PublicInfoCrawler:
                 title = _clean_text(hit.get("title") or "")
                 ext_url = hit.get("url") or f"https://news.ycombinator.com/item?id={hit.get('objectID')}"
                 created = (hit.get("created_at") or "")[:10]
-                # Reject ancient pre-2023 stories so AI/tech tutorials stay modern
-                if created and created[:4].isdigit() and int(created[:4]) < 2023:
-                    continue
-                rel = self._is_relevant(title, ext_url, "", req_tokens)
-                if rel < 0.55:
+                if created and created[:4].isdigit() and int(created[:4]) < 2024:
                     continue
                 pts = int(hit.get("points") or 0)
                 cmts = int(hit.get("num_comments") or 0)
-                if pts < 10:
+                if pts < 25:
+                    continue
+                rel = self._is_relevant(title, ext_url, "", req_tokens, category)
+                if rel < 0.55:
                     continue
                 dom = urlparse(ext_url).netloc.replace("www.", "") or "news.ycombinator.com"
                 page_facts, excerpt = self._scrape_webpage_summary(ext_url)
-                facts = [f"Hacker News 工程師社群實測討論（{pts} Points / {cmts} 則留言）：{title}"] + page_facts[:2]
+                facts = [f"媒體與社群焦點（{pts} Points / {cmts} 則討論）：{title}"] + page_facts[:2]
                 out.append(
                     CrawledSource(
                         source_id=f"hn_{hit.get('objectID')}",
@@ -265,9 +450,9 @@ class PublicInfoCrawler:
                         published_date=created,
                         retrieved_at=_now_iso(),
                         source_type="hn_discussion",
-                        relevance_score=min(0.88, rel),
+                        relevance_score=min(0.90, rel),
                         key_facts=facts,
-                        metrics=[f"{pts} HN Points", f"{cmts} 則討論"] + _extract_metrics(excerpt)[:2],
+                        metrics=_extract_metrics(f"{title} {excerpt}")[:3] or [f"{pts} HN pts"],
                         excerpt=excerpt[:420] or title,
                     )
                 )
@@ -277,51 +462,10 @@ class PublicInfoCrawler:
             pass
         return out
 
-    def fetch_yahoo_finance_quotes(self, tickers: list[str]) -> list[CrawledSource]:
-        out: list[CrawledSource] = []
-        for sym in tickers[:4]:
-            try:
-                url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=1y&interval=1d"
-                r = self.client.get(url)
-                if r.status_code != 200:
-                    continue
-                res = (r.json().get("chart", {}).get("result") or [None])[0]
-                if not res:
-                    continue
-                meta = res.get("meta", {})
-                price = meta.get("regularMarketPrice")
-                prev = meta.get("chartPreviousClose") or price
-                high52 = meta.get("fiftyTwoWeekHigh")
-                low52 = meta.get("fiftyTwoWeekLow")
-                currency = meta.get("currency", "USD")
-                chg_pct = ((price - prev) / prev * 100.0) if (price and prev) else 0.0
-                pub_url = f"https://finance.yahoo.com/quote/{sym}"
-                facts = [
-                    f"{sym} 最新公開市場報價：${price:,.2f} {currency}（年內區間 ${low52:,.2f} – ${high52:,.2f}，區間變動 {chg_pct:+.1f}%）",
-                ]
-                out.append(
-                    CrawledSource(
-                        source_id=f"yf_{sym.lower()}",
-                        title=f"Yahoo Finance 市場數據：{sym} (${price:,.2f})",
-                        url=pub_url,
-                        domain="finance.yahoo.com",
-                        published_date=dt.date.today().isoformat(),
-                        retrieved_at=_now_iso(),
-                        source_type="market_data",
-                        relevance_score=1.0,
-                        key_facts=facts,
-                        metrics=[f"${price:,.2f}", f"{chg_pct:+.1f}% (1Y)", f"52W High ${high52:,.0f}"],
-                        excerpt=facts[0],
-                    )
-                )
-            except Exception:
-                continue
-        return out
-
-    def search_arxiv(self, query: str, req_tokens: list[str], limit: int = 2) -> list[CrawledSource]:
+    def search_arxiv(self, query: str, req_tokens: list[str], category: str, limit: int = 2) -> list[CrawledSource]:
         out: list[CrawledSource] = []
         try:
-            url = f"https://export.arxiv.org/api/query?search_query=all:{quote_plus(query)}&sortBy=relevance&order=descending&max_results=5"
+            url = f"https://export.arxiv.org/api/query?search_query=all:{quote_plus(query)}&sortBy=relevance&order=descending&max_results=6"
             r = self.client.get(url)
             if r.status_code != 200:
                 return out
@@ -331,15 +475,11 @@ class PublicInfoCrawler:
                 title = _clean_text(entry.findtext("a:title", "", ns))
                 summary = _clean_text(entry.findtext("a:summary", "", ns))
                 link = _clean_text(entry.findtext("a:id", "", ns))
-                rel = self._is_relevant(title, link, summary, req_tokens)
+                rel = self._is_relevant(title, link, summary, req_tokens, category)
                 if rel < 0.55:
                     continue
                 pub = _clean_text(entry.findtext("a:published", "", ns))[:10]
-                authors = [_clean_text(au.findtext("a:name", "", ns)) for au in entry.findall("a:author", ns)[:2]]
-                facts = [
-                    f"arXiv 技術論文（{pub}，{', '.join(authors)}）：{title}",
-                    f"實驗與架構重點：{summary[:180]}",
-                ]
+                facts = [f"arXiv 架構與實測論文（{pub}）：{title}", f"關鍵結論：{summary[:180]}"]
                 out.append(
                     CrawledSource(
                         source_id=f"arxiv_{len(out)+1}",
@@ -349,9 +489,9 @@ class PublicInfoCrawler:
                         published_date=pub,
                         retrieved_at=_now_iso(),
                         source_type="research_paper",
-                        relevance_score=rel,
+                        relevance_score=min(0.89, rel),
                         key_facts=facts,
-                        metrics=_extract_metrics(summary)[:3] or ["arXiv Paper"],
+                        metrics=_extract_metrics(summary)[:3] or ["arXiv 論文"],
                         excerpt=summary[:400],
                     )
                 )
@@ -422,7 +562,6 @@ class PublicInfoCrawler:
 
     @staticmethod
     def capture_source_screenshots(sources: list[CrawledSource], out_dir: Path, max_captures: int = 4):
-        """Captures real crisp 1440x900 dark-mode webpage screenshots for `live_web_screenshot_spotlight` scenes."""
         out_dir.mkdir(parents=True, exist_ok=True)
         try:
             from playwright.sync_api import sync_playwright
@@ -442,25 +581,24 @@ class PublicInfoCrawler:
                     if captured >= max_captures:
                         break
                     out_png = out_dir / f"{src.source_id}.png"
-                    if out_png.exists() and out_png.stat().st_size > 5000:
+                    if out_png.exists() and out_png.stat().st_size > 8000:
                         src.screenshot_path = str(out_png)
                         captured += 1
                         continue
                     try:
                         page = ctx.new_page()
-                        page.goto(src.url, wait_until="domcontentloaded", timeout=10000)
-                        page.wait_for_timeout(900)
-                        # Hide common cookie banners cleanly
+                        page.goto(src.url, wait_until="domcontentloaded", timeout=11000)
+                        page.wait_for_timeout(1100)
                         page.evaluate(
                             """() => {
-                                for (const sel of ['[id*="cookie"]', '[class*="cookie"]', '[aria-label*="cookie"]']) {
+                                for (const sel of ['[id*="cookie"]', '[class*="cookie"]', '[aria-label*="cookie"]', '[class*="consent"]']) {
                                     document.querySelectorAll(sel).forEach(el => el.style.display = 'none');
                                 }
                             }"""
                         )
                         page.screenshot(path=str(out_png), clip={"x": 0, "y": 0, "width": 1440, "height": 900})
                         page.close()
-                        if out_png.exists() and out_png.stat().st_size > 5000:
+                        if out_png.exists() and out_png.stat().st_size > 8000:
                             src.screenshot_path = str(out_png)
                             captured += 1
                     except Exception:
@@ -474,6 +612,7 @@ class PublicInfoCrawler:
         self,
         queries: list[str],
         primary_entity: str = "",
+        category: str = "ai_agent",
         seed_urls: list[str] | None = None,
         tickers: list[str] | None = None,
         screenshots_dir: Path | None = None,
@@ -489,7 +628,13 @@ class PublicInfoCrawler:
                     seen_urls.add(u)
                     sources.append(item)
 
-        # 1. Direct primary URLs (including GitHub repo + linked homepage!)
+        # 1. For US Stocks: Official SEC EDGAR 10-K XBRL + Live Market Quotes FIRST!
+        if tickers or category == "us_stocks":
+            t_list = tickers or ["NVDA"]
+            _add(self.fetch_sec_edgar_financials(t_list))
+            _add(self.fetch_market_quotes(t_list))
+
+        # 2. Seed URLs
         for u in (seed_urls or []):
             if "github.com/" in u:
                 m = re.search(r"github\.com/([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)", u)
@@ -500,17 +645,15 @@ class PublicInfoCrawler:
             if sc:
                 _add([sc])
 
-        # 2. Live financial market quotes when analyzing US stocks
-        if tickers:
-            _add(self.fetch_yahoo_finance_quotes(tickers))
-
-        # 3. Entity-filtered GitHub, Hacker News, and ArXiv
+        # 3. Domain-appropriate public sources
         for q in queries[:3]:
-            _add(self.search_github_repos(q, req_tokens, limit=2))
-            _add(self.search_hackernews(q, req_tokens, limit=2))
-            _add(self.search_arxiv(q, req_tokens, limit=2))
+            if category != "us_stocks":
+                _add(self.search_github_repos(q, req_tokens, category, limit=2))
+            _add(self.search_hackernews(q, req_tokens, category, limit=2))
+            _add(self.search_arxiv(q, req_tokens, category, limit=2))
+            if category == "us_stocks" and len(sources) < 6:
+                _add(self.search_github_repos(q, req_tokens, category, limit=1))
 
-        # Sort by relevance_score descending so S1..Sn are always the highest-signal primary sources
         sources.sort(key=lambda s: s.relevance_score, reverse=True)
         sources = sources[:8]
         for i, src in enumerate(sources, 1):

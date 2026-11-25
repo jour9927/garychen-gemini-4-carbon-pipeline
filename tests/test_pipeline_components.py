@@ -2,90 +2,96 @@ from __future__ import annotations
 
 from garychen_pipeline.config import CrawledSource, DesignTokens, EpisodeScript, ShortBeatSpec, VisualBeat, VisualNode
 from garychen_pipeline.html_renderer import build_long_beat_html, build_short_beat_html
-from garychen_pipeline.scriptwriter import space_pad_english, split_into_clauses
+from garychen_pipeline.scriptwriter import split_into_clauses, taiwanize_text
+from garychen_pipeline.tts_normalizer import to_spoken_tts_text
 
 
-def test_v2_all_fourteen_html_layouts():
+def test_tts_phonetic_normalizer():
+    assert "二十一萬" in to_spoken_tts_text("GitHub 突破 211,995 Stars")
+    assert "一千三百零五億美金" in to_spoken_tts_text("全年營收 $1,305 億")
+    assert "成長百分之九十四" in to_spoken_tts_text("營收 +94%")
+    assert "N eight N" in to_spoken_tts_text("n8n 自動化")
+    assert "C I C D" in to_spoken_tts_text("先等 CI/CD 通過")
+
+
+def test_taiwanize_and_clauses():
+    cl = split_into_clauses("首先，我們打開瀏覽器，把這段代碼放進服務器的數據庫裡，才不會做 A 壞 B。")
+    joined = " ".join(cl)
+    assert "程式碼" in joined and "伺服器" in joined and "資料庫" in joined
+    assert all(len(c) >= 6 for c in cl)
+
+
+def test_all_14_v3_layouts_render():
+    tokens = DesignTokens()
+    src = CrawledSource(source_id="S1", title="SEC 10-K NVDA", url="https://sec.gov", domain="sec.gov", published_date="2026-01")
     layouts = [
-        "claude_terminal_progressive",
-        "pricing_strikethrough_reveal",
-        "chapter_roadmap_agenda",
-        "progressive_slot_pipeline",
-        "hub_ecosystem_radiate",
-        "github_pr_checks_mock",
-        "live_web_screenshot_spotlight",
-        "ai_editorial_split_card",
-        "before_after_stamp_compare",
-        "kpi_financial_cards",
-        "branch_merge_diagram",
-        "checklist_two_tier_defense",
-        "versus_debate_columns",
-        "summary_three_pillars",
+        "claude_chat_dialog",
+        "app_squircles_strikethrough",
+        "ecosystem_node_graph",
+        "protagonist_app_flow",
+        "agenda_four_steps",
+        "concept_hero_split_3d",
+        "feature_pill_matrix",
+        "browser_ui_live_tour",
+        "github_pr_checks_card",
+        "before_after_workflow_card",
+        "stocks_kpi_asymmetric",
+        "stocks_big_statement",
+        "stocks_four_pillars",
+        "stocks_valuation_scenarios",
     ]
-    nodes = [
-        VisualNode(label="browser-use", sub="自動操控真實瀏覽器", tag="121K+ ★", icon="github", trend="up"),
-        VisualNode(label="MCP Server", sub="統一協定直連 Claude", tag="免費開源", icon="zap", trend="up"),
-        VisualNode(label="CI 自動檢查", sub="確保每次改動不壞舊功能", tag="Passed ✓", icon="shield", trend="neutral"),
-        VisualNode(label="排程自動跑", sub="背景無人值守執行", tag="24/7", icon="cpu", trend="neutral"),
-    ]
-    beats = [
-        VisualBeat(
-            beat_id=f"beat_{i+1:02d}",
-            chapter_index=(i % 6) + 1,
-            chapter_title=f"實戰章節 {i+1}",
-            layout_type=lt,  # type: ignore[arg-type]
-            clauses=split_into_clauses("你可能在用AI寫程式時遇過這樣的狀況，其實背後就是這套自動化工作流在幫你把關"),
-            visual_title="MCP 與瀏覽器 Agent 實戰",
-            visual_subtitle="用最白話的方式拆解底層邏輯",
-            badge_text="121,926 Stars",
-            nodes=nodes,
-            callout_title="Gary 實戰重點",
-            callout_body="先把防線搭起來，疊新功能才不會做 A 壞 B",
-            code_lines=["pip install browser-use", "playwright install chromium"],
-            source_ids=["S1"],
+    beats = []
+    for idx, lt in enumerate(layouts):
+        beats.append(
+            VisualBeat(
+                beat_id=f"b_{idx}",
+                chapter_index=2,
+                total_chapters=7,
+                chapter_title="架構拆解",
+                layout_type=lt,  # type: ignore[arg-type]
+                clauses=["第一句話", "第二句話", "第三句話"],
+                spoken_clauses=["第一句話", "第二句話", "第三句話"],
+                visual_title="測試標題",
+                nodes=[
+                    VisualNode(label="營收", sub="年增 114%", tag="高成長", metric="$1,305 億", icon="nvidia", trend="up"),
+                    VisualNode(label="毛利率", sub="定價權極強", tag="護城河", metric="75.0%", icon="github", trend="up"),
+                    VisualNode(label="現金流", sub="自由現金充沛", tag="穩健", metric="$641 億", icon="shield", trend="neutral"),
+                ],
+                source_ids=["S1"],
+            )
         )
-        for i, lt in enumerate(layouts)
-    ]
-    sbeat = ShortBeatSpec(
-        beat_id="sbeat_01",
-        layout_type="short_funnel_cta",
-        clauses=["馬上點擊左下角關聯影片看完整版"],
-        headline="點擊左下角看完整教學",
-        highlight_badge="完整長片已上線",
-        nodes=nodes[:3],
+    sb = ShortBeatSpec(
+        beat_id="sb_1",
+        layout_type="short_shock_metric_hero",
+        clauses=["第一句", "第二句"],
+        spoken_clauses=["第一句", "第二句"],
+        headline="精華重點",
+        nodes=beats[0].nodes,
         source_ids=["S1"],
-        is_cta=True,
     )
-    script = EpisodeScript(
-        episode_id="unit_v2",
-        title="測試長片標題",
-        youtube_description_summary="測試摘要",
-        chapters=["01 測試"],
+    sc = EpisodeScript(
+        episode_id="t_v3",
+        title="V3 Test",
+        thumbnail_line1="NVDA 財報",
+        thumbnail_line2="三大護城河",
+        category="us_stocks",
+        avatar_mode=True,
+        youtube_description_summary="desc",
         beats=beats,
-        short_title="測試短片 #Shorts",
-        short_hook_banner="精華速看",
-        short_cta_target_title="測試長片標題",
-        short_beats=[sbeat],
+        short_title="S #Shorts",
+        short_hook_banner="NVDA",
+        short_cta_target_title="V3 Test",
+        short_beats=[sb],
     )
-    src = {
-        "S1": CrawledSource(
-            source_id="S1",
-            title="browser-use/browser-use",
-            url="https://github.com/browser-use/browser-use",
-            domain="github.com",
-            published_date="2026-11-25",
-        )
-    }
-    tok = DesignTokens()
     for b in beats:
-        for step in (0, 1, 2):
-            h = build_long_beat_html(script, b, step, None, src, tok)
-            assert "<!DOCTYPE html>" in h and b.visual_title in h
-    sh = build_short_beat_html(script, sbeat, 0, None, None, src, tok)
-    assert "關聯影片" in sh
-    assert "AI 寫程式" in space_pad_english("AI寫程式。")
+        doc, n_st = build_long_beat_html(sc, b, None, {"S1": src}, tokens)
+        assert 'data-step="0"' in doc and n_st == 3
+    sdoc, sn = build_short_beat_html(sc, sb, None, None, {"S1": src}, tokens)
+    assert 'data-step="0"' in sdoc and sn == 2
 
 
 if __name__ == "__main__":
-    test_v2_all_fourteen_html_layouts()
-    print("ALL_V2_UNIT_TESTS_PASSED")
+    test_tts_phonetic_normalizer()
+    test_taiwanize_and_clauses()
+    test_all_14_v3_layouts_render()
+    print("ALL_V3_UNIT_TESTS_PASSED")

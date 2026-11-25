@@ -10,34 +10,74 @@ FONT_BOLD = (ASSETS_DIR / "fonts/NotoSansTC-Bold.otf").resolve()
 FONT_MED = (ASSETS_DIR / "fonts/NotoSansTC-Medium.otf").resolve()
 FONT_MONO = (ASSETS_DIR / "fonts/JetBrainsMono-Bold.ttf").resolve()
 
-# Crisp Lucide / Brand Vector SVG Paths (24x24 viewBox)
+# Authentic Brand Marks & Crisp Stroke Icons (24x24 viewBox)
 ICON_SVGS: dict[str, str] = {
-    "github": '<path fill="currentColor" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>',
+    "github": '<path fill="currentColor" stroke="none" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>',
+    "claude": '<path fill="#D97757" stroke="none" d="M5 7h14v7h-2v3h-2v-3H9v3H7v-3H5V7zm3 2v2h2V9H8zm6 0v2h2V9h-2z"/>',
+    "openai": '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>',
+    "meta": '<path d="M5.5 15.5c-1.8 0-3-1.4-3-3.5 0-2.6 2-5 4.2-5 1.9 0 3.3 1.4 5.3 4.3 2-2.9 3.4-4.3 5.3-4.3 2.2 0 4.2 2.4 4.2 5 0 2.1-1.2 3.5-3 3.5-1.6 0-2.9-1.1-4.6-3.6l-1.9 2.7c-1.7 2.5-3 0.9-6.5 0.9z"/>',
+    "google": '<path d="M21 12.2c0-.7-.1-1.3-.2-1.9H12v3.7h5.1c-.2 1.2-.9 2.2-1.9 2.9v2.4h3c1.8-1.6 2.8-4.1 2.8-7.1z"/><circle cx="12" cy="12" r="9"/>',
+    "nvidia": '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.8" fill="currentColor"/>',
+    "aws": '<path d="M4 16c4.5 3 11.5 3 16 0"/><polyline points="17 14 20 16 18 19"/><path d="M7 11l3-6 3 6M8 9h4M15 5l2 6 2-6"/>',
+    "docker": '<rect x="3" y="11" width="18" height="7" rx="3"/><rect x="6" y="7" width="3" height="3"/><rect x="10" y="7" width="3" height="3"/><rect x="10" y="3" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/>',
+    "n8n": '<circle cx="6" cy="12" r="2.6"/><circle cx="12" cy="8" r="2.6"/><circle cx="18" cy="12" r="2.6"/><circle cx="12" cy="16" r="2.6"/><line x1="8.3" y1="10.8" x2="9.8" y2="9.2"/><line x1="14.2" y1="9.2" x2="15.7" y2="10.8"/><line x1="8.3" y1="13.2" x2="9.8" y2="14.8"/>',
+    "zapier": '<line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/><line x1="18.4" y1="5.6" x2="5.6" y2="18.4"/>',
+    "notion": '<rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M9 16V8l6 8V8"/>',
+    "slack": '<rect x="6" y="10" width="5" height="2" rx="1"/><rect x="13" y="12" width="5" height="2" rx="1"/><rect x="12" y="6" width="2" height="5" rx="1"/><rect x="10" y="13" width="2" height="5" rx="1"/>',
+    "gmail": '<rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/>',
     "terminal": '<polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>',
     "code": '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
-    "globe": '<circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
-    "cpu": '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>',
-    "shield": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>',
-    "check": '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
-    "database": '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>',
-    "trending_up": '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
-    "dollar": '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
-    "layers": '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
-    "zap": '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
-    "lock": '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
-    "users": '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-    "play": '<polygon points="5 3 19 12 5 21 5 3"/>',
-    "sparkles": '<path d="M12 3l1.9 5.8a2 2 0 0 0 1.3 1.3L21 12l-5.8 1.9a2 2 0 0 0-1.3 1.3L12 21l-1.9-5.8a2 2 0 0 0-1.3-1.3L3 12l5.8-1.9a2 2 0 0 0 1.3-1.3L12 3z"/>',
+    "globe": '<circle cx="12" cy="12" r="9.5"/><line x1="2.5" y1="12" x2="21.5" y2="12"/><path d="M12 2.5a14.5 14.5 0 0 1 4 9.5 14.5 14.5 0 0 1-4 9.5 14.5 14.5 0 0 1-4-9.5 14.5 14.5 0 0 1 4-9.5z"/>',
+    "cpu": '<rect x="5" y="5" width="14" height="14" rx="2.5"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="5"/><line x1="15" y1="2" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="22"/><line x1="15" y1="19" x2="15" y2="22"/>',
+    "shield": '<path d="M12 21s7.5-3.8 7.5-9.5V5.2L12 2.5 4.5 5.2v6.3C4.5 17.2 12 21 12 21z"/><polyline points="9 12 11 14 15.2 9.8"/>',
+    "check": '<path d="M21 11.5a9 9 0 1 1-5.3-8.2"/><polyline points="21 4.5 12 13.5 9 10.5"/>',
+    "database": '<ellipse cx="12" cy="5.5" rx="8" ry="2.8"/><path d="M20 12c0 1.5-3.6 2.8-8 2.8S4 13.5 4 12"/><path d="M4 5.5v13c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-13"/>',
+    "trending_up": '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
+    "dollar": '<line x1="12" y1="2" x2="12" y2="22"/><path d="M16.5 6H9.8a3.2 3.2 0 0 0 0 6.4h4.4a3.2 3.2 0 0 1 0 6.4H6.5"/>',
+    "layers": '<polygon points="12 3 3 7.5 12 12 21 7.5 12 3"/><polyline points="3 16.5 12 21 21 16.5"/><polyline points="3 12 12 16.5 21 12"/>',
+    "zap": '<polygon points="13 2.5 4 13.5 12 13.5 11 21.5 20 10.5 12 10.5 13 2.5"/>',
+    "lock": '<rect x="4" y="11" width="16" height="10" rx="2.2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/>',
+    "users": '<circle cx="12" cy="8.5" r="3.8"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/>',
+    "play": '<polygon points="6 4 19 12 6 20 6 4"/>',
+    "sparkles": '<path d="M12 3l1.8 5.6a2 2 0 0 0 1.3 1.3L20.7 12l-5.6 1.8a2 2 0 0 0-1.3 1.3L12 20.7l-1.8-5.6a2 2 0 0 0-1.3-1.3L3.3 12l5.6-1.8a2 2 0 0 0 1.3-1.3L12 3z"/>',
+}
+
+SQUIRCLE_BRAND_BG: dict[str, tuple[str, str]] = {
+    "github": ("#18181B", "#FFFFFF"),
+    "claude": ("#F5EFE6", "#D97757"),
+    "openai": ("#FFFFFF", "#10A37F"),
+    "meta": ("#FFFFFF", "#0668E1"),
+    "google": ("#FFFFFF", "#4285F4"),
+    "nvidia": ("#142608", "#76B900"),
+    "aws": ("#1E242E", "#FF9900"),
+    "docker": ("#0B2138", "#2496ED"),
+    "n8n": ("#2B1419", "#EA4B71"),
+    "zapier": ("#2B160C", "#FF4F00"),
+    "notion": ("#FFFFFF", "#18181B"),
+    "slack": ("#241229", "#E01E5A"),
+    "gmail": ("#FFFFFF", "#EA4335"),
 }
 
 
-def svg_icon(name: str, size: int = 32, color: str = "#EB8B1B") -> str:
-    body = ICON_SVGS.get(name, ICON_SVGS["sparkles"])
-    if name == "github":
-        return f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" style="color:{color};display:block;">{body}</svg>'
+def svg_icon(name: str, size: int = 30, color: str = "#EB8B1B") -> str:
+    key = (name or "sparkles").lower()
+    body = ICON_SVGS.get(key, ICON_SVGS["sparkles"])
     return (
         f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="{color}" '
-        f'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;">{body}</svg>'
+        f'stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" style="color:{color};display:block;">{body}</svg>'
+    )
+
+
+def app_squircle(icon_name: str, size: int = 92, glow: bool = False) -> str:
+    key = (icon_name or "sparkles").lower()
+    bg, fg = SQUIRCLE_BRAND_BG.get(key, ("#2F2F33", "#EB8B1B"))
+    border = "2px solid #EB8B1B" if glow else "1.5px solid rgba(255,255,255,0.14)"
+    sh = "0 0 38px rgba(235,139,27,0.42), 0 14px 30px rgba(0,0,0,0.45)" if glow else "0 14px 28px rgba(0,0,0,0.38)"
+    rad = int(round(size * 0.25))
+    return (
+        f'<div style="width:{size}px;height:{size}px;border-radius:{rad}px;background:{bg};border:{border};'
+        f'box-shadow:{sh};display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
+        f'{svg_icon(key, int(size * 0.52), fg)}</div>'
     )
 
 
@@ -64,539 +104,563 @@ def base_css(bg_hex: str, width: int, height: int) -> str:
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{
       width: {width}px; height: {height}px; overflow: hidden;
-      background: radial-gradient(circle at 50% 42%, #2c2c30 0%, {bg_hex} 72%);
+      background: {bg_hex};
       color: #FFFFFF;
-      font-family: 'GarySans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'GarySans', -apple-system, sans-serif;
       -webkit-font-smoothing: antialiased;
       position: relative;
     }}
+    body.transparent-pass {{ background: transparent !important; }}
+    body.transparent-pass .base-only {{ opacity: 0 !important; }}
     .mono {{ font-family: 'GaryMono', 'GarySans', monospace; }}
-    .topbar {{
-      position: absolute; top: 22px; left: 36px; right: 36px;
-      display: flex; align-items: center; justify-content: space-between; z-index: 20;
+    .chap-crumb {{
+      position: absolute; top: 18px; left: 26px;
+      display: flex; align-items: baseline; gap: 10px; font-size: 16px; z-index: 15;
     }}
-    .chap-tag {{ display: flex; align-items: baseline; gap: 12px; font-size: 22px; }}
-    .chap-num {{ color: #EB8B1B; font-weight: 700; letter-spacing: 0.5px; }}
-    .chap-name {{ color: #9CA3AF; font-weight: 500; }}
-    .src-pill {{
-      display: inline-flex; align-items: center; gap: 10px;
-      background: rgba(18, 18, 20, 0.86); border: 1px solid rgba(255,255,255,0.13);
-      padding: 7px 18px; border-radius: 999px; font-size: 17px; color: #D4D4D8;
-    }}
-    .src-dot {{ width: 9px; height: 9px; border-radius: 50%; background: #EB8B1B; box-shadow: 0 0 8px #EB8B1B; }}
+    .chap-crumb .num {{ color: #EB8B1B; font-weight: 700; letter-spacing: 0.4px; }}
+    .chap-crumb .lbl {{ color: #787880; font-weight: 500; }}
     .stage {{
-      position: absolute; top: 82px; left: 72px; right: 72px; bottom: 175px;
+      position: absolute; top: 56px; left: 80px; right: 80px; bottom: 162px;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
     }}
-    .ghost-slot {{
-      border: 2px dashed rgba(255,255,255,0.13);
-      background: rgba(255,255,255,0.015);
-      border-radius: 24px;
+    .ghost {{
+      border: 1.8px dashed rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.012);
+      border-radius: 22px;
     }}
-    .card {{
-      background: linear-gradient(180deg, rgba(52,52,58,0.95) 0%, rgba(38,38,42,0.95) 100%);
-      border: 1.5px solid rgba(255,255,255,0.11);
-      border-radius: 24px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.38);
+    .slot-wrap {{ position: relative; }}
+    .slot-wrap > .ghost {{ position: absolute; inset: 0; pointer-events: none; }}
+    .glass-card {{
+      background: linear-gradient(180deg, rgba(49,49,53,0.96) 0%, rgba(38,38,41,0.96) 100%);
+      border: 1.2px solid rgba(255,255,255,0.10);
+      border-radius: 22px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.42);
     }}
-    .card.active {{
-      border: 2.5px solid #EB8B1B;
-      box-shadow: 0 0 34px rgba(235, 139, 27, 0.28), 0 18px 40px rgba(0,0,0,0.45);
+    .glass-card.orange-glow {{
+      border: 2px solid #EB8B1B;
+      box-shadow: 0 0 32px rgba(235,139,27,0.22), 0 18px 42px rgba(0,0,0,0.45);
     }}
     .pill {{
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 15px; border-radius: 999px; font-size: 18px; font-weight: 700;
+      padding: 4px 14px; border-radius: 999px; font-size: 16px; font-weight: 700;
     }}
-    .pill-orange {{ background: #EB8B1B; color: #141414; }}
-    .pill-green {{ background: rgba(34,197,94,0.18); color: #4ADE80; border: 1.5px solid #22C55E; }}
-    .pill-red {{ background: rgba(220,38,38,0.20); color: #F87171; border: 1.5px solid #DC2626; }}
-    .pill-muted {{ background: rgba(255,255,255,0.08); color: #D4D4D8; }}
-    .sec-h1 {{ font-size: 46px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.22; }}
-    .sec-sub {{ font-size: 24px; color: #A1A1AA; margin-top: 8px; font-weight: 500; }}
-    .left-bar-header {{
-      align-self: flex-start; display: flex; align-items: center; gap: 18px; margin-bottom: 34px;
+    .pill-orange {{ background: rgba(235,139,27,0.16); color: #F59E0B; border: 1.2px solid rgba(235,139,27,0.55); }}
+    .pill-orange-solid {{ background: #EB8B1B; color: #141414; }}
+    .pill-green {{ background: rgba(34,197,94,0.14); color: #4ADE80; border: 1.2px solid rgba(34,197,94,0.48); }}
+    .pill-red {{ background: rgba(239,68,68,0.15); color: #F87171; border: 1.2px solid rgba(239,68,68,0.48); }}
+    .pill-muted {{ background: rgba(255,255,255,0.07); color: #A1A1AA; border: 1px solid rgba(255,255,255,0.10); }}
+    .cite-badge {{
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 999px;
+      background: rgba(22,22,25,0.88); border: 1px solid rgba(255,255,255,0.11);
+      font-size: 15px; color: #A1A1AA; margin-top: 18px;
     }}
-    .left-bar {{ width: 7px; height: 52px; background: #EB8B1B; border-radius: 4px; }}
+    .cite-dot {{ width: 7px; height: 7px; border-radius: 50%; background: #EB8B1B; }}
+    .bar-title {{
+      display: flex; align-items: center; gap: 16px; align-self: flex-start; margin-bottom: 34px;
+    }}
+    .bar-line {{ width: 5px; height: 38px; background: #EB8B1B; border-radius: 3px; }}
+    .feathered-3d {{
+      -webkit-mask-image: radial-gradient(ellipse 78% 76% at 50% 50%, #000 50%, transparent 98%);
+      mask-image: radial-gradient(ellipse 78% 76% at 50% 50%, #000 50%, transparent 98%);
+    }}
     """
+
+
+def _cite_pill(s0: CrawledSource | None) -> str:
+    if not s0:
+        return ""
+    dt_p = f" · {esc(s0.published_date)}" if s0.published_date else ""
+    return f'<div class="cite-badge"><span class="cite-dot"></span><span>公開來源：{esc(s0.domain)}{dt_p}｜{esc(s0.title[:36])}</span></div>'
 
 
 def build_long_beat_html(
     script: EpisodeScript,
     beat: VisualBeat,
-    step_idx: int,
     ai_img_path: str | None,
     sources_by_id: dict[str, CrawledSource],
     tokens: DesignTokens,
-) -> str:
+) -> tuple[str, int]:
+    """
+    Returns `(html_document, num_steps)` where elements with `data-step="0..num_steps-1"`
+    are captured as independent RGBA layers for true 60fps spring animation!
+    """
     bg_hex = tokens.bg_stock_hex if script.avatar_mode else tokens.bg_tutorial_hex
     cited = [sources_by_id[sid] for sid in beat.source_ids if sid in sources_by_id]
     s0 = cited[0] if cited else None
-
-    src_html = ""
-    if s0:
-        dt_s = f" · {esc(s0.published_date)}" if s0.published_date else ""
-        src_html = (
-            f'<div class="src-pill"><span class="src-dot"></span>'
-            f'<span>公開資料 [{esc(s0.source_id)}] {esc(s0.domain)}{dt_s}｜{esc(s0.title[:30])}</span></div>'
-        )
-
     nodes = beat.nodes[:4]
+    n_clauses = max(1, len(beat.clauses))
     lt = beat.layout_type
     ai_uri = img_to_data_uri(ai_img_path)
     scr_uri = img_to_data_uri(s0.screenshot_path) if (s0 and s0.screenshot_path) else ""
 
+    # Subtle chapter breadcrumb ONLY on Chapter 2+ (exact match to 01_UrFrDJ & 02_aCvEYcz!)
+    crumb_html = ""
+    if beat.chapter_index >= 2:
+        crumb_html = (
+            f'<div class="chap-crumb base-only">'
+            f'<span class="num">{beat.chapter_index:02d} / {beat.total_chapters:02d}</span>'
+            f'<span class="lbl">{esc(beat.chapter_title)}</span></div>'
+        )
+
+    def step_of(idx: int) -> int:
+        return min(n_clauses - 1, idx)
+
     stage_inner = ""
 
-    if lt == "claude_terminal_progressive":
-        rows_html = []
-        lines_src = beat.code_lines if beat.code_lines else [f"{n.label}  # {n.sub}" for n in nodes]
+    # 1. CLAUDE CHAT / TERMINAL DIALOG (exact replica of aCvEYcz t=3s..9s: compact 660x470 centered window!)
+    if lt == "claude_chat_dialog":
+        rows = []
+        cmds = beat.code_lines if beat.code_lines else [n.label for n in nodes]
         for i, nd in enumerate(nodes[:3]):
-            if i > step_idx:
-                rows_html.append('<div class="ghost-slot" style="height:88px;width:100%;"></div>')
-            else:
-                is_cur = (i == step_idx)
-                cmd_str = lines_src[i] if i < len(lines_src) else nd.label
-                tag_h = f'<span class="pill {"pill-orange" if is_cur else "pill-green"}">{esc(nd.tag or "OK")}</span>' if nd.tag else ""
-                rows_html.append(
-                    f'<div class="card {"active" if is_cur else ""}" style="padding:18px 26px;display:flex;align-items:center;justify-content:space-between;">'
-                    f'<div>'
-                    f'<div style="display:flex;align-items:center;gap:12px;font-size:26px;font-weight:700;">'
-                    f'<span style="width:13px;height:13px;border-radius:50%;background:{"#EB8B1B" if is_cur else "#22C55E"};display:inline-block;"></span>'
-                    f'<span class="mono">{esc(cmd_str[:46])}</span></div>'
-                    f'<div style="color:#A1A1AA;font-size:21px;margin-top:6px;padding-left:25px;">└ {esc(nd.sub or nd.label)}</div>'
-                    f'</div>{tag_h}</div>'
+            st = step_of(i)
+            line_main = cmds[i] if i < len(cmds) else nd.label
+            rows.append(
+                f'<div data-step="{st}" style="display:flex;flex-direction:column;gap:7px;">'
+                f'<div style="display:flex;align-items:center;gap:11px;font-size:23px;font-weight:700;">'
+                f'<span style="width:10px;height:10px;border-radius:50%;background:#EB8B1B;flex-shrink:0;"></span>'
+                f'<span class="mono">{esc(line_main[:42])}</span></div>'
+                f'<div style="color:#A1A1AA;font-size:19px;padding-left:22px;">└ {esc(nd.sub or nd.label)}</div>'
+                + (
+                    f'<div style="margin-left:22px;margin-top:4px;background:#232326;border:1px solid rgba(255,255,255,0.11);border-radius:10px;padding:9px 16px;font-size:19px;color:#E4E4E7;" class="mono">&gt; {esc(nd.tag)}</div>'
+                    if nd.tag
+                    else ""
                 )
+                + "</div>"
+            )
         stage_inner = f"""
-        <div class="card" style="width:1240px;padding:0;overflow:hidden;border:1.5px solid rgba(255,255,255,0.16);">
-          <div style="height:54px;background:#1C1C1F;border-bottom:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;padding:0 22px;justify-content:space-between;">
-            <div style="display:flex;gap:9px;">
-              <span style="width:13px;height:13px;border-radius:50%;background:#52525B;"></span>
-              <span style="width:13px;height:13px;border-radius:50%;background:#52525B;"></span>
-              <span style="width:13px;height:13px;border-radius:50%;background:#52525B;"></span>
+        <div class="glass-card base-only" style="width:690px;min-height:450px;position:absolute;"></div>
+        <div style="width:690px;min-height:450px;border-radius:22px;overflow:hidden;position:relative;">
+          <div class="base-only" style="height:44px;background:#242427;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 18px;">
+            <div style="display:flex;gap:7px;">
+              <span style="width:10px;height:10px;border-radius:50%;background:#52525B;"></span>
+              <span style="width:10px;height:10px;border-radius:50%;background:#52525B;"></span>
+              <span style="width:10px;height:10px;border-radius:50%;background:#52525B;"></span>
             </div>
-            <div class="mono" style="color:#A1A1AA;font-size:20px;">claude-agent — {esc(beat.visual_title)}</div>
-            <div style="width:48px;"></div>
+            <span class="mono" style="font-size:16px;color:#8E8E93;">claude</span>
+            <span style="width:36px;"></span>
           </div>
-          <div style="padding:34px 42px;display:flex;flex-direction:column;gap:20px;">
-            <div style="font-size:36px;font-weight:700;display:flex;align-items:center;gap:14px;">
-              {svg_icon("terminal", 36, "#EB8B1B")} <span>{esc(beat.visual_title)}</span>
+          <div style="padding:32px 36px;display:flex;flex-direction:column;gap:24px;">
+            {''.join(rows)}
+          </div>
+        </div>
+        <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
+
+    # 2. APP SQUIRCLES + PRICE STRIKETHROUGH (exact replica of UrFrDJ t=9s..18s!)
+    elif lt == "app_squircles_strikethrough":
+        comp_icons = [("claude", "Claude Code"), ("openai", "Codex"), ("zapier", "Zapier")]
+        comp_items = []
+        for idx_c, (ic_k, ic_lbl) in enumerate(comp_icons):
+            comp_items.append(
+                f'<div style="display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0.45;filter:grayscale(0.85);">'
+                f'{app_squircle(ic_k, 74, False)}'
+                f'<span style="font-size:16px;color:#A1A1AA;">{ic_lbl}</span>'
+                f'<span class="pill pill-red" style="font-size:14px;">$20–$200/月</span></div>'
+            )
+        hero_nd = nodes[0]
+        hero_badge = beat.badge_text or "$0 / 月"
+        stage_inner = f"""
+        <div data-step="{step_of(0)}" style="display:flex;gap:48px;margin-bottom:44px;">{''.join(comp_items)}</div>
+        <div style="display:flex;align-items:center;gap:44px;">
+          <div data-step="{step_of(1)}" style="font-size:36px;font-weight:700;color:#EF4444;text-decoration:line-through;opacity:0.85;">$20–$200</div>
+          <div class="slot-wrap" style="width:136px;height:136px;">
+            <div class="ghost base-only" style="border-radius:34px;"></div>
+            <div data-step="{step_of(1)}" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+              {app_squircle(hero_nd.icon, 136, True)}
             </div>
-            {''.join(rows_html)}
+          </div>
+          <div data-step="{step_of(2)}" style="font-size:48px;font-weight:700;color:#4ADE80;">{esc(hero_badge)}</div>
+        </div>
+        <div data-step="{step_of(2)}" style="margin-top:30px;display:flex;flex-direction:column;align-items:center;">
+          <span class="pill pill-muted" style="font-size:20px;padding:8px 24px;color:#FFFFFF;">{esc(beat.visual_title or hero_nd.label)}</span>
+          {_cite_pill(s0)}
+        </div>"""
+
+    # 3. ECOSYSTEM NODE GRAPH WITH SVG CONNECTOR LINES (exact replica of UrFrDJ t=27s..39s!)
+    elif lt == "ecosystem_node_graph":
+        hero_nd = nodes[0]
+        children = nodes[1:4] if len(nodes) > 1 else nodes[:3]
+        while len(children) < 3:
+            children.append(nodes[-1])
+        child_cols = []
+        for idx_ch, ch in enumerate(children[:3]):
+            st = step_of(idx_ch + 1)
+            tag_pill = f'<span class="pill pill-muted" style="font-size:15px;margin-top:6px;">{esc(ch.tag)}</span>' if ch.tag else ""
+            child_cols.append(
+                f'<div style="display:flex;flex-direction:column;align-items:center;width:240px;">'
+                f'<div class="slot-wrap" style="width:88px;height:88px;">'
+                f'<div class="ghost base-only" style="border-radius:22px;"></div>'
+                f'<div data-step="{st}">{app_squircle(ch.icon, 88, False)}</div></div>'
+                f'<div data-step="{st}" style="text-align:center;margin-top:12px;">'
+                f'<div style="font-size:21px;font-weight:700;">{esc(ch.label)}</div>'
+                f'<div style="font-size:16px;color:#9CA3AF;margin-top:4px;">{esc(ch.sub[:18])}</div>'
+                f'{tag_pill}</div></div>'
+            )
+        stage_inner = f"""
+        <div class="base-only" style="font-size:26px;font-weight:700;color:#D4D4D8;margin-bottom:22px;letter-spacing:0.3px;">{esc(beat.visual_title)}</div>
+        <div style="position:relative;width:980px;height:430px;display:flex;flex-direction:column;align-items:center;">
+          <div data-step="{step_of(0)}" style="z-index:5;display:flex;flex-direction:column;align-items:center;">
+            {app_squircle(hero_nd.icon, 108, True)}
+            <span style="font-size:20px;font-weight:700;margin-top:10px;color:#EB8B1B;">{esc(hero_nd.label)}</span>
+          </div>
+          <svg width="860" height="110" viewBox="0 0 860 110" style="margin-top:4px;overflow:visible;">
+            <line class="base-only" x1="430" y1="0" x2="150" y2="100" stroke="rgba(255,255,255,0.10)" stroke-width="2" stroke-dasharray="6 6"/>
+            <line class="base-only" x1="430" y1="0" x2="430" y2="100" stroke="rgba(255,255,255,0.10)" stroke-width="2" stroke-dasharray="6 6"/>
+            <line class="base-only" x1="430" y1="0" x2="710" y2="100" stroke="rgba(255,255,255,0.10)" stroke-width="2" stroke-dasharray="6 6"/>
+            <line data-step="{step_of(1)}" x1="430" y1="0" x2="150" y2="100" stroke="#EB8B1B" stroke-width="2.6"/>
+            <line data-step="{step_of(2)}" x1="430" y1="0" x2="430" y2="100" stroke="#EB8B1B" stroke-width="2.6"/>
+            <line data-step="{step_of(3)}" x1="430" y1="0" x2="710" y2="100" stroke="#EB8B1B" stroke-width="2.6"/>
+          </svg>
+          <div style="display:flex;justify-content:space-between;width:840px;margin-top:4px;">
+            {''.join(child_cols)}
+          </div>
+        </div>
+        <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
+
+    # 4. PROTAGONIST GARY APP FLOW (exact replica of aCvEYcz t=45s..60s / acv_motion_every250ms.jpg!)
+    elif lt == "protagonist_app_flow":
+        flow_nodes = nodes[:3]
+        while len(flow_nodes) < 3:
+            flow_nodes.append(nodes[-1])
+        stage_inner = f"""
+        <div class="base-only" style="display:flex;flex-direction:column;align-items:center;margin-bottom:38px;">
+          {svg_icon("layers", 28, "#A1A1AA")}
+          <div style="font-size:36px;font-weight:700;margin-top:8px;">{esc(beat.visual_title)}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:28px;">
+          <div data-step="{step_of(0)}" style="display:flex;align-items:center;gap:20px;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+              <div style="width:78px;height:78px;border-radius:50%;border:2.5px solid #EB8B1B;display:flex;align-items:center;justify-content:center;background:rgba(235,139,27,0.10);">
+                {svg_icon("users", 36, "#FFFFFF")}
+              </div>
+              <span style="font-size:17px;font-weight:700;">Gary</span>
+            </div>
+            <div class="glass-card" style="width:225px;padding:22px 20px;border-radius:24px;position:relative;">
+              <span class="pill pill-muted" style="position:absolute;top:-12px;right:14px;font-size:13px;">v1.0</span>
+              <div style="font-size:20px;font-weight:700;margin-bottom:14px;">{esc(flow_nodes[0].label)}</div>
+              <div style="font-size:15px;color:#A1A1AA;line-height:1.7;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:10px;">
+                {esc(flow_nodes[0].sub)}
+              </div>
+              <div style="font-size:16px;font-weight:700;color:#EB8B1B;margin-top:10px;">{esc(flow_nodes[0].tag or "自動觸發")}</div>
+            </div>
+          </div>
+
+          <div data-step="{step_of(1)}" style="font-size:30px;color:#EB8B1B;font-weight:700;">→</div>
+          <div class="slot-wrap" style="width:116px;height:116px;">
+            <div class="ghost base-only" style="border-radius:26px;"></div>
+            <div data-step="{step_of(1)}" style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+              {app_squircle(flow_nodes[1].icon, 92, True)}
+              <span style="font-size:17px;font-weight:700;">{esc(flow_nodes[1].label[:12])}</span>
+            </div>
+          </div>
+
+          <div data-step="{step_of(2)}" style="font-size:30px;color:#EB8B1B;font-weight:700;">→</div>
+          <div class="slot-wrap" style="width:116px;height:116px;">
+            <div class="ghost base-only" style="border-radius:26px;"></div>
+            <div data-step="{step_of(2)}" style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+              {app_squircle(flow_nodes[2].icon, 92, False)}
+              <span style="font-size:17px;font-weight:700;">{esc(flow_nodes[2].label[:12])}</span>
+            </div>
+          </div>
+
+          <div data-step="{step_of(3)}" style="display:flex;align-items:center;gap:16px;">
+            <span style="font-size:30px;color:#22C55E;font-weight:700;">→</span>
+            <div class="glass-card orange-glow" style="padding:20px 24px;max-width:290px;">
+              <div style="font-size:19px;font-weight:700;color:#4ADE80;">✓ {esc(beat.callout_title)}</div>
+              <div style="font-size:16px;color:#E4E4E7;margin-top:6px;line-height:1.45;">{esc(beat.callout_body[:34])}</div>
+            </div>
           </div>
         </div>"""
 
-    elif lt == "pricing_strikethrough_reveal":
-        dim_others = (step_idx >= 1)
-        comp_cards = []
-        for i, nd in enumerate(nodes[:3]):
-            style_dim = "opacity:0.38;filter:grayscale(1);transform:scale(0.93);" if (dim_others and i > 0) else ""
-            is_hero = (i == 0 and dim_others)
-            badge_cls = "pill-green" if is_hero else "pill-red"
-            badge_val = nd.tag or ("免費開源" if is_hero else "$20+/月")
-            comp_cards.append(
-                f'<div class="card {"active" if is_hero else ""}" style="width:340px;padding:34px 26px;text-align:center;position:relative;{style_dim}">'
-                f'<div style="position:absolute;top:-16px;right:22px;"><span class="pill {badge_cls}">{esc(badge_val)}</span></div>'
-                f'<div style="width:92px;height:92px;margin:0 auto 22px;border-radius:24px;background:rgba(235,139,27,0.12);display:flex;align-items:center;justify-content:center;">'
-                f'{svg_icon(nd.icon, 48, "#EB8B1B" if is_hero else "#E4E4E7")}</div>'
-                f'<div style="font-size:30px;font-weight:700;">{esc(nd.label)}</div>'
-                f'<div style="font-size:20px;color:#A1A1AA;margin-top:10px;">{esc(nd.sub)}</div>'
-                f'</div>'
+    # 5. COMPACT 4-STEP HORIZONTAL AGENDA (exact replica of UrFrDJ t=48s..51s!)
+    elif lt == "agenda_four_steps":
+        boxes = []
+        for i in range(4):
+            nd = nodes[i] if i < len(nodes) else nodes[-1]
+            st = step_of(i)
+            boxes.append(
+                f'<div class="slot-wrap" style="width:230px;height:155px;">'
+                f'<div class="ghost base-only"></div>'
+                f'<div data-step="{st}" class="glass-card {"orange-glow" if i == 0 else ""}" style="width:230px;height:155px;padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;">'
+                f'<span style="align-self:flex-start;font-size:15px;color:#8E8E93;font-weight:700;">{i+1}</span>'
+                f'{svg_icon(nd.icon, 34, "#EB8B1B")}'
+                f'<span style="font-size:21px;font-weight:700;">{esc(nd.label[:9])}</span>'
+                f'</div></div>'
             )
-        strike_bar = ""
-        if dim_others:
-            strike_bar = (
-                f'<div style="margin-top:34px;display:flex;align-items:center;gap:28px;background:rgba(15,15,18,0.85);padding:16px 38px;border-radius:999px;border:1.5px solid #EB8B1B;">'
-                f'<span style="font-size:30px;color:#EF4444;text-decoration:line-through;font-weight:700;">$20 – $200 / 月</span>'
-                f'<span style="font-size:28px;color:#A1A1AA;">→</span>'
-                f'<span style="font-size:34px;color:#4ADE80;font-weight:700;">{esc(beat.badge_text or "免費開源直上")}</span>'
-                f'</div>'
-            )
+            if i < 3:
+                boxes.append(f'<span class="base-only" style="font-size:24px;color:#71717A;">→</span>')
         stage_inner = f"""
-        <div style="text-align:center;margin-bottom:36px;">
-          <div class="sec-h1">{esc(beat.visual_title)}</div>
-          <div class="sec-sub">{esc(beat.visual_subtitle)}</div>
-        </div>
-        <div style="display:flex;gap:42px;align-items:center;justify-content:center;">{''.join(comp_cards)}</div>
-        {strike_bar}"""
+        <div class="base-only" style="margin-bottom:32px;"><span class="pill pill-muted" style="font-size:17px;">◎ 今天這集</span></div>
+        <div style="display:flex;align-items:center;gap:18px;">{''.join(boxes)}</div>"""
 
-    elif lt == "live_web_screenshot_spotlight" and (scr_uri or ai_uri):
-        hero_img = scr_uri or ai_uri
-        url_disp = s0.url if s0 else "https://github.com"
-        bullets_h = []
+    # 6. SEAMLESS VIGNETTE-FEATHERED 3D DIORAMA + PILL SPLIT (exact replica of aCvEYcz t=24s & t=42s!)
+    elif lt == "concept_hero_split_3d":
+        pills_col = []
         for i, nd in enumerate(nodes[:3]):
-            if i > step_idx:
-                bullets_h.append('<div class="ghost-slot" style="height:106px;"></div>')
-            else:
-                act = (i == step_idx)
-                bullets_h.append(
-                    f'<div class="card {"active" if act else ""}" style="padding:18px 22px;display:flex;gap:16px;align-items:center;">'
-                    f'<div style="width:48px;height:48px;border-radius:14px;background:rgba(235,139,27,0.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-                    f'{svg_icon(nd.icon, 26, "#EB8B1B")}</div>'
-                    f'<div><div style="font-size:24px;font-weight:700;">{esc(nd.label)}</div>'
-                    f'<div style="font-size:19px;color:#A1A1AA;margin-top:4px;">{esc(nd.sub)}</div></div></div>'
-                )
+            st = step_of(i)
+            is_bad = (nd.trend == "down")
+            p_cls = "pill-red" if is_bad else ("pill-green" if i == 0 else "pill-orange")
+            sym = "✕" if is_bad else "✓"
+            pills_col.append(
+                f'<div class="slot-wrap" style="width:460px;height:96px;">'
+                f'<div class="ghost base-only"></div>'
+                f'<div data-step="{st}" class="glass-card" style="width:460px;height:96px;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;">'
+                f'<div style="display:flex;align-items:center;gap:16px;">'
+                f'<span class="pill {p_cls}" style="padding:5px 12px;">{sym}</span>'
+                f'<div><div style="font-size:22px;font-weight:700;">{esc(nd.label)}</div>'
+                f'<div style="font-size:16px;color:#A1A1AA;margin-top:3px;">{esc(nd.sub[:24])}</div></div></div>'
+                + (f'<span class="mono" style="font-size:18px;color:#EB8B1B;">{esc(nd.tag)}</span>' if nd.tag else "")
+                + '</div></div>'
+            )
+        art_block = (
+            f'<img src="{ai_uri}" class="feathered-3d" style="width:760px;height:520px;object-fit:cover;display:block;"/>'
+            if ai_uri
+            else f'<div style="width:520px;height:400px;display:flex;align-items:center;justify-content:center;">{app_squircle(nodes[0].icon, 160, True)}</div>'
+        )
         stage_inner = f"""
-        <div style="display:grid;grid-template-columns:1040px 640px;gap:42px;align-items:center;width:1722px;">
-          <div class="card active" style="overflow:hidden;padding:0;">
-            <div style="height:46px;background:#18181B;padding:0 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(255,255,255,0.1);">
-              <div style="display:flex;gap:7px;">
-                <span style="width:11px;height:11px;border-radius:50%;background:#EF4444;"></span>
-                <span style="width:11px;height:11px;border-radius:50%;background:#F59E0B;"></span>
-                <span style="width:11px;height:11px;border-radius:50%;background:#22C55E;"></span>
-              </div>
-              <div class="mono" style="background:#27272A;padding:4px 16px;border-radius:8px;font-size:16px;color:#D4D4D8;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
-                {esc(url_disp)}
-              </div>
-            </div>
-            <img src="{hero_img}" style="width:1040px;height:590px;object-fit:cover;object-position:top center;display:block;"/>
+        <div style="display:flex;align-items:center;gap:54px;">
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="base-only" style="font-size:34px;font-weight:700;margin-bottom:8px;">{esc(beat.visual_title)}</div>
+            {''.join(pills_col)}
+          </div>
+          <div data-step="{step_of(0)}">{art_block}</div>
+        </div>
+        <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
+
+    # 7. LIVE DARK-MODE WEBPAGE / GITHUB / PAPER SCREENSHOT TOUR (exact replica of UrFrDJ t=74s, t=128s!)
+    elif lt == "browser_ui_live_tour" and (scr_uri or ai_uri):
+        hero_src = scr_uri or ai_uri
+        callouts = []
+        for i, nd in enumerate(nodes[:3]):
+            st = step_of(i)
+            callouts.append(
+                f'<div class="slot-wrap" style="width:420px;height:94px;">'
+                f'<div class="ghost base-only"></div>'
+                f'<div data-step="{st}" class="glass-card {"orange-glow" if i == 0 else ""}" style="width:420px;height:94px;padding:16px 22px;display:flex;align-items:center;gap:16px;">'
+                f'<span style="width:34px;height:34px;border-radius:50%;background:#EB8B1B;color:#141414;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{i+1}</span>'
+                f'<div><div style="font-size:21px;font-weight:700;">{esc(nd.label)}</div>'
+                f'<div style="font-size:16px;color:#A1A1AA;margin-top:3px;">{esc(nd.sub[:24])}</div></div></div></div>'
+            )
+        stage_inner = f"""
+        <div style="display:flex;align-items:center;gap:44px;">
+          <div data-step="{step_of(0)}" style="border-radius:22px;overflow:hidden;border:1.5px solid rgba(255,255,255,0.13);box-shadow:0 28px 70px rgba(0,0,0,0.62);">
+            <img src="{hero_src}" style="width:940px;height:540px;object-fit:cover;object-position:top center;display:block;"/>
           </div>
           <div style="display:flex;flex-direction:column;gap:18px;">
-            <div class="pill pill-orange" style="align-self:flex-start;">實時爬蟲公開畫面查證</div>
-            <div class="sec-h1" style="font-size:38px;">{esc(beat.visual_title)}</div>
-            <div style="display:flex;flex-direction:column;gap:16px;margin-top:6px;">{''.join(bullets_h)}</div>
+            <div class="base-only" style="font-size:30px;font-weight:700;margin-bottom:6px;">{esc(beat.visual_title)}</div>
+            {''.join(callouts)}
           </div>
-        </div>"""
+        </div>
+        <div data-step="{step_of(1)}">{_cite_pill(s0)}</div>"""
 
-    elif lt == "github_pr_checks_mock":
-        checks_h = []
+    # 8. GITHUB PR CHECKS CARD (exact replica of aCvEYcz thumbnail & PR checks!)
+    elif lt in ("github_pr_checks_card", "feature_pill_matrix"):
+        chk_rows = []
         for i, nd in enumerate(nodes[:3]):
-            passed = (i <= step_idx)
-            checks_h.append(
-                f'<div style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-radius:16px;background:{"rgba(34,197,94,0.10)" if passed else "rgba(255,255,255,0.03)"};border:1px solid {"rgba(34,197,94,0.35)" if passed else "rgba(255,255,255,0.08)"};">'
-                f'<div style="display:flex;align-items:center;gap:16px;">'
-                f'{svg_icon("check" if passed else "cpu", 28, "#22C55E" if passed else "#71717A")}'
-                f'<div><div class="mono" style="font-size:23px;font-weight:700;">{esc(nd.label)}</div>'
-                f'<div style="font-size:19px;color:#A1A1AA;">{esc(nd.sub)}</div></div></div>'
-                f'<span class="pill {"pill-green" if passed else "pill-muted"}">{esc(nd.tag or ("Passed ✓" if passed else "Pending"))}</span>'
-                f'</div>'
+            st = step_of(i)
+            chk_rows.append(
+                f'<div class="slot-wrap" style="width:620px;height:74px;">'
+                f'<div class="ghost base-only" style="border-radius:14px;"></div>'
+                f'<div data-step="{st}" style="width:620px;height:74px;padding:0 22px;border-radius:14px;background:#252528;border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:space-between;">'
+                f'<div style="display:flex;align-items:center;gap:14px;">'
+                f'{svg_icon("github", 24, "#E4E4E7")}'
+                f'<span class="mono" style="font-size:21px;font-weight:700;">{esc(nd.label)}</span>'
+                f'<span style="font-size:17px;color:#9CA3AF;">— {esc(nd.sub[:22])}</span></div>'
+                f'<span style="width:28px;height:28px;border-radius:50%;background:#22C55E;color:#09090B;display:flex;align-items:center;justify-content:center;font-weight:700;">✓</span>'
+                f'</div></div>'
             )
         stage_inner = f"""
-        <div class="card active" style="width:1180px;padding:38px 46px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:22px;margin-bottom:24px;">
-            <div>
-              <div style="font-size:34px;font-weight:700;display:flex;align-items:center;gap:14px;">
-                {svg_icon("github", 36, "#FFFFFF")} <span>{esc(beat.visual_title)}</span>
-                <span style="color:#71717A;font-weight:500;">#12</span>
-              </div>
-              <div style="margin-top:10px;display:flex;align-items:center;gap:12px;">
-                <span class="pill pill-green">● Open</span>
-                <span class="mono" style="color:#A1A1AA;font-size:19px;">feature/ai-workflow → main</span>
-              </div>
-            </div>
-            <div class="pill pill-orange" style="font-size:21px;padding:10px 24px;">{esc(beat.badge_text or "自動把關機制")}</div>
+        <div class="glass-card base-only" style="width:680px;height:390px;position:absolute;border:1.5px solid rgba(34,197,94,0.35);"></div>
+        <div style="width:680px;padding:30px;display:flex;flex-direction:column;gap:14px;position:relative;">
+          <div class="base-only" style="font-size:24px;font-weight:700;margin-bottom:6px;">{esc(beat.visual_title)}</div>
+          {''.join(chk_rows)}
+          <div data-step="{step_of(2)}" style="margin-top:8px;">
+            <span style="display:inline-block;background:#238636;color:#FFFFFF;font-weight:700;font-size:19px;padding:10px 24px;border-radius:10px;">
+              ✓ {esc(beat.badge_text or beat.callout_title or "All checks have passed")}
+            </span>
           </div>
-          <div style="display:flex;flex-direction:column;gap:14px;">{''.join(checks_h)}</div>
-        </div>"""
-
-    elif lt == "kpi_financial_cards":
-        cards_h = []
-        n_c = min(3, max(2, len(nodes)))
-        for i, nd in enumerate(nodes[:n_c]):
-            if i > step_idx + 1:
-                cards_h.append('<div class="ghost-slot" style="flex:1;height:320px;"></div>')
-            else:
-                act = (i == min(step_idx, n_c - 1))
-                tr_cls = "pill-green" if nd.trend == "up" else ("pill-red" if nd.trend == "down" else "pill-orange")
-                arrow = "▲ " if nd.trend == "up" else ("▼ " if nd.trend == "down" else "● ")
-                big_val = nd.tag or beat.badge_text or "100%"
-                cards_h.append(
-                    f'<div class="card {"active" if act else ""}" style="flex:1;padding:36px 34px;display:flex;flex-direction:column;justify-content:space-between;height:330px;">'
-                    f'<div style="display:flex;align-items:center;justify-content:space-between;">'
-                    f'<span style="font-size:24px;color:#A1A1AA;font-weight:500;">{esc(nd.label)}</span>'
-                    f'{svg_icon(nd.icon, 32, "#EB8B1B" if act else "#71717A")}</div>'
-                    f'<div style="font-size:62px;font-weight:700;letter-spacing:-1px;color:#FFFFFF;margin:14px 0;">{esc(big_val)}</div>'
-                    f'<div><span class="pill {tr_cls}">{arrow}{esc(nd.sub[:20] or "關鍵公開數據")}</span></div>'
-                    f'</div>'
-                )
-        stage_inner = f"""
-        <div style="width:1620px;">
-          <div class="left-bar-header">
-            <div class="left-bar"></div>
-            <div>
-              <div class="sec-h1">{esc(beat.visual_title)}</div>
-              <div class="sec-sub">{esc(beat.visual_subtitle)}</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:34px;width:100%;">{''.join(cards_h)}</div>
-        </div>"""
-
-    elif lt == "before_after_stamp_compare":
-        left_nd = nodes[0]
-        right_nd = nodes[1] if len(nodes) > 1 else nodes[0]
-        show_right = (step_idx >= 1)
-        right_box = (
-            f'<div class="card active" style="flex:1;padding:40px;height:430px;position:relative;display:flex;flex-direction:column;justify-content:space-between;">'
-            f'<div style="display:flex;align-items:center;gap:14px;font-size:34px;font-weight:700;color:#4ADE80;">'
-            f'{svg_icon("zap", 36, "#4ADE80")} <span>現在：{esc(right_nd.label)}</span></div>'
-            f'<div style="font-size:26px;color:#E4E4E7;line-height:1.55;">{esc(right_nd.sub or beat.callout_body)}</div>'
-            f'<div><span class="pill pill-green" style="font-size:22px;padding:10px 26px;">✓ {esc(right_nd.tag or "一鍵自動化")}</span></div>'
-            f'</div>'
-            if show_right
-            else '<div class="ghost-slot" style="flex:1;height:430px;"></div>'
-        )
-        stage_inner = f"""
-        <div style="width:1540px;">
-          <div style="text-align:center;margin-bottom:34px;"><div class="sec-h1">{esc(beat.visual_title)}</div></div>
-          <div style="display:flex;gap:44px;align-items:center;">
-            <div class="card" style="flex:1;padding:40px;height:430px;position:relative;display:flex;flex-direction:column;justify-content:space-between;opacity:{'0.68' if show_right else '1.0'};">
-              <div style="display:flex;align-items:center;gap:14px;font-size:34px;font-weight:700;color:#F87171;">
-                {svg_icon("lock", 34, "#F87171")} <span>以前：{esc(left_nd.label)}</span>
-              </div>
-              <div style="font-size:26px;color:#A1A1AA;line-height:1.55;">{esc(left_nd.sub)}</div>
-              <div style="transform:rotate(-8deg);align-self:flex-end;border:4px solid #EF4444;color:#EF4444;font-size:30px;font-weight:700;padding:6px 22px;border-radius:10px;background:rgba(239,68,68,0.12);">
-                {esc(left_nd.tag or "麻煩耗時")}
-              </div>
-            </div>
-            <div style="font-size:42px;color:#EB8B1B;font-weight:700;">→</div>
-            {right_box}
-          </div>
-        </div>"""
-
-    elif lt == "ai_editorial_split_card":
-        steps_h = []
-        for i, nd in enumerate(nodes[:3]):
-            if i > step_idx:
-                steps_h.append('<div class="ghost-slot" style="height:118px;"></div>')
-            else:
-                act = (i == step_idx)
-                steps_h.append(
-                    f'<div class="card {"active" if act else ""}" style="padding:20px 26px;display:flex;align-items:center;justify-content:space-between;">'
-                    f'<div style="display:flex;align-items:center;gap:18px;">'
-                    f'<div style="width:50px;height:50px;border-radius:50%;background:{"#EB8B1B" if act else "#3F3F46"};color:{"#141414" if act else "#FFF"};display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;">{i+1}</div>'
-                    f'<div><div style="font-size:26px;font-weight:700;">{esc(nd.label)}</div>'
-                    f'<div style="font-size:20px;color:#A1A1AA;margin-top:4px;">{esc(nd.sub)}</div></div></div>'
-                    f"{f'<span class=\"pill pill-orange\">{esc(nd.tag)}</span>' if nd.tag else ''}"
-                    f'</div>'
-                )
-        img_tag = f'<img src="{ai_uri}" style="width:100%;height:390px;object-fit:cover;border-radius:18px;display:block;"/>' if ai_uri else ""
-        stage_inner = f"""
-        <div style="display:grid;grid-template-columns:820px 840px;gap:46px;align-items:center;width:1706px;">
-          <div>
-            <div class="left-bar-header" style="margin-bottom:24px;">
-              <div class="left-bar"></div>
-              <div><div class="sec-h1" style="font-size:42px;">{esc(beat.visual_title)}</div>
-              <div class="sec-sub">{esc(beat.visual_subtitle)}</div></div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:18px;">{''.join(steps_h)}</div>
-          </div>
-          <div class="card" style="padding:22px;">
-            {img_tag}
-            <div class="card active" style="margin-top:20px;padding:22px 26px;background:rgba(24,24,27,0.95);">
-              <div style="font-size:24px;font-weight:700;color:#EB8B1B;display:flex;align-items:center;gap:10px;">
-                {svg_icon("sparkles", 24, "#EB8B1B")} <span>{esc(beat.callout_title)}</span>
-              </div>
-              <div style="font-size:22px;color:#F4F4F5;margin-top:8px;line-height:1.45;">{esc(beat.callout_body)}</div>
-            </div>
-          </div>
-        </div>"""
-
-    elif lt in ("progressive_slot_pipeline", "chapter_roadmap_agenda", "branch_merge_diagram"):
-        n_s = min(4, max(3, len(nodes)))
-        slot_items = []
-        for i in range(n_s):
-            nd = nodes[i] if i < len(nodes) else nodes[-1]
-            revealed = (lt == "chapter_roadmap_agenda") or (i <= step_idx)
-            is_act = (i == min(step_idx, n_s - 1))
-            if not revealed:
-                slot_items.append('<div class="ghost-slot" style="flex:1;height:330px;"></div>')
-            else:
-                slot_items.append(
-                    f'<div class="card {"active" if is_act else ""}" style="flex:1;height:330px;padding:30px 24px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;">'
-                    f'<div style="align-self:flex-start;display:flex;align-items:center;justify-content:space-between;width:100%;">'
-                    f'<span style="width:36px;height:36px;border-radius:50%;background:{"#EB8B1B" if is_act else "#3F3F46"};color:{"#141414" if is_act else "#E4E4E7"};display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:19px;">{i+1}</span>'
-                    f"{f'<span class=\"pill pill-muted\">{esc(nd.tag)}</span>' if nd.tag else ''}</div>"
-                    f'<div style="width:78px;height:78px;border-radius:22px;background:rgba(235,139,27,0.13);display:flex;align-items:center;justify-content:center;">'
-                    f'{svg_icon(nd.icon, 42, "#EB8B1B" if is_act else "#D4D4D8")}</div>'
-                    f'<div><div style="font-size:27px;font-weight:700;">{esc(nd.label)}</div>'
-                    f'<div style="font-size:19px;color:#A1A1AA;margin-top:8px;">{esc(nd.sub)}</div></div>'
-                    f'</div>'
-                )
-            if i < n_s - 1:
-                arr_col = "#EB8B1B" if i < step_idx else "#52525B"
-                slot_items.append(f'<div style="font-size:34px;font-weight:700;color:{arr_col};">→</div>')
-
-        branch_svg = ""
-        if lt == "branch_merge_diagram":
-            branch_svg = """
-            <svg width="1100" height="120" viewBox="0 0 1100 120" style="margin-top:28px;">
-              <line x1="80" y1="90" x2="1020" y2="90" stroke="#71717A" stroke-width="5"/>
-              <path d="M 280 90 C 340 90, 350 26, 420 26 L 690 26 C 750 26, 760 90, 820 90" fill="none" stroke="#EB8B1B" stroke-width="5"/>
-              <circle cx="280" cy="90" r="9" fill="#EB8B1B"/><circle cx="480" cy="26" r="9" fill="#EB8B1B"/>
-              <circle cx="630" cy="26" r="9" fill="#EB8B1B"/><circle cx="820" cy="90" r="10" fill="#22C55E"/>
-              <text x="20" y="97" fill="#A1A1AA" font-size="22" font-family="GaryMono">main</text>
-            </svg>"""
-
-        stage_inner = f"""
-        <div style="text-align:center;margin-bottom:36px;">
-          <div class="sec-h1">{esc(beat.visual_title)}</div>
-          <div class="sec-sub">{esc(beat.visual_subtitle)}</div>
         </div>
-        <div style="display:flex;gap:18px;align-items:center;width:1660px;">{''.join(slot_items)}</div>
-        {branch_svg}"""
+        <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
 
-    elif lt == "versus_debate_columns":
+    # 9. BEFORE VS AFTER STAMP WORKFLOW CARD (exact replica of UrFrDJ t=884s!)
+    elif lt == "before_after_workflow_card":
         l_nd = nodes[0]
         r_nd = nodes[1] if len(nodes) > 1 else nodes[0]
-        extra = nodes[2:]
         stage_inner = f"""
-        <div style="width:1580px;">
-          <div class="left-bar-header"><div class="left-bar"></div><div class="sec-h1">{esc(beat.visual_title)}</div></div>
-          <div style="display:grid;grid-template-columns:1fr 110px 1fr;gap:24px;align-items:center;">
-            <div class="card {'active' if step_idx % 2 == 0 else ''}" style="padding:36px;border-color:#22C55E;min-height:340px;">
-              <div style="font-size:36px;font-weight:700;color:#4ADE80;margin-bottom:20px;">{esc(l_nd.label)}</div>
-              <div style="font-size:24px;color:#F4F4F5;line-height:1.6;">● {esc(l_nd.sub)}</div>
-              {f'<div style="font-size:24px;color:#D4D4D8;margin-top:14px;">● {esc(extra[0].label)}：{esc(extra[0].sub)}</div>' if extra else ''}
-              {f'<div style="margin-top:22px;"><span class="pill pill-green">{esc(l_nd.tag)}</span></div>' if l_nd.tag else ''}
+        <div style="display:flex;align-items:center;gap:36px;">
+          <div data-step="{step_of(0)}" class="glass-card" style="width:450px;height:380px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;position:relative;">
+            <div style="display:flex;align-items:center;gap:12px;font-size:28px;font-weight:700;color:#E4E4E7;">
+              {svg_icon("lock", 28, "#A1A1AA")} <span>以前：{esc(l_nd.label[:10])}</span>
             </div>
-            <div style="width:92px;height:92px;border-radius:50%;background:#27272A;border:3px solid #EB8B1B;box-shadow:0 0 26px rgba(235,139,27,0.4);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;margin:0 auto;">VS</div>
-            <div class="card {'active' if step_idx % 2 == 1 else ''}" style="padding:36px;border-color:#DC2626;min-height:340px;">
-              <div style="font-size:36px;font-weight:700;color:#F87171;margin-bottom:20px;">{esc(r_nd.label)}</div>
-              <div style="font-size:24px;color:#F4F4F5;line-height:1.6;">● {esc(r_nd.sub)}</div>
-              {f'<div style="margin-top:22px;"><span class="pill pill-red">{esc(r_nd.tag or "傳統限制")}</span></div>'}
+            <div style="font-size:21px;color:#A1A1AA;line-height:1.65;">{esc(l_nd.sub)}</div>
+            <div style="align-self:flex-end;transform:rotate(-9deg);border:3px solid #EF4444;color:#F87171;background:rgba(239,68,68,0.14);padding:5px 20px;border-radius:8px;font-size:26px;font-weight:700;">
+              {esc(l_nd.tag or "麻煩耗時")}
             </div>
           </div>
-          <div style="text-align:center;margin-top:34px;">
-            <span style="font-size:30px;font-weight:700;border-bottom:4px solid #EB8B1B;padding-bottom:8px;">{esc(beat.callout_body)}</span>
+          <span data-step="{step_of(1)}" style="font-size:34px;color:#EB8B1B;font-weight:700;">→</span>
+          <div class="slot-wrap" style="width:450px;height:380px;">
+            <div class="ghost base-only"></div>
+            <div data-step="{step_of(1)}" class="glass-card orange-glow" style="width:450px;height:380px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:12px;font-size:28px;font-weight:700;color:#FFFFFF;">
+                {svg_icon("zap", 28, "#4ADE80")} <span>現在：{esc(r_nd.label[:10])}</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:center;gap:18px;">
+                {app_squircle(r_nd.icon, 78, True)}
+                <span style="color:#4ADE80;font-size:24px;font-weight:700;">— ✓ —</span>
+                {app_squircle(nodes[-1].icon, 78, False)}
+              </div>
+              <div style="text-align:center;"><span class="pill pill-green" style="font-size:19px;padding:7px 24px;">{esc(r_nd.tag or "一鍵自動化")}</span></div>
+            </div>
           </div>
         </div>"""
 
-    elif lt in ("checklist_two_tier_defense", "summary_three_pillars"):
-        cols_h = []
-        for i, nd in enumerate(nodes[:3]):
-            act = (i <= step_idx)
-            cols_h.append(
-                f'<div class="card {"active" if i == step_idx else ""}" style="flex:1;padding:34px 28px;opacity:{"1" if act else "0.35"};">'
-                f'<div style="width:64px;height:64px;border-radius:18px;background:rgba(34,197,94,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:22px;">'
-                f'{svg_icon("check" if lt == "checklist_two_tier_defense" else nd.icon, 34, "#4ADE80" if act else "#71717A")}</div>'
-                f'<div style="font-size:29px;font-weight:700;">{esc(nd.label)}</div>'
-                f'<div style="font-size:21px;color:#A1A1AA;margin-top:12px;line-height:1.5;">{esc(nd.sub)}</div>'
-                f"{f'<div style=\"margin-top:20px;\"><span class=\"pill pill-orange\">{esc(nd.tag)}</span></div>' if nd.tag else ''}"
+    # 10. US STOCKS: NEGATIVE-SPACE BIG STATEMENT (exact replica of KWAvlqx t=263s, t=1131s!)
+    elif lt == "stocks_big_statement":
+        headline = beat.badge_text if (beat.badge_text and len(beat.badge_text) >= 6) else beat.visual_title
+        stage_inner = f"""
+        <div data-step="{step_of(0)}" style="display:flex;align-items:center;gap:24px;">
+          <div style="width:6px;height:72px;background:#EB8B1B;border-radius:3px;"></div>
+          <div>
+            <div style="font-size:62px;font-weight:700;letter-spacing:-0.8px;">{esc(headline)}</div>
+            <div data-step="{step_of(1)}" style="font-size:24px;color:#9CA3AF;margin-top:12px;">{esc(beat.callout_body or beat.visual_subtitle)}</div>
+          </div>
+        </div>
+        <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
+
+    # 11. US STOCKS: COMPACT ASYMMETRIC KPI CARDS (exact replica of KWAvlqx t=15s, t=449s, t=697s!)
+    elif lt in ("stocks_kpi_asymmetric", "stocks_valuation_scenarios"):
+        n_c = min(3, max(2, len(nodes)))
+        cards = []
+        for i, nd in enumerate(nodes[:n_c]):
+            st = step_of(i)
+            is_down = (nd.trend == "down")
+            p_cls = "pill-red" if is_down else "pill-green"
+            arr = "▼ " if is_down else "▲ "
+            cards.append(
+                f'<div class="slot-wrap" style="width:410px;height:230px;">'
+                f'<div class="ghost base-only"></div>'
+                f'<div data-step="{st}" class="glass-card {"orange-glow" if i == 0 else ""}" style="width:410px;height:230px;padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between;">'
+                f'<div style="font-size:19px;color:#9CA3AF;font-weight:500;">{esc(nd.label)}</div>'
+                f'<div style="font-size:54px;font-weight:700;letter-spacing:-1px;color:#FFFFFF;">{esc(nd.metric)}</div>'
+                f'<div><span class="pill {p_cls}">{arr}{esc(nd.sub[:20])}</span></div>'
+                f'</div></div>'
+            )
+        stage_inner = f"""
+        <div style="width:1340px;">
+          <div class="bar-title base-only">
+            <div class="bar-line"></div>
+            <span style="font-size:34px;font-weight:700;">{esc(beat.visual_title)}</span>
+          </div>
+          <div style="display:flex;gap:32px;">{''.join(cards)}</div>
+          <div data-step="{step_of(n_c - 1)}">{_cite_pill(s0)}</div>
+        </div>"""
+
+    # 12. US STOCKS: BORDERLESS MINIMALIST FOUR PILLARS (exact replica of KWAvlqx t=201s, t=387s, t=1193s!)
+    else:  # stocks_four_pillars & fallback
+        cols = []
+        n_p = min(4, max(3, len(nodes)))
+        for i in range(n_p):
+            nd = nodes[i] if i < len(nodes) else nodes[-1]
+            st = step_of(i)
+            cols.append(
+                f'<div data-step="{st}" style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;">'
+                f'<div style="width:58px;height:58px;border-radius:16px;background:#2A2A2E;border:1px solid rgba(255,255,255,0.10);display:flex;align-items:center;justify-content:center;margin-bottom:20px;">'
+                f'{svg_icon(nd.icon, 28, "#EB8B1B")}</div>'
+                f'<div style="font-size:24px;font-weight:700;">{esc(nd.label)}</div>'
+                + (f'<div style="font-size:18px;color:#EB8B1B;font-weight:700;margin-top:6px;">{esc(nd.tag)}</div>' if nd.tag else "")
+                + f'<div style="font-size:17px;color:#9CA3AF;margin-top:8px;line-height:1.5;">{esc(nd.sub[:28])}</div>'
                 f'</div>'
             )
         stage_inner = f"""
-        <div style="width:1620px;">
-          <div class="left-bar-header"><div class="left-bar"></div>
-            <div><div class="sec-h1">{esc(beat.visual_title)}</div><div class="sec-sub">{esc(beat.visual_subtitle)}</div></div>
+        <div style="width:1420px;">
+          <div class="bar-title base-only">
+            <div class="bar-line"></div>
+            <span style="font-size:36px;font-weight:700;">{esc(beat.visual_title)}</span>
           </div>
-          <div style="display:flex;gap:32px;">{''.join(cols_h)}</div>
+          <div style="display:flex;gap:26px;margin-top:18px;">{''.join(cols)}</div>
+          <div data-step="{step_of(2)}" style="text-align:center;margin-top:28px;">{_cite_pill(s0)}</div>
         </div>"""
 
-    else:  # hub_ecosystem_radiate
-        sats_h = []
-        for i, nd in enumerate(nodes[:4]):
-            revealed = (i <= step_idx + 1)
-            act = (i == step_idx % max(1, len(nodes)))
-            if not revealed:
-                sats_h.append('<div class="ghost-slot" style="padding:24px;height:132px;"></div>')
-            else:
-                sats_h.append(
-                    f'<div class="card {"active" if act else ""}" style="padding:22px 26px;display:flex;align-items:center;gap:18px;">'
-                    f'<div style="width:56px;height:56px;border-radius:16px;background:rgba(235,139,27,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">'
-                    f'{svg_icon(nd.icon, 30, "#EB8B1B")}</div>'
-                    f'<div><div style="font-size:25px;font-weight:700;">{esc(nd.label)}</div>'
-                    f'<div style="font-size:19px;color:#A1A1AA;margin-top:4px;">{esc(nd.sub)}</div></div></div>'
-                )
-        center_visual = (
-            f'<img src="{ai_uri}" style="width:240px;height:240px;object-fit:cover;border-radius:36px;border:3px solid #EB8B1B;box-shadow:0 0 42px rgba(235,139,27,0.35);"/>'
-            if ai_uri
-            else f'<div class="card active" style="width:230px;height:230px;border-radius:42px;display:flex;align-items:center;justify-content:center;">{svg_icon("cpu", 96, "#EB8B1B")}</div>'
-        )
-        stage_inner = f"""
-        <div style="text-align:center;margin-bottom:32px;">
-          <div class="sec-h1">{esc(beat.visual_title)}</div>
-          <div class="sec-sub">{esc(beat.visual_subtitle)}</div>
-        </div>
-        <div style="display:grid;grid-template-columns:540px 300px 540px;gap:42px;align-items:center;">
-          <div style="display:flex;flex-direction:column;gap:24px;">{''.join(sats_h[:2])}</div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
-            {center_visual}
-            {f'<span class="pill pill-orange">{esc(beat.badge_text)}</span>' if beat.badge_text else ''}
-          </div>
-          <div style="display:flex;flex-direction:column;gap:24px;">{''.join(sats_h[2:4])}</div>
-        </div>"""
-
-    return f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><style>{base_css(bg_hex, tokens.long_width, tokens.long_height)}</style></head>
+    doc = f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><style>{base_css(bg_hex, tokens.long_width, tokens.long_height)}</style></head>
     <body>
-      <div class="topbar">
-        <div class="chap-tag">
-          <span class="chap-num">{beat.chapter_index:02d} / {beat.total_chapters:02d}</span>
-          <span class="chap-name">{esc(beat.chapter_title)}</span>
-        </div>
-        {src_html}
-      </div>
+      {crumb_html}
       <div class="stage">{stage_inner}</div>
     </body></html>"""
+    return doc, n_clauses
 
 
 def build_short_beat_html(
     script: EpisodeScript,
     sbeat: ShortBeatSpec,
-    step_idx: int,
     ai_img_path: str | None,
     long_thumb_path: Path | None,
     sources_by_id: dict[str, CrawledSource],
     tokens: DesignTokens,
-) -> str:
+) -> tuple[str, int]:
+    bg_hex = tokens.bg_stock_hex if script.avatar_mode else tokens.bg_tutorial_hex
     cited = [sources_by_id[sid] for sid in sbeat.source_ids if sid in sources_by_id]
     s0 = cited[0] if cited else None
     ai_uri = img_to_data_uri(ai_img_path)
     scr_uri = img_to_data_uri(s0.screenshot_path) if (s0 and s0.screenshot_path) else ""
     thumb_uri = img_to_data_uri(str(long_thumb_path)) if (long_thumb_path and long_thumb_path.exists()) else ""
+    n_clauses = max(1, len(sbeat.clauses))
+
+    def step_of(i: int) -> int:
+        return min(n_clauses - 1, i)
 
     if sbeat.is_cta:
         body_inner = f"""
-        <div style="text-align:center;">
-          <div style="font-size:56px;font-weight:700;line-height:1.2;">{esc(sbeat.headline)}</div>
-          <div style="margin-top:18px;"><span class="pill pill-orange" style="font-size:26px;padding:8px 28px;">{esc(sbeat.highlight_badge or "完整長片已上線")}</span></div>
+        <div class="base-only" style="text-align:center;">
+          <div style="font-size:54px;font-weight:700;line-height:1.2;">{esc(sbeat.headline)}</div>
+          <div style="margin-top:16px;"><span class="pill pill-orange-solid" style="font-size:24px;padding:7px 26px;">完整深度長片已上線</span></div>
         </div>
-        <div class="card active" style="width:940px;padding:24px;margin-top:34px;">
-          {f'<img src="{thumb_uri}" style="width:100%;height:480px;object-fit:cover;border-radius:18px;"/>' if thumb_uri else ''}
-          <div style="font-size:24px;color:#EB8B1B;font-weight:700;text-align:center;margin-top:18px;">✦ 完整實戰步驟、避坑指南與公開來源都在長片</div>
+        <div data-step="{step_of(0)}" class="glass-card orange-glow" style="width:920px;padding:20px;margin-top:32px;">
+          {f'<img src="{thumb_uri}" style="width:100%;height:495px;object-fit:cover;border-radius:16px;display:block;"/>' if thumb_uri else ''}
         </div>
-        <div class="card active" style="width:940px;padding:34px;margin-top:28px;text-align:center;">
-          <div style="font-size:32px;font-weight:700;">{esc(script.short_cta_target_title[:24])}</div>
-          <div style="margin-top:24px;background:#EB8B1B;color:#141414;font-size:34px;font-weight:700;padding:20px 32px;border-radius:999px;">
+        <div data-step="{step_of(1)}" class="glass-card" style="width:920px;padding:30px;margin-top:26px;text-align:center;">
+          <div style="font-size:28px;font-weight:700;color:#E4E4E7;">《{esc(script.short_cta_target_title[:24])}》</div>
+          <div style="margin-top:22px;background:#EB8B1B;color:#141414;font-size:33px;font-weight:700;padding:18px 30px;border-radius:999px;">
             ↙ 點擊左下角「關聯影片」看完整版
           </div>
         </div>"""
     else:
-        hero_media = scr_uri if (sbeat.layout_type == "short_live_source_proof" and scr_uri) else ai_uri
-        nodes_h = []
+        use_scr = (sbeat.layout_type == "short_live_source_proof" and scr_uri)
+        hero_media = scr_uri if use_scr else ai_uri
+        media_cls = "" if use_scr else "feathered-3d"
+        cards_h = []
         for i, nd in enumerate(sbeat.nodes[:3]):
-            if i > step_idx + 1:
-                nodes_h.append('<div class="ghost-slot" style="height:98px;width:940px;"></div>')
-            else:
-                act = (i == min(step_idx, max(0, len(sbeat.nodes[:3]) - 1)))
-                nodes_h.append(
-                    f'<div class="card {"active" if act else ""}" style="width:940px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;">'
-                    f'<div style="display:flex;align-items:center;gap:20px;">'
-                    f'<div style="width:52px;height:52px;border-radius:16px;background:rgba(235,139,27,0.16);display:flex;align-items:center;justify-content:center;">'
-                    f'{svg_icon(nd.icon, 30, "#EB8B1B")}</div>'
-                    f'<div><div style="font-size:30px;font-weight:700;">{esc(nd.label)}</div>'
-                    f'<div style="font-size:22px;color:#A1A1AA;margin-top:3px;">{esc(nd.sub)}</div></div></div>'
-                    f"{f'<span class=\"pill pill-orange\" style=\"font-size:21px;\">{esc(nd.tag)}</span>' if nd.tag else ''}"
-                    f'</div>'
-                )
-        src_line = f"公開來源 [{esc(s0.source_id)}] {esc(s0.domain)} · {esc(s0.title[:24])}" if s0 else ""
+            st = step_of(i)
+            cards_h.append(
+                f'<div class="slot-wrap" style="width:920px;height:102px;">'
+                f'<div class="ghost base-only"></div>'
+                f'<div data-step="{st}" class="glass-card {"orange-glow" if i == 0 else ""}" style="width:920px;height:102px;padding:18px 26px;display:flex;align-items:center;justify-content:space-between;">'
+                f'<div style="display:flex;align-items:center;gap:18px;">'
+                f'{app_squircle(nd.icon, 62, i == 0)}'
+                f'<div><div style="font-size:29px;font-weight:700;">{esc(nd.label)}</div>'
+                f'<div style="font-size:21px;color:#A1A1AA;margin-top:2px;">{esc(nd.sub[:22])}</div></div></div>'
+                + (f'<span class="pill pill-orange" style="font-size:20px;">{esc(nd.tag)}</span>' if nd.tag else "")
+                + '</div></div>'
+            )
         body_inner = f"""
-        <div style="text-align:center;">
-          <div style="font-size:56px;font-weight:700;line-height:1.18;">{esc(sbeat.headline)}</div>
-          {f'<div style="margin-top:16px;"><span class="pill pill-orange" style="font-size:26px;padding:7px 26px;">{esc(sbeat.highlight_badge)}</span></div>' if sbeat.highlight_badge else ''}
+        <div class="base-only" style="text-align:center;">
+          <div style="font-size:54px;font-weight:700;line-height:1.18;">{esc(sbeat.headline)}</div>
+          {f'<div style="margin-top:14px;"><span class="pill pill-orange-solid" style="font-size:24px;padding:6px 24px;">{esc(sbeat.highlight_badge)}</span></div>' if sbeat.highlight_badge else ''}
         </div>
-        <div class="card active" style="width:940px;padding:20px;margin-top:28px;">
-          {f'<img src="{hero_media}" style="width:100%;height:470px;object-fit:cover;border-radius:18px;"/>' if hero_media else ''}
-          {f'<div style="font-size:21px;color:#A1A1AA;text-align:center;margin-top:14px;">● {src_line}</div>' if src_line else ''}
+        <div data-step="{step_of(0)}" style="width:920px;margin-top:24px;display:flex;flex-direction:column;align-items:center;">
+          {f'<img src="{hero_media}" class="{media_cls}" style="width:920px;height:460px;object-fit:cover;border-radius:20px;display:block;"/>' if hero_media else ''}
+          {_cite_pill(s0)}
         </div>
-        <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;">{''.join(nodes_h)}</div>"""
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:22px;">{''.join(cards_h)}</div>"""
 
-    return f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><style>{base_css(tokens.bg_tutorial_hex, tokens.short_width, tokens.short_height)}</style></head>
+    doc = f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><style>{base_css(bg_hex, tokens.short_width, tokens.short_height)}</style></head>
     <body>
-      <div style="position:absolute;top:72px;left:70px;right:70px;display:flex;justify-content:center;">
-        <div class="src-pill" style="padding:10px 28px;font-size:24px;border-color:#EB8B1B;">
-          <span class="src-dot"></span><span style="font-weight:700;color:#FFF;">GARY CHEN｜{esc(script.short_hook_banner)}</span>
+      <div class="base-only" style="position:absolute;top:68px;left:70px;right:70px;display:flex;justify-content:center;">
+        <div class="cite-badge" style="margin:0;padding:8px 24px;font-size:22px;border-color:rgba(235,139,27,0.55);color:#FFFFFF;">
+          <span class="cite-dot"></span><span style="font-weight:700;">GARY CHEN｜{esc(script.short_hook_banner)}</span>
         </div>
       </div>
-      <div style="position:absolute;top:168px;left:70px;right:70px;bottom:520px;display:flex;flex-direction:column;align-items:center;">
+      <div style="position:absolute;top:162px;left:70px;right:70px;bottom:490px;display:flex;flex-direction:column;align-items:center;">
         {body_inner}
       </div>
     </body></html>"""
+    return doc, n_clauses

@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-Garychen Gemini 4 Carbon V2 — Studio-Grade RTX PRO 6000 Heavy GPU Worker.
-Master copy lives on local machine (alan-hub) first; deployed to Colab RTX PRO 6000 (:19743) and B850 (:18793).
+Garychen Gemini 4 Carbon V3 — Studio-Grade RTX PRO 6000 (96GB Blackwell) Heavy GPU Worker.
 
-V2 Studio Upgrades:
-  1. `llm_chat`: Qwen/Qwen2.5-14B-Instruct (bfloat16 CUDA SDPA) for authentic Garychen storytelling & beat-by-beat visual direction
-  2. `tts_paragraphs` & `tts_batch`: Full-sentence continuous PyTorch F5-TTS (nfe_step=32) + Whisper CUDA word-timestamp forced alignment (zero PyAV bug via direct 16kHz float32 numpy decode) + ASR quality verification retry
-  3. `image_batch`: Full 22-step SDXL Base 1.0 (DPMSolverMultistepScheduler + Karras sigmas, 1152x768 / 896x1152) tactile 3D dark-amber studio dioramas
+V3 Upgrades:
+  1. `llm_chat`: Automatically loads `Qwen/Qwen2.5-32B-Instruct` (bfloat16 CUDA SDPA) when >=68GB VRAM free!
+  2. `tts_paragraphs`: Synthesizes phonetic `spoken_clauses` with `F5TTS_v1_Base` (`nfe_step=48, sway_sampling_coef=-1.0`)
+     and aligns Whisper word-level timestamps back onto `clauses` (display subtitles) with zero digit/symbol slurring!
+  3. `image_batch`: 28-step `stable-diffusion-xl-base-1.0` (DPMSolverMultistep + Karras, 1216x832) seamless dark-matte #262626 dioramas!
 """
 from __future__ import annotations
 
 import argparse
 import base64
+import gc
 import json
 import os
 import re
@@ -69,6 +70,20 @@ def pick_device(min_cuda_mb: int) -> str:
     return "cpu"
 
 
+def free_model_if_tight(needed_mb: int, drop_keys: tuple[str, ...]):
+    import torch
+    if not torch.cuda.is_available():
+        return
+    st = gpu_stats()
+    if st["free_mb"] >= needed_mb:
+        return
+    with MODEL_LOCK:
+        for k in drop_keys:
+            MODELS.pop(k, None)
+    gc.collect()
+    torch.cuda.empty_cache()
+
+
 def normalize_zh_for_tts(text: str) -> str:
     try:
         from opencc import OpenCC
@@ -79,7 +94,6 @@ def normalize_zh_for_tts(text: str) -> str:
         text = cc.convert(text)
     except Exception:
         pass
-    # Keep clean breath punctuation so F5-TTS pauses naturally between clauses
     text = re.sub(r"\s+", " ", text).strip()
     if text and text[-1] not in "。！？!?.,":
         text += "。"
@@ -108,8 +122,8 @@ def get_whisper_model(force_cpu: bool = False):
             return MODELS[key]
         from faster_whisper import WhisperModel
         st = gpu_stats()
-        dev = "cpu" if force_cpu else ("cuda" if (st["cuda_available"] and st["free_mb"] >= 3200) else "cpu")
-        model_size = "medium" if dev == "cuda" else "base"
+        dev = "cpu" if force_cpu else ("cuda" if (st["cuda_available"] and st["free_mb"] >= 3500) else "cpu")
+        model_size = "large-v3-turbo" if (dev == "cuda" and st["free_mb"] >= 8000) else ("medium" if dev == "cuda" else "base")
         ctype = "float16" if dev == "cuda" else "int8"
         try:
             wm = WhisperModel(model_size, device=dev, compute_type=ctype, cpu_threads=min(16, os.cpu_count() or 4))
@@ -121,17 +135,20 @@ def get_whisper_model(force_cpu: bool = False):
 
 
 def get_qwen_llm():
-    free_model_if_tight(24000, ("sdxl_pipe", "f5_tts", "whisper"))
+    free_model_if_tight(28000, ("sdxl_pipe",))
     with MODEL_LOCK:
         if "qwen_llm" in MODELS:
             return MODELS["qwen_llm"]
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
         st = gpu_stats()
-        if st["cuda_available"] and st["free_mb"] >= 64000:
+        if st["cuda_available"] and st["free_mb"] >= 68000:
+            model_id = "Qwen/Qwen2.5-32B-Instruct"
+            dev = "cuda"
+        elif st["cuda_available"] and st["free_mb"] >= 32000:
             model_id = "Qwen/Qwen2.5-14B-Instruct"
             dev = "cuda"
-        elif st["cuda_available"] and st["free_mb"] >= 19000:
+        elif st["cuda_available"] and st["free_mb"] >= 18000:
             model_id = "Qwen/Qwen2.5-7B-Instruct"
             dev = "cuda"
         else:
@@ -148,25 +165,9 @@ def get_qwen_llm():
         return MODELS["qwen_llm"]
 
 
-def free_model_if_tight(needed_mb: int, drop_keys: tuple[str, ...]):
-    import gc
-    import torch
-    if not torch.cuda.is_available():
-        return
-    st = gpu_stats()
-    if st["free_mb"] >= needed_mb:
-        return
-    with MODEL_LOCK:
-        for k in drop_keys:
-            if k in MODELS:
-                MODELS.pop(k, None)
-    gc.collect()
-    torch.cuda.empty_cache()
-
-
 def get_sdxl_pipe(force_cpu: bool = False):
     if not force_cpu:
-        free_model_if_tight(26000, ("qwen_llm",))
+        free_model_if_tight(14000, ("qwen_llm",))
     with MODEL_LOCK:
         target_dev = "cpu" if force_cpu else pick_device(min_cuda_mb=9500)
         cached = MODELS.get("sdxl_pipe")
@@ -195,7 +196,6 @@ def get_sdxl_pipe(force_cpu: bool = False):
 
 
 def load_wav_16k_np(wav_path: Path):
-    """Load WAV directly via soundfile into 16kHz mono float32 numpy array (bypasses PyAV completely)."""
     import numpy as np
     import soundfile as sf
     y, sr = sf.read(str(wav_path), dtype="float32")
@@ -207,20 +207,17 @@ def load_wav_16k_np(wav_path: Path):
     return y
 
 
-def align_clauses_with_whisper(wav_path: Path, clauses: list[str], total_dur: float) -> tuple[list[dict], str]:
-    """
-    Uses Whisper word-level timestamps on 16kHz float32 audio to align exact [rel_start, rel_end]
-    for each spoken subtitle clause inside a continuous natural-prosody paragraph WAV!
-    """
+def align_clauses_with_whisper(
+    wav_path: Path, display_clauses: list[str], spoken_clauses: list[str], total_dur: float
+) -> tuple[list[dict], str]:
     y16 = load_wav_16k_np(wav_path)
     try:
         _, wm = get_whisper_model(force_cpu=False)
-        segs_iter, _ = wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)
-        segs = list(segs_iter)
+        segs = list(wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)[0])
     except Exception:
         _, wm = get_whisper_model(force_cpu=True)
-        segs_iter, _ = wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)
-        segs = list(segs_iter)
+        segs = list(wm.transcribe(y16, language="zh", word_timestamps=True, condition_on_previous_text=False)[0])
+
     words: list[tuple[float, float, str]] = []
     full_asr = []
     for s in segs:
@@ -231,26 +228,27 @@ def align_clauses_with_whisper(wav_path: Path, clauses: list[str], total_dur: fl
                 words.append((float(w.start), float(w.end), wt))
 
     asr_text = "".join(full_asr)
-    if not clauses:
+    if not display_clauses:
         return [], asr_text
-    if len(clauses) == 1 or not words:
-        return [{"text": clauses[0], "rel_start": 0.0, "rel_end": round(total_dur, 3)}], asr_text
+    if len(display_clauses) == 1 or not words:
+        return [{"text": display_clauses[0], "rel_start": 0.0, "rel_end": round(total_dur, 3)}], asr_text
 
-    # Proportional character-cursor mapping anchored onto actual Whisper word timestamps!
-    clause_weights = [max(1, len(re.sub(r"\s+", "", c))) for c in clauses]
+    # Weight cursor by spoken syllable length (`spoken_clauses`) so expanded spoken numbers get accurate time share!
+    weight_src = spoken_clauses if len(spoken_clauses) == len(display_clauses) else display_clauses
+    clause_weights = [max(2, len(re.sub(r"\s+", "", c))) for c in weight_src]
     tot_w = sum(clause_weights)
     n_words = len(words)
 
     aligned: list[dict] = []
     cum_w = 0
     prev_end = 0.0
-    for idx, cl in enumerate(clauses):
+    for idx, disp_cl in enumerate(display_clauses):
         next_cum = cum_w + clause_weights[idx]
         w_start_idx = min(n_words - 1, int(round((cum_w / tot_w) * n_words)))
         w_end_idx = min(n_words - 1, max(w_start_idx, int(round((next_cum / tot_w) * n_words)) - 1))
-        rs = prev_end if idx > 0 else max(0.0, words[0][0] - 0.04)
-        re_t = total_dur if idx == len(clauses) - 1 else min(total_dur, max(rs + 0.45, words[w_end_idx][1] + 0.04))
-        aligned.append({"text": cl, "rel_start": round(rs, 3), "rel_end": round(re_t, 3)})
+        rs = prev_end if idx > 0 else max(0.0, words[0][0] - 0.05)
+        re_t = total_dur if idx == len(display_clauses) - 1 else min(total_dur, max(rs + 0.50, words[w_end_idx][1] + 0.04))
+        aligned.append({"text": disp_cl, "rel_start": round(rs, 3), "rel_end": round(re_t, 3)})
         prev_end = re_t
         cum_w = next_cum
 
@@ -263,15 +261,15 @@ def postprocess_voice_wav(wav_path: Path, target_sr: int = 44100) -> float:
     data, sr = sf.read(str(wav_path))
     if data.ndim > 1:
         data = data.mean(axis=1)
-    thresh = 10 ** (-46.0 / 20.0)
+    thresh = 10 ** (-48.0 / 20.0)
     idx = np.where(np.abs(data) > thresh)[0]
     if len(idx) > 10:
-        s = max(0, int(idx[0]) - int(0.04 * sr))
-        e = min(len(data), int(idx[-1]) + int(0.10 * sr))
+        s = max(0, int(idx[0]) - int(0.06 * sr))
+        e = min(len(data), int(idx[-1]) + int(0.12 * sr))
         data = data[s:e]
     rms = float(np.sqrt(np.mean(data ** 2)) + 1e-9)
-    target_rms = 10 ** (-21.0 / 20.0)
-    data = data * min(6.0, target_rms / rms)
+    target_rms = 10 ** (-20.5 / 20.0)
+    data = data * min(5.5, target_rms / rms)
     peak = float(np.max(np.abs(data)) + 1e-9)
     max_peak = 10 ** (-1.5 / 20.0)
     if peak > max_peak:
@@ -304,7 +302,7 @@ def run_job(job_id: str, kind: str, payload: dict):
             prompt_txt = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
             inputs = tok([prompt_txt], return_tensors="pt").to(dev)
             max_new = min(6144, int(payload.get("max_tokens", 3600)))
-            temp = float(payload.get("temperature", 0.55))
+            temp = float(payload.get("temperature", 0.45))
             with torch.inference_mode():
                 gen_ids = mdl.generate(
                     **inputs,
@@ -321,20 +319,21 @@ def run_job(job_id: str, kind: str, payload: dict):
                 JOBS[job_id].update(status="done", elapsed=round(time.time() - t0, 2), result={"text": txt_out, "model": model_id, "device": dev})
 
         elif kind in ("tts_paragraphs", "tts_batch"):
-            free_model_if_tight(24000, ("qwen_llm", "sdxl_pipe"))
+            free_model_if_tight(10000, ("sdxl_pipe",))
             ref_wav = REFS_DIR / payload["ref_name"]
             if not ref_wav.exists():
                 raise FileNotFoundError(f"Missing reference wav: {ref_wav}")
             ref_text = normalize_zh_for_tts(payload["ref_text"])
             items = payload["items"]
-            speed = float(payload.get("speed", 1.03))
-            nfe = int(payload.get("nfe_step", 32))
+            speed = float(payload.get("speed", 1.01))
+            nfe = int(payload.get("nfe_step", 48))
             dev, tts = get_f5_tts()
             outputs = []
             for idx, item in enumerate(items):
                 seg_id = str(item["id"])
-                clauses = item.get("clauses") or [item["text"]]
-                full_spoken = item.get("text") or "，".join(clauses)
+                disp_clauses = item.get("clauses") or [item["text"]]
+                spok_clauses = item.get("spoken_clauses") or disp_clauses
+                full_spoken = item.get("text") or "，".join(spok_clauses)
                 gen_text = normalize_zh_for_tts(full_spoken)
                 out_wav = job_dir / f"{seg_id}.wav"
                 tts.infer(
@@ -344,24 +343,27 @@ def run_job(job_id: str, kind: str, payload: dict):
                     file_wave=str(out_wav),
                     speed=float(item.get("speed", speed)),
                     nfe_step=nfe,
+                    cfg_strength=2.0,
+                    sway_sampling_coef=-1.0,
                     remove_silence=False,
                 )
                 dur = postprocess_voice_wav(out_wav, target_sr=44100)
-                # Guard against rare duration anomaly (e.g. > 0.55s per char) by re-synthesizing once cleanly
                 clean_chars = max(1, len(re.sub(r"\s+", "", full_spoken)))
-                if dur / clean_chars > 0.52 and clean_chars >= 8:
+                if dur / clean_chars > 0.48 and clean_chars >= 8:
                     tts.infer(
                         ref_file=str(ref_wav),
                         ref_text=ref_text,
                         gen_text=gen_text,
                         file_wave=str(out_wav),
-                        speed=min(1.12, float(item.get("speed", speed)) + 0.05),
-                        nfe_step=32,
+                        speed=min(1.10, float(item.get("speed", speed)) + 0.04),
+                        nfe_step=48,
+                        cfg_strength=2.0,
+                        sway_sampling_coef=-1.0,
                         remove_silence=False,
                     )
                     dur = postprocess_voice_wav(out_wav, target_sr=44100)
 
-                aligned_clauses, asr_txt = align_clauses_with_whisper(out_wav, clauses, dur)
+                aligned_clauses, asr_txt = align_clauses_with_whisper(out_wav, disp_clauses, spok_clauses, dur)
                 outputs.append(
                     {
                         "id": seg_id,
@@ -383,25 +385,25 @@ def run_job(job_id: str, kind: str, payload: dict):
             items = payload["items"]
             outputs = []
             neg_prompt = (
-                "text, letters, words, watermark, signature, blurry, low quality, messy clutter, "
-                "bright white background, cartoon childish, deformed, ugly, oversaturated neon"
+                "text, letters, words, numbers, watermark, signature, frame, border, white background, bright background, "
+                "blurry, messy clutter, cartoon childish, deformed, ugly, oversaturated neon"
             )
             for idx, item in enumerate(items):
                 img_id = str(item["id"])
-                w = (int(item.get("width", 1152 if mode_name == "sdxl_base" else 768)) // 8) * 8
-                h = (int(item.get("height", 768 if mode_name == "sdxl_base" else 512)) // 8) * 8
-                seed = int(item.get("seed", 2026 + idx * 31))
+                w = (int(item.get("width", 1216 if mode_name == "sdxl_base" else 768)) // 8) * 8
+                h = (int(item.get("height", 832 if mode_name == "sdxl_base" else 512)) // 8) * 8
+                seed = int(item.get("seed", 3030 + idx * 37))
                 prompt = (
-                    f"{item['prompt']}, tactile 3D matte dark-studio isometric diorama metaphor, "
-                    "deep charcoal #222224 background, warm amber #EB8B1B rim glow, Cinema4D Octane render style, "
-                    "ultra clean minimalist product design, studio softbox lighting, strictly no text or letters"
+                    f"{item['prompt']}, centered object floating on pure solid matte dark charcoal #242426 void background, "
+                    "warm amber #EB8B1B accent rim glow, Cinema4D Redshift minimalist studio product render, "
+                    "plenty of clean dark empty margin around edges, strictly zero text or letters"
                 )
                 gen = torch.Generator(device="cpu").manual_seed(seed)
                 if mode_name == "sdxl_base":
                     img = pipe(
                         prompt=prompt,
                         negative_prompt=neg_prompt,
-                        num_inference_steps=int(item.get("steps", 22)),
+                        num_inference_steps=int(item.get("steps", 28)),
                         guidance_scale=6.5,
                         width=w,
                         height=h,
@@ -469,7 +471,7 @@ class Handler(BaseHTTPRequestHandler):
                 200,
                 {
                     "ok": True,
-                    "service": "garychen_gemini4_carbon_worker_v2",
+                    "service": "garychen_gemini4_carbon_worker_v3",
                     "port": PORT,
                     "work_dir": str(WORK_DIR),
                     "disk_free_gb": round(du.free / (1024 ** 3), 2),
@@ -543,7 +545,7 @@ def main():
         d.mkdir(parents=True, exist_ok=True)
     os.environ["HF_HOME"] = str(CACHE_DIR)
     os.environ["TORCH_HOME"] = str(WORK_DIR / "torch_cache")
-    print(f"[garychen-worker-v2] listening on 0.0.0.0:{PORT} work={WORK_DIR}", flush=True)
+    print(f"[garychen-worker-v3] listening on 0.0.0.0:{PORT} work={WORK_DIR}", flush=True)
     ThreadingHTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
 
 
