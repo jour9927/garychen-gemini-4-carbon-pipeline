@@ -11,6 +11,7 @@ reference_channel/videos/
 reference_channel/frames_*/
 configs/colab_token.txt
 configs/colab_endpoint.json
+configs/telegram.json
 .env
 
 # Scratch / intermediate temp frames & heavy rendered media (JSON/MD/VTT/Thumbnails ARE tracked)
