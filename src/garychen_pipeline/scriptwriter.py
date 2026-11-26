@@ -250,7 +250,7 @@ def split_into_clauses(text: str, target_max: int = 22) -> list[str]:
             merged[-1] = f"{merged[-1]}，{tail}" if not merged[-1].endswith("的") else f"{merged[-1]}{tail}"
         else:
             merged.append(tail)
-    return [c for c in merged if c][:4]
+    return [c for c in merged if c][:8]
 
 
 def _ensure_numeric_metric(val: str, fallback_metrics: list[str], idx: int, ctx: str = "") -> str:
@@ -737,7 +737,7 @@ class GarychenScriptwriter:
                     voice_style=v_style,  # type: ignore[arg-type]
                     clauses=clauses,
                     spoken_clauses=spoken_clauses,
-                    visual_title=smart_trim(str(rb.get("visual_title") or c_title), 13.5),
+                    visual_title=smart_trim(str(rb.get("visual_title") or c_title), 18.5),
                     visual_subtitle=taiwanize_text(str(rb.get("visual_subtitle") or ""))[:40],
                     badge_text=raw_bt[:18],
                     nodes=v_nodes,
@@ -809,8 +809,8 @@ class GarychenScriptwriter:
                     beat_id=f"sbeat_{len(short_beats) + 1:02d}",
                     layout_type=slt,
                     voice_style=s_vstyle,  # type: ignore[arg-type]
-                    clauses=s_clauses[:2],
-                    spoken_clauses=s_spoken,
+                    clauses=s_clauses[:4],
+                    spoken_clauses=[to_spoken_tts_text(c) for c in s_clauses[:4]],
                     headline=smart_trim(str(sb.get("headline") or ("點擊左下角看完整版" if is_cta else ref_b.visual_title)), 11.5),
                     sub_caption=taiwanize_text(str(sb.get("sub_caption") or ref_b.visual_subtitle))[:24],
                     highlight_badge=taiwanize_text(str(sb.get("highlight_badge") or ("完整長片已上線" if is_cta else ref_b.badge_text)))[:16],

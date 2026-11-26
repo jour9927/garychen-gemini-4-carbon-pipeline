@@ -1,0 +1,18 @@
+{
+  "episode_id": "v4_ep01_ai_agent_remotion",
+  "episode_dir": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion",
+  "long_title": "Browser-Use 新手實戰教學，零訂閱費讓 AI 免費接管你的瀏覽器！",
+  "short_title": "Browser-Use 免費接管瀏覽器！零訂閱費 AI Agent 實戰 #Shorts",
+  "long_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/garychen_long.mp4",
+  "short_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/garychen_short_funnel.mp4",
+  "thumbnail_png": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/thumbnail.png",
+  "publish_pack_md": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/youtube_publish_pack.md",
+  "long_duration_sec": 244.81,
+  "short_duration_sec": 39.662,
+  "beats_count": 28,
+  "cues_count": 112,
+  "sources_count": 4,
+  "live_screenshots_count": 6,
+  "tts_backend": "local_disk_cache",
+  "image_backend": "alan_hub_m3_pro_mps:mps:realvis_lightning"
+}

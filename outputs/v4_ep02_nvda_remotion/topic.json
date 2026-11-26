@@ -1,0 +1,18 @@
+{
+  "topic_id": "nvda",
+  "title": "NVIDIA 財報深度拆解：全年營收衝破 2159 億美金、營益率 60%，市場怕 CapEx 見頂為什麼我看到第二層飛輪？",
+  "primary_entity": "NVDA",
+  "category": "us_stocks",
+  "hook_angle": "NVIDIA 財報深度拆解：全年營收衝破 2159 億美金、營益率 60%，市場怕 CapEx 見頂為什麼我看到第二層飛輪？",
+  "why_now": "公開財報數據、市場預期差與護城河深度拆解",
+  "score": 100.0,
+  "seed_queries": [
+    "NVDA earnings revenue capex",
+    "NVDA moat valuation",
+    "NVIDIA 財報深度拆解：全年營收衝破 215"
+  ],
+  "seed_urls": [],
+  "tickers": [
+    "NVDA"
+  ]
+}

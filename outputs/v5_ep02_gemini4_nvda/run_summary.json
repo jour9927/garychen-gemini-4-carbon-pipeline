@@ -1,0 +1,18 @@
+{
+  "episode_id": "v5_ep02_gemini4_nvda",
+  "episode_dir": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep02_gemini4_nvda",
+  "long_title": "輝達暴跌四成PE剩15倍！市場怕CapEx見頂我卻看到第二層飛輪",
+  "short_title": "輝達暴跌40%本益比剩15倍！市場看錯了什麼？ #Shorts",
+  "long_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep02_gemini4_nvda/garychen_long.mp4",
+  "short_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep02_gemini4_nvda/garychen_short_funnel.mp4",
+  "thumbnail_png": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep02_gemini4_nvda/thumbnail.png",
+  "publish_pack_md": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep02_gemini4_nvda/youtube_publish_pack.md",
+  "long_duration_sec": 528.462,
+  "short_duration_sec": 58.346,
+  "beats_count": 35,
+  "cues_count": 203,
+  "sources_count": 6,
+  "live_screenshots_count": 6,
+  "tts_backend": "alan_hub_m3_pro_mps:mps:qwen3_tts_1.7b",
+  "image_backend": "alan_hub_m3_pro_mps:mps:realvis_lightning"
+}

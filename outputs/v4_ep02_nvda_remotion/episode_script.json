@@ -1,0 +1,3323 @@
+{
+  "episode_id": "v4_ep02_nvda_remotion",
+  "title": "NVDA 財報暴增卻怕見頂？拆解 $2,159 億營收背後的第二層飛輪！",
+  "thumbnail_line1": "NVDA 財報",
+  "thumbnail_line2": "華爾街看錯了？",
+  "category": "us_stocks",
+  "avatar_mode": true,
+  "youtube_description_summary": "NVIDIA 全年營收衝破 2159 億美金、營益率 60%，市場怕 CapEx 見頂，但 Gary 看到第二層飛輪！拆解 SEC 年報、營運槓桿、資本支出與競爭優勢，重新評估估值與風險。",
+  "hashtags": [
+    "#GaryChen",
+    "#NVDA",
+    "#美股分析",
+    "#財報拆解",
+    "#飛輪效應",
+    "#投資觀點"
+  ],
+  "chapters": [
+    "01 市場恐慌與真實成績單",
+    "02 商業模式與算力變現引擎",
+    "03 SEC 年報數據與營運槓桿",
+    "04 資本支出的第二層思考",
+    "05 競爭對手難複製的護城河",
+    "06 估值倍數與三種情境推演",
+    "07 三大風險與我的投資觀點"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與真實成績單",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "hook",
+      "clauses": [
+        "市場恐慌 NVDA 資本支出暴增 60 億",
+        "高基期讓大家嚇壞",
+        "但 SEC 年報最新營收 2,159 億",
+        "營益率 60.4%，營運現金流 1,027 億"
+      ],
+      "spoken_clauses": [
+        "市場恐慌 Nvidia 資本支出暴增 六十 億",
+        "高基期讓大家嚇壞",
+        "但 S E C 年報最新營收 兩千一百五十九 億",
+        "營益率 百分之六十點四，營運現金流 一千零二十七 億"
+      ],
+      "visual_title": "市場恐慌與真實成績單",
+      "visual_subtitle": "NVDA 資本支出暴增 60 億，營收 2,159 億",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "SEC 10-K 年報",
+          "sub": "NVDA FY26 營收 $2,159",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4% 顯示營運槓桿極限",
+          "tag": "營益率",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "OCF $1,027 億 顯示造血能力強",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "cloudflare",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "CapEx $60.4 億 顯示投資效率高",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪效應加速",
+      "callout_body": "高基期不是問題，營運現金流 1,027 億才是重點",
+      "code_lines": [
+        "SEC 10-K 年報",
+        "NVDA FY26 營收 $2,159 億",
+        "營益率 60.4%",
+        "OCF $1,027 億"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與真實成績單",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "過去四年 NVDA 營收從 270 億暴衝到 2,159 億",
+        "年增 65.5%，營業利益率從 15.7% 拉到 60.4%",
+        "營運槓桿拉到極限",
+        "這不是短期衝刺"
+      ],
+      "spoken_clauses": [
+        "過去四年 Nvidia 營收從 兩百七十 億暴衝到 兩千一百五十九 億",
+        "年增 百分之六十五點五，營業利益率從 百分之十五點七 拉到 百分之六十點四",
+        "營運槓桿拉到極限",
+        "這不是短期衝刺"
+      ],
+      "visual_title": "營收飛輪加速",
+      "visual_subtitle": "四年成長 65.5%，營益率從 15.7% 到 60.4%",
+      "badge_text": "營收飛輪",
+      "nodes": [
+        {
+          "label": "FY23 營收",
+          "sub": "FY23 營收 $270",
+          "tag": "FY23",
+          "metric": "$270 億",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "FY24 營收",
+          "sub": "FY24 營收 $609",
+          "tag": "FY24",
+          "metric": "$609 億",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "FY25 營收",
+          "sub": "FY25 營收 $1,305",
+          "tag": "FY25",
+          "metric": "$1,305 億",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "FY26 營收",
+          "sub": "FY26 營收 $2,159",
+          "tag": "FY26",
+          "metric": "$2,159 億",
+          "icon": "calendar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "長期結構性成長",
+      "callout_body": "營運槓桿拉到極限，不是短期衝刺",
+      "code_lines": [
+        "FY23 $270 億",
+        "FY24 $609 億",
+        "FY25 $1,305 億",
+        "FY26 $2,159 億"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與真實成績單",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "現在 NVDA 股價 141.99",
+        "52 週區間 124.50 到 243.37",
+        "本益比 15.3x，市值 3.422T",
+        "看起來便宜，但別急"
+      ],
+      "spoken_clauses": [
+        "現在 Nvidia 股價 一百四十一點九九",
+        "五十二 週區間 一百二十四點五零 到 兩百四十三點三七",
+        "本益比 十五點三倍，市值 三點四二兆美金",
+        "看起來便宜，但別急"
+      ],
+      "visual_title": "股價與估值解析",
+      "visual_subtitle": "NVDA 現價 $141.99，本益比 15.3x",
+      "badge_text": "PE 15.3x",
+      "nodes": [
+        {
+          "label": "現價",
+          "sub": "NVDA 現價 $141.99",
+          "tag": "股價",
+          "metric": "$141.99",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "52W",
+          "sub": "52 週高 $243",
+          "tag": "52W",
+          "metric": "$243",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "本益比",
+          "sub": "PE 15.3x 顯示估值合理",
+          "tag": "PE",
+          "metric": "15.3x",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "市值",
+          "sub": "總市值 3.422T 美金",
+          "tag": "市值",
+          "metric": "3.422",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "便宜還是貴？",
+      "callout_body": "拆解營收成長、OCF、CapEx 與護城河",
+      "code_lines": [
+        "NVDA 現價 $141.99",
+        "52W 高 $243",
+        "PE 15.3x",
+        "市值 3.422T"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep02_nvda_remotion/source_screenshots/S1.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "市場恐慌與真實成績單",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "今天拆解四個核心維度：營收飛輪",
+        "營運現金流造血、資本支出效率、以及護城河深度",
+        "看完你會知道華爾街到底看錯了什麼"
+      ],
+      "spoken_clauses": [
+        "今天拆解四個核心維度：營收飛輪",
+        "營運現金流造血、資本支出效率、以及護城河深度",
+        "看完你會知道華爾街到底看錯了什麼"
+      ],
+      "visual_title": "四維度核心分析",
+      "visual_subtitle": "營收飛輪、OCF、CapEx 效率與護城河",
+      "badge_text": "四維度分析",
+      "nodes": [
+        {
+          "label": "營收飛輪",
+          "sub": "營收從 270 億到 2,159",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "OCF $1,027 億 顯示造血能力",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "cloudflare",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "CapEx $60.4 億 顯示投資效率",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "護城河",
+          "sub": "技術優勢與生態系統護城河",
+          "tag": "護城河",
+          "metric": "PE 15.3x",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "華爾街看錯了什麼",
+      "callout_body": "營運現金流與飛輪效應才是關鍵",
+      "code_lines": [
+        "營收飛輪",
+        "OCF 造血",
+        "CapEx 效率",
+        "護城河深度"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "商業模式與算力變現引擎",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "全年營收 $2,159 億",
+        "營業利益率 60.4%",
+        "這不是偶然，是算力底座的規模經濟在發揮作用",
+        "資料中心需求暴增"
+      ],
+      "spoken_clauses": [
+        "全年營收 兩千一百五十九億美金",
+        "營業利益率 百分之六十點四",
+        "這不是偶然，是算力底座的規模經濟在發揮作用",
+        "資料中心需求暴增"
+      ],
+      "visual_title": "NVIDIA 營收暴增",
+      "visual_subtitle": "全年營收 $2,159 億 營業利益率 60.4%",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "全年總營收",
+          "sub": "2026 年營收 $2,159 億，年增 +65.5%",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4%，營業利益 $1,304",
+          "tag": "營益率",
+          "metric": "60.4%",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,027 億，遠高於 CapEx",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資料中心需求",
+          "sub": "資料中心需求暴增，NVIDIA GPU 成為不",
+          "tag": "資料中心",
+          "metric": "2159%",
+          "icon": "cloudflare",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "算力規模經濟",
+      "callout_body": "NVIDIA GPU 成為資料中心基礎設施，單位成本下降，利潤水準上衝",
+      "code_lines": [
+        "NVIDIA 2026 年度財報 SEC 10-K"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "商業模式與算力變現引擎",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "高速網路互連技術是第二個飛輪",
+        "NVIDIA 的 InfiniBand 和 NVLink",
+        "讓資料傳輸速度提升 10 倍",
+        "企業要建 AI 伺服器"
+      ],
+      "spoken_clauses": [
+        "高速網路互連技術是第二個飛輪",
+        "Nvidia 的 InfiniBand 和 N V Link",
+        "讓資料傳輸速度提升 十 倍",
+        "企業要建 AI 伺服器"
+      ],
+      "visual_title": "高速網路互連技術",
+      "visual_subtitle": "InfiniBand NVLink 提速 10 倍，企業 AI 伺服器必須採用 NV",
+      "badge_text": "轉換成本高",
+      "nodes": [
+        {
+          "label": "InfiniBand 技術",
+          "sub": "NVIDIA InfiniBand 讓資料傳輸速度提",
+          "tag": "高速網路",
+          "metric": "10",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVLink 連接",
+          "sub": "NVLink 連接技術讓 AI 伺服器必須採用",
+          "tag": "連接技術",
+          "metric": "10",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "轉換成本",
+          "sub": "企業轉換成本高到無法競爭，形成護城河",
+          "tag": "轉換成本",
+          "metric": "$10",
+          "icon": "lock",
+          "trend": "up"
+        },
+        {
+          "label": "企業採用率",
+          "sub": "企業必須採用 NVIDIA 解決方案，無法輕",
+          "tag": "企業採用",
+          "metric": "100%",
+          "icon": "users",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪第二環",
+      "callout_body": "NVIDIA 高速網路技術讓企業無法輕易轉換，形成高轉換成本護城河",
+      "code_lines": [
+        "CNBC 市場報價與估值資料"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "商業模式與算力變現引擎",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "軟硬體生態綁定才是最終殺手",
+        "NVIDIA 不只是賣晶片",
+        "還提供軟體工具鏈、雲端平臺、開發者生態",
+        "讓客戶一旦上車就難以跳船"
+      ],
+      "spoken_clauses": [
+        "軟硬體生態綁定才是最終殺手",
+        "Nvidia 不只是賣晶片",
+        "還提供軟體工具鏈、雲端平臺、開發者生態",
+        "讓客戶一旦上車就難以跳船"
+      ],
+      "visual_title": "生態綁定營運槓桿",
+      "visual_subtitle": "軟體工具鏈與雲端平臺綁定，營運槓桿持續放大",
+      "badge_text": "營運槓桿翻倍",
+      "nodes": [
+        {
+          "label": "軟體工具鏈",
+          "sub": "NVIDIA 提供軟體工具鏈與雲端平臺，綁",
+          "tag": "軟體生態",
+          "metric": "100%",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "開發者生態",
+          "sub": "開發者生態綁定讓客戶一旦上車就難以跳",
+          "tag": "開發者",
+          "metric": "100%",
+          "icon": "users",
+          "trend": "up"
+        },
+        {
+          "label": "營運槓槓",
+          "sub": "每增加一單位銷售，利潤就翻倍，營運槓",
+          "tag": "營運槓槓",
+          "metric": "200%",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "生態綁定",
+          "sub": "NVIDIA 軟硬體生態綁定，客戶難以跳船",
+          "tag": "生態綁定",
+          "metric": "100%",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "最終殺手",
+      "callout_body": "NVIDIA 軟硬體生態綁定，客戶上車後難以跳船，營運槓槓持續放大",
+      "code_lines": [
+        "SEC 10-K 財報資料"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "商業模式與算力變現引擎",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "stocks",
+      "clauses": [
+        "營運現金流 $1,027 億",
+        "遠高於 CapEx $60.4 億",
+        "這代表他們不是在燒錢",
+        "而是在賺錢，每塊晶片賣出後"
+      ],
+      "spoken_clauses": [
+        "營運現金流 一千零二十七億美金",
+        "遠高於 資本支出 六十點四億美金",
+        "這代表他們不是在燒錢",
+        "而是在賺錢，每塊晶片賣出後"
+      ],
+      "visual_title": "營運現金流滾動",
+      "visual_subtitle": "營運現金流 $1,027 億，遠高於 CapEx $60.4 億，飛輪效應越轉越快",
+      "badge_text": "飛輪效應",
+      "nodes": [
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,027 億，遠高於 CapEx",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "飛輪效應",
+          "sub": "飛輪效應越轉越快，越轉越穩",
+          "tag": "飛輪",
+          "metric": "100%",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "現金流滾動",
+          "sub": "每塊晶片賣出後現金流滾動到下一個專案",
+          "tag": "現金流",
+          "metric": "100%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "專案滾動",
+          "sub": "現金流滾動到下一個專案，形成持續增長",
+          "tag": "專案",
+          "metric": "100%",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "現金流滾動",
+      "callout_body": "每塊晶片賣出後現金流滾動到下一個專案，飛輪效應越轉越快",
+      "code_lines": [
+        "SEC 10-K 財報資料"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "SEC 年報數據與營運槓桿",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "全年總營收 $2,159 億",
+        "年增 +65.5%，但市場只看到短期爆發",
+        "沒發現這成長斜率是從 FY23 的 $270 億一路衝到 FY26",
+        "根本是火箭級成長"
+      ],
+      "spoken_clauses": [
+        "全年總營收 兩千一百五十九億美金",
+        "年增 百分之六十五點五，但市場只看到短期爆發",
+        "沒發現這成長斜率是從 FY二十三 的 兩百七十億美金一路衝到 FY二十六",
+        "根本是火箭級成長"
+      ],
+      "visual_title": "NVIDIA 營收火箭級成長",
+      "visual_subtitle": "FY23 $270 億 → FY26 $2,159 億",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "全年總營收",
+          "sub": "FY26 $2,159 億，年增 +65.5%",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "FY23 營收",
+          "sub": "FY23 營收 $270 億，成長起點",
+          "tag": "起點",
+          "metric": "$270 億",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "FY24 營收",
+          "sub": "FY24 營收 $609 億，成長加速",
+          "tag": "加速",
+          "metric": "$609 億",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "FY25 營收",
+          "sub": "FY25 營收 $1,305 億，成長爆發",
+          "tag": "爆發",
+          "metric": "$1,305 億",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "成長斜率超乎預期",
+      "callout_body": "營收從 FY23 $270 億衝到 FY26 $2,159 億，火箭級成長！",
+      "code_lines": [
+        "npm install --save-dev remotion"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "SEC 年報數據與營運槓桿",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "營業利益率 60.4%",
+        "營運現金流 OCF $1,027 億",
+        "這不是單純的數字",
+        "是 NVIDIA 把每塊錢都轉化成現金的體質"
+      ],
+      "spoken_clauses": [
+        "營業利益率 百分之六十點四",
+        "營運現金流 營運現金流 一千零二十七億美金",
+        "這不是單純的數字",
+        "是 Nvidia 把每塊錢都轉化成現金的體質"
+      ],
+      "visual_title": "NVIDIA 高獲利低燒錢",
+      "visual_subtitle": "營業利益率 60.4% + OCF $1,027 億",
+      "badge_text": "60.4% 營業利益率",
+      "nodes": [
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4%，獲利能力強",
+          "tag": "獲利",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 OCF $1,027 億，造血能力強",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "資本支出 CapEx $60.4 億，低燒錢",
+          "tag": "燒錢",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益",
+          "sub": "營業利益 $1,304 億，獲利規模大",
+          "tag": "獲利規模",
+          "metric": "$1,304 億",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "獲利能力超強",
+      "callout_body": "營運現金流 $1,027 億，CapEx 低至 $60.4 億，高獲利低燒錢！",
+      "code_lines": [
+        "yarn add remotion"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep02_nvda_remotion/source_screenshots/S2.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "SEC 年報數據與營運槓桿",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "對比 Microsoft 的 $1,829 億 OCF",
+        "NVDA 的 $1,027 億 OCF 看起來小",
+        "但 FY26 的營收規模是 MSFT 的 70%",
+        "OCF 佔營收比例更高，體質更健康"
+      ],
+      "spoken_clauses": [
+        "對比 Microsoft 的 一千八百二十九億美金 營運現金流",
+        "Nvidia 的 一千零二十七億美金 營運現金流 看起來小",
+        "但 FY二十六 的營收規模是 Microsoft 的 百分之七十",
+        "營運現金流 佔營收比例更高，體質更健康"
+      ],
+      "visual_title": "NVIDIA 體質更健康",
+      "visual_subtitle": "OCF 佔營收比例更高",
+      "badge_text": "OCF 佔營收比例更高",
+      "nodes": [
+        {
+          "label": "NVDA OCF",
+          "sub": "OCF $1,027 億，營收 $2,159",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "MSFT OCF",
+          "sub": "OCF $1,829 億，營收 $3,318",
+          "tag": "OCF",
+          "metric": "$1,829 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA 營收佔比",
+          "sub": "OCF 佔營收比例 47.6%，體質更健康",
+          "tag": "比例",
+          "metric": "47.6%",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "MSFT 營收佔比",
+          "sub": "OCF 佔營收比例 54.9%，但營收規模更",
+          "tag": "比例",
+          "metric": "54.9%",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "體質更健康",
+      "callout_body": "NVDA OCF 佔營收比例更高，體質比 MSFT 更健康！",
+      "code_lines": [
+        "pnpm install remotion"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "SEC 年報數據與營運槓桿",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "自由現金流體質才是關鍵",
+        "OCF 減去 CapEx 是 $966 億",
+        "這不是短期衝刺",
+        "是長期造血能力"
+      ],
+      "spoken_clauses": [
+        "自由現金流體質才是關鍵",
+        "營運現金流 減去 資本支出 是 九百六十六億美金",
+        "這不是短期衝刺",
+        "是長期造血能力"
+      ],
+      "visual_title": "NVIDIA 自由現金流強",
+      "visual_subtitle": "OCF 減 CapEx $966 億",
+      "badge_text": "自由現金流 $966 億",
+      "nodes": [
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 OCF $1,027 億，造血能力強",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "資本支出 CapEx $60.4 億，低燒錢",
+          "tag": "燒錢",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "自由現金流",
+          "sub": "OCF 減 CapEx $966 億，長期造血能力",
+          "tag": "自由現金流",
+          "metric": "$966 億",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "飛輪效應",
+          "sub": "自由現金流強，飛輪效應明顯，長期成長",
+          "tag": "飛輪",
+          "metric": "966%",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "長期造血能力",
+      "callout_body": "OCF 減 CapEx $966 億，自由現金流強，飛輪效應明顯！",
+      "code_lines": [
+        "npm install remotion"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "資本支出的第二層思考",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "市場預期 NVDA 資本支出見頂",
+        "但看懂微軟與 Meta 的 CapEx 資料",
+        "就會發現算力需求正在接棒訓練算力",
+        "微軟 FY26 CapEx 高達 $1,159 億"
+      ],
+      "spoken_clauses": [
+        "市場預期 Nvidia 資本支出見頂",
+        "但看懂微軟與 Meta 的 資本支出 資料",
+        "就會發現算力需求正在接棒訓練算力",
+        "微軟 FY二十六 資本支出 高達 一千一百五十九億美金"
+      ],
+      "visual_title": "NVDA CapEx 超預期",
+      "visual_subtitle": "微軟 Meta 資本支出暴增，AI 算力需求接棒",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "微軟 FY26 CapEx",
+          "sub": "全年資本支出 $1,159 億，AI 訓練與部",
+          "tag": "MSFT CapEx",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "Meta FY26 CapEx",
+          "sub": "全年資本支出 $697 億，AI 訓練與部署",
+          "tag": "META CapEx",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA FY26 CapEx",
+          "sub": "全年資本支出 $60.4 億，AI 訓練與部署",
+          "tag": "NVDA CapEx",
+          "metric": "$60.4 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "算力投資不是浪費",
+      "callout_body": "微軟 FY26 CapEx $1,159 億，Meta $697 億，AI 訓練與部署才是未",
+      "code_lines": [
+        "NVDA CapEx $60.4 億",
+        "MSFT CapEx $1,159 億",
+        "META CapEx $697 億"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "資本支出的第二層思考",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "NVDA 營運現金流 OCF 達 $1,027 億",
+        "遠超 CapEx $60.4 億",
+        "顯示其造血能力強勁",
+        "能持續投資算力"
+      ],
+      "spoken_clauses": [
+        "Nvidia 營運現金流 營運現金流 達 一千零二十七億美金",
+        "遠超 資本支出 六十點四億美金",
+        "顯示其造血能力強勁",
+        "能持續投資算力"
+      ],
+      "visual_title": "NVDA 造血能力強",
+      "visual_subtitle": "營運現金流遠超資本支出，長期戰略支撐",
+      "badge_text": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "NVDA OCF",
+          "sub": "全年營運現金流 $1,027 億，資金支撐算",
+          "tag": "NVDA OCF",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "MSFT OCF",
+          "sub": "全年營運現金流 $1,829 億，資金支撐算",
+          "tag": "MSFT OCF",
+          "metric": "$1,829 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "META OCF",
+          "sub": "全年營運現金流 $1,158 億，資金支撐算",
+          "tag": "META OCF",
+          "metric": "$1,158 億",
+          "icon": "meta",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "營運現金流強勁",
+      "callout_body": "NVDA OCF $1,027 億，遠超 CapEx $60.4 億，資金支撐算力擴張",
+      "code_lines": [
+        "NVDA OCF $1,027 億",
+        "MSFT OCF $1,829 億",
+        "META OCF $1,158 億"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "資本支出的第二層思考",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "微軟與 Meta 的營業利益率都維持在 40% 以上",
+        "營運槓桿明顯，每增加一美元營收",
+        "就能創造更高營業利益",
+        "這代表他們的算力投資能快速轉化為利潤"
+      ],
+      "spoken_clauses": [
+        "微軟與 Meta 的營業利益率都維持在 百分之四十 以上",
+        "營運槓桿明顯，每增加一美元營收",
+        "就能創造更高營業利益",
+        "這代表他們的算力投資能快速轉化為利潤"
+      ],
+      "visual_title": "營業利益率穩定",
+      "visual_subtitle": "營運槓桿明顯，算力投資快速轉化為利潤",
+      "badge_text": "營益率 60.4%",
+      "nodes": [
+        {
+          "label": "NVDA 營益率",
+          "sub": "全年營業利益率 60.4%，算力投資高回",
+          "tag": "NVDA Op Margin",
+          "metric": "60.4%",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "MSFT 營益率",
+          "sub": "全年營業利益率 46.8%，算力投資高回",
+          "tag": "MSFT Op Margin",
+          "metric": "46.8%",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "META 營益率",
+          "sub": "全年營業利益率 41.4%，算力投資高回",
+          "tag": "META Op Margin",
+          "metric": "41.4%",
+          "icon": "meta",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "營運槓桿強勁",
+      "callout_body": "NVDA 營業利益率 60.4%，微軟 Meta 都維持 40% 以上，算力投資高回報",
+      "code_lines": [
+        "NVDA 營益率 60.4%",
+        "MSFT 營益率 46.8%",
+        "META 營益率 41.4%"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "資本支出的第二層思考",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "NVDA 的營收成長軌跡與營益率表現",
+        "證明其算力需求正在接棒訓練算力",
+        "市場只看到短期 CapEx 資料",
+        "卻忽略長期營運現金流與營業利益的飛輪效應"
+      ],
+      "spoken_clauses": [
+        "Nvidia 的營收成長軌跡與營益率表現",
+        "證明其算力需求正在接棒訓練算力",
+        "市場只看到短期 資本支出 資料",
+        "卻忽略長期營運現金流與營業利益的飛輪效應"
+      ],
+      "visual_title": "飛輪效應啟動",
+      "visual_subtitle": "營收與營益率雙飛輪，市場忽略長期價值",
+      "badge_text": "營收 $2,159 億",
+      "nodes": [
+        {
+          "label": "NVDA 營收",
+          "sub": "全年營收 $2,159 億，營收成長軌跡",
+          "tag": "NVDA Revenue",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA 營益率",
+          "sub": "全年營業利益率 60.4%，算力投資高回",
+          "tag": "NVDA Op Margin",
+          "metric": "60.4%",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA OCF",
+          "sub": "全年營運現金流 $1,027 億，資金支撐算",
+          "tag": "NVDA OCF",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪效應啟動",
+      "callout_body": "NVDA 營收 $2,159 億，營益率 60.4%，市場只看短期 CapEx，忽略長期飛輪",
+      "code_lines": [
+        "NVDA 營收 $2,159 億",
+        "NVDA 營益率 60.4%",
+        "NVDA OCF $1,027 億"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep02_nvda_remotion/source_screenshots/S2_scroll.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "競爭對手難複製的護城河",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "stocks",
+      "clauses": [
+        "CUDA 開發者數百萬",
+        "轉換成本高到連 AMD 都不敢動",
+        "因為人家已經，把生態系焊死在 NVIDIA 的 GPU 上",
+        "這就是第一層護城河"
+      ],
+      "spoken_clauses": [
+        "CUDA 開發者數百萬",
+        "轉換成本高到連 AMD 都不敢動",
+        "因為人家已經，把生態系焊死在 Nvidia 的 G P U 上",
+        "這就是第一層護城河"
+      ],
+      "visual_title": "CUDA 生態系焊死 NVIDIA",
+      "visual_subtitle": "轉換成本高到 AMD 都不敢動",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "CUDA 開發者數量",
+          "sub": "全球 CUDA 開發者數百萬",
+          "tag": "CUDA 生態系",
+          "metric": "數百萬",
+          "icon": "users",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA GPU 生態系",
+          "sub": "生態系焊死在 NVIDIA GPU",
+          "tag": "生態系",
+          "metric": "CapEx $697 億",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "轉換成本",
+          "sub": "轉換成本高到 AMD 都不敢動",
+          "tag": "轉換成本",
+          "metric": "6x",
+          "icon": "lock",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA 營收",
+          "sub": "2026 年營收 $2,159",
+          "tag": "營收",
+          "metric": "2,159 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "CUDA 生態系護城河",
+      "callout_body": "CUDA 開發者數百萬，生態系焊死在 NVIDIA GPU 上",
+      "code_lines": [
+        "CUDA 開發者數百萬",
+        "NVIDIA GPU 生態系焊死",
+        "轉換成本高到 AMD 都不敢動"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "競爭對手難複製的護城河",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "NVLink 機櫃級整合良率",
+        "不是單顆晶片的事",
+        "是整個系統架構的協同效率",
+        "這層技術壁壘比 CPU 的多核還難複製"
+      ],
+      "spoken_clauses": [
+        "N V Link 機櫃級整合良率",
+        "不是單顆晶片的事",
+        "是整個系統架構的協同效率",
+        "這層技術壁壘比 C P U 的多核還難複製"
+      ],
+      "visual_title": "NVLink 系統架構協同效率",
+      "visual_subtitle": "技術壁壘比 CPU 多核還難複製",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "NVLink 整合良率",
+          "sub": "NVLink 機櫃級整合良率",
+          "tag": "NVLink",
+          "metric": "CapEx $697 億",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "系統架構協同效率",
+          "sub": "系統架構協同效率高於 CPU 多核",
+          "tag": "系統架構",
+          "metric": "6x",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "技術壁壂",
+          "sub": "技術壁壘比 CPU 多核還難複製",
+          "tag": "技術壁壘",
+          "metric": "arXiv 論文",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA 營收",
+          "sub": "2026 年營收 $2,159",
+          "tag": "營收",
+          "metric": "2,159 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "NVLink 系統架構壁壘",
+      "callout_body": "NVLink 機櫃級整合良率，技術壁壘比 CPU 多核還難複製",
+      "code_lines": [
+        "NVLink 機櫃級整合良率",
+        "系統架構協同效率",
+        "技術壁壘比 CPU 多核還難複製"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_19",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "競爭對手難複製的護城河",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "一年一代的架構迭代節奏",
+        "讓 NVIDIA 把 AI 模型更新速度拉到極限",
+        "其他廠牌要追上至少要兩年",
+        "這就是安全邊際"
+      ],
+      "spoken_clauses": [
+        "一年一代的架構迭代節奏",
+        "讓 Nvidia 把 AI 模型更新速度拉到極限",
+        "其他廠牌要追上至少要兩年",
+        "這就是安全邊際"
+      ],
+      "visual_title": "NVIDIA 架構迭代節奏",
+      "visual_subtitle": "AI 模型更新速度拉到極限",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "架構迭代節奏",
+          "sub": "一年一代的架構迭代節奏",
+          "tag": "迭代節奏",
+          "metric": "6x",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "AI 模型更新速度",
+          "sub": "AI 模型更新速度拉到極限",
+          "tag": "AI 更新",
+          "metric": "arXiv 論文",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "其他廠牌追上時間",
+          "sub": "其他廠牌要追上至少要兩年",
+          "tag": "追上時間",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA 營收",
+          "sub": "2026 年營收 $2,159",
+          "tag": "營收",
+          "metric": "2,159 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "架構迭代節奏安全邊際",
+      "callout_body": "一年一代的架構迭代節奏，其他廠牌要追上至少要兩年",
+      "code_lines": [
+        "一年一代架構迭代",
+        "AI 模型更新速度極限",
+        "其他廠牌追上需兩年"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_20",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "競爭對手難複製的護城河",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "stocks",
+      "clauses": [
+        "看財報就知道，營運現金流 OCF 比 CapEx 高出一倍",
+        "這就是飛輪效應的體現",
+        "華爾街漏掉的不是數據",
+        "是對 NVIDIA 護城河的深度理解"
+      ],
+      "spoken_clauses": [
+        "看財報就知道，營運現金流 營運現金流 比 資本支出 高出一倍",
+        "這就是飛輪效應的體現",
+        "華爾街漏掉的不是數據",
+        "是對 Nvidia 護城河的深度理解"
+      ],
+      "visual_title": "NVIDIA 飛輪效應 OCF 超 CapEx",
+      "visual_subtitle": "營運現金流 OCF 比 CapEx 高出一倍",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "營運現金流 OCF",
+          "sub": "營運現金流 OCF $1,027",
+          "tag": "OCF",
+          "metric": "1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出 CapEx",
+          "sub": "資本支出 CapEx $60.4",
+          "tag": "CapEx",
+          "metric": "60.4 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "OCF 超 CapEx",
+          "sub": "OCF 比 CapEx 高出一倍",
+          "tag": "飛輪效應",
+          "metric": "+65.5%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "NVIDIA 營收",
+          "sub": "2026 年營收 $2,159",
+          "tag": "營收",
+          "metric": "2,159 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪效應 OCF 超 CapEx",
+      "callout_body": "營運現金流 OCF 比 CapEx 高出一倍，飛輪效應體現",
+      "code_lines": [
+        "營運現金流 OCF",
+        "CapEx 資本支出",
+        "OCF 比 CapEx 高出一倍"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "minimalist precision balance scale weighing a glowing amber AI module against dark matte blocks on #222224 background, conceptual editorial metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_21",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值倍數與三種情境推演",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "stocks",
+      "clauses": [
+        "NVDA 現在本益比 15.3x",
+        "但我們不能只看這數字",
+        "得看營運現金流增速",
+        "OCF 1,027 億，年增 64.7%"
+      ],
+      "spoken_clauses": [
+        "Nvidia 現在本益比 十五點三倍",
+        "但我們不能只看這數字",
+        "得看營運現金流增速",
+        "營運現金流 一千零二十七 億，年增 百分之六十四點七"
+      ],
+      "visual_title": "NVDA 本益比 15.3x",
+      "visual_subtitle": "營運現金流增速才是關鍵",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "營運現金流 OCF",
+          "sub": "全年營運現金流 1,027",
+          "tag": "OCF",
+          "metric": "1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營收年增率",
+          "sub": "全年營收 2,159 億，年增 65.5%",
+          "tag": "YoY",
+          "metric": "65.5%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4%，顯示獲利能力強",
+          "tag": "營益率",
+          "metric": "60.4%",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "營運現金流強",
+      "callout_body": "OCF 1,027 億，年增 64.7%",
+      "code_lines": [
+        "OCF 1,027 億",
+        "年增 64.7%"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_22",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值倍數與三種情境推演",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "悲觀情境假設 OCF 增速停在 30%",
+        "那 PE 15.3x 就偏高",
+        "下檔保護大概在 12.5x",
+        "但實際上 NVDA 的營運槓桿強"
+      ],
+      "spoken_clauses": [
+        "悲觀情境假設 營運現金流 增速停在 百分之三十",
+        "那 本益比 十五點三倍 就偏高",
+        "下檔保護大概在 十二點五倍",
+        "但實際上 Nvidia 的營運槓桿強"
+      ],
+      "visual_title": "悲觀情境 OCF 增速 30%",
+      "visual_subtitle": "PE 15.3x 偏高",
+      "badge_text": "下檔保護 12.5x",
+      "nodes": [
+        {
+          "label": "OCF 增速 30%",
+          "sub": "營運現金流增速停在 30% 會拉低估值",
+          "tag": "OCF 增速",
+          "metric": "30%",
+          "icon": "nvidia",
+          "trend": "down"
+        },
+        {
+          "label": "PE 15.3x",
+          "sub": "本益比 15.3x 在悲觀情境下偏高",
+          "tag": "PE",
+          "metric": "15.3x",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "技術護城河",
+          "sub": "技術護城河仍在擴張，營運槓桿強",
+          "tag": "護城河",
+          "metric": "OCF $1,027 億",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "技術護城河仍在擴張",
+      "callout_body": "營運槓桿強，停在 30% 不太可能",
+      "code_lines": [
+        "OCF 增速 30%",
+        "PE 15.3x 偏高"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_23",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值倍數與三種情境推演",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "基準情境用 40% OCF 增速推算",
+        "PE 15.3x 就在歷史區間內",
+        "過去 NVDA 本益比有低到 10x 的時候",
+        "現在 15x 並不算貴"
+      ],
+      "spoken_clauses": [
+        "基準情境用 百分之四十 營運現金流 增速推算",
+        "本益比 十五點三倍 就在歷史區間內",
+        "過去 Nvidia 本益比有低到 十倍 的時候",
+        "現在 十五倍 並不算貴"
+      ],
+      "visual_title": "基準情境 OCF 增速 40%",
+      "visual_subtitle": "PE 15.3x 在歷史區間",
+      "badge_text": "過去有低到 10x",
+      "nodes": [
+        {
+          "label": "OCF 增速 40%",
+          "sub": "營運現金流增速 40% 在基準情境下合理",
+          "tag": "OCF 增速",
+          "metric": "40%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "PE 15.3x",
+          "sub": "本益比 15.3x 在歷史區間內，過去有低",
+          "tag": "PE",
+          "metric": "15.3x",
+          "icon": "dollar",
+          "trend": "neutral"
+        },
+        {
+          "label": "飛輪效應",
+          "sub": "營收仍在飛輪效應中，不是短期財報",
+          "tag": "飛輪",
+          "metric": "CapEx $60.4 億",
+          "icon": "play",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "飛輪效應持續",
+      "callout_body": "營收仍在飛輪效應中，不是短期財報",
+      "code_lines": [
+        "OCF 增速 40%",
+        "PE 15.3x 在歷史區間"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_24",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "估值倍數與三種情境推演",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "stocks",
+      "clauses": [
+        "樂觀情境如果 OCF 增速到 50%",
+        "那 PE 15.3x 就是超值",
+        "因為他們的 CapEx 60 億",
+        "投資的是未來，不是現在"
+      ],
+      "spoken_clauses": [
+        "樂觀情境如果 營運現金流 增速到 百分之五十",
+        "那 本益比 十五點三倍 就是超值",
+        "因為他們的 資本支出 六十 億",
+        "投資的是未來，不是現在"
+      ],
+      "visual_title": "樂觀情境 OCF 增速 50%",
+      "visual_subtitle": "PE 15.3x 是超值",
+      "badge_text": "CapEx 60 億是投資未來",
+      "nodes": [
+        {
+          "label": "OCF 增速 50%",
+          "sub": "營運現金流增速到 50% 會讓 PE 15.3x",
+          "tag": "OCF 增速",
+          "metric": "50%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "CapEx 60",
+          "sub": "資本支出 60 億是投資未來，不是現在",
+          "tag": "CapEx",
+          "metric": "60 億",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "華爾街看錯了",
+          "sub": "華爾街只看財報，沒看到營運現金流的造",
+          "tag": "市場誤判",
+          "metric": "$141.99",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "華爾街看錯了",
+      "callout_body": "CapEx 60 億是投資未來，不是現在",
+      "code_lines": [
+        "OCF 增速 50%",
+        "CapEx 60 億是投資未來"
+      ],
+      "pipeline_steps": [
+        "商業模式與算力變現引擎",
+        "SEC 年報數據與營運槓桿",
+        "資本支出的第二層思考",
+        "競爭對手難複製的護城河",
+        "估值倍數與三種情境推演"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_25",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三大風險與我的投資觀點",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "市場預期 NVDA 財報會再創新高",
+        "但實際數據出來後",
+        "很多人卻嚇了一跳",
+        "因為雲端大廠開始自研 ASIC"
+      ],
+      "spoken_clauses": [
+        "市場預期 Nvidia 財報會再創新高",
+        "但實際數據出來後",
+        "很多人卻嚇了一跳",
+        "因為雲端大廠開始自研 ASIC"
+      ],
+      "visual_title": "NVDA 財報衝刺失速",
+      "visual_subtitle": "雲端自研 ASIC 分流 GPU 需求",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "全年營收 $2,159",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4%",
+          "tag": "營益率",
+          "metric": "60.4%",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,027",
+          "tag": "OCF",
+          "metric": "$1,027",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "資本支出 $60.4",
+          "tag": "CapEx",
+          "metric": "$60.4",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "結構性風險",
+      "callout_body": "長期需求被自研晶片分流",
+      "code_lines": [
+        "NVIDIA 2026 SEC 10-K"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_26",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三大風險與我的投資觀點",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "warm",
+      "clauses": [
+        "第二個風險是新架構量產",
+        "像 H100 或 B100 這類新晶片",
+        "雖然性能強，但毛利率會大幅下滑",
+        "一旦量產規模跟不上"
+      ],
+      "spoken_clauses": [
+        "第二個風險是新架構量產",
+        "像 H一百 或 B一百 這類新晶片",
+        "雖然性能強，但毛利率會大幅下滑",
+        "一旦量產規模跟不上"
+      ],
+      "visual_title": "新架構量產壓力",
+      "visual_subtitle": "H100/B100 毛利率下滑",
+      "badge_text": "PE 15.3x",
+      "nodes": [
+        {
+          "label": "股價",
+          "sub": "股價 $141.99",
+          "tag": "股價",
+          "metric": "$141.99",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "本益比",
+          "sub": "本益比 15.3x",
+          "tag": "PE",
+          "metric": "15.3x",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營收成長",
+          "sub": "營收 $2,159",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,027",
+          "tag": "OCF",
+          "metric": "$1,027",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "規模化風險",
+      "callout_body": "新晶片毛利率下滑影響利潤",
+      "code_lines": [
+        "NVDA 2026 市場報價"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_27",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三大風險與我的投資觀點",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "warm",
+      "clauses": [
+        "第三個風險是地緣政治的出口管制",
+        "美國對華半導體出口限制越來越嚴",
+        "NVIDIA 在亞洲的業務面臨斷鏈風險",
+        "這不是財報能解決的長期問題"
+      ],
+      "spoken_clauses": [
+        "第三個風險是地緣政治的出口管制",
+        "美國對華半導體出口限制越來越嚴",
+        "Nvidia 在亞洲的業務面臨斷鏈風險",
+        "這不是財報能解決的長期問題"
+      ],
+      "visual_title": "地緣政治斷鏈",
+      "visual_subtitle": "美國對華出口管制",
+      "badge_text": "營收 $2,010 億",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "全年營收 $2,010",
+          "tag": "營收",
+          "metric": "$2,010",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 41.4%",
+          "tag": "營益率",
+          "metric": "41.4%",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,158",
+          "tag": "OCF",
+          "metric": "$1,158",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "資本支出 $697",
+          "tag": "CapEx",
+          "metric": "$697",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "長期斷鏈風險",
+      "callout_body": "亞洲業務面臨出口管制",
+      "code_lines": [
+        "META 2025 SEC 10-K"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_28",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三大風險與我的投資觀點",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "warm",
+      "clauses": [
+        "如果你喜歡這種",
+        "把 SEC 財報數字跟產業底層邏輯拆開來看的分析",
+        "記得幫我按讚訂閱追蹤 Gary 聊美股",
+        "本片內容僅供研究參考不構成投資建議，我們下次見"
+      ],
+      "spoken_clauses": [
+        "如果你喜歡這種",
+        "把 S E C 財報數字跟產業底層邏輯拆開來看的分析",
+        "記得幫我按讚訂閱追蹤 Gary 聊美股",
+        "本片內容僅供研究參考不構成投資建議，我們下次見"
+      ],
+      "visual_title": "深度財報分析",
+      "visual_subtitle": "SEC 財報拆解產業邏輯",
+      "badge_text": "營收 $3,318 億",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "全年營收 $3,318",
+          "tag": "營收",
+          "metric": "$3,318",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 46.8%",
+          "tag": "營益率",
+          "metric": "46.8%",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,829",
+          "tag": "OCF",
+          "metric": "$1,829",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "資本支出 $1,159",
+          "tag": "CapEx",
+          "metric": "$1,159",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "投資觀點",
+      "callout_body": "把財報數字與產業邏輯拆開看",
+      "code_lines": [
+        "MSFT 2026 SEC 10-K"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "thock"
+    }
+  ],
+  "short_title": "NVDA 營收衝破 2,159 億！華爾街漏看的第二層飛輪 #Shorts",
+  "short_hook_banner": "財報反轉",
+  "short_cta_target_title": "NVDA 財報暴增卻怕見頂？拆解 $2,159 億營收背後的第二層飛輪！",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_squircles_hook",
+      "voice_style": "hook",
+      "clauses": [
+        "NVDA 資本支出暴增 60 億，市場卻嚇壞了"
+      ],
+      "spoken_clauses": [
+        "Nvidia 資本支出暴增 六十 億，市場卻嚇壞了"
+      ],
+      "headline": "資本支出暴增",
+      "sub_caption": "市場恐慌高基期，實際數據超強",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "SEC 10-K 年報",
+          "sub": "NVDA FY26 營收 $2,159",
+          "tag": "營收",
+          "metric": "$2,159",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4% 顯示營運槓桿極限",
+          "tag": "營益率",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "OCF $1,027 億 顯示造血能力強",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "cloudflare",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "SEC 10-K 年報",
+        "NVDA FY26 營收 $2,159 億",
+        "營益率 60.4%"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "全年營收 $2,159 億",
+        "營業利益率 60.4%"
+      ],
+      "spoken_clauses": [
+        "全年營收 兩千一百五十九億美金",
+        "營業利益率 百分之六十點四"
+      ],
+      "headline": "營收暴增 65.5%",
+      "sub_caption": "營運槓桿強，現金流超強",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "營收飛輪",
+          "sub": "營收從 270 億到 2,159",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "OCF $1,027 億 顯示造血能力",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "cloudflare",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "CapEx $60.4 億 顯示投資效率",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "營收飛輪",
+        "OCF 造血",
+        "CapEx 效率"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_browser_zoom_proof",
+      "voice_style": "stocks",
+      "clauses": [
+        "OCF $1,027 億，造血能力超強"
+      ],
+      "spoken_clauses": [
+        "營運現金流 一千零二十七億美金，造血能力超強"
+      ],
+      "headline": "營運現金流爆發",
+      "sub_caption": "營運現金流 OCF 超過淨利",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "軟體工具鏈",
+          "sub": "NVIDIA 提供軟體工具鏈與雲端平臺，綁",
+          "tag": "軟體生態",
+          "metric": "100%",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "開發者生態",
+          "sub": "開發者生態綁定讓客戶一旦上車就難以跳",
+          "tag": "開發者",
+          "metric": "100%",
+          "icon": "users",
+          "trend": "up"
+        },
+        {
+          "label": "營運槓槓",
+          "sub": "每增加一單位銷售，利潤就翻倍，營運槓",
+          "tag": "營運槓槓",
+          "metric": "200%",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "SEC 10-K 財報資料"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_second_level_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "CapEx $60.4 億，市場卻誤判見頂"
+      ],
+      "spoken_clauses": [
+        "資本支出 六十點四億美金，市場卻誤判見頂"
+      ],
+      "headline": "CapEx 資料反轉",
+      "sub_caption": "看懂微軟 Meta CapEx 資料",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4%，獲利能力強",
+          "tag": "獲利",
+          "metric": "60.4%",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 OCF $1,027 億，造血能力強",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "資本支出 CapEx $60.4 億，低燒錢",
+          "tag": "燒錢",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "yarn add remotion"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "stocks",
+      "clauses": [
+        "CUDA 百萬開發者",
+        "轉換成本高到 AMD 都不敢動"
+      ],
+      "spoken_clauses": [
+        "CUDA 百萬開發者",
+        "轉換成本高到 AMD 都不敢動"
+      ],
+      "headline": "CUDA 護城河",
+      "sub_caption": "轉換成本高，難複製",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "微軟 FY26 CapEx",
+          "sub": "全年資本支出 $1,159 億，AI 訓練與部",
+          "tag": "MSFT CapEx",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "Meta FY26 CapEx",
+          "sub": "全年資本支出 $697 億，AI 訓練與部署",
+          "tag": "META CapEx",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA FY26 CapEx",
+          "sub": "全年資本支出 $60.4 億，AI 訓練與部署",
+          "tag": "NVDA CapEx",
+          "metric": "$60.4 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "NVDA CapEx $60.4 億",
+        "MSFT CapEx $1,159 億",
+        "META CapEx $697 億"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_versus_stamp",
+      "voice_style": "stocks",
+      "clauses": [
+        "PE 15.3x，但不能只看這數字"
+      ],
+      "spoken_clauses": [
+        "本益比 十五點三倍，但不能只看這數字"
+      ],
+      "headline": "估值倍數分析",
+      "sub_caption": "三種情境推演，不一樣",
+      "highlight_badge": "PE 15.3x",
+      "nodes": [
+        {
+          "label": "NVDA 營收",
+          "sub": "全年營收 $2,159 億，營收成長軌跡",
+          "tag": "NVDA Revenue",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA 營益率",
+          "sub": "全年營業利益率 60.4%，算力投資高回",
+          "tag": "NVDA Op Margin",
+          "metric": "60.4%",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "NVDA OCF",
+          "sub": "全年營運現金流 $1,027 億，資金支撐算",
+          "tag": "NVDA OCF",
+          "metric": "$1,027 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "NVDA 營收 $2,159 億",
+        "NVDA 營益率 60.4%",
+        "NVDA OCF $1,027 億"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "一年一代的架構迭代節奏",
+        "讓 NVIDIA 把 AI 模型更新速度拉到極限"
+      ],
+      "spoken_clauses": [
+        "一年一代的架構迭代節奏",
+        "讓 Nvidia 把 AI 模型更新速度拉到極限"
+      ],
+      "headline": "市場預期反差",
+      "sub_caption": "實際數據超預期",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "架構迭代節奏",
+          "sub": "一年一代的架構迭代節奏",
+          "tag": "迭代節奏",
+          "metric": "6x",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "AI 模型更新速度",
+          "sub": "AI 模型更新速度拉到極限",
+          "tag": "AI 更新",
+          "metric": "arXiv 論文",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "其他廠牌追上時間",
+          "sub": "其他廠牌要追上至少要兩年",
+          "tag": "追上時間",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "一年一代架構迭代",
+        "AI 模型更新速度極限",
+        "其他廠牌追上需兩年"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_08",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "stocks",
+      "clauses": [
+        "三大風險，但 NVDA 護城河強"
+      ],
+      "spoken_clauses": [
+        "三大風險，但 Nvidia 護城河強"
+      ],
+      "headline": "風險與護城河",
+      "sub_caption": "CUDA 開發者難複製",
+      "highlight_badge": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "OCF 增速 30%",
+          "sub": "營運現金流增速停在 30% 會拉低估值",
+          "tag": "OCF 增速",
+          "metric": "30%",
+          "icon": "nvidia",
+          "trend": "down"
+        },
+        {
+          "label": "PE 15.3x",
+          "sub": "本益比 15.3x 在悲觀情境下偏高",
+          "tag": "PE",
+          "metric": "15.3x",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "技術護城河",
+          "sub": "技術護城河仍在擴張，營運槓桿強",
+          "tag": "護城河",
+          "metric": "OCF $1,027 億",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "OCF 增速 30%",
+        "PE 15.3x 偏高"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_09",
+      "layout_type": "short_second_level_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "市場預期 NVDA 財報會再創新高",
+        "但實際數據出來後"
+      ],
+      "spoken_clauses": [
+        "市場預期 Nvidia 財報會再創新高",
+        "但實際數據出來後"
+      ],
+      "headline": "估值懸念",
+      "sub_caption": "三種情境推演，不一樣",
+      "highlight_badge": "PE 15.3x",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "全年營收 $2,159",
+          "tag": "營收",
+          "metric": "$2,159",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 60.4%",
+          "tag": "營益率",
+          "metric": "60.4%",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,027",
+          "tag": "OCF",
+          "metric": "$1,027",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "NVIDIA 2026 SEC 10-K"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_10",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "完整數據拆解跟實戰清單我都整理在長片裡",
+        "現在直接點畫面左下角的關聯影片看完整版"
+      ],
+      "spoken_clauses": [
+        "完整數據拆解跟實戰清單我都整理在長片裡",
+        "現在直接點畫面左下角的關聯影片看完整版"
+      ],
+      "headline": "完整數據拆解",
+      "sub_caption": "點左下角看長片",
+      "highlight_badge": "完整數據",
+      "nodes": [
+        {
+          "label": "總營收",
+          "sub": "全年營收 $3,318",
+          "tag": "營收",
+          "metric": "$3,318",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "營業利益率 46.8%",
+          "tag": "營益率",
+          "metric": "46.8%",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "營運現金流 $1,829",
+          "tag": "OCF",
+          "metric": "$1,829",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "MSFT 2026 SEC 10-K"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": true
+    }
+  ]
+}

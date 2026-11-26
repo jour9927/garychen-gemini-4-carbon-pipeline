@@ -1,0 +1,18 @@
+{
+  "episode_id": "v5_ep01_gemini4_agent",
+  "episode_dir": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep01_gemini4_agent",
+  "long_title": "零訂閱費！開源 Browser-Use 讓 AI 自動操作網頁填表單全攻略",
+  "short_title": "別再月付200美元！12萬星開源神器讓AI免費幫你操作網頁 #Shorts",
+  "long_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep01_gemini4_agent/garychen_long.mp4",
+  "short_mp4": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep01_gemini4_agent/garychen_short_funnel.mp4",
+  "thumbnail_png": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep01_gemini4_agent/thumbnail.png",
+  "publish_pack_md": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v5_ep01_gemini4_agent/youtube_publish_pack.md",
+  "long_duration_sec": 539.725,
+  "short_duration_sec": 58.205,
+  "beats_count": 35,
+  "cues_count": 207,
+  "sources_count": 4,
+  "live_screenshots_count": 6,
+  "tts_backend": "alan_hub_m3_pro_mps:mps:qwen3_tts_1.7b",
+  "image_backend": "alan_hub_m3_pro_mps:mps:realvis_lightning"
+}

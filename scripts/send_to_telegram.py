@@ -129,13 +129,20 @@ def send_episode_saved_messages(ep_dir: Path):
         _osa('tell application "Telegram" to activate\ndelay 0.25\ntell application "System Events"\nkey code 9 using command down\ndelay 0.45\nkey code 36\nend tell')
         time.sleep(2.0)
 
+    mins = summary["long_duration_sec"] / 60.0
     thumb_png = ep_dir / "thumbnail.png"
     if thumb_png.exists():
-        _send_one(thumb_png, f"🖼 V4 YouTube 封面縮圖｜{summary['long_title']}")
-    _send_one(long_mp4, f"📺 V4 16:9 完整長片 (1080p60 Remotion)｜{summary['long_title']}")
-    _send_one(short_mp4, f"📱 V4 9:16 純 Remotion 對應推流 Shorts (1080x1920 @ 60fps)｜{summary['short_title']}")
+        _send_one(thumb_png, f"🖼 V5 (AGY Gemini 4) YouTube 封面縮圖｜{summary['long_title']}")
+    _send_one(
+        long_mp4,
+        f"📺 V5 (AGY Gemini 4 產稿) 16:9 完整長片 ({mins:.1f} 分鐘 / {summary['beats_count']} 幕 1080p60 Remotion)｜{summary['long_title']}",
+    )
+    _send_one(
+        short_mp4,
+        f"📱 V5 (AGY Gemini 4 產稿) 9:16 對應推流 Shorts ({summary['short_duration_sec']:.1f}s @ 60fps)｜{summary['short_title']}",
+    )
     if pub_md.exists():
-        _send_one(pub_md, f"📄 V4 YouTube 上架資訊包｜{summary['episode_id']}")
+        _send_one(pub_md, f"📄 V5 YouTube 上架資訊包（含時間戳＋公開查證來源）｜{summary['episode_id']}")
 
 
 def main():
@@ -143,7 +150,7 @@ def main():
     ap.add_argument("--saved-messages", action="store_true", help="Send directly to macOS Telegram Desktop Saved Messages")
     ap.add_argument("--token", default=os.environ.get("GC_TG_BOT_TOKEN") or os.environ.get("FIVERR_TG_BOT_TOKEN", ""))
     ap.add_argument("--chat-id", default=None)
-    ap.add_argument("--episodes", nargs="*", default=["v4_ep01_ai_agent_remotion", "v4_ep02_nvda_remotion"])
+    ap.add_argument("--episodes", nargs="*", default=["v5_ep01_gemini4_agent", "v5_ep02_gemini4_nvda"])
     args = ap.parse_args()
     if args.saved_messages:
         for ep in args.episodes:

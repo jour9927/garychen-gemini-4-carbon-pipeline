@@ -98,15 +98,17 @@ def make_contact_sheets(ep_dir: Path, artifact_dir: Path):
     if thumb_src.exists():
         (artifact_dir / f"{ep_id}_thumbnail.png").write_bytes(thumb_src.read_bytes())
 
-    # 5. Ensure `<45 MB` Telegram streamable 1080p60 MP4
+    # 5. Ensure `<45 MB` Telegram streamable 1080p60 MP4 (sharp vector UI via x264 CRF+VBV)
     tg_mp4 = ep_dir / "garychen_long_tg.mp4"
     if long_mp4.stat().st_size > 44 * 1024 * 1024:
-        target_kbps = max(850, int((38 * 8 * 1024) / max(60.0, long_dur)) - 160)
+        max_kbps = max(500, min(1400, int((40 * 8 * 1024) / max(60.0, long_dur)) - 128))
         subprocess.run(
             [
                 "ffmpeg", "-y", "-v", "error", "-i", str(long_mp4),
-                "-c:v", "h264_videotoolbox", "-b:v", f"{target_kbps}k", "-profile:v", "high",
-                "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(tg_mp4),
+                "-c:v", "libx264", "-preset", "veryfast", "-crf", "24",
+                "-maxrate", f"{max_kbps}k", "-bufsize", f"{max_kbps * 2}k",
+                "-pix_fmt", "yuv420p", "-profile:v", "high",
+                "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(tg_mp4),
             ],
             check=True,
         )
@@ -118,7 +120,7 @@ def main():
     proj = Path(__file__).resolve().parents[1]
     art_dir = Path(sys.argv[1])
     art_dir.mkdir(parents=True, exist_ok=True)
-    eps = sys.argv[2:] or ["v4_ep01_ai_agent_remotion", "v4_ep02_nvda_remotion"]
+    eps = sys.argv[2:] or ["v5_ep01_gemini4_agent", "v5_ep02_gemini4_nvda"]
 
     for ep in eps:
         ep_dir = proj / "outputs" / ep

@@ -1,0 +1,2817 @@
+{
+  "episode_id": "v4_ep01_ai_agent_remotion",
+  "title": "Browser-Use 新手實戰教學，零訂閱費讓 AI 免費接管你的瀏覽器！",
+  "thumbnail_line1": "Browser-Use",
+  "thumbnail_line2": "免費接管瀏覽器",
+  "category": "ai_agent",
+  "avatar_mode": false,
+  "youtube_description_summary": "不用訂閱費！用開源 Browser-Use 本地跑瀏覽器自動化，抓資料、填表單、點選網頁，AI 有眼睛有手，網頁改版也不怕！",
+  "hashtags": [
+    "#GaryChen",
+    "#BrowserUse",
+    "#AIAgent",
+    "#開源工具",
+    "#自動化工作流"
+  ],
+  "chapters": [
+    "01 為何要懂它",
+    "02 DOM 與視覺雙引擎",
+    "03 Gary 實戰自動化",
+    "04 三分鐘本地部署",
+    "05 多模型串接分工",
+    "06 開源 vs 付費對照",
+    "07 三個必避踩坑"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為何要懂它",
+      "layout_type": "app_squircles_strikethrough",
+      "voice_style": "hook",
+      "clauses": [
+        "Browser-Use 現在就是你的瀏覽器接管工具",
+        "不用花 $20 到 $200 美金訂閱費",
+        "GitHub 高星標開源專案 Browser-Use",
+        "讓你 $0 免費在自己電腦跑起來，完全不用花錢"
+      ],
+      "spoken_clauses": [
+        "Browser-Use 現在就是你的瀏覽器接管工具",
+        "不用花 二十到兩百美金訂閱費",
+        "GitHub 高星標開源專案 Browser-Use",
+        "讓你 零元免費在自己電腦跑起來，完全不用花錢"
+      ],
+      "visual_title": "瀏覽器接管工具",
+      "visual_subtitle": "GitHub 高星標開源專案",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "Browser-Use",
+          "sub": "Python 編寫的瀏覽器自動化工具",
+          "tag": "開源專案",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器自動化",
+          "sub": "不用花 $20 到 $200 美金訂閱費",
+          "tag": "免費方案",
+          "metric": "0 成本",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "GitHub 高星標開源",
+          "sub": "GitHub 高星標開源專案 Browser-Use",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "免費方案",
+      "callout_body": "GitHub 官方開源專案 Browser-Use 讓你 $0 免費在自己電腦跑起來",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為何要懂它",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "hook",
+      "clauses": [
+        "開發者與上班族天天被網頁改版搞得頭痛",
+        "AI 指令一改，網頁一變",
+        "任務就卡關，還得花時間找 bug",
+        "根本打地鼠沒完沒了"
+      ],
+      "spoken_clauses": [
+        "開發者與上班族天天被網頁改版搞得頭痛",
+        "AI 指令一改，網頁一變",
+        "任務就卡關，還得花時間找 bug",
+        "根本打地鼠沒完沒了"
+      ],
+      "visual_title": "網頁改版頭痛",
+      "visual_subtitle": "AI 指令一改網頁就卡",
+      "badge_text": "無需花錢",
+      "nodes": [
+        {
+          "label": "網頁改版",
+          "sub": "AI 指令一改，網頁一變，任務就卡關",
+          "tag": "常見問題",
+          "metric": "500 個任務",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "打地鼠",
+          "sub": "還得花時間找 bug，根本打地鼠沒完沒了",
+          "tag": "無限迴圈",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "任務就卡關",
+          "sub": "任務就卡關，還得花時間找 bug",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "網頁改版問題",
+      "callout_body": "開發者與上班族天天被網頁改版搞得頭痛，AI 指令一改，網頁一變，任務就卡關",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為何要懂它",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "hook",
+      "clauses": [
+        "模糊指令只能讓 AI 猜測",
+        "但 Browser-Use 能把任務拆解成結構化步驟",
+        "讓 AI 看得懂、做得準",
+        "才不會一改版就壞掉"
+      ],
+      "spoken_clauses": [
+        "模糊指令只能讓 AI 猜測",
+        "但 Browser-Use 能把任務拆解成結構化步驟",
+        "讓 AI 看得懂、做得準",
+        "才不會一改版就壞掉"
+      ],
+      "visual_title": "結構化步驟",
+      "visual_subtitle": "AI 看得懂做得準",
+      "badge_text": "結構化任務",
+      "nodes": [
+        {
+          "label": "結構化步驟",
+          "sub": "AI 看得懂、做得準，才不會一改版就壞",
+          "tag": "任務拆解",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "任務拆解",
+          "sub": "Browser-Use 把任務拆解成結構化步驟",
+          "tag": "自動化",
+          "metric": "100% 精準",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "讓 AI 看得懂、做得",
+          "sub": "讓 AI 看得懂、做得準",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "任務拆解",
+      "callout_body": "模糊指令只能讓 AI 猜測，但 Browser-Use 能把任務拆解成結構化步驟，讓 AI ",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 1,
+      "total_chapters": 7,
+      "chapter_title": "為何要懂它",
+      "layout_type": "agenda_four_steps",
+      "voice_style": "hook",
+      "clauses": [
+        "今天這集要帶你四步搞定 Browser-Use",
+        "從安裝到跑起來",
+        "直接在自己電腦上實戰",
+        "不用花錢也能當瀏覽器高手"
+      ],
+      "spoken_clauses": [
+        "今天這集要帶你四步搞定 Browser-Use",
+        "從安裝到跑起來",
+        "直接在自己電腦上實戰",
+        "不用花錢也能當瀏覽器高手"
+      ],
+      "visual_title": "四步實戰",
+      "visual_subtitle": "自己電腦跑起來",
+      "badge_text": "實戰教學",
+      "nodes": [
+        {
+          "label": "DOM 與視覺雙引擎",
+          "sub": "Browser-Use 用 DOM 跟視覺引擎雙",
+          "tag": "01",
+          "metric": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "Gary 實戰自動化",
+          "sub": "Gary 用 Browser-Use 抓財經、填",
+          "tag": "02",
+          "metric": "02",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "三分鐘本地部署",
+          "sub": "不用訂閱費！3 分鐘本地跑",
+          "tag": "03",
+          "metric": "03",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "多模型串接分工",
+          "sub": "Browser-Use 支援多模型串接，AI",
+          "tag": "04",
+          "metric": "04",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "四步搞定",
+      "callout_body": "今天這集要帶你四步搞定 Browser-Use，從安裝到跑起來，直接在自己電腦上實戰",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "DOM 與視覺雙引擎",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "傳統爬蟲寫死 CSS Selector",
+        "網頁一改版就壞掉",
+        "因為網頁結構變動",
+        "Selector 無法對應正確元素"
+      ],
+      "spoken_clauses": [
+        "傳統爬蟲寫死 CSS Selector",
+        "網頁一改版就壞掉",
+        "因為網頁結構變動",
+        "Selector 無法對應正確元素"
+      ],
+      "visual_title": "CSS Selector 無法治癒",
+      "visual_subtitle": "網頁改版 Selector 無法對應正確元素",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "CSS Selector 無法治癒",
+          "sub": "網頁結構變動導致 Selector 無法對應",
+          "tag": "Selector 無法治癒",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "改版即崩",
+          "sub": "網頁一改版 Selector 無法追蹤動態",
+          "tag": "改版即崩",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "因為網頁結構變動",
+          "sub": "因為網頁結構變動",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "傳統爬蟲痛點",
+      "callout_body": "Selector 無法追蹤動態 DOM，改版即崩",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)",
+        "REPL runs it on Chrome (CDP) → output back to the model"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "DOM 與視覺雙引擎",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "Browser-Use 結合 Playwright DOM 索引與 LLM 視覺理解",
+        "能像真人一樣看懂按鈕、下拉選單",
+        "不用依賴固定 Selector",
+        "抗改版能力強到離譜"
+      ],
+      "spoken_clauses": [
+        "Browser-Use 結合 Playwright D O M 索引與 L L M 視覺理解",
+        "能像真人一樣看懂按鈕、下拉選單",
+        "不用依賴固定 Selector",
+        "抗改版能力強到離譜"
+      ],
+      "visual_title": "Browser-Use 眼手雙備",
+      "visual_subtitle": "LLM 視覺理解 + Playwright DOM 索引",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "Browser-Use 眼手雙備",
+          "sub": "LLM 視覺理解 + Playwright DOM 索引",
+          "tag": "眼手雙備",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "抗改版能力",
+          "sub": "網頁變動也不卡關，無需重寫 Selector",
+          "tag": "抗改版",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "不用依賴固定",
+          "sub": "不用依賴固定 Selector",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "抗改版能力",
+      "callout_body": "不用依賴固定 Selector，網頁變動也不卡關",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "DOM 與視覺雙引擎",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "Playwright 抓取 DOM 結構",
+        "LLM 則透過視覺理解判斷元件位置",
+        "兩者結合就像給 AI 裝上眼睛跟雙手",
+        "網頁變動也不會卡關"
+      ],
+      "spoken_clauses": [
+        "Playwright 抓取 D O M 結構",
+        "L L M 則透過視覺理解判斷元件位置",
+        "兩者結合就像給 AI 裝上眼睛跟雙手",
+        "網頁變動也不會卡關"
+      ],
+      "visual_title": "DOM 與視覺雙引擎",
+      "visual_subtitle": "Playwright 抓 DOM，LLM 判斷元件位置",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 與視覺雙引擎",
+          "sub": "Playwright 抓取 DOM 結構，LLM 判斷",
+          "tag": "雙引擎",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "無痛操作",
+          "sub": "網頁變動也不會卡關，自動化無痛執行",
+          "tag": "無痛操作",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "兩者結合就像給 AI",
+          "sub": "兩者結合就像給 AI 裝上眼睛跟雙手",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "雙引擎設計",
+      "callout_body": "網頁變動也不會卡關，真正無痛操作",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/source_screenshots/S1.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 2,
+      "total_chapters": 7,
+      "chapter_title": "DOM 與視覺雙引擎",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "explainer",
+      "clauses": [
+        "這套雙引擎設計",
+        "讓 Agent 有辦法處理動態表單與複雜 UI",
+        "不用再為 Selector 改版天天重寫碼",
+        "真正實現自動化無痛操作"
+      ],
+      "spoken_clauses": [
+        "這套雙引擎設計",
+        "讓 Agent 有辦法處理動態表單與複雜 介面",
+        "不用再為 Selector 改版天天重寫碼",
+        "真正實現自動化無痛操作"
+      ],
+      "visual_title": "動態表單無痛處理",
+      "visual_subtitle": "雙引擎設計處理複雜 UI 與動態表單",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "動態表單無痛處理",
+          "sub": "雙引擎設計處理複雜 UI 與動態表單",
+          "tag": "動態表單",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "無需重寫 Selector",
+          "sub": "網頁改版也不用天天重寫碼，自動化無痛",
+          "tag": "無需重寫",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "不用再為 Selector",
+          "sub": "不用再為 Selector 改版天天重寫碼",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "無需重寫 Selector",
+      "callout_body": "真正實現自動化無痛操作，不用天天改碼",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "minimalist precision balance scale weighing a glowing amber AI module against dark matte blocks on #222224 background, conceptual editorial metaphor for Browser-Use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰自動化",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "每個月底我都要登入三個平臺下載電子發票",
+        "對帳早餐 $80、午餐 $120、雲端帳單",
+        "這半小時苦工現在變成一鍵自動完成",
+        "靠的是瀏覽器自動化工具"
+      ],
+      "spoken_clauses": [
+        "每個月底我都要登入三個平臺下載電子發票",
+        "對帳早餐 八十美金、午餐 一百二十美金、雲端帳單",
+        "這半小時苦工現在變成一鍵自動完成",
+        "靠的是瀏覽器自動化工具"
+      ],
+      "visual_title": "月底發票對帳自動化",
+      "visual_subtitle": "browser-use 免費開源工具實戰",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use 儲存庫",
+          "sub": "GitHub 官方開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "bu 命令行工具",
+          "sub": "用 Python 跟 pip 安裝，執行 pip",
+          "tag": "命令行控制",
+          "metric": "0 訂閱費",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器自動化",
+          "sub": "點擊按鈕、輸入資料、執行 JavaScript",
+          "tag": "自動化操作",
+          "metric": "0 訂閱費",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "瀏覽器自動化工具",
+      "callout_body": "用 bu 命令行控制瀏覽器，點擊按鈕、輸入資料、執行 JavaScript",
+      "code_lines": [
+        "bu.new_tab(url)",
+        "bu.click(41)",
+        "js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰自動化",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "explainer",
+      "clauses": [
+        "先安裝 Python 跟 pip",
+        "然後 clone browser-use 儲存庫",
+        "執行 pip install -e ",
+        "這樣就能用 bu 命令行工具控制瀏覽器"
+      ],
+      "spoken_clauses": [
+        "先安裝 Python 跟 pip",
+        "然後 clone browser-use 儲存庫",
+        "執行 pip install -e",
+        "這樣就能用 bu 命令行工具控制瀏覽器"
+      ],
+      "visual_title": "瀏覽器自動化流程",
+      "visual_subtitle": "bu 命令行控制瀏覽器操作",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "bu.new_tab",
+          "sub": "打開瀏覽器新分頁，指定 URL 位址",
+          "tag": "分頁控制",
+          "metric": "0 訂閱費",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "bu.click",
+          "sub": "定位並點擊網頁元素，如下載按鈕",
+          "tag": "點擊操作",
+          "metric": "0 訂閱費",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "js 執行",
+          "sub": "執行 JavaScript 進行下載動作，無需",
+          "tag": "腳本執行",
+          "metric": "0 訂閱費",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "瀏覽器自動化實戰",
+      "callout_body": "用 bu.new_tab 打開網頁，bu.click 點擊按鈕，js 執行下載動作",
+      "code_lines": [
+        "bu.new_tab(url)",
+        "bu.click(41)",
+        "js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰自動化",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "我寫個 script，用 bu.new_tab 打開發票平臺",
+        "bu.click 找到下載按鈕",
+        "再用 js 執行下載動作",
+        "同時用 bu.wait 等待下載完成"
+      ],
+      "spoken_clauses": [
+        "我寫個 script，用 bu.new tab 打開發票平臺",
+        "bu.click 找到下載按鈕",
+        "再用 js 執行下載動作",
+        "同時用 bu.wait 等待下載完成"
+      ],
+      "visual_title": "自動化流程打包",
+      "visual_subtitle": "將流程打包成 .py 檔自動執行",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "打包成 .py",
+          "sub": "將所有流程整合成 Python 檔案，設定帳",
+          "tag": "流程整合",
+          "metric": "0 訂閱費",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "每月自動執行",
+          "sub": "設定自動執行時間，減少手動操作",
+          "tag": "自動執行",
+          "metric": "0 訂閱費",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "Excel 自動抓取",
+          "sub": "對帳資料自動抓取並歸檔進試算表，無需",
+          "tag": "資料整合",
+          "metric": "0 訂閱費",
+          "icon": "database",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "自動化流程打包",
+      "callout_body": "設定帳號密碼與資料夾路徑，每月自動執行一次",
+      "code_lines": [
+        "bu.new_tab(url)",
+        "bu.click(41)",
+        "js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/source_screenshots/S1_scroll.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 3,
+      "total_chapters": 7,
+      "chapter_title": "Gary 實戰自動化",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後把所有流程打包成一個 .py 檔",
+        "設定好帳號密碼跟資料夾路徑",
+        "每月自動執行一次",
+        "連對帳都用 Excel 自動抓取資料"
+      ],
+      "spoken_clauses": [
+        "最後把所有流程打包成一個 .py 檔",
+        "設定好帳號密碼跟資料夾路徑",
+        "每月自動執行一次",
+        "連對帳都用 Excel 自動抓取資料"
+      ],
+      "visual_title": "瀏覽器自動化效益",
+      "visual_subtitle": "省下一半時間，一鍵完成",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "省下一半時間",
+          "sub": "自動化流程減少手動操作，提升效率",
+          "tag": "效率提升",
+          "metric": "50% 效率",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "一鍵完成",
+          "sub": "所有流程整合成 .py 檔，自動執行無需",
+          "tag": "自動化執行",
+          "metric": "0 訂閱費",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器視窗不開",
+          "sub": "執行過程無需開啟瀏覽器視窗，完全自動",
+          "tag": "無視窗操作",
+          "metric": "0 訂閱費",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "瀏覽器自動化效益",
+      "callout_body": "完全自動化流程，省下一半時間，實現一鍵完成",
+      "code_lines": [
+        "bu.new_tab(url)",
+        "bu.click(41)",
+        "js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "三分鐘本地部署",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "準備 Python 環境",
+        "先裝好 pip 跟 virtualenv",
+        "然後建立專案資料夾",
+        "把 requirements.txt 裡的套件都安裝起來"
+      ],
+      "spoken_clauses": [
+        "準備 Python 環境",
+        "先裝好 pip 跟 virtualenv",
+        "然後建立專案資料夾",
+        "把 requirements.txt 裡的套件都安裝起來"
+      ],
+      "visual_title": "Python 環境準備",
+      "visual_subtitle": "用 requirements.txt 一鍵安裝所有套件",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "requirements.txt",
+          "sub": "包含所有 Python 套件清單",
+          "tag": "套件清單",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "virtualenv",
+          "sub": "建立隔離的 Python 環境",
+          "tag": "環境管理",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "pip install",
+          "sub": "自動安裝所有依賴套件",
+          "tag": "自動化安裝",
+          "metric": "arXiv 論文",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "關鍵結論標籤",
+      "callout_body": "直接複製貼上指令，不用手動一個一個裝",
+      "code_lines": [
+        "pip install -r requirements.txt"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "三分鐘本地部署",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來安裝 Browser-Use 跟瀏覽器驅動",
+        "記得下載對應瀏覽器的驅動",
+        "比如 Chrome 就要 ChromeDriver",
+        "裝好之後把路徑加到系統變數"
+      ],
+      "spoken_clauses": [
+        "接下來安裝 Browser-Use 跟瀏覽器驅動",
+        "記得下載對應瀏覽器的驅動",
+        "比如 Chrome 就要 ChromeDriver",
+        "裝好之後把路徑加到系統變數"
+      ],
+      "visual_title": "瀏覽器驅動安裝",
+      "visual_subtitle": "下載對應瀏覽器驅動並設定系統變數",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "ChromeDriver",
+          "sub": "Chrome 瀏覽器對應的驅動",
+          "tag": "瀏覽器驅動",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "系統變數",
+          "sub": "設定驅動路徑讓腳本正確執行",
+          "tag": "環境變數",
+          "metric": "13,649 Forks",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器執行",
+          "sub": "執行腳本時不會卡在找不到驅動",
+          "tag": "執行條件",
+          "metric": "122,033 ★",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "關鍵結論標籤",
+      "callout_body": "瀏覽器驅動設定是執行腳本的必要條件",
+      "code_lines": [
+        "chromedriver-win64.zip",
+        "set PATH=chromedriver-path"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "三分鐘本地部署",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "填入 API Key 或接上本機模型",
+        "這邊有兩個選項",
+        "如果你用雲端服務就填 API Key",
+        "想用本地模型就設定好模型路徑"
+      ],
+      "spoken_clauses": [
+        "填入 A P I Key 或接上本機模型",
+        "這邊有兩個選項",
+        "如果你用雲端服務就填 A P I Key",
+        "想用本地模型就設定好模型路徑"
+      ],
+      "visual_title": "模型與 API Key 設定",
+      "visual_subtitle": "選擇雲端 API 或本地模型路徑",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "API Key",
+          "sub": "雲端服務需要填入 API Key",
+          "tag": "雲端設定",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "本地模型",
+          "sub": "本地模型需設定正確路徑",
+          "tag": "模型路徑",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "模型執行",
+          "sub": "模型檔位置錯誤會導致執行失敗",
+          "tag": "執行條件",
+          "metric": "13,649 Forks",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "關鍵結論標籤",
+      "callout_body": "模型設定是執行流程的把關防線",
+      "code_lines": [
+        "API_KEY=your-key",
+        "MODEL_PATH=/models/llama"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/source_screenshots/S2.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 4,
+      "total_chapters": 7,
+      "chapter_title": "三分鐘本地部署",
+      "layout_type": "github_pr_blast_radius",
+      "voice_style": "explainer",
+      "clauses": [
+        "執行第一個自動開網頁抓資料腳本",
+        "先跑個簡單的 task",
+        "比如抓網頁上的資料",
+        "如果成功就代表一切正常"
+      ],
+      "spoken_clauses": [
+        "執行第一個自動開網頁抓資料腳本",
+        "先跑個簡單的 task",
+        "比如抓網頁上的資料",
+        "如果成功就代表一切正常"
+      ],
+      "visual_title": "執行第一個腳本",
+      "visual_subtitle": "跑簡單 task 確認一切正常",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "run.py",
+          "sub": "執行第一個自動化腳本",
+          "tag": "執行腳本",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "task: book driving",
+          "sub": "簡單 task 測試網頁抓取",
+          "tag": "測試用例",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器執行",
+          "sub": "執行失敗立刻檢查驅動與模型設定",
+          "tag": "執行條件",
+          "metric": "arXiv 論文",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "關鍵結論標籤",
+      "callout_body": "成功執行代表環境設定正確",
+      "code_lines": [
+        "python run.py",
+        "task: \"book the earliest driving test\""
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "多模型串接分工",
+      "layout_type": "swarm_subagents_grid",
+      "voice_style": "explainer",
+      "clauses": [
+        "把單一 Agent 拆成主控＋子 Agent",
+        "重點在分工，抓報價跟新聞同時進行",
+        "用 Python 跑瀏覽器",
+        "每個子 Agent 負責不同任務"
+      ],
+      "spoken_clauses": [
+        "把單一 Agent 拆成主控＋子 Agent",
+        "重點在分工，抓報價跟新聞同時進行",
+        "用 Python 跑瀏覽器",
+        "每個子 Agent 負責不同任務"
+      ],
+      "visual_title": "瀏覽器自動化分工",
+      "visual_subtitle": "主控＋子 Agent 分工抓資料",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "主控 Agent",
+          "sub": "統籌任務拆分與執行監控",
+          "tag": "任務拆分",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "子 Agent",
+          "sub": "專責抓資料、驗證、推播",
+          "tag": "並行處理",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "Python 自動化",
+          "sub": "瀏覽器操作與 JSON 資料傳送",
+          "tag": "免費開源",
+          "metric": "122,033 ★",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "效率提升關鍵",
+      "callout_body": "同時抓報價與新聞，不卡不等",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)",
+        "task: \"book the earliest driving test\""
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "多模型串接分工",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "主控 Agent 要把任務拆成子流程",
+        "比如抓公開報價用一個子 Agent",
+        "交叉驗證用另一個",
+        "再用第三個處理推播"
+      ],
+      "spoken_clauses": [
+        "主控 Agent 要把任務拆成子流程",
+        "比如抓公開報價用一個子 Agent",
+        "交叉驗證用另一個",
+        "再用第三個處理推播"
+      ],
+      "visual_title": "子流程獨立運行",
+      "visual_subtitle": "任務拆分避免互相干擾",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "任務拆分",
+          "sub": "抓報價、驗證、推播分為三個子流程",
+          "tag": "流程拆分",
+          "metric": "500 tasks",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "子流程獨立",
+          "sub": "不會互相干擾，提升穩定性",
+          "tag": "獨立運行",
+          "metric": "SOC 2 Type II",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "GitHub PR 跟進",
+          "sub": "監控執行紀錄與錯誤介入",
+          "tag": "把關防線",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "流程追蹤更清晰",
+      "callout_body": "每個子流程獨立，方便後續追蹤",
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "new_tab(url); bu.click(41); js(...)",
+        "REPL runs it on Chrome (CDP) → output back to the model"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_19",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "多模型串接分工",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "子 Agent 開始跑的時候",
+        "主控 Agent 要監控 GitHub PR 與執行紀錄",
+        "確保每個子流程都正常",
+        "如果有錯誤馬上介入"
+      ],
+      "spoken_clauses": [
+        "子 Agent 開始跑的時候",
+        "主控 Agent 要監控 GitHub P R 與執行紀錄",
+        "確保每個子流程都正常",
+        "如果有錯誤馬上介入"
+      ],
+      "visual_title": "執行監控與把關",
+      "visual_subtitle": "主控 Agent 把關防線",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "GitHub PR 跟進",
+          "sub": "監控執行紀錄與錯誤介入",
+          "tag": "把關防線",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "執行紀錄監控",
+          "sub": "確保每個子流程都正常運行",
+          "tag": "穩定性",
+          "metric": "122,033 ★",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "錯誤即時處理",
+          "sub": "主控 Agent 介入修正問題",
+          "tag": "零失誤",
+          "metric": "SOC 2 Type II",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "零失誤穩定執行",
+      "callout_body": "監控 GitHub PR 與執行紀錄，錯誤馬上介入",
+      "code_lines": [
+        "REPL runs it on Chrome (CDP) → output back to the model",
+        "finish(result)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_20",
+      "chapter_index": 5,
+      "total_chapters": 7,
+      "chapter_title": "多模型串接分工",
+      "layout_type": "github_pr_blast_radius",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後把結構化結果推播到 Slack 或 Telegram",
+        "用 Python 的 requests 套件發送 JSON 資料",
+        "搭配瀏覽器自動化",
+        "整個流程就完成了"
+      ],
+      "spoken_clauses": [
+        "最後把結構化結果推播到 Slack 或 Telegram",
+        "用 Python 的 requests 套件發送 Jason 資料",
+        "搭配瀏覽器自動化",
+        "整個流程就完成了"
+      ],
+      "visual_title": "結果推播與整合",
+      "visual_subtitle": "結構化結果推播到 Slack/Telegram",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "JSON 資料傳送",
+          "sub": "用 requests 套件發送到",
+          "tag": "資料整合",
+          "metric": "122,033 ★",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器自動化",
+          "sub": "整體流程完成，效率提升",
+          "tag": "免費方案",
+          "metric": "arXiv 論文",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "結構化結果",
+          "sub": "推播到 Slack/Telegram 進行後續處理",
+          "tag": "整合輸出",
+          "metric": "13,649 Forks",
+          "icon": "telegram",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "免費開源方案",
+      "callout_body": "用 Python requests 套件發送 JSON 資料",
+      "code_lines": [
+        "requests.post(url, json=data)",
+        "task: \"book the earliest driving test\""
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_21",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "開源 vs 付費對照",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "資料隱私這塊開源本機自己跑是王道",
+        "因為所有資料都留在你電腦裡",
+        "不會傳到雲端，傳統商業 RPA 或 Zapier 則是",
+        "把資料都交給第三方，風險高"
+      ],
+      "spoken_clauses": [
+        "資料隱私這塊開源本機自己跑是王道",
+        "因為所有資料都留在你電腦裡",
+        "不會傳到雲端，傳統商業 RPA 或 Zapier 則是",
+        "把資料都交給第三方，風險高"
+      ],
+      "visual_title": "資料隱私本地跑",
+      "visual_subtitle": "開源方案資料不離開電腦",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "本地執行不傳雲端",
+          "tag": "隱私",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "RPA 服務",
+          "sub": "資料交給第三方",
+          "tag": "風險",
+          "metric": "0",
+          "icon": "zapier",
+          "trend": "down"
+        },
+        {
+          "label": "不會傳到雲端",
+          "sub": "不會傳到雲端，傳統商業 RPA",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "隱私王道",
+      "callout_body": "所有資料本地儲存，不傳雲端",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_22",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "開源 vs 付費對照",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "explainer",
+      "clauses": [
+        "固定成本方面，開源方案幾乎零成本",
+        "只要一臺電腦就能跑",
+        "官方雲端託管版雖然有月費",
+        "但比起 RPA 的年費還是便宜很多"
+      ],
+      "spoken_clauses": [
+        "固定成本方面，開源方案幾乎零成本",
+        "只要一臺電腦就能跑",
+        "官方雲端託管版雖然有月費",
+        "但比起 RPA 的年費還是便宜很多"
+      ],
+      "visual_title": "固定成本零負擔",
+      "visual_subtitle": "開源方案只需一臺電腦",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "本地執行零成本",
+          "tag": "成本",
+          "metric": "0",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "RPA 服務",
+          "sub": "年費高達數千",
+          "tag": "費用",
+          "metric": "5000",
+          "icon": "zapier",
+          "trend": "down"
+        },
+        {
+          "label": "官方雲端託管版雖然",
+          "sub": "官方雲端託管版雖然有月費",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "成本最低",
+      "callout_body": "開源方案幾乎零成本",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [
+        [
+          "傳統腳本",
+          18,
+          "易失效"
+        ],
+        [
+          "商業 RPA",
+          45,
+          "$200/月"
+        ],
+        [
+          "單一 Agent",
+          76,
+          "自動操作"
+        ],
+        [
+          "Browser-Use",
+          98,
+          "$0 開源"
+        ]
+      ],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_23",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "開源 vs 付費對照",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "維護彈性開源自己跑最強",
+        "遇到問題可以立刻改程式",
+        "官方雲端託管版雖然有支援",
+        "但更新得慢，傳統 RPA 則是改動困難"
+      ],
+      "spoken_clauses": [
+        "維護彈性開源自己跑最強",
+        "遇到問題可以立刻改程式",
+        "官方雲端託管版雖然有支援",
+        "但更新得慢，傳統 RPA 則是改動困難"
+      ],
+      "visual_title": "維護彈性本地跑",
+      "visual_subtitle": "開源方案可即時修改程式",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "程式可即時修改",
+          "tag": "維護",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "RPA 服務",
+          "sub": "改動困難需等廠商更新",
+          "tag": "限制",
+          "metric": "0",
+          "icon": "zapier",
+          "trend": "down"
+        },
+        {
+          "label": "官方雲端託管版雖然",
+          "sub": "官方雲端託管版雖然有支援",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "維護自由",
+      "callout_body": "開源方案可即時修改",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v4_ep01_ai_agent_remotion/source_screenshots/S2_scroll.png",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_24",
+      "chapter_index": 6,
+      "total_chapters": 7,
+      "chapter_title": "開源 vs 付費對照",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "要選哪套，如果重視隱私、預算有限",
+        "就自己跑開源，如果需要穩定雲端服務",
+        "選官方託管版，但別用 RPA",
+        "除非你真的不關心資料安全跟靈活性"
+      ],
+      "spoken_clauses": [
+        "要選哪套，如果重視隱私、預算有限",
+        "就自己跑開源，如果需要穩定雲端服務",
+        "選官方託管版，但別用 RPA",
+        "除非你真的不關心資料安全跟靈活性"
+      ],
+      "visual_title": "選哪套最划算",
+      "visual_subtitle": "隱私、預算、雲端服務三選一",
+      "badge_text": "$0.06 / 小時",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "本地執行不傳雲端",
+          "tag": "隱私",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "Browser Use Cloud",
+          "sub": "雲端服務每小時 $0.06",
+          "tag": "雲端",
+          "metric": "0.06",
+          "icon": "cloudflare",
+          "trend": "up"
+        },
+        {
+          "label": "RPA 服務",
+          "sub": "資料交給第三方",
+          "tag": "風險",
+          "metric": "0",
+          "icon": "zapier",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "選對方案",
+      "callout_body": "開源方案最適合隱私與預算有限",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "DOM 與視覺雙引擎",
+        "Gary 實戰自動化",
+        "三分鐘本地部署",
+        "多模型串接分工",
+        "開源 vs 付費對照"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_25",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三個必避踩坑",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "warm",
+      "clauses": [
+        "登入 Cookie Session 持久化最容易搞砸",
+        "很多新手直接用瀏覽器開頭就崩",
+        "因為網站改版後 Session 會失效",
+        "導致 AI 連登入狀態都維持不了"
+      ],
+      "spoken_clauses": [
+        "登入 Cookie Session 持久化最容易搞砸",
+        "很多新手直接用瀏覽器開頭就崩",
+        "因為網站改版後 Session 會失效",
+        "導致 AI 連登入狀態都維持不了"
+      ],
+      "visual_title": "登入 Session 持久化",
+      "visual_subtitle": "瀏覽器開頭就崩的主因",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Python 爭議開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "Session 無法維持",
+          "sub": "網站改版後 Session 無法維持，導致 AI",
+          "tag": "登入問題",
+          "metric": "0 次成功登入",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "瀏覽器崩潰",
+          "sub": "瀏覽器開頭就崩，AI 無法進行後續操作",
+          "tag": "執行失敗",
+          "metric": "100% 崩潰率",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "瀏覽器開頭就崩",
+      "callout_body": "網站改版 Session 無法維持，AI 無法持續操作",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_26",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三個必避踩坑",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "warm",
+      "clauses": [
+        "遇到網站驗證碼的人機接管設計",
+        "這招真的很毒，很多 AI Agent 都卡在這關",
+        "因為驗證碼不是文字",
+        "是圖形，AI 看不懂"
+      ],
+      "spoken_clauses": [
+        "遇到網站驗證碼的人機接管設計",
+        "這招真的很毒，很多 AI Agent 都卡在這關",
+        "因為驗證碼不是文字",
+        "是圖形，AI 看不懂"
+      ],
+      "visual_title": "網站驗證碼防禦",
+      "visual_subtitle": "AI 看不懂圖形驗證碼",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Python 爭議開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "圖形驗證碼",
+          "sub": "網站使用圖形驗證碼，AI 無法識別",
+          "tag": "驗證碼防禦",
+          "metric": "100% 防禦率",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "OCR 模組",
+          "sub": "需額外安裝 OCR 模組才能過關",
+          "tag": "解決方案",
+          "metric": "0 次成功過關",
+          "icon": "code",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "圖形驗證碼防禦",
+      "callout_body": "AI 無法識別圖形驗證碼，除非有 OCR 模組",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_27",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三個必避踩坑",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "warm",
+      "clauses": [
+        "長網頁 Token 消耗上限設定",
+        "這點很多人忽略",
+        "Token 用太多會被網站限流",
+        "導致 AI 連網頁都打不開"
+      ],
+      "spoken_clauses": [
+        "長網頁 Token 消耗上限設定",
+        "這點很多人忽略",
+        "Token 用太多會被網站限流",
+        "導致 AI 連網頁都打不開"
+      ],
+      "visual_title": "Token 消耗上限",
+      "visual_subtitle": "Token 用太多會被限流",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Python 爭議開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "Token 消耗上限",
+          "sub": "Token 用太多會被網站限流，導致 AI",
+          "tag": "限流問題",
+          "metric": "100% 限流率",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "API 請求",
+          "sub": "需要大量 API 請求的平臺更易受影響",
+          "tag": "API 限制",
+          "metric": "0 次成功請求",
+          "icon": "code",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "Token 消耗上限",
+      "callout_body": "Token 用太多會被網站限流，導致 AI 無法操作",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "clean architectural dark glass vault protecting warm amber compute cores on #222224 studio stage, conceptual editorial metaphor for Browser-Use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_28",
+      "chapter_index": 7,
+      "total_chapters": 7,
+      "chapter_title": "三個必避踩坑",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "warm",
+      "clauses": [
+        "那以上就是今天的內容",
+        "感謝你看到這邊",
+        "如果你還不知道",
+        "我有經營一個 AI 實戰營的社群"
+      ],
+      "spoken_clauses": [
+        "那以上就是今天的內容",
+        "感謝你看到這邊",
+        "如果你還不知道",
+        "我有經營一個 AI 實戰營的社群"
+      ],
+      "visual_title": "社群實戰營",
+      "visual_subtitle": "AI 實戰營社群資訊",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Python 爭議開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "AI 實戰營",
+          "sub": "社群有實戰課程與設定清單，成為你唯一",
+          "tag": "實戰課程",
+          "metric": "0 次成功學習",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "資訊欄連結",
+          "sub": "連結放在下方資訊欄，可直接取得設定清",
+          "tag": "資訊取得",
+          "metric": "100% 可取得",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "唯一 AI 資訊來源",
+      "callout_body": "成為你唯一的 AI 資訊來源，社群有實戰課程與設定清單",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    }
+  ],
+  "short_title": "Browser-Use 免費接管瀏覽器！零訂閱費 AI Agent 實戰 #Shorts",
+  "short_hook_banner": "0元開源方案",
+  "short_cta_target_title": "Browser-Use 新手實戰教學，零訂閱費讓 AI 免費接管你的瀏覽器！",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_squircles_hook",
+      "voice_style": "hook",
+      "clauses": [
+        "每月 20 到 200 美金的 AI Agent",
+        "現在有免費開源方案"
+      ],
+      "spoken_clauses": [
+        "每月 二十 到 兩百 美金的 AI Agent",
+        "現在有免費開源方案"
+      ],
+      "headline": "免費接管瀏覽器",
+      "sub_caption": "不用訂閱，直接跑在電腦",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "Browser-Use",
+          "sub": "Python 編寫的瀏覽器自動化工具",
+          "tag": "開源專案",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器自動化",
+          "sub": "不用花 $20 到 $200 美金訂閱費",
+          "tag": "免費方案",
+          "metric": "0 成本",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "GitHub 高星標開源",
+          "sub": "GitHub 高星標開源專案 Browser-Use",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_live_typing_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "傳統爬蟲寫死 CSS Selector",
+        "網頁一改版就壞掉"
+      ],
+      "spoken_clauses": [
+        "傳統爬蟲寫死 CSS Selector",
+        "網頁一改版就壞掉"
+      ],
+      "headline": "DOM與視覺雙引擎",
+      "sub_caption": "網頁改版也不會壞",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 與視覺雙引擎",
+          "sub": "Browser-Use 用 DOM 跟視覺引擎雙",
+          "tag": "01",
+          "metric": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "Gary 實戰自動化",
+          "sub": "Gary 用 Browser-Use 抓財經、填",
+          "tag": "02",
+          "metric": "02",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "三分鐘本地部署",
+          "sub": "不用訂閱費！3 分鐘本地跑",
+          "tag": "03",
+          "metric": "03",
+          "icon": "terminal",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_browser_zoom_proof",
+      "voice_style": "explainer",
+      "clauses": [
+        "每個月底我都要登入三個平臺下載電子發票"
+      ],
+      "spoken_clauses": [
+        "每個月底我都要登入三個平臺下載電子發票"
+      ],
+      "headline": "Gary實戰自動化",
+      "sub_caption": "對帳早餐$80、午餐$120",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "DOM 與視覺雙引擎",
+          "sub": "Playwright 抓取 DOM 結構，LLM 判斷",
+          "tag": "雙引擎",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "無痛操作",
+          "sub": "網頁變動也不會卡關，自動化無痛執行",
+          "tag": "無痛操作",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "兩者結合就像給 AI",
+          "sub": "兩者結合就像給 AI 裝上眼睛跟雙手",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "task: \"book the earliest driving test\"",
+        "model writes a cell new_tab(url); bu.click(41); js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "explainer",
+      "clauses": [
+        "準備 Python 環境",
+        "先裝好 pip 跟 virtualenv"
+      ],
+      "spoken_clauses": [
+        "準備 Python 環境",
+        "先裝好 pip 跟 virtualenv"
+      ],
+      "headline": "三分鐘本地部署",
+      "sub_caption": "開源工具自己跑",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "bu.new_tab",
+          "sub": "打開瀏覽器新分頁，指定 URL 位址",
+          "tag": "分頁控制",
+          "metric": "0 訂閱費",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "bu.click",
+          "sub": "定位並點擊網頁元素，如下載按鈕",
+          "tag": "點擊操作",
+          "metric": "0 訂閱費",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "js 執行",
+          "sub": "執行 JavaScript 進行下載動作，無需",
+          "tag": "腳本執行",
+          "metric": "0 訂閱費",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "bu.new_tab(url)",
+        "bu.click(41)",
+        "js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_versus_stamp",
+      "voice_style": "explainer",
+      "clauses": [
+        "把單一 Agent 拆成主控＋子 Agent，重點在分工"
+      ],
+      "spoken_clauses": [
+        "把單一 Agent 拆成主控＋子 Agent，重點在分工"
+      ],
+      "headline": "多模型串接分工",
+      "sub_caption": "抓報價跟新聞同時進行",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "requirements.txt",
+          "sub": "包含所有 Python 套件清單",
+          "tag": "套件清單",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "virtualenv",
+          "sub": "建立隔離的 Python 環境",
+          "tag": "環境管理",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "pip install",
+          "sub": "自動安裝所有依賴套件",
+          "tag": "自動化安裝",
+          "metric": "arXiv 論文",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "pip install -r requirements.txt"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_live_typing_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "資料隱私這塊開源本機自己跑是王道"
+      ],
+      "spoken_clauses": [
+        "資料隱私這塊開源本機自己跑是王道"
+      ],
+      "headline": "開源vs付費對照",
+      "sub_caption": "所有資料都留在你電腦",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "run.py",
+          "sub": "執行第一個自動化腳本",
+          "tag": "執行腳本",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "task: book driving",
+          "sub": "簡單 task 測試網頁抓取",
+          "tag": "測試用例",
+          "metric": "13,649 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "瀏覽器執行",
+          "sub": "執行失敗立刻檢查驅動與模型設定",
+          "tag": "執行條件",
+          "metric": "arXiv 論文",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "python run.py",
+        "task: \"book the earliest driving test\""
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_growth_curve",
+      "voice_style": "explainer",
+      "clauses": [
+        "登入 Cookie Session 持久化最容易搞砸",
+        "新手直接用瀏覽器開頭就崩"
+      ],
+      "spoken_clauses": [
+        "登入 Cookie Session 持久化最容易搞砸",
+        "新手直接用瀏覽器開頭就崩"
+      ],
+      "headline": "三個必避踩坑",
+      "sub_caption": "持久化是關鍵",
+      "highlight_badge": "$0 / 月",
+      "nodes": [
+        {
+          "label": "GitHub PR 跟進",
+          "sub": "監控執行紀錄與錯誤介入",
+          "tag": "把關防線",
+          "metric": "13,649 Forks",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "執行紀錄監控",
+          "sub": "確保每個子流程都正常運行",
+          "tag": "穩定性",
+          "metric": "122,033 ★",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "錯誤即時處理",
+          "sub": "主控 Agent 介入修正問題",
+          "tag": "零失誤",
+          "metric": "SOC 2 Type II",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "REPL runs it on Chrome (CDP) → output back to the model",
+        "finish(result)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_08",
+      "layout_type": "short_second_level_crowd",
+      "voice_style": "explainer",
+      "clauses": [
+        "Browser-Use 是 GitHub 最熱門的瀏覽器自動化工"
+      ],
+      "spoken_clauses": [
+        "Browser-Use 是 GitHub 最熱門的瀏覽器自動化工"
+      ],
+      "headline": "GitHub開源熱門",
+      "sub_caption": "122,033 Stars、13,649 For",
+      "highlight_badge": "122,033 ★",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "本地執行零成本",
+          "tag": "成本",
+          "metric": "0",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "RPA 服務",
+          "sub": "年費高達數千",
+          "tag": "費用",
+          "metric": "5000",
+          "icon": "zapier",
+          "trend": "down"
+        },
+        {
+          "label": "官方雲端託管版雖然",
+          "sub": "官方雲端託管版雖然有月費",
+          "tag": "arXiv 論文",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_09",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "explainer",
+      "clauses": [
+        "Browser-Use Agent 被用來做日常任務",
+        "但 TOCTOU 漏洞風險需注意"
+      ],
+      "spoken_clauses": [
+        "Browser-Use Agent 被用來做日常任務",
+        "但 TOCTOU 漏洞風險需注意"
+      ],
+      "headline": "Agent安全風險",
+      "sub_caption": "原子性與漏洞問題",
+      "highlight_badge": "TOCTOU漏洞",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Python 爭議開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "Session 無法維持",
+          "sub": "網站改版後 Session 無法維持，導致 AI",
+          "tag": "登入問題",
+          "metric": "0 次成功登入",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "瀏覽器崩潰",
+          "sub": "瀏覽器開頭就崩，AI 無法進行後續操作",
+          "tag": "執行失敗",
+          "metric": "100% 崩潰率",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_10",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "完整數據拆解跟實戰清單我都整理在長片裡",
+        "現在直接點畫面左下角的關聯影片看完整版"
+      ],
+      "spoken_clauses": [
+        "完整數據拆解跟實戰清單我都整理在長片裡",
+        "現在直接點畫面左下角的關聯影片看完整版"
+      ],
+      "headline": "完整長片解析",
+      "sub_caption": "點左下看完整版",
+      "highlight_badge": "長片解析",
+      "nodes": [
+        {
+          "label": "browser-use",
+          "sub": "Python 爭議開源專案，122,033 星標",
+          "tag": "開源工具",
+          "metric": "122,033 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "AI 實戰營",
+          "sub": "社群有實戰課程與設定清單，成為你唯一",
+          "tag": "實戰課程",
+          "metric": "0 次成功學習",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "資訊欄連結",
+          "sub": "連結放在下方資訊欄，可直接取得設定清",
+          "tag": "資訊取得",
+          "metric": "100% 可取得",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": true
+    }
+  ]
+}

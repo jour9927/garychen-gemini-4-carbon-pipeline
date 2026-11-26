@@ -1,0 +1,17 @@
+{
+  "topic_id": "browser_use",
+  "title": "Browser-Use 開源瀏覽器 AI Agent 新手實戰教學，零訂閱費讓 AI 自動幫你操作網頁、抓資料與填表單！",
+  "primary_entity": "Browser-Use",
+  "category": "ai_agent",
+  "hook_angle": "Browser-Use 開源瀏覽器 AI Agent 新手實戰教學，零訂閱費讓 AI 自動幫你操作網頁、抓資料與填表單！",
+  "why_now": "開源實戰與底層運作深度拆解",
+  "score": 100.0,
+  "seed_queries": [
+    "Browser-Use",
+    "Browser-Use 開源瀏覽器 AI Age"
+  ],
+  "seed_urls": [
+    "https://github.com/browser-use/browser-use"
+  ],
+  "tickers": []
+}
