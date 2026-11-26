@@ -1,12 +1,14 @@
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
 import json
 import os
 import re
+import shutil
+import subprocess
 import time
+from pathlib import Path
 from typing import Any
-
-import httpx
 
 from .config import (
     BeatLayoutType,
@@ -22,60 +24,24 @@ from .config import (
 )
 from .tts_normalizer import to_spoken_tts_text
 
-
-def load_gemini_api_key() -> tuple[str, str]:
-    """Loads GEMINI_API_KEY and target Gemini model from env, project `.env`, or `configs/gemini.json`."""
-    env_file = PROJECT_ROOT / ".env"
-    file_vars: dict[str, str] = {}
-    if env_file.exists():
-        for raw_ln in env_file.read_text(encoding="utf-8", errors="ignore").splitlines():
-            ln = raw_ln.strip()
-            if not ln or ln.startswith("#") or "=" not in ln:
-                continue
-            k, v = ln.split("=", 1)
-            file_vars[k.strip()] = v.strip().strip("\"'")
-
-    cfg_json = CONFIGS_DIR / "gemini.json"
-    if cfg_json.exists():
-        try:
-            jd = json.loads(cfg_json.read_text(encoding="utf-8"))
-            if jd.get("api_key"):
-                file_vars.setdefault("GEMINI_API_KEY", str(jd["api_key"]).strip())
-            if jd.get("model"):
-                file_vars.setdefault("GC_GEMINI_MODEL", str(jd["model"]).strip())
-        except Exception:
-            pass
-
-    key = (
-        os.environ.get("GEMINI_API_KEY")
-        or os.environ.get("GOOGLE_API_KEY")
-        or file_vars.get("GEMINI_API_KEY")
-        or file_vars.get("GOOGLE_API_KEY")
-        or ""
-    ).strip()
-    if key == "your_gemini_api_key_here":
-        key = ""
-    model = (os.environ.get("GC_GEMINI_MODEL") or file_vars.get("GC_GEMINI_MODEL") or "gemini-2.5-pro").strip()
-    return key, model
-
 TUTORIAL_CHAPTER_LAYOUT_MAP: list[list[BeatLayoutType]] = [
-    ["app_squircles_strikethrough", "claude_chat_dialog", "slash_command_prompt_bar", "agenda_four_steps"],
-    ["ecosystem_node_graph", "code_editor_live_preview", "browser_ui_live_tour", "concept_hero_split_3d"],
-    ["protagonist_app_flow", "slash_command_prompt_bar", "browser_ui_live_tour", "before_after_workflow_card"],
-    ["claude_chat_dialog", "code_editor_live_preview", "browser_ui_live_tour", "github_pr_blast_radius"],
-    ["swarm_subagents_grid", "ecosystem_node_graph", "code_editor_live_preview", "github_pr_blast_radius"],
-    ["before_after_workflow_card", "animated_growth_curve", "browser_ui_live_tour", "stocks_kpi_asymmetric"],
-    ["second_level_thinking_crowd", "moat_shield_architecture", "concept_hero_split_3d", "stocks_big_statement"],
+    ["app_squircles_strikethrough", "claude_chat_dialog", "slash_command_prompt_bar", "browser_ui_live_tour", "agenda_four_steps"],
+    ["ecosystem_node_graph", "code_editor_live_preview", "browser_ui_live_tour", "slash_command_prompt_bar", "concept_hero_split_3d"],
+    ["protagonist_app_flow", "claude_chat_dialog", "browser_ui_live_tour", "code_editor_live_preview", "before_after_workflow_card"],
+    ["claude_chat_dialog", "code_editor_live_preview", "browser_ui_live_tour", "github_pr_blast_radius", "ecosystem_node_graph"],
+    ["swarm_subagents_grid", "ecosystem_node_graph", "code_editor_live_preview", "browser_ui_live_tour", "github_pr_blast_radius"],
+    ["before_after_workflow_card", "animated_growth_curve", "stocks_kpi_asymmetric", "browser_ui_live_tour", "second_level_thinking_crowd"],
+    ["second_level_thinking_crowd", "moat_shield_architecture", "github_pr_blast_radius", "concept_hero_split_3d", "stocks_big_statement"],
 ]
 
 STOCKS_CHAPTER_LAYOUT_MAP: list[list[BeatLayoutType]] = [
-    ["stocks_kpi_asymmetric", "animated_growth_curve", "browser_ui_live_tour", "stocks_four_pillars"],
-    ["ecosystem_node_graph", "stocks_kpi_asymmetric", "operating_leverage_chart", "stocks_big_statement"],
-    ["stocks_kpi_asymmetric", "browser_ui_live_tour", "animated_growth_curve", "before_after_workflow_card"],
-    ["second_level_thinking_crowd", "operating_leverage_chart", "stocks_kpi_asymmetric", "browser_ui_live_tour"],
-    ["moat_shield_architecture", "ecosystem_node_graph", "stocks_four_pillars", "concept_hero_split_3d"],
-    ["stocks_valuation_scenarios", "animated_growth_curve", "before_after_workflow_card", "stocks_big_statement"],
-    ["stocks_four_pillars", "second_level_thinking_crowd", "moat_shield_architecture", "stocks_big_statement"],
+    ["stocks_kpi_asymmetric", "animated_growth_curve", "browser_ui_live_tour", "second_level_thinking_crowd", "stocks_four_pillars"],
+    ["ecosystem_node_graph", "stocks_kpi_asymmetric", "operating_leverage_chart", "browser_ui_live_tour", "stocks_big_statement"],
+    ["stocks_kpi_asymmetric", "browser_ui_live_tour", "animated_growth_curve", "operating_leverage_chart", "before_after_workflow_card"],
+    ["second_level_thinking_crowd", "stocks_kpi_asymmetric", "operating_leverage_chart", "browser_ui_live_tour", "ecosystem_node_graph"],
+    ["moat_shield_architecture", "ecosystem_node_graph", "stocks_four_pillars", "before_after_workflow_card", "concept_hero_split_3d"],
+    ["stocks_valuation_scenarios", "animated_growth_curve", "stocks_kpi_asymmetric", "before_after_workflow_card", "stocks_big_statement"],
+    ["stocks_four_pillars", "second_level_thinking_crowd", "moat_shield_architecture", "stocks_kpi_asymmetric", "stocks_big_statement"],
 ]
 
 SHORT_TUTORIAL_SEQUENCE: list[ShortBeatLayoutType] = [
@@ -135,6 +101,52 @@ EDITORIAL_SCENES = [
 ]
 
 
+def resolve_agy_cli() -> str | None:
+    cand = shutil.which("agy")
+    if cand and Path(cand).exists():
+        return cand
+    for p in (Path.home() / ".local/bin/agy", Path("/opt/homebrew/bin/agy"), Path("/usr/local/bin/agy")):
+        if p.exists():
+            return str(p)
+    return None
+
+
+def load_gemini_api_key() -> tuple[str, str]:
+    """Checks local `agy` CLI first, then optional GEMINI_API_KEY in `.env` / environment."""
+    env_file = PROJECT_ROOT / ".env"
+    file_vars: dict[str, str] = {}
+    if env_file.exists():
+        for raw_ln in env_file.read_text(encoding="utf-8", errors="ignore").splitlines():
+            ln = raw_ln.strip()
+            if not ln or ln.startswith("#") or "=" not in ln:
+                continue
+            k, v = ln.split("=", 1)
+            file_vars[k.strip()] = v.strip().strip("\"'")
+
+    cfg_json = CONFIGS_DIR / "gemini.json"
+    if cfg_json.exists():
+        try:
+            jd = json.loads(cfg_json.read_text(encoding="utf-8"))
+            if jd.get("api_key"):
+                file_vars.setdefault("GEMINI_API_KEY", str(jd["api_key"]).strip())
+            if jd.get("model"):
+                file_vars.setdefault("GC_GEMINI_MODEL", str(jd["model"]).strip())
+        except Exception:
+            pass
+
+    key = (
+        os.environ.get("GEMINI_API_KEY")
+        or os.environ.get("GOOGLE_API_KEY")
+        or file_vars.get("GEMINI_API_KEY")
+        or file_vars.get("GOOGLE_API_KEY")
+        or ""
+    ).strip()
+    if key == "your_gemini_api_key_here":
+        key = ""
+    model = (os.environ.get("GC_GEMINI_MODEL") or file_vars.get("GC_GEMINI_MODEL") or "agy:gemini-4-carbon").strip()
+    return key, model
+
+
 def taiwanize_text(text: str) -> str:
     out = str(text or "")
     try:
@@ -148,16 +160,14 @@ def taiwanize_text(text: str) -> str:
 
 
 def scrub_slop_phrases(text: str) -> str:
-    """Removes generic YouTuber clichés that real @garychenai NEVER says."""
     s = taiwanize_text(text).strip()
     s = re.sub(r"^(?:哈囉|嗨|嘿)?\s*(?:大家好|各位觀眾|各位朋友)[，,！!。]*\s*(?:我是\s*Gary[，,！!。]*)?", "", s)
     s = re.sub(r"^(?:歡迎回到我的頻道|歡迎來到\s*Gary\s*的頻道)[，,！!。]*", "", s)
     s = re.sub(r"[，,。！!]*\s*(?:走起|衝吧|讓我們開始吧|話不多說馬上開始)[！!。]*$", "", s)
-    s = s.replace("省下好多時間跟力氣", "省下重複點網頁的時間").replace("做很多事情", "自動跑完跨網頁任務")
     return s.strip(" ，,")
 
 
-def smart_trim(text: str, max_units: float = 10.5) -> str:
+def smart_trim(text: str, max_units: float = 9.5) -> str:
     s = re.sub(r"\s+", " ", taiwanize_text(text)).strip(" 、，。/｜|-")
     tokens = re.findall(r"[A-Za-z0-9$%+./_#-]+|\s+|.", s)
     out: list[str] = []
@@ -199,7 +209,7 @@ def space_pad_english(text: str) -> str:
 
 def split_into_clauses(text: str, target_max: int = 22) -> list[str]:
     cleaned_src = scrub_slop_phrases(text)
-    cleaned_src = re.sub(r"第[一二三四1234]幕講[^，。！？；]+[，。；]?", "", cleaned_src)
+    cleaned_src = re.sub(r"第[一二三四五12345]幕講[^，。！？；]+[，。；]?", "", cleaned_src)
     raw_parts = re.split(r"[。！？；!?\n]+|，", cleaned_src)
     pieces: list[str] = []
     for p in raw_parts:
@@ -266,77 +276,100 @@ def _ensure_numeric_metric(val: str, fallback_metrics: list[str], idx: int, ctx:
 
 class GarychenScriptwriter:
     """
-    V4 Cloud Gemini Master Scriptwriter & Remotion Choreographer (ZERO local Ollama!):
-      - Exclusively uses Google Gemini (`google-genai` SDK, default `gemini-2.5-pro`) for frontier-grade
-        @garychenai Taiwanese Mandarin long-form storytelling, deep SEC/GitHub reasoning, and native JSON compilation.
-      - Stage A (`_call_llm_raw`): Pure Gary Chen verbatim spoken Taiwanese Mandarin prose
-      - Stage B (`_call_llm_json` with `response_mime_type="application/json"`): Structured Remotion beat compiler
-      - Stage C: Pure-Remotion 9:16 Funnel Shorts compiler
+    V5 Cloud Gemini Master Scriptwriter via Local `agy` CLI (ZERO local 8B Ollama!):
+      - Primary engine: Local `agy` CLI (`--disable-slash-commands --mode plan -p`) running Google Gemini 4
+        inside a trusted clean sandbox directory (`PROJECT_ROOT / ".worker_mps/agy_sandbox"`).
+      - Pass 1 (1 Unified Master Narrative Pass): Writes all 7 chapters × 5 progressive beats (= 35 Long beats,
+        ~3,200–3,600 chars -> 7.5–9.5 min deep @garychenai storytelling!) + 10-beat Funnel Short script in one
+        coherent creative arc!
+      - Pass 2 (Parallel 2-way `ThreadPoolExecutor` Scene Compiler): Compiles all 35 beats into structured
+        Remotion `VisualBeat` JSON with tight `<=9.5` unit card labels (zero single-char line wraps!).
     """
 
-    def __init__(self, gemini_model: str | None = None):
-        api_key, cfg_model = load_gemini_api_key()
-        self.api_key = api_key
-        self.gemini_model = gemini_model or cfg_model or "gemini-2.5-pro"
+    def __init__(self, agy_model: str | None = None):
+        self.agy_bin = resolve_agy_cli()
+        self.api_key, cfg_model = load_gemini_api_key()
+        self.agy_model = agy_model or os.environ.get("GC_AGY_MODEL", "").strip()
+        self.gemini_model = cfg_model if not cfg_model.startswith("agy:") else "gemini-2.5-pro"
+        self.sandbox_dir = PROJECT_ROOT / ".worker_mps/agy_sandbox"
+        self.sandbox_dir.mkdir(parents=True, exist_ok=True)
 
-    def _get_client(self):
-        if not self.api_key:
-            self.api_key, cfg_m = load_gemini_api_key()
-            if not self.gemini_model:
-                self.gemini_model = cfg_m
-        if not self.api_key:
-            raise RuntimeError(
-                "Missing GEMINI_API_KEY (local LLM disabled per user configuration). "
-                "Please set GEMINI_API_KEY in /Users/alan_dingchaoliao/Downloads/garychen/.env or environment."
-            )
-        from google import genai
-        return genai.Client(api_key=self.api_key)
+    def _call_agy_cli(self, system_prompt: str, user_prompt: str, effort: str = "medium", timeout_s: int = 180) -> str:
+        if not self.agy_bin:
+            raise RuntimeError("`agy` CLI binary not found.")
+        combined = (
+            f"【系統角色與嚴格輸出規範】\n{system_prompt}\n"
+            "⚠️ 重要：請直接輸出最終文字或 JSON 內容，絕對不要呼叫任何工具、不要讀寫任何檔案、不要加前後寒暄解釋！\n\n"
+            f"【任務內容】\n{user_prompt}"
+        )
+        models_to_try = [self.agy_model, None] if self.agy_model else [None]
+        last_err = ""
+        for mdl in models_to_try:
+            for attempt in range(2):
+                cmd = [
+                    self.agy_bin,
+                    "--disable-slash-commands",
+                    "--mode",
+                    "plan",
+                    "--effort",
+                    effort,
+                    "--print-timeout",
+                    f"{timeout_s - 10}s",
+                ]
+                if mdl:
+                    cmd.extend(["--model", mdl])
+                cmd.extend(["-p", combined])
+                t0 = time.time()
+                try:
+                    r = subprocess.run(
+                        cmd,
+                        cwd=str(self.sandbox_dir),
+                        stdin=subprocess.DEVNULL,
+                        capture_output=True,
+                        text=True,
+                        timeout=timeout_s,
+                    )
+                    out = (r.stdout or "").strip()
+                    # Strip any terminal spinner escape sequences if present
+                    out = re.sub(r"\x1b\[[0-9;]*[A-Za-z]", "", out).strip()
+                    if r.returncode == 0 and len(out) >= 20:
+                        print(f"  [agy-gemini] pass ok ({time.time() - t0:.1f}s, effort={effort}, chars={len(out)})", flush=True)
+                        return out
+                    last_err = (r.stderr or out or f"rc={r.returncode}")[:240]
+                except Exception as exc:
+                    last_err = str(exc)[:240]
+                time.sleep(1.0)
+        raise RuntimeError(f"agy CLI Gemini generation failed: {last_err}")
 
     def _call_llm_raw(
         self,
         system_prompt: str,
         user_prompt: str,
-        max_tokens: int = 4096,
-        temp: float = 0.45,
+        effort: str = "medium",
         json_mode: bool = False,
     ) -> str:
-        from google.genai import types
+        if self.agy_bin:
+            return self._call_agy_cli(system_prompt, user_prompt, effort=effort, timeout_s=210)
+        if self.api_key:
+            from google import genai
+            from google.genai import types
+            client = genai.Client(api_key=self.api_key)
+            cfg = types.GenerateContentConfig(
+                system_instruction=system_prompt,
+                temperature=0.42,
+                max_output_tokens=8192,
+                response_mime_type="application/json" if json_mode else "text/plain",
+            )
+            resp = client.models.generate_content(model=self.gemini_model, contents=user_prompt, config=cfg)
+            return str(resp.text or "").strip()
+        raise RuntimeError("Neither local `agy` CLI nor `GEMINI_API_KEY` is available (local Ollama is disabled).")
 
-        client = self._get_client()
-        candidate_models = [self.gemini_model]
-        if "flash" not in self.gemini_model:
-            candidate_models.append("gemini-2.5-flash")
-
-        last_err: Exception | None = None
-        for mdl_name in candidate_models:
-            for attempt in range(3):
-                try:
-                    cfg = types.GenerateContentConfig(
-                        system_instruction=system_prompt,
-                        temperature=temp + 0.05 * attempt,
-                        max_output_tokens=max_tokens,
-                        response_mime_type="application/json" if json_mode else "text/plain",
-                    )
-                    resp = client.models.generate_content(
-                        model=mdl_name,
-                        contents=user_prompt,
-                        config=cfg,
-                    )
-                    txt = str(resp.text or "").strip()
-                    if txt:
-                        return txt
-                except Exception as exc:
-                    last_err = exc
-                    time.sleep(1.2 * (attempt + 1))
-        raise RuntimeError(f"Google Gemini API call failed ({self.gemini_model}): {last_err}")
-
-    def _call_llm_json(self, system_prompt: str, user_prompt: str, max_tokens: int = 4096) -> dict[str, Any]:
+    def _call_llm_json(self, system_prompt: str, user_prompt: str, effort: str = "medium") -> dict[str, Any]:
         for attempt in range(3):
             raw = self._call_llm_raw(
                 system_prompt,
-                user_prompt + "\n請嚴格只輸出合法純 JSON 物件（字串內引用請用『』），不要加任何前後解釋文字。",
-                max_tokens=max_tokens,
-                temp=0.35 + 0.06 * attempt,
+                user_prompt + "\n\n請嚴格只輸出一個合法的純 JSON 物件（以 `{` 開頭、`}` 結尾，字串內引用請用『』不要用未跳脫雙引號，不要加 markdown 說明）！",
+                effort=effort,
                 json_mode=True,
             )
             try:
@@ -367,27 +400,23 @@ class GarychenScriptwriter:
         repaired = json_repair.loads(chunk)
         if isinstance(repaired, dict) and repaired:
             return repaired
-        raise ValueError("No valid JSON object in LLM output")
+        raise ValueError("No valid JSON object in Gemini output")
 
     def _genre_system_prompt(self, category: str) -> str:
         if category == "us_stocks":
             return (
-                "你是台灣 YouTube 頻道「Gary Chen (@garychenai)」的美股科技巨頭深度分析本人主筆。\n"
-                "參考 Gary 真實美股代表作《META 財報後下跌 10%，為什麼我反而加倉？》與《Google 估值大反轉》的原聲語氣：\n"
-                "『財報公布那天盤後一度大跌，市場都在恐慌資本支出是不是燒過頭了？但如果我們把 SEC 年報拆開來看多年度營收軌跡、營業利益率的營運槓桿、以及營運現金流的造血能力，你會發現華爾街第一層思考漏掉了最關鍵的飛輪效應。』\n"
-                "鐵律：\n"
-                "1. 絕對禁止寫『哈囉大家好』『我是 Gary』『走起』！第一句話直接切入市場預期差與具體財報數字！\n"
-                "2. 全程道地台灣繁中財經科技白話（營收、營業利益率、營運槓桿、營運現金流 OCF、資本支出 CapEx、本益比 PE、轉換成本、護城河、安全邊際、白話講、反過來想）。\n"
-                "3. 嚴禁出現任何安裝軟體或寫程式教學！"
+                "你是台灣頂級科技與美股深度分析 YouTube 頻道「Gary Chen (@garychenai)」本人主筆。\n"
+                "請 100% 還原 Gary 在《META 財報後下跌 10%，為什麼我反而加倉？》與《Google 估值大反轉》的敘事靈魂：\n"
+                "- 開場第一句話直接切入市場恐慌情緒與真實 SEC 財報數據的巨大預期差，絕對不說『哈囉大家好』『我是 Gary』『走起』！\n"
+                "- 善用『白話講就是…』『但如果我們換個角度進入第二層思考…』『這背後的營運槓桿邏輯其實很直白…』將複雜財報與技術壁壘講得一聽就懂、極具洞察力，絕不寫簡報條列式的破碎短句！\n"
+                "- 全程道地台灣繁體中文財經科技語彙（營收、營業利益率、營運槓桿、營運現金流 OCF、資本支出 CapEx、本益比 PE、轉換成本、安全邊際）。"
             )
         return (
-            "你是台灣 YouTube 頻道「Gary Chen (@garychenai)」的 AI Agent 與軟體工程實戰本人主筆。\n"
-            "參考 Gary 真實代表作《Meta Muse 新手教學》、《pstack 一個月 2500 個 PR》與《用 AI 寫程式你得懂的 CI/CD》的原聲語氣：\n"
-            "『現在主流的 AI Agent 每一個都要收錢，如果你之前看過 Claude Code 或 Operator，但因為每個月二十到兩百美金的訂閱費還沒動手試過，不用擔心，今天這支影片我會帶你用完全免費開源的方案，直接在自己電腦跑起完整的瀏覽器自動化工作流。』\n"
-            "『對非技術背景的人來說，白話講就是幫你的 AI 裝上眼睛跟雙手，才不會網頁一改版就壞掉，陷入做 A 壞 B、找 bug 打地鼠的無限迴圈。』\n"
-            "鐵律：\n"
-            "1. 絕對禁止寫『哈囉大家好』『我是 Gary』『走起』『小夥伴』『玩轉』！第一句話直接切入痛點與主角工具名稱！\n"
-            "2. 全程道地台灣開發者口語（專案、套件、資料夾、伺服器、終端機、資訊欄、踩坑、白話講、把關防線），台詞內不要唸出 http 網址或 -fsSL 參數。"
+            "你是台灣頂級 AI Agent 與軟體工程教學 YouTube 頻道「Gary Chen (@garychenai)」本人主筆。\n"
+            "請 100% 還原 Gary 在《Meta Muse 新手教學》、《pstack 一個月 2500 個 PR》與《用 AI 寫程式你得懂的 CI/CD》的敘事靈魂：\n"
+            "- 開場第一句話直接切入開發者／工作者的真實痛點或訂閱費門檻，立刻亮出今天的主角工具與硬核星標數據，絕對不說『哈囉大家好』『我是 Gary』『走起』！\n"
+            "- 句子自然連貫有故事感，善用『對非技術背景的朋友來說，白話講就是…』『我們一樣請出老朋友主角 Gary 舉個具體例子…』『把這道自動防線建立起來，才不會做 A 壞 B，陷入找 bug 打地鼠的無限迴圈』，絕不寫破碎簡報短句！\n"
+            "- 全程道地台灣繁體中文開發者口語（專案、套件、資料夾、伺服器、終端機、資訊欄、踩坑），口語台詞內不要硬唸 http 網址或參數符號。"
         )
 
     def generate_episode_script(
@@ -399,6 +428,8 @@ class GarychenScriptwriter:
     ) -> EpisodeScript:
         is_stocks = (topic.category == "us_stocks")
         num_chapters = 7
+        beats_per_chap = 5  # 35 rich progressive beats -> ~7.5 to 9.5 minutes deep @garychenai episode!
+
         src_digest = [
             {
                 "source_id": s.source_id,
@@ -406,10 +437,10 @@ class GarychenScriptwriter:
                 "domain": s.domain,
                 "title": s.title,
                 "date": s.published_date,
-                "metrics": s.metrics[:5],
-                "facts": s.key_facts[:5],
-                "commands": s.code_or_commands[:4],
-                "prs": s.pr_or_issue_items[:4],
+                "metrics": s.metrics[:6],
+                "facts": s.key_facts[:6],
+                "commands": s.code_or_commands[:5],
+                "prs": s.pr_or_issue_items[:5],
                 "time_series": s.time_series,
             }
             for s in sources[:8]
@@ -432,77 +463,139 @@ class GarychenScriptwriter:
                 primary_margin_series = s.time_series["op_margin_pct"]
 
         sys_prompt = self._genre_system_prompt(topic.category)
-        default_chapters = (
-            [
-                "市場恐慌與真實成績單",
-                "商業模式與算力變現引擎",
-                "SEC 年報數據與營運槓桿",
-                "資本支出的第二層思考",
-                "競爭對手難複製的護城河",
-                "估值倍數與三種情境推演",
-                "三大風險與我的投資觀點",
-            ]
+        chapter_arc_guide = (
+            "7 大章節深度脈絡：(1) 市場恐慌 vs SEC 年報成績單預期差；(2) 核心商業模式與算力變現飛輪；(3) 五年度營收與營業利益率的營運槓桿拆解；(4) 雲端巨頭 CapEx 的第一層直覺 vs 第二層思考；(5) 競爭對手最難跨越的三大護城河與轉換成本；(6) 本益比與現金流三種估值情境推演；(7) 必須緊盯的三大風險與『Gary 聊美股』免責聲明收尾。"
             if is_stocks
-            else [
-                "為什麼現在該認識它",
-                "DOM 與視覺雙引擎架構",
-                "主角 Gary 的實戰自動化",
-                "三分鐘本機部署與啟動",
-                "多模型串接與多代理分工",
-                "開源本機 vs 付費方案對照",
-                "三個必避踩坑與實戰總結",
-            ]
+            else f"7 大章節深度脈絡：(1) 主流付費方案痛點 vs 開源主角 {topic.primary_entity} 破題與本集路線圖；(2) 為什麼傳統腳本一改版就壞？白話拆解底層雙引擎架構；(3) 主角 Gary 的完整生活／工作自動化實戰案例（把具體金額、步驟講出畫面感）；(4) 從零本機環境部署、安裝與跑通第一個自動任務；(5) 進階多模型串接、主控＋子 Agent 分工與 PR 把關防線；(6) 開源本機跑 vs 官方雲端版 vs 商業付費工具的成本與隱私權衡；(7) 新手最容易踩的三個實戰大坑與『AI 實戰營』招牌收尾。"
         )
 
+        # PASS 1: Single Coherent Gemini 4 Master Scriptwriting Call (whole episode written in one breath!)
         pass1_prompt = (
             f"主題：{topic.title}\n"
-            f"核心主角實體：{topic.primary_entity}\n"
+            f"核心主角：{topic.primary_entity}\n"
             f"已爬蟲查證之公開權威資料：\n{json.dumps(src_digest, ensure_ascii=False, indent=2)}\n\n"
-            f"請規劃 7 個章節（參考脈絡：{default_chapters}，每章標題 5～10 字、犀利具體）與 YouTube 封面兩行超大字（`thumbnail_line1` 黃字 4-7 字主角或公司、`thumbnail_line2` 白字 4-7 字強反差結論，像『Browser-Use / 免費接管瀏覽器』、『NVDA 財報 / 華爾街看錯了？』）！\n"
-            "輸出 JSON：\n"
+            f"{chapter_arc_guide}\n\n"
+            f"請一氣呵成創作出完整、有深度、前後呼應的 Gary Chen 長片與對應推流 Shorts 腳本 JSON：\n"
+            f"- 共 **7 個章節 (`chapters`)**，每個章節包含 **5 段 (`paragraphs`) 層層遞進、絕不重複的自然台灣口語逐字稿**（全片共 **35 段**）！\n"
+            "- **每段口語逐字稿必填 85～115 個繁體中文字**（包含 3～4 個自然流暢、邏輯飽滿的句子，把查證數據、底層原因與生活比喻講透，嚴禁簡報式破碎短句）！\n"
+            "- 同時附上 **10 幕對應推流 Shorts (`short_beats`)**，每幕 `narration` 30～42 字，第 10 幕明確引導點擊畫面左下角『關聯影片』看完整長片！\n"
+            "輸出純 JSON 格式：\n"
             "{\n"
-            '  "title": "Gary Chen 風格高點擊長片標題",\n'
-            '  "thumbnail_line1": "封面第一行(4-7字)",\n'
-            '  "thumbnail_line2": "封面第二行(4-7字)",\n'
-            '  "youtube_description_summary": "140字內精華介紹",\n'
+            '  "title": "極具點擊吸引力的完整 Gary Chen 長片標題(18-28字)",\n'
+            '  "thumbnail_line1": "封面黃字第一行(4-7字)",\n'
+            '  "thumbnail_line2": "封面白字第二行(4-7字)",\n'
+            '  "youtube_description_summary": "150字內精華說明",\n'
             '  "hashtags": ["#GaryChen", "..."],\n'
-            '  "chapters_plan": [\n'
-            '    {"index": 1, "chapter_title": "章節名", "focus": "本章核心論點與引用數據"}\n'
-            "  ]\n"
+            '  "chapters": [\n'
+            '    {\n'
+            '      "index": 1,\n'
+            '      "chapter_title": "犀利章節標題(5-10字)",\n'
+            '      "paragraphs": ["第1段85-115字完整口語...", "第2段...", "第3段...", "第4段...", "第5段..."]\n'
+            '    }\n'
+            '  ],\n'
+            '  "short_title": "高張力短片標題 #Shorts",\n'
+            '  "short_hook_banner": "6字內頂部標籤",\n'
+            '  "short_beats": [\n'
+            '    {"narration": "30-42字口語", "headline": "10字內標題", "sub_caption": "18字內副標", "highlight_badge": "數據標籤", "nodes": [{"label": "8字內名詞", "sub": "16字內說明", "tag": "數據", "icon": "robot"}]}\n'
+            '  ]\n'
             "}"
         )
-        plan_data = self._call_llm_json(sys_prompt, pass1_prompt, max_tokens=1800)
-        chapters_plan = (plan_data.get("chapters_plan") or [])[:7]
-        while len(chapters_plan) < 7:
-            i = len(chapters_plan)
-            chapters_plan.append({"index": i + 1, "chapter_title": default_chapters[i], "focus": topic.why_now})
-        all_chapter_titles = [taiwanize_text(str(c.get("chapter_title") or default_chapters[i]))[:16] for i, c in enumerate(chapters_plan)]
-        pipeline_bar_labels = all_chapter_titles[1:6]  # 5 core body stages for top horizontal pipeline bar!
-
-        chapter_missions = (
-            [
-                f"第1章（4段口語）：第1段直接點出市場對 {topic.primary_entity} 資本支出與高基期的恐慌 vs SEC 年報最新營收與營益率成績單；第2段拉開過去四年營收翻倍成長軌跡；第3段帶看公開市場股價、52週區間與本益比現況；第4段預告今天拆解的四個核心維度。",
-                "第2章（4段口語）：拆解核心商業模式與變現飛輪（資料中心算力底座、高速網路互連、軟硬體生態綁定如何創造超過 60% 營業利益率），說明營運槓桿如何運作。",
-                "第3章（4段口語）：逐一拆解 SEC 10-K 官方年報關鍵數據（全年總營收、營業利益、營運現金流 OCF 與自由現金流體質），對照過去幾年成長斜率，證明獲利含金量。",
-                "第4章（4段口語）：進入『華爾街第一層思考 vs 第二層思考』！第一層只怕微軟、Meta 等雲端巨頭 CapEx 見頂；第二層拆開微軟與 Meta 的 10-K 資本支出與高毛利回報，解釋為什麼推論算力需求正在接棒訓練算力。",
-                "第5章（4段口語）：拆解競爭對手最難複製的三大護城河（CUDA 數百萬開發者轉換成本、NVLink 機櫃級系統整合良率、一年一代架構迭代節奏），說明這道安全邊際有多深。",
-                "第6章（4段口語）：用真實本益比 PE 與營運現金流增速推演『悲觀、基準、樂觀』三種估值情境，比較歷史估值區間與下檔保護。",
-                "第7章（4段口語）：前3段誠實點出投資人必須緊盯的三大風險（雲端大廠自研 ASIC 分流、新架構量產毛利率波動、地緣出口管制）；第4段用溫和堅定語氣收尾：『如果你喜歡這種把 SEC 財報數字跟產業底層邏輯拆開來看的分析，記得幫我按讚訂閱追蹤 Gary 聊美股，本片內容僅供研究參考不構成投資建議，我們下次見。』",
-            ]
+        master_doc = self._call_llm_json(sys_prompt, pass1_prompt, effort="medium")
+        raw_chaps = (master_doc.get("chapters") or [])[:7]
+        default_titles = (
+            ["市場恐慌與真實成績單", "商業模式與算力飛輪", "五年財報與營運槓桿", "資本支出的第二層思考", "競爭對手難跨越護城河", "估值倍數與三情境推演", "三大風險與投資觀點"]
             if is_stocks
-            else [
-                f"第1章（4段口語）：第1段第一句就點名主角『{topic.primary_entity}』！指出現在 Claude Code、Operator 或商業自動化工具每月 $20 到 $200 美金訂閱費門檻太高，而 GitHub 高星標開源專案 {topic.primary_entity} 讓你 $0 免費在自己電腦跑起來；第2段描述開發者與上班族真實痛點；第3段對比模糊指令 vs 結構化任務拆解；第4段預告今天這集四個實戰步驟。",
-                f"第2章（4段口語）：白話拆解 {topic.primary_entity} 的底層運作架構！為什麼傳統寫死 CSS Selector 的爬蟲只要網頁一改版就壞掉，而它結合 Playwright DOM 結構索引與 LLM 視覺理解雙引擎，能像真人一樣看懂按鈕、下拉選單與動態表單。",
-                "第3章（4段口語）：用我們頻道的老朋友『主角 Gary』的具體生活案例講透工作流！例如 Gary 每個月底要登入三個平台下載電子發票、對帳早餐 $80、午餐 $120、雲端帳單並自動歸檔進試算表，一步步看 Agent 怎麼把原本半小時的苦工變成一鍵自動完成。",
-                f"第4章（4段口語）：帶觀眾三分鐘在本機跑起來！說明準備 Python 環境、安裝 {topic.primary_entity} 與瀏覽器驅動、填入 API Key 或接上本機模型、執行第一個自動開網頁抓資料腳本，並強調把自動檢查防線建起來才不會做 A 壞 B。",
-                "第5章（4段口語）：進階實戰：如何把單一 Agent 升級成『主控調度＋多個子 Agent 平行分工』，一邊抓公開報價與新聞、一邊交叉驗證並把結構化結果推播到 Slack 或 Telegram，同時檢視 GitHub PR 與執行紀錄確保零失誤。",
-                "第6章（4段口語）：客觀比較『開源本機自己跑』vs『官方雲端託管版』vs『傳統商業 RPA / Zapier』在資料隱私、固定成本與維護彈性的真實差異，告訴觀眾什麼情境該選哪一套。",
-                "第7章（4段口語）：前3段提醒新手最常踩的三個真坑（登入 Cookie Session 持久化、遇到網站驗證碼的人機接管設計、長網頁 Token 消耗上限設定）；第4段完整說出 Gary 招牌收尾：『那以上就是今天的內容，感謝你看到這邊。如果你還不知道，我有經營一個 AI 實戰營的社群，裡面有我自己的實戰分享和實戰課程。如果鋪天蓋地的 AI 資訊讓你覺得眼花撩亂，我的目標就是成為你唯一的 AI 資訊來源。這支影片用到的設定清單跟模板我都整理在社群裡，連結放在下方資訊欄，那我們下次見。』",
-            ]
+            else ["為什麼現在該認識它", "底層雙引擎白話拆解", "主角 Gary 的實戰案例", "三分鐘本機部署實測", "多代理分工與把關防線", "開源本機 vs 付費方案", "三個必避踩坑與總結"]
         )
+        while len(raw_chaps) < 7:
+            idx = len(raw_chaps)
+            raw_chaps.append({"index": idx + 1, "chapter_title": default_titles[idx], "paragraphs": []})
 
+        all_chapter_titles = [taiwanize_text(str(c.get("chapter_title") or default_titles[i]))[:14] for i, c in enumerate(raw_chaps)]
+        pipeline_bar_labels = all_chapter_titles[1:6]
         layout_grid = STOCKS_CHAPTER_LAYOUT_MAP if is_stocks else TUTORIAL_CHAPTER_LAYOUT_MAP
-        all_beats: list[VisualBeat] = []
+
+        # Flatten all 35 (chapter_idx, chapter_title, beat_in_chap, layout_type, paragraph_text)
+        flat_items: list[dict[str, Any]] = []
+        for ch_pos, c_obj in enumerate(raw_chaps):
+            paras = [scrub_slop_phrases(str(p)) for p in (c_obj.get("paragraphs") or []) if len(scrub_slop_phrases(str(p))) >= 24]
+            while len(paras) < beats_per_chap:
+                s_ref = sources[(ch_pos + len(paras)) % max(1, len(sources))] if sources else None
+                f_ref = s_ref.key_facts[len(paras) % len(s_ref.key_facts)] if (s_ref and s_ref.key_facts) else topic.why_now
+                paras.append(scrub_slop_phrases(f"接著我們把鏡頭拉近看公開查證的細節，{f_ref}，白話講這正是決定長期穩定度與報酬率的分水嶺。"))
+            paras = paras[:beats_per_chap]
+
+            if ch_pos == 6:
+                if is_stocks and "Gary 聊美股" not in paras[-1]:
+                    paras[-1] = (
+                        "最後還是要提醒大家持續追蹤雲端巨頭自研晶片進度與毛利率變化，"
+                        "如果你喜歡這種把 SEC 財報數字跟產業底層邏輯拆開來看的深度分析，"
+                        "記得幫我按讚訂閱追蹤 Gary 聊美股，本片內容僅供研究參考不構成投資建議，我們下次見"
+                    )
+                elif not is_stocks and "AI 實戰營" not in paras[-1]:
+                    paras[-1] = (
+                        "那以上就是今天的完整實戰內容，感謝你看到這邊。如果鋪天蓋地的 AI 資訊讓你覺得眼花撩亂，"
+                        "歡迎加入我在下方資訊欄整理的 AI 實戰營社群，這支影片用到的設定清單跟模板都在裡面，那我們下次見"
+                    )
+
+            for b_i in range(beats_per_chap):
+                flat_items.append(
+                    {
+                        "global_idx": len(flat_items),
+                        "chapter_index": ch_pos + 1,
+                        "chapter_title": all_chapter_titles[ch_pos],
+                        "beat_in_chap": b_i,
+                        "layout_type": layout_grid[ch_pos][b_i],
+                        "paragraph": paras[b_i],
+                    }
+                )
+
+        # PASS 2: Parallel 2-Way Gemini Scene Choreographer (Beats 0..17 & Beats 18..34 simultaneously!)
+        def _compile_half(batch_slice: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
+            p_lines = [
+                f"[{it['global_idx']}] 章節={it['chapter_title']} | 版型={it['layout_type']} | 台詞={it['paragraph']}"
+                for it in batch_slice
+            ]
+            c_prompt = (
+                "請將以下每一段定稿台詞編譯為高密度 Remotion 視覺分鏡卡片 JSON！\n"
+                "⚠️ 排版鐵律：\n"
+                "1. 每個 `nodes[j].label` 必須 **精簡在 4～8 個中文字以內**（絕對不可超過 9 個字，避免窄卡片單字折行）！\n"
+                "2. `nodes` 必填 3～4 個具體真實專有名詞、財報科目或實戰步驟，嚴禁填『重點一』『自動化執行層』等空話！\n"
+                f"3. 可選 `icon`：{sorted(VALID_ICONS)}\n"
+                f"4. 查證來源摘要：{json.dumps(src_digest[:5], ensure_ascii=False)}\n\n"
+                + "\n".join(p_lines)
+                + "\n\n輸出 JSON 格式：\n"
+                "{\n"
+                '  "compiled": [\n'
+                '    {\n'
+                '      "global_idx": 0,\n'
+                '      "visual_title": "6-13字精準畫面主標",\n'
+                '      "visual_subtitle": "10-20字副標",\n'
+                f'      "badge_text": "{"+65.5% YoY" if is_stocks else "$0 / 月"}",\n'
+                '      "callout_title": "4-8字結論標籤",\n'
+                '      "callout_body": "14-26字犀利結論",\n'
+                '      "code_lines": ["真實指令或財報算式"],\n'
+                '      "source_ids": ["S1"],\n'
+                '      "nodes": [\n'
+                '        {"label": "4-8字名詞", "sub": "10-18字白話說明", "tag": "短標籤", "metric": "含單位數據(如$2,159 億或60.4%)", "icon": "github", "trend": "up"}\n'
+                '      ]\n'
+                '    }\n'
+                '  ]\n'
+                "}"
+            )
+            try:
+                res = self._call_llm_json(sys_prompt, c_prompt, effort="low")
+                return {int(x["global_idx"]): x for x in (res.get("compiled") or []) if isinstance(x, dict) and "global_idx" in x}
+            except Exception as exc:
+                print(f"  [agy-gemini] batch compile fallback ({exc})", flush=True)
+                return {}
+
+        mid = len(flat_items) // 2
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            f1 = pool.submit(_compile_half, flat_items[:mid])
+            f2 = pool.submit(_compile_half, flat_items[mid:])
+            compiled_map = {**f1.result(), **f2.result()}
+
         valid_sids = {s.source_id for s in sources} or {"S1"}
         cam_presets = [
             [0.38, 0.30, 1.32],
@@ -512,239 +605,160 @@ class GarychenScriptwriter:
             [0.58, 0.32, 1.30],
         ]
         scr_cursor = 0
+        all_beats: list[VisualBeat] = []
 
-        for ch_pos, ch_item in enumerate(chapters_plan):
-            c_idx = ch_pos + 1
-            c_title = all_chapter_titles[ch_pos]
-            target_layouts = layout_grid[ch_pos % len(layout_grid)]
-            mission = chapter_missions[ch_pos]
+        for item in flat_items:
+            g_idx = item["global_idx"]
+            c_idx = item["chapter_index"]
+            c_title = item["chapter_title"]
+            b_idx = item["beat_in_chap"]
+            lt: BeatLayoutType = item["layout_type"]
+            para = item["paragraph"]
+            rb = compiled_map.get(g_idx, {})
 
-            # STAGE A: Pure Verbatim Spoken Prose (4 paragraphs separated by ===, zero JSON burden!)
-            prose_prompt = (
-                f"影片標題：{plan_data.get('title', topic.title)}\n"
-                f"當前章節：第 {c_idx} 章《{c_title}》\n"
-                f"🎯 專屬任務：{mission}\n"
-                f"可引用之查證公開事實與數據：\n{json.dumps(src_digest[:5], ensure_ascii=False, indent=2)}\n\n"
-                "請直接寫出本章 **4 段連續推進、完全不重複的 Gary Chen 口語逐字稿**，段落之間嚴格用一行 `===` 分隔！\n"
-                "每段字數 **75～100 個繁體中文字**（約 3～4 個自然逗號分句），絕對不要寫任何標題、編號、舞台指示或『哈囉大家好』！"
-            )
-            raw_prose = self._call_llm_raw(sys_prompt, prose_prompt, max_tokens=1500, temp=0.45)
-            paras = [scrub_slop_phrases(p) for p in re.split(r"\n\s*==+\s*\n|\n{2,}", raw_prose) if len(scrub_slop_phrases(p)) >= 28]
-            while len(paras) < 4:
-                s_ref = sources[(ch_pos + len(paras)) % max(1, len(sources))] if sources else None
-                fact_ref = s_ref.key_facts[len(paras) % len(s_ref.key_facts)] if (s_ref and s_ref.key_facts) else topic.why_now
-                paras.append(scrub_slop_phrases(f"進一步拆開來看，根據公開查證的資料顯示，{fact_ref}，白話講這就是決定長期效率與穩定度的關鍵分水嶺。"))
-            paras = paras[:4]
+            clauses = split_into_clauses(para, target_max=22)
+            if len(clauses) < 2:
+                clauses = [space_pad_english(para[:20]), space_pad_english(para[20:46] or c_title)]
+            spoken_clauses = [to_spoken_tts_text(c) for c in clauses]
 
-            # Enforce iconic authentic Gary Chen outro on the very last beat of Chapter 7
-            if ch_pos == 6:
-                if is_stocks and "Gary 聊美股" not in paras[3]:
-                    paras[3] = (
-                        "如果你喜歡這種把 SEC 財報數字跟產業底層邏輯拆開來看的分析，"
-                        "記得幫我按讚訂閱追蹤 Gary 聊美股，本片內容僅供研究參考不構成投資建議，我們下次見"
+            v_nodes: list[VisualNode] = []
+            for n_i, nd in enumerate((rb.get("nodes") or [])[:4]):
+                if isinstance(nd, dict) and nd.get("label"):
+                    ic = str(nd.get("icon") or "sparkles").lower()
+                    if ic not in VALID_ICONS:
+                        ic = "nvidia" if is_stocks else "robot"
+                    tr = str(nd.get("trend") or "neutral").lower()
+                    if tr not in ("up", "down", "neutral"):
+                        tr = "neutral"
+                    raw_tag = taiwanize_text(str(nd.get("tag") or "")).strip()
+                    if raw_tag in ("無", "无", "None", "none", "N/A", "-"):
+                        raw_tag = ""
+                    raw_metric = _ensure_numeric_metric(
+                        str(nd.get("metric") or raw_tag),
+                        all_real_metrics,
+                        g_idx + n_i,
+                        ctx=f"{nd.get('label', '')} {nd.get('sub', '')}",
                     )
-                elif not is_stocks and "AI 實戰營" not in paras[3]:
-                    paras[3] = (
-                        "那以上就是今天的實戰內容，如果鋪天蓋地的 AI 資訊讓你覺得眼花撩亂，"
-                        "歡迎加入我在下方資訊欄整理的 AI 實戰營社群，這支影片用到的設定清單跟模板都在裡面，那我們下次見"
-                    )
-
-            # STAGE B: Remotion Scene Compiler for these exact 4 paragraphs
-            compile_prompt = (
-                f"第 {c_idx} 章《{c_title}》的 4 段定稿口播台詞如下：\n"
-                + "\n".join(f"[Beat {i+1} | 版型={target_layouts[i]}]: {paras[i]}" for i in range(4))
-                + f"\n\n查證資料：{json.dumps(src_digest[:4], ensure_ascii=False)}\n"
-                f"可用官方品牌與向量 icon：{sorted(VALID_ICONS)}\n"
-                "請將這 4 段台詞編譯成 4 個高資訊密度的 Remotion 視覺分鏡 JSON（每個 `nodes` 陣列必填 3～4 個**具體真實名詞與數據**，絕對禁止填『重點一』『自動化執行層』這種空泛詞！）：\n"
-                "{\n"
-                '  "beats": [\n'
-                "    {\n"
-                '      "visual_title": "畫面主標題(6-14字)",\n'
-                '      "visual_subtitle": "精煉副標(10-22字)",\n'
-                f'      "badge_text": "{"+65.5% YoY" if is_stocks else "$0 / 月"}",\n'
-                '      "callout_title": "關鍵結論標籤",\n'
-                '      "callout_body": "一句話犀利重點",\n'
-                '      "code_lines": ["真實指令或關鍵設定"],\n'
-                '      "source_ids": ["S1"],\n'
-                '      "nodes": [\n'
-                '        {"label": "具體工具/財報科目/步驟名", "sub": "具體機制或數據白話說明", "tag": "短標籤", "metric": "純數據指標", "icon": "github", "trend": "up"}\n'
-                "      ]\n"
-                "    }\n"
-                "  ]\n"
-                "}"
-            )
-            try:
-                comp_data = self._call_llm_json(sys_prompt, compile_prompt, max_tokens=2200)
-                raw_specs = comp_data.get("beats") or []
-            except Exception:
-                raw_specs = []
-
-            for b_idx in range(4):
-                rb = raw_specs[b_idx] if b_idx < len(raw_specs) and isinstance(raw_specs[b_idx], dict) else {}
-                lt = target_layouts[b_idx]
-                clauses = split_into_clauses(paras[b_idx], target_max=22)
-                if len(clauses) < 2:
-                    clauses = [space_pad_english(paras[b_idx][:20]), space_pad_english(paras[b_idx][20:44] or c_title)]
-                spoken_clauses = [to_spoken_tts_text(c) for c in clauses]
-
-                v_nodes: list[VisualNode] = []
-                for n_i, nd in enumerate((rb.get("nodes") or [])[:4]):
-                    if isinstance(nd, dict) and nd.get("label"):
-                        ic = str(nd.get("icon") or "sparkles").lower()
-                        if ic not in VALID_ICONS:
-                            ic = "nvidia" if is_stocks else "robot"
-                        tr = str(nd.get("trend") or "neutral").lower()
-                        if tr not in ("up", "down", "neutral"):
-                            tr = "neutral"
-                        raw_tag = taiwanize_text(str(nd.get("tag") or "")).strip()
-                        if raw_tag in ("無", "无", "None", "none", "N/A", "-"):
-                            raw_tag = ""
-                        raw_metric = _ensure_numeric_metric(
-                            str(nd.get("metric") or raw_tag),
-                            all_real_metrics,
-                            len(all_beats) + n_i,
-                            ctx=f"{nd.get('label', '')} {nd.get('sub', '')}",
-                        )
-                        v_nodes.append(
-                            VisualNode(
-                                label=smart_trim(str(nd["label"]), 11.5),
-                                sub=smart_trim(str(nd.get("sub") or clauses[min(n_i, len(clauses) - 1)]), 18.0),
-                                tag=smart_trim(raw_tag, 9.5),
-                                metric=raw_metric,
-                                icon=ic,
-                                trend=tr,  # type: ignore[arg-type]
-                            )
-                        )
-
-                if lt == "agenda_four_steps":
-                    v_nodes = [
+                    v_nodes.append(
                         VisualNode(
-                            label=smart_trim(all_chapter_titles[i + 1], 8.5),
-                            sub=smart_trim(str(chapters_plan[i + 1].get("focus", "")), 16.0),
-                            tag=f"0{i+1}",
-                            metric=f"0{i+1}",
-                            icon=["layers", "users", "terminal", "robot"][i % 4],
+                            label=smart_trim(str(nd["label"]), 8.5),  # Strict <=8.5 units prevents single-char wrap!
+                            sub=smart_trim(str(nd.get("sub") or clauses[min(n_i, len(clauses) - 1)]), 17.5),
+                            tag=smart_trim(raw_tag, 8.5),
+                            metric=raw_metric,
+                            icon=ic,
+                            trend=tr,  # type: ignore[arg-type]
                         )
-                        for i in range(4)
-                    ]
-                else:
-                    # Enrich from real clauses & crawled sources if LLM gave <3 nodes (ZERO generic filler strings!)
-                    while len(v_nodes) < 3:
-                        k = len(v_nodes)
-                        src_k = sources[(ch_pos + k) % max(1, len(sources))] if sources else None
-                        cl_k = clauses[min(k, len(clauses) - 1)]
-                        m_k = (src_k.metrics[k % len(src_k.metrics)] if (src_k and src_k.metrics) else (all_real_metrics[k % len(all_real_metrics)] if all_real_metrics else "+100%"))
-                        lbl_k = smart_trim(cl_k.split("，")[0], 9.5) or (src_k.domain if src_k else topic.primary_entity)
-                        v_nodes.append(
-                            VisualNode(
-                                label=lbl_k,
-                                sub=smart_trim(cl_k, 17.5),
-                                tag=smart_trim(m_k, 9.0),
-                                metric=_ensure_numeric_metric(m_k, all_real_metrics, k),
-                                icon=("nvidia" if is_stocks else ("playwright" if k == 0 else "robot")),
-                                trend="up" if k == 0 else "neutral",
-                            )
-                        )
-
-                sids = [s for s in (rb.get("source_ids") or []) if s in valid_sids]
-                scr_override = ""
-                cam_foc = cam_presets[len(all_beats) % len(cam_presets)]
-                if lt == "browser_ui_live_tour" and all_screenshots:
-                    chosen_sid, chosen_png = all_screenshots[scr_cursor % len(all_screenshots)]
-                    scr_cursor += 1
-                    sids = [chosen_sid]
-                    scr_override = chosen_png
-                elif not sids and sources:
-                    sids = [sources[(c_idx - 1 + b_idx) % len(sources)].source_id]
-
-                # Motivated Studio Foley mapping
-                if b_idx == 0:
-                    sfx = "whoosh"
-                elif lt in ("claude_chat_dialog", "slash_command_prompt_bar", "code_editor_live_preview"):
-                    sfx = "typing"
-                elif lt == "browser_ui_live_tour":
-                    sfx = "click"
-                elif lt in ("before_after_workflow_card", "second_level_thinking_crowd"):
-                    sfx = "stamp"
-                else:
-                    sfx = "thock"
-
-                if is_stocks:
-                    v_style = "hook" if (c_idx == 1 and b_idx == 0) else ("warm" if c_idx == 7 else "stocks")
-                else:
-                    v_style = "hook" if c_idx == 1 else ("warm" if c_idx == 7 else "explainer")
-
-                code_lns = [str(x)[:64] for x in (rb.get("code_lines") or []) if str(x).strip()][:4]
-                if not code_lns and not is_stocks and sources and sources[0].code_or_commands:
-                    off = (len(all_beats) * 2) % max(1, len(sources[0].code_or_commands))
-                    code_lns = (sources[0].code_or_commands[off:] + sources[0].code_or_commands[:off])[:3]
-
-                raw_bt = taiwanize_text(str(rb.get("badge_text") or "")).strip()
-                if "或" in raw_bt or not raw_bt or (is_stocks and "$0" in raw_bt):
-                    raw_bt = (all_real_metrics[len(all_beats) % len(all_real_metrics)] if all_real_metrics else "+65.5%") if is_stocks else "$0 / 月"
-
-                # Wire multi-year chart points for growth & operating leverage layouts
-                c_pts: list[list[Any]] = []
-                sec_pts: list[list[Any]] = []
-                if lt in ("animated_growth_curve", "operating_leverage_chart"):
-                    if primary_rev_series and len(primary_rev_series) >= 3:
-                        c_pts = primary_rev_series
-                        sec_pts = primary_margin_series
-                    elif not is_stocks:
-                        c_pts = [["傳統腳本", 18, "易失效"], ["商業 RPA", 45, "$200/月"], ["單一 Agent", 76, "自動操作"], [topic.primary_entity[:12], 98, "$0 開源"]]
-
-                pipe_steps = pipeline_bar_labels if 2 <= c_idx <= 6 else []
-                act_pipe = (c_idx - 2) if 2 <= c_idx <= 6 else -1
-
-                all_beats.append(
-                    VisualBeat(
-                        beat_id=f"beat_{len(all_beats) + 1:02d}",
-                        chapter_index=c_idx,
-                        total_chapters=num_chapters,
-                        chapter_title=c_title,
-                        layout_type=lt,
-                        voice_style=v_style,  # type: ignore[arg-type]
-                        clauses=clauses,
-                        spoken_clauses=spoken_clauses,
-                        visual_title=taiwanize_text(str(rb.get("visual_title") or c_title))[:26],
-                        visual_subtitle=taiwanize_text(str(rb.get("visual_subtitle") or ""))[:42],
-                        badge_text=raw_bt[:18],
-                        nodes=v_nodes,
-                        callout_title=taiwanize_text(str(rb.get("callout_title") or ("底層投資邏輯" if is_stocks else "實戰關鍵防線")))[:18],
-                        callout_body=taiwanize_text(str(rb.get("callout_body") or clauses[-1]))[:46],
-                        code_lines=code_lns,
-                        pipeline_steps=pipe_steps,
-                        active_pipeline_idx=act_pipe,
-                        chart_points=c_pts,
-                        secondary_chart_points=sec_pts,
-                        camera_focus=cam_foc,
-                        screenshot_override=scr_override,
-                        ai_image_prompt=clean_ai_prompt("", topic.primary_entity, len(all_beats)) if lt == "concept_hero_split_3d" else "",
-                        source_ids=sids,
-                        sfx_cue=sfx,  # type: ignore[arg-type]
                     )
+
+            if lt == "agenda_four_steps":
+                v_nodes = [
+                    VisualNode(
+                        label=smart_trim(all_chapter_titles[i + 1], 8.0),
+                        sub=smart_trim(flat_items[(i + 1) * beats_per_chap]["paragraph"], 16.0),
+                        tag=f"0{i+1}",
+                        metric=f"0{i+1}",
+                        icon=["layers", "users", "terminal", "robot"][i % 4],
+                    )
+                    for i in range(4)
+                ]
+            else:
+                while len(v_nodes) < 3:
+                    k = len(v_nodes)
+                    src_k = sources[(c_idx + k) % max(1, len(sources))] if sources else None
+                    cl_k = clauses[min(k, len(clauses) - 1)]
+                    m_k = (src_k.metrics[k % len(src_k.metrics)] if (src_k and src_k.metrics) else (all_real_metrics[k % len(all_real_metrics)] if all_real_metrics else "+100%"))
+                    lbl_k = smart_trim(cl_k.split("，")[0], 8.0) or (src_k.domain if src_k else topic.primary_entity)
+                    v_nodes.append(
+                        VisualNode(
+                            label=lbl_k,
+                            sub=smart_trim(cl_k, 17.0),
+                            tag=smart_trim(m_k, 8.5),
+                            metric=_ensure_numeric_metric(m_k, all_real_metrics, k, ctx=cl_k),
+                            icon=("nvidia" if is_stocks else ("playwright" if k == 0 else "robot")),
+                            trend="up" if k == 0 else "neutral",
+                        )
+                    )
+
+            sids = [s for s in (rb.get("source_ids") or []) if s in valid_sids]
+            scr_override = ""
+            cam_foc = cam_presets[g_idx % len(cam_presets)]
+            if lt == "browser_ui_live_tour" and all_screenshots:
+                chosen_sid, chosen_png = all_screenshots[scr_cursor % len(all_screenshots)]
+                scr_cursor += 1
+                sids = [chosen_sid]
+                scr_override = chosen_png
+            elif not sids and sources:
+                sids = [sources[(c_idx - 1 + b_idx) % len(sources)].source_id]
+
+            if b_idx == 0:
+                sfx = "whoosh"
+            elif lt in ("claude_chat_dialog", "slash_command_prompt_bar", "code_editor_live_preview"):
+                sfx = "typing"
+            elif lt == "browser_ui_live_tour":
+                sfx = "click"
+            elif lt in ("before_after_workflow_card", "second_level_thinking_crowd"):
+                sfx = "stamp"
+            else:
+                sfx = "thock"
+
+            if is_stocks:
+                v_style = "hook" if (c_idx == 1 and b_idx == 0) else ("warm" if c_idx == 7 else "stocks")
+            else:
+                v_style = "hook" if c_idx == 1 else ("warm" if c_idx == 7 else "explainer")
+
+            code_lns = [str(x)[:64] for x in (rb.get("code_lines") or []) if str(x).strip()][:4]
+            if not code_lns and not is_stocks and sources and sources[0].code_or_commands:
+                off = (g_idx * 2) % max(1, len(sources[0].code_or_commands))
+                code_lns = (sources[0].code_or_commands[off:] + sources[0].code_or_commands[:off])[:3]
+
+            raw_bt = taiwanize_text(str(rb.get("badge_text") or "")).strip()
+            if "或" in raw_bt or not raw_bt or (is_stocks and "$0" in raw_bt):
+                raw_bt = (all_real_metrics[g_idx % len(all_real_metrics)] if all_real_metrics else "+65.5%") if is_stocks else "$0 / 月"
+
+            c_pts: list[list[Any]] = []
+            sec_pts: list[list[Any]] = []
+            if lt in ("animated_growth_curve", "operating_leverage_chart"):
+                if primary_rev_series and len(primary_rev_series) >= 3:
+                    c_pts = primary_rev_series
+                    sec_pts = primary_margin_series
+                elif not is_stocks:
+                    c_pts = [["傳統腳本", 18, "易失效"], ["商業 RPA", 45, "$200/月"], ["單一 Agent", 76, "自動操作"], [topic.primary_entity[:12], 98, "$0 開源"]]
+
+            pipe_steps = pipeline_bar_labels if 2 <= c_idx <= 6 else []
+            act_pipe = (c_idx - 2) if 2 <= c_idx <= 6 else -1
+
+            all_beats.append(
+                VisualBeat(
+                    beat_id=f"beat_{len(all_beats) + 1:02d}",
+                    chapter_index=c_idx,
+                    total_chapters=num_chapters,
+                    chapter_title=c_title,
+                    layout_type=lt,
+                    voice_style=v_style,  # type: ignore[arg-type]
+                    clauses=clauses,
+                    spoken_clauses=spoken_clauses,
+                    visual_title=smart_trim(str(rb.get("visual_title") or c_title), 13.5),
+                    visual_subtitle=taiwanize_text(str(rb.get("visual_subtitle") or ""))[:40],
+                    badge_text=raw_bt[:18],
+                    nodes=v_nodes,
+                    callout_title=smart_trim(str(rb.get("callout_title") or ("底層投資邏輯" if is_stocks else "實戰關鍵防線")), 10.0),
+                    callout_body=taiwanize_text(str(rb.get("callout_body") or clauses[-1]))[:44],
+                    code_lines=code_lns,
+                    pipeline_steps=pipe_steps,
+                    active_pipeline_idx=act_pipe,
+                    chart_points=c_pts,
+                    secondary_chart_points=sec_pts,
+                    camera_focus=cam_foc,
+                    screenshot_override=scr_override,
+                    ai_image_prompt=clean_ai_prompt("", topic.primary_entity, len(all_beats)) if lt == "concept_hero_split_3d" else "",
+                    source_ids=sids,
+                    sfx_cue=sfx,  # type: ignore[arg-type]
                 )
+            )
 
-        # STAGE C: 10-Beat Pure-Remotion 9:16 Funnel Shorts (~46-52s, crisp visual cut every ~4.5s / sub-step every ~2.0s!)
+        # Build 10-beat Pure-Remotion 9:16 Funnel Shorts from `master_doc["short_beats"]`
         short_seq = SHORT_STOCKS_SEQUENCE if is_stocks else SHORT_TUTORIAL_SEQUENCE
-        pass3_prompt = (
-            f"長片標題：{taiwanize_text(str(plan_data.get('title') or topic.title))}\n"
-            f"長片各章精華：{[{'chapter': b.chapter_title, 'point': '，'.join(b.clauses[:2]), 'badge': b.badge_text} for b in all_beats[::4]]}\n"
-            f"查證公開數據：{json.dumps(src_digest[:4], ensure_ascii=False)}\n\n"
-            "請設計一支 **46～52 秒高留存純 Remotion 推流 YouTube Shorts**，共 **10 幕 (short_beats)**！\n"
-            "每幕 `narration` 必填 **26～38 個繁體中文字（2 句緊湊短句）**，嚴禁寫『哈囉大家好』：\n"
-            "- 第 1 幕：第一秒直接亮出最強反差數據或免費替代方案\n"
-            "- 第 2～8 幕：每幕推進一個硬核機制、真實數據或第二層思考反差\n"
-            "- 第 9 幕：留一個最關鍵的踩坑或估值懸念\n"
-            "- 第 10 幕 (is_cta=true)：明確口播『完整數據拆解跟實戰清單我都整理在長片裡，現在直接點畫面左下角的關聯影片看完整版！』\n"
-            "輸出 JSON：{\"short_title\": \"... #Shorts\", \"short_hook_banner\": \"6字內頂部標籤\", \"short_beats\": [{\"narration\": \"26到38字口語台詞\", \"headline\": \"11字內大標題\", \"sub_caption\": \"18字內副標\", \"highlight_badge\": \"具體指標\", \"nodes\": [{\"label\": \"具體名詞\", \"sub\": \"白話重點\", \"tag\": \"數據\", \"icon\": \"robot\"}]}]}"
-        )
-        try:
-            short_plan = self._call_llm_json(sys_prompt, pass3_prompt, max_tokens=2600)
-        except Exception:
-            short_plan = {}
-
-        raw_sbeats = short_plan.get("short_beats") or []
+        raw_sbeats = master_doc.get("short_beats") or []
         short_beats: list[ShortBeatSpec] = []
         anchor_step = max(1, len(all_beats) // 9)
 
@@ -773,10 +787,10 @@ class GarychenScriptwriter:
                         raw_t = ""
                     snodes.append(
                         VisualNode(
-                            label=smart_trim(str(nd["label"]), 11.0),
-                            sub=smart_trim(str(nd.get("sub") or ""), 17.0),
-                            tag=smart_trim(raw_t, 9.0),
-                            metric=_ensure_numeric_metric(raw_t, all_real_metrics, idx),
+                            label=smart_trim(str(nd["label"]), 8.5),
+                            sub=smart_trim(str(nd.get("sub") or ""), 16.5),
+                            tag=smart_trim(raw_t, 8.5),
+                            metric=_ensure_numeric_metric(raw_t, all_real_metrics, idx, ctx=str(nd.get("sub") or "")),
                             icon=ic if ic in VALID_ICONS else ("nvidia" if is_stocks else "robot"),
                         )
                     )
@@ -797,7 +811,7 @@ class GarychenScriptwriter:
                     voice_style=s_vstyle,  # type: ignore[arg-type]
                     clauses=s_clauses[:2],
                     spoken_clauses=s_spoken,
-                    headline=taiwanize_text(str(sb.get("headline") or ("點擊左下角看完整版" if is_cta else ref_b.visual_title)))[:14],
+                    headline=smart_trim(str(sb.get("headline") or ("點擊左下角看完整版" if is_cta else ref_b.visual_title)), 11.5),
                     sub_caption=taiwanize_text(str(sb.get("sub_caption") or ref_b.visual_subtitle))[:24],
                     highlight_badge=taiwanize_text(str(sb.get("highlight_badge") or ("完整長片已上線" if is_cta else ref_b.badge_text)))[:16],
                     nodes=snodes,
@@ -809,14 +823,14 @@ class GarychenScriptwriter:
                 )
             )
 
-        ep_title = taiwanize_text(str(plan_data.get("title") or topic.title))
-        tl1 = smart_trim(str(plan_data.get("thumbnail_line1") or topic.primary_entity), 8.5)
-        tl2 = smart_trim(str(plan_data.get("thumbnail_line2") or ("華爾街看錯了？" if is_stocks else "免費接管瀏覽器")), 8.5)
+        ep_title = taiwanize_text(str(master_doc.get("title") or topic.title))
+        tl1 = smart_trim(str(master_doc.get("thumbnail_line1") or topic.primary_entity), 8.5)
+        tl2 = smart_trim(str(master_doc.get("thumbnail_line2") or ("華爾街看錯了？" if is_stocks else "免費接管瀏覽器")), 8.5)
         if not tl1:
             tl1 = smart_trim(topic.primary_entity, 8.5)
         if not tl2 or tl2 == tl1:
             tl2 = "三大護城河" if is_stocks else "零成本實戰"
-        s_title = taiwanize_text(str(short_plan.get("short_title") or f"{ep_title[:22]}｜精華速看 #Shorts"))
+        s_title = taiwanize_text(str(master_doc.get("short_title") or f"{ep_title[:22]}｜精華速看 #Shorts"))
         if "#Shorts" not in s_title and "#shorts" not in s_title:
             s_title = f"{s_title} #Shorts"
 
@@ -827,12 +841,12 @@ class GarychenScriptwriter:
             thumbnail_line2=tl2,
             category=topic.category,
             avatar_mode=is_stocks,
-            youtube_description_summary=taiwanize_text(str(plan_data.get("youtube_description_summary") or topic.hook_angle)),
-            hashtags=[str(h) for h in (plan_data.get("hashtags") or (["#美股", "#財報分析", "#Gary聊美股", "#AI投資"] if is_stocks else ["#AIAgent", "#AI教學", "#GaryChen", "#自動化"]))[:6]],
+            youtube_description_summary=taiwanize_text(str(master_doc.get("youtube_description_summary") or topic.hook_angle)),
+            hashtags=[str(h) for h in (master_doc.get("hashtags") or (["#美股", "#財報分析", "#Gary聊美股", "#AI投資"] if is_stocks else ["#AIAgent", "#AI教學", "#GaryChen", "#自動化"]))[:6]],
             chapters=[f"{i + 1:02d} {t}" for i, t in enumerate(all_chapter_titles)],
             beats=all_beats,
             short_title=s_title,
-            short_hook_banner=smart_trim(str(short_plan.get("short_hook_banner") or tl1), 9.0),
+            short_hook_banner=smart_trim(str(master_doc.get("short_hook_banner") or tl1), 9.0),
             short_cta_target_title=ep_title,
             short_beats=short_beats,
         )

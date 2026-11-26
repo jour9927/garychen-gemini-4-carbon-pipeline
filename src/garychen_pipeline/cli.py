@@ -10,7 +10,7 @@ from rich.table import Table
 
 from .config import load_cluster_endpoints
 from .orchestrator import GarychenUnattendedPipeline
-from .scriptwriter import load_gemini_api_key
+from .scriptwriter import load_gemini_api_key, resolve_agy_cli
 from .topic_scout import UnattendedTopicScout
 
 console = Console()
@@ -42,11 +42,14 @@ def cmd_health():
         except Exception as e:
             t.add_row(str(ep.priority), ep.name, ep.url, "[red]OFFLINE[/red]", str(e)[:60])
 
+    agy_bin = resolve_agy_cli()
     g_key, g_model = load_gemini_api_key()
-    if g_key:
+    if agy_bin:
+        t.add_row("Cloud LLM", "AGY CLI (Gemini 4)", agy_bin, "[green]ONLINE[/green]", "Authenticated local agy CLI (Gemini 4 Carbon / Neon)")
+    elif g_key:
         t.add_row("Cloud LLM", "Google Gemini API", "generativelanguage.googleapis.com", "[green]CONFIGURED[/green]", f"model={g_model} (key_len={len(g_key)})")
     else:
-        t.add_row("Cloud LLM", "Google Gemini API", "generativelanguage.googleapis.com", "[yellow]MISSING GEMINI_API_KEY[/yellow]", "Set GEMINI_API_KEY in .env or env")
+        t.add_row("Cloud LLM", "Google Gemini", "agy / generativelanguage", "[red]MISSING[/red]", "Install/sign-in `agy` CLI or set GEMINI_API_KEY")
 
     console.print(t)
 
