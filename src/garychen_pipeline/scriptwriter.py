@@ -10,16 +10,53 @@ import httpx
 
 from .config import (
     BeatLayoutType,
+    CONFIGS_DIR,
     CrawledSource,
     EpisodeScript,
+    PROJECT_ROOT,
     ShortBeatLayoutType,
     ShortBeatSpec,
     TopicCandidate,
     VisualBeat,
     VisualNode,
-    load_cluster_endpoints,
 )
 from .tts_normalizer import to_spoken_tts_text
+
+
+def load_gemini_api_key() -> tuple[str, str]:
+    """Loads GEMINI_API_KEY and target Gemini model from env, project `.env`, or `configs/gemini.json`."""
+    env_file = PROJECT_ROOT / ".env"
+    file_vars: dict[str, str] = {}
+    if env_file.exists():
+        for raw_ln in env_file.read_text(encoding="utf-8", errors="ignore").splitlines():
+            ln = raw_ln.strip()
+            if not ln or ln.startswith("#") or "=" not in ln:
+                continue
+            k, v = ln.split("=", 1)
+            file_vars[k.strip()] = v.strip().strip("\"'")
+
+    cfg_json = CONFIGS_DIR / "gemini.json"
+    if cfg_json.exists():
+        try:
+            jd = json.loads(cfg_json.read_text(encoding="utf-8"))
+            if jd.get("api_key"):
+                file_vars.setdefault("GEMINI_API_KEY", str(jd["api_key"]).strip())
+            if jd.get("model"):
+                file_vars.setdefault("GC_GEMINI_MODEL", str(jd["model"]).strip())
+        except Exception:
+            pass
+
+    key = (
+        os.environ.get("GEMINI_API_KEY")
+        or os.environ.get("GOOGLE_API_KEY")
+        or file_vars.get("GEMINI_API_KEY")
+        or file_vars.get("GOOGLE_API_KEY")
+        or ""
+    ).strip()
+    if key == "your_gemini_api_key_here":
+        key = ""
+    model = (os.environ.get("GC_GEMINI_MODEL") or file_vars.get("GC_GEMINI_MODEL") or "gemini-2.5-pro").strip()
+    return key, model
 
 TUTORIAL_CHAPTER_LAYOUT_MAP: list[list[BeatLayoutType]] = [
     ["app_squircles_strikethrough", "claude_chat_dialog", "slash_command_prompt_bar", "agenda_four_steps"],
@@ -229,83 +266,78 @@ def _ensure_numeric_metric(val: str, fallback_metrics: list[str], idx: int, ctx:
 
 class GarychenScriptwriter:
     """
-    V4 Two-Stage Verbatim Narrative + Anti-Slop Critic + 28-Beat Remotion Choreographer:
-      - Stage A (`_call_llm_text`): Pure Gary Chen verbatim spoken Taiwanese Mandarin (4 paragraphs/chapter = 28 Long beats, ~5.5–6.5 min)
-      - Stage B (`_call_llm_json`): Compiles each chapter's 4 spoken beats onto 4 distinct Remotion archetypes with zero generic fallback strings
-      - Stage C: Compiles 10 rapid Pure-Remotion 9:16 Funnel Shorts scenes (~46–52s)
+    V4 Cloud Gemini Master Scriptwriter & Remotion Choreographer (ZERO local Ollama!):
+      - Exclusively uses Google Gemini (`google-genai` SDK, default `gemini-2.5-pro`) for frontier-grade
+        @garychenai Taiwanese Mandarin long-form storytelling, deep SEC/GitHub reasoning, and native JSON compilation.
+      - Stage A (`_call_llm_raw`): Pure Gary Chen verbatim spoken Taiwanese Mandarin prose
+      - Stage B (`_call_llm_json` with `response_mime_type="application/json"`): Structured Remotion beat compiler
+      - Stage C: Pure-Remotion 9:16 Funnel Shorts compiler
     """
 
-    def __init__(self, ollama_url: str = "http://127.0.0.1:11434", ollama_model: str = "qwen3:8b"):
-        self.ollama_url = os.environ.get("GC_OLLAMA_URL", ollama_url).rstrip("/")
-        self.ollama_model = os.environ.get("GC_OLLAMA_MODEL", ollama_model)
+    def __init__(self, gemini_model: str | None = None):
+        api_key, cfg_model = load_gemini_api_key()
+        self.api_key = api_key
+        self.gemini_model = gemini_model or cfg_model or "gemini-2.5-pro"
 
-    def _call_llm_raw(self, system_prompt: str, user_prompt: str, max_tokens: int = 2600, temp: float = 0.44) -> str:
-        for ep in load_cluster_endpoints():
-            if "colab" not in ep.name:
-                continue
-            try:
-                headers = {"Authorization": f"Bearer {ep.token}"}
-                with httpx.Client(timeout=30.0, trust_env=False) as client:
-                    hr = client.get(f"{ep.url}/health", timeout=6.0)
-                    if hr.status_code != 200 or "llm_chat" not in (hr.json().get("capabilities") or []):
-                        continue
-                    sub = client.post(
-                        f"{ep.url}/job/submit",
-                        headers=headers,
-                        json={
-                            "kind": "llm_chat",
-                            "system_prompt": system_prompt,
-                            "user_prompt": user_prompt,
-                            "max_tokens": max_tokens,
-                            "temperature": temp,
-                        },
-                    )
-                    if sub.status_code != 200:
-                        continue
-                    jid = sub.json()["job_id"]
-                    t0 = time.time()
-                    while time.time() - t0 < 240:
-                        time.sleep(1.6)
-                        st = client.get(f"{ep.url}/job/status/{jid}", headers=headers).json()
-                        if st.get("status") == "done":
-                            txt = str(st["result"]["text"])
-                            return re.sub(r"<think>.*?</think>", "", txt, flags=re.DOTALL).strip()
-                        if st.get("status") == "error":
-                            break
-            except Exception:
-                pass
+    def _get_client(self):
+        if not self.api_key:
+            self.api_key, cfg_m = load_gemini_api_key()
+            if not self.gemini_model:
+                self.gemini_model = cfg_m
+        if not self.api_key:
+            raise RuntimeError(
+                "Missing GEMINI_API_KEY (local LLM disabled per user configuration). "
+                "Please set GEMINI_API_KEY in /Users/alan_dingchaoliao/Downloads/garychen/.env or environment."
+            )
+        from google import genai
+        return genai.Client(api_key=self.api_key)
+
+    def _call_llm_raw(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        max_tokens: int = 4096,
+        temp: float = 0.45,
+        json_mode: bool = False,
+    ) -> str:
+        from google.genai import types
+
+        client = self._get_client()
+        candidate_models = [self.gemini_model]
+        if "flash" not in self.gemini_model:
+            candidate_models.append("gemini-2.5-flash")
 
         last_err: Exception | None = None
-        for attempt in range(3):
-            payload: dict[str, Any] = {
-                "model": self.ollama_model,
-                "stream": False,
-                "options": {"temperature": temp + 0.06 * attempt, "num_ctx": 8192, "num_predict": max_tokens},
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-            }
-            if "qwen3" in self.ollama_model:
-                payload["think"] = False
-            try:
-                with httpx.Client(timeout=httpx.Timeout(connect=10.0, read=160.0, write=15.0, pool=10.0), trust_env=False) as client:
-                    r = client.post(f"{self.ollama_url}/api/chat", json=payload)
-                    r.raise_for_status()
-                    txt = str(r.json().get("message", {}).get("content", ""))
-                    return re.sub(r"<think>.*?</think>", "", txt, flags=re.DOTALL).strip()
-            except Exception as exc:
-                last_err = exc
-                time.sleep(0.5)
-        raise RuntimeError(f"LLM call failed after 3 attempts: {last_err}")
+        for mdl_name in candidate_models:
+            for attempt in range(3):
+                try:
+                    cfg = types.GenerateContentConfig(
+                        system_instruction=system_prompt,
+                        temperature=temp + 0.05 * attempt,
+                        max_output_tokens=max_tokens,
+                        response_mime_type="application/json" if json_mode else "text/plain",
+                    )
+                    resp = client.models.generate_content(
+                        model=mdl_name,
+                        contents=user_prompt,
+                        config=cfg,
+                    )
+                    txt = str(resp.text or "").strip()
+                    if txt:
+                        return txt
+                except Exception as exc:
+                    last_err = exc
+                    time.sleep(1.2 * (attempt + 1))
+        raise RuntimeError(f"Google Gemini API call failed ({self.gemini_model}): {last_err}")
 
-    def _call_llm_json(self, system_prompt: str, user_prompt: str, max_tokens: int = 2800) -> dict[str, Any]:
+    def _call_llm_json(self, system_prompt: str, user_prompt: str, max_tokens: int = 4096) -> dict[str, Any]:
         for attempt in range(3):
             raw = self._call_llm_raw(
                 system_prompt,
-                user_prompt + "\n請嚴格只輸出合法純 JSON 物件（字串內勿換行、引用請用『』），不要加任何前後解釋文字。",
+                user_prompt + "\n請嚴格只輸出合法純 JSON 物件（字串內引用請用『』），不要加任何前後解釋文字。",
                 max_tokens=max_tokens,
-                temp=0.38 + 0.08 * attempt,
+                temp=0.35 + 0.06 * attempt,
+                json_mode=True,
             )
             try:
                 return self._extract_json(raw)

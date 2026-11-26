@@ -25,7 +25,7 @@ def render_studio_thumbnail(script: EpisodeScript, out_png: Path):
     if script.category == "us_stocks":
         mini_rows = "".join(
             f'<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:#222226;border-radius:12px;">'
-            f'<span style="font-size:24px;color:#D4D4D8;font-weight:700;">{esc(nd.label[:10])}</span>'
+            f'<span style="font-size:24px;color:#D4D4D8;font-weight:700;">{esc(nd.label[:16])}</span>'
             f'<span style="font-size:28px;color:#4ADE80;font-weight:700;">{esc(nd.metric)}</span></div>'
             for nd in nodes[:2]
         )

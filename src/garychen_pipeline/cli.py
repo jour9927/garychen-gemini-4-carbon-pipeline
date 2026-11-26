@@ -10,6 +10,7 @@ from rich.table import Table
 
 from .config import load_cluster_endpoints
 from .orchestrator import GarychenUnattendedPipeline
+from .scriptwriter import load_gemini_api_key
 from .topic_scout import UnattendedTopicScout
 
 console = Console()
@@ -41,12 +42,11 @@ def cmd_health():
         except Exception as e:
             t.add_row(str(ep.priority), ep.name, ep.url, "[red]OFFLINE[/red]", str(e)[:60])
 
-    try:
-        r_ol = httpx.get("http://127.0.0.1:11434/api/tags", timeout=3.0, trust_env=False)
-        models = [m["name"] for m in r_ol.json().get("models", [])]
-        t.add_row("Local", "alan-hub Ollama", "http://127.0.0.1:11434", "[green]ONLINE[/green]", ", ".join(models))
-    except Exception as e:
-        t.add_row("Local", "alan-hub Ollama", "http://127.0.0.1:11434", "[red]OFFLINE[/red]", str(e)[:50])
+    g_key, g_model = load_gemini_api_key()
+    if g_key:
+        t.add_row("Cloud LLM", "Google Gemini API", "generativelanguage.googleapis.com", "[green]CONFIGURED[/green]", f"model={g_model} (key_len={len(g_key)})")
+    else:
+        t.add_row("Cloud LLM", "Google Gemini API", "generativelanguage.googleapis.com", "[yellow]MISSING GEMINI_API_KEY[/yellow]", "Set GEMINI_API_KEY in .env or env")
 
     console.print(t)
 

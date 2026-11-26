@@ -20,6 +20,7 @@ dependencies = [
     "soundfile>=0.12.1",
     "yt-dlp>=2026.11.0",
     "json-repair>=0.30.0",
+    "google-genai>=1.0.0",
     "playwright>=1.45.0",
     "huggingface-hub>=0.34.0,<1.0",
     "diffusers>=0.32.0,<0.36.0",
