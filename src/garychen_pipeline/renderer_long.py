@@ -184,6 +184,48 @@ def _make_macos_cursor_rgba() -> tuple[np.ndarray, np.ndarray]:
 CURSOR_RGB, CURSOR_A = _make_macos_cursor_rgba()
 
 
+def load_live_video_frames(webm_path: Path, vw: int, vh: int, fps_sample: int = 24, max_sec: float = 6.0) -> np.ndarray | None:
+    """Decodes real Playwright `.webm` browser action recording into (N, vh-4, vw-4, 3) uint8 RGB frames."""
+    tw, th = vw - 4, vh - 4
+    try:
+        raw = subprocess.check_output(
+            [
+                "ffmpeg", "-nostdin", "-v", "error", "-t", f"{max_sec:.1f}", "-i", str(webm_path),
+                "-vf", f"fps={fps_sample},scale={tw}:{th}",
+                "-f", "rawvideo", "-pix_fmt", "rgb24", "-",
+            ],
+            stdin=subprocess.DEVNULL,
+        )
+        frame_bytes = tw * th * 3
+        n_f = len(raw) // frame_bytes
+        if n_f >= 6:
+            return np.frombuffer(raw[: n_f * frame_bytes], dtype=np.uint8).reshape(n_f, th, tw, 3).copy()
+    except Exception:
+        pass
+    return None
+
+
+def render_live_video_viewport_60fps(
+    canvas: np.ndarray,
+    vid_frames: np.ndarray,
+    viewport_rect: tuple[int, int, int, int],
+    beat_sec: float,
+):
+    """Plays real Playwright `.webm` live scrolling DOM frames inside `viewport_rect` + animated macOS cursor!"""
+    vx, vy, vw, vh = viewport_rect
+    n_f = len(vid_frames)
+    # Smooth ping-pong playback at 24fps equivalent
+    raw_idx = int(beat_sec * 24.0)
+    cycle = max(1, (n_f - 1) * 2)
+    m = raw_idx % cycle
+    f_i = m if m < n_f else (cycle - m)
+    canvas[vy + 2 : vy + vh - 2, vx + 2 : vx + vw - 2] = vid_frames[f_i]
+
+    cur_px = vx + int(vw * (0.52 + 0.08 * math.sin(beat_sec * 1.3)))
+    cur_py = vy + int(vh * (0.48 + 0.10 * math.cos(beat_sec * 1.1)))
+    composite_roi(canvas, (cur_py, cur_py + 44, cur_px, cur_px + 36, CURSOR_RGB, CURSOR_A))
+
+
 def render_camera_viewport_60fps(
     canvas: np.ndarray,
     src_img_rgb: np.ndarray,
@@ -342,6 +384,7 @@ class GarychenLongRenderer:
         wipe_rois: dict[str, tuple[int, int, int, int, np.ndarray, np.ndarray] | None] = {}
         typing_rois: dict[str, tuple[int, int, int, int, np.ndarray, np.ndarray] | None] = {}
         cam_sources: dict[str, np.ndarray] = {}
+        cam_live_videos: dict[str, np.ndarray] = {}
 
         out_mp4.parent.mkdir(parents=True, exist_ok=True)
         tmp_html_file = out_mp4.parent / "_render_stage_long_v4.html"
@@ -353,8 +396,12 @@ class GarychenLongRenderer:
             browser = p.chromium.launch(**launch_kwargs, args=["--allow-file-access-from-files"])
             page = browser.new_page(viewport={"width": W, "height": H, "device_scale_factor": 1})
             for beat in script.beats:
-                # Preload high-res source screenshot for 60fps camera pan & zoom if `browser_ui_live_tour`
+                # Preload live `.webm` browser recording or high-res screenshot for `browser_ui_live_tour`
                 if beat.layout_type == "browser_ui_live_tour":
+                    if beat.live_video_override and Path(beat.live_video_override).exists():
+                        vf_arr = load_live_video_frames(Path(beat.live_video_override), CAM_VIEWPORT_LONG[2], CAM_VIEWPORT_LONG[3])
+                        if vf_arr is not None:
+                            cam_live_videos[beat.beat_id] = vf_arr
                     cand_p = beat.screenshot_override
                     if not cand_p:
                         for sid in beat.source_ids:
@@ -446,9 +493,7 @@ class GarychenLongRenderer:
             if txt and txt not in sub_cache:
                 sub_cache[txt] = self._render_subtitle_band(txt)
 
-        vcodec = ["-c:v", "h264_videotoolbox", "-b:v", "5600k", "-profile:v", "high"] if platform.system() == "Darwin" else [
-            "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-profile:v", "high"
-        ]
+        vcodec = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "2400k", "-bufsize", "4800k", "-profile:v", "high"]
         cmd = [
             "ffmpeg", "-y", "-loglevel", "error",
             "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
@@ -495,8 +540,10 @@ class GarychenLongRenderer:
 
                     frame = base_frames[b_id].copy()
 
-                    # A. 60fps Browser Camera Pan & Zoom + Animated macOS Cursor Click
-                    if b_id in cam_sources:
+                    # A. 60fps Live WebM Browser Action Video OR Camera Pan & Zoom + macOS Cursor
+                    if b_id in cam_live_videos:
+                        render_live_video_viewport_60fps(frame, cam_live_videos[b_id], CAM_VIEWPORT_LONG, beat_sec)
+                    elif b_id in cam_sources:
                         render_camera_viewport_60fps(
                             frame,
                             cam_sources[b_id],

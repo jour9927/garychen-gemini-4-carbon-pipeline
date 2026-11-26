@@ -55,7 +55,7 @@ STROKE_ICON_SVGS: dict[str, str] = {
     "sparkles": '<path d="M12 3l1.8 5.6a2 2 0 0 0 1.3 1.3L20.7 12l-5.6 1.8a2 2 0 0 0-1.3 1.3L12 20.7l-1.8-5.6a2 2 0 0 0-1.3-1.3L3.3 12l5.6-1.8a2 2 0 0 0 1.3-1.3L12 3z"/>',
 }
 
-CAM_VIEWPORT_LONG = (100, 210, 960, 560)  # (x, y, w, h) on 1920x1080 canvas
+CAM_VIEWPORT_LONG = (68, 138, 1140, 684)  # Enlarged V6 viewport (+46% area) on 1920x1080 canvas
 CAM_VIEWPORT_SHORT = (70, 310, 940, 560)  # (x, y, w, h) on 1080x1920 canvas
 
 
@@ -200,7 +200,15 @@ def base_css(bg_hex: str, width: int, height: int) -> str:
     .chap-crumb .num {{ color: #EB8B1B; font-weight: 700; letter-spacing: 0.4px; }}
     .chap-crumb .lbl {{ color: #8A8A93; font-weight: 500; }}
     .stage {{
-      position: absolute; top: 82px; left: 80px; right: 80px; bottom: 160px;
+      position: absolute; top: 72px; left: 56px; right: 56px; bottom: 146px;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }}
+    .stage-zoom-lg {{
+      transform: scale(1.28); transform-origin: center center;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }}
+    .stage-zoom-md {{
+      transform: scale(1.16); transform-origin: center center;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
     }}
     .ghost {{
@@ -248,10 +256,17 @@ def base_css(bg_hex: str, width: int, height: int) -> str:
 
 
 def _cite_pill(s0: CrawledSource | None) -> str:
+    return ""
+
+
+def _hud_cite_pill(s0: CrawledSource | None) -> str:
     if not s0:
         return ""
     dt_p = f" · {esc(s0.published_date)}" if s0.published_date else ""
-    return f'<div class="cite-badge"><span class="cite-dot"></span><span>公開來源：{esc(s0.domain)}{dt_p}｜{esc(s0.title[:38])}</span></div>'
+    return (
+        f'<div class="cite-badge" style="margin:0;padding:5px 15px;font-size:14px;background:rgba(16,16,19,0.88);">'
+        f'<span class="cite-dot"></span><span>公開來源：{esc(s0.domain)}{dt_p}｜{esc(s0.title[:40])}</span></div>'
+    )
 
 
 def _build_chart_svg(
@@ -291,16 +306,14 @@ def _build_chart_svg(
         lx, ly = scoords[-1]
         slbl = str(secondary[-1][2]) if len(secondary[-1]) >= 3 else f"{secondary[-1][1]}%"
         sec_svg = (
-            f'<path d="{sec_d}" fill="none" stroke="#E4E4E7" stroke-width="3.2" stroke-linecap="round"/>'
-            f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="6" fill="#FFFFFF"/>'
-            f'<text x="{lx - 14:.1f}" y="{ly + 32:.1f}" fill="#E4E4E7" font-size="20" font-weight="700" text-anchor="end">營益率 {esc(slbl)}</text>'
+            f'<path d="{sec_d}" fill="none" stroke="#E4E4E7" stroke-width="3.4" stroke-linecap="round"/>'
+            f'<circle cx="{lx:.1f}" cy="{ly:.1f}" r="6.5" fill="#FFFFFF"/>'
+            f'<text x="{lx:.1f}" y="{min(height - 38, ly + 30):.1f}" fill="#E4E4E7" font-size="20" font-weight="700" text-anchor="end">營益率 {esc(slbl)}</text>'
         )
         if dual_label:
-            mx, my = coords[-2]
-            msy = scoords[-2][1]
             sec_svg += (
-                f'<line x1="{mx:.1f}" y1="{my + 10:.1f}" x2="{mx:.1f}" y2="{msy - 10:.1f}" stroke="#EB8B1B" stroke-width="2" stroke-dasharray="5 4"/>'
-                f'<text x="{mx + 12:.1f}" y="{(my + msy)/2 + 6:.1f}" fill="#F59E0B" font-size="18" font-weight="700">{esc(dual_label)}</text>'
+                f'<rect x="{pad_x + 12}" y="{pad_top - 4}" width="166" height="34" rx="17" fill="rgba(235,139,27,0.18)" stroke="#EB8B1B" stroke-width="1.4"/>'
+                f'<text x="{pad_x + 95}" y="{pad_top + 19}" fill="#F59E0B" font-size="18" font-weight="700" text-anchor="middle">{esc(dual_label)}</text>'
             )
 
     dots_and_labels = []
@@ -549,11 +562,11 @@ def build_long_beat_html(
                 f'{tag_pill}</div></div>'
             )
         stage_inner = f"""
-        <div class="base-only" style="font-size:28px;font-weight:700;color:#E4E4E7;margin-bottom:20px;">{esc(beat.visual_title)}</div>
-        <div style="position:relative;width:1000px;height:430px;display:flex;flex-direction:column;align-items:center;">
+        <div class="base-only" style="font-size:30px;font-weight:700;color:#E4E4E7;margin-bottom:22px;">{esc(beat.visual_title)}</div>
+        <div style="position:relative;width:1000px;min-height:475px;display:flex;flex-direction:column;align-items:center;">
           <div data-step="{step_of(0)}" style="z-index:5;display:flex;flex-direction:column;align-items:center;">
             {app_squircle(hero_nd.icon, 110, True)}
-            <span style="font-size:21px;font-weight:700;margin-top:10px;color:#EB8B1B;">{esc(hero_nd.label)}</span>
+            <span style="font-size:22px;font-weight:700;margin-top:10px;color:#EB8B1B;">{esc(hero_nd.label)}</span>
           </div>
           <svg width="860" height="106" viewBox="0 0 860 106" style="margin-top:4px;overflow:visible;">
             <line class="base-only" x1="430" y1="0" x2="145" y2="98" stroke="rgba(255,255,255,0.10)" stroke-width="2" stroke-dasharray="6 6"/>
@@ -725,33 +738,31 @@ def build_long_beat_html(
         </div>
         <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
 
-    # 10. LIVE DARK SCREENSHOT TOUR WITH 60FPS CAMERA ZOOM & CURSOR SLOT
+    # 10. LIVE DARK SCREENSHOT / WEBM TOUR WITH 60FPS CAMERA ZOOM & CURSOR SLOT
     elif lt == "browser_ui_live_tour":
         vx, vy, vw, vh = CAM_VIEWPORT_LONG
         callouts = []
         for i, nd in enumerate(nodes[:3]):
             st = step_of(i)
             callouts.append(
-                f'<div class="slot-wrap" style="width:450px;height:104px;">'
+                f'<div class="slot-wrap" style="width:580px;height:132px;">'
                 f'<div class="ghost base-only"></div>'
-                f'<div data-step="{st}" class="glass-card {"orange-glow" if i == 0 else ""}" style="width:450px;height:104px;padding:18px 22px;display:flex;align-items:center;gap:16px;">'
-                f'<span style="width:36px;height:36px;border-radius:50%;background:#EB8B1B;color:#141414;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{i+1}</span>'
-                f'<div><div style="font-size:21px;font-weight:700;">{esc(nd.label)}</div>'
-                f'<div style="font-size:16px;color:#A1A1AA;margin-top:4px;">{esc(nd.sub[:25])}</div></div></div></div>'
+                f'<div data-step="{st}" class="glass-card {"orange-glow" if i == 0 else ""}" style="width:580px;height:132px;padding:22px 26px;display:flex;align-items:center;gap:20px;">'
+                f'<span style="width:44px;height:44px;border-radius:50%;background:#EB8B1B;color:#141414;font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{i+1}</span>'
+                f'<div><div style="font-size:26px;font-weight:700;">{esc(nd.label)}</div>'
+                f'<div style="font-size:19px;color:#A1A1AA;margin-top:6px;">{esc(nd.sub[:26])}</div></div></div></div>'
             )
-        # Render exact viewport frame at (vx, vy, vw, vh); renderer_long composites 60fps zoomed screenshot + cursor!
         stage_inner = f"""
-        <div class="base-only" style="position:fixed;left:{vx}px;top:{vy-38}px;width:{vw}px;height:38px;background:#1D1D22;border:1.5px solid rgba(255,255,255,0.14);border-bottom:none;border-radius:18px 18px 0 0;display:flex;align-items:center;padding:0 18px;gap:8px;">
-          <span style="width:10px;height:10px;border-radius:50%;background:#EF4444;"></span>
-          <span style="width:10px;height:10px;border-radius:50%;background:#F59E0B;"></span>
-          <span style="width:10px;height:10px;border-radius:50%;background:#22C55E;"></span>
-          <span class="mono" style="margin-left:14px;font-size:14px;color:#9CA3AF;">{esc(s0.url[:62] if s0 else beat.visual_title)}</span>
+        <div class="base-only" style="position:fixed;left:{vx}px;top:{vy-42}px;width:{vw}px;height:42px;background:#1D1D22;border:1.5px solid rgba(255,255,255,0.16);border-bottom:none;border-radius:18px 18px 0 0;display:flex;align-items:center;padding:0 20px;gap:9px;">
+          <span style="width:11px;height:11px;border-radius:50%;background:#EF4444;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#F59E0B;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#22C55E;"></span>
+          <span class="mono" style="margin-left:14px;font-size:16px;color:#9CA3AF;">{esc(s0.url[:68] if s0 else beat.visual_title)}</span>
         </div>
-        <div class="base-only" style="position:fixed;left:{vx}px;top:{vy}px;width:{vw}px;height:{vh}px;border:1.5px solid rgba(255,255,255,0.14);border-radius:0 0 18px 18px;box-shadow:0 28px 70px rgba(0,0,0,0.65);background:#141418;"></div>
-        <div style="position:fixed;left:{vx + vw + 48}px;top:{vy + 8}px;width:460px;display:flex;flex-direction:column;gap:18px;">
-          <div class="base-only" style="font-size:30px;font-weight:700;margin-bottom:4px;">{esc(beat.visual_title)}</div>
+        <div class="base-only" style="position:fixed;left:{vx}px;top:{vy}px;width:{vw}px;height:{vh}px;border:1.5px solid rgba(255,255,255,0.16);border-radius:0 0 18px 18px;box-shadow:0 28px 70px rgba(0,0,0,0.65);background:#141418;"></div>
+        <div style="position:fixed;left:{vx + vw + 42}px;top:{vy + 14}px;width:590px;display:flex;flex-direction:column;gap:22px;">
+          <div class="base-only" style="font-size:36px;font-weight:700;margin-bottom:6px;">{esc(beat.visual_title)}</div>
           {''.join(callouts)}
-          <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>
         </div>"""
 
     # 11. BEFORE VS AFTER STAMP WORKFLOW CARD (UrFrDJ t=884s)
@@ -902,18 +913,27 @@ def build_long_beat_html(
         <div data-step="{step_of(2)}" style="margin-top:22px;color:#F59E0B;font-size:20px;font-weight:700;">↓ {esc(beat.callout_body)}</div>
         <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
 
-    # 17. US STOCKS: NEGATIVE-SPACE BIG STATEMENT (KWAvlqx t=263s, t=1131s & 82_google tile 12)
+    # 17. US STOCKS: NEGATIVE-SPACE BIG STATEMENT WITH CONTEXT PILLS (never empty!)
     elif lt == "stocks_big_statement":
         headline = beat.visual_title if len(beat.visual_title) >= 6 else (beat.badge_text or beat.visual_title)
+        sub_pills = "".join(
+            f'<div data-step="{step_of(min(n_clauses - 1, i + 1))}" class="glass-card {"orange-glow" if i == 0 else ""}" style="padding:20px 28px;min-width:340px;display:flex;align-items:center;gap:18px;">'
+            f'{app_squircle(nd.icon, 64, i == 0)}'
+            f'<div><div style="font-size:22px;font-weight:700;">{esc(nd.label)}</div>'
+            f'<div style="font-size:18px;color:#EB8B1B;font-weight:700;margin-top:4px;">{esc(nd.metric or nd.tag or nd.sub[:14])}</div></div></div>'
+            for i, nd in enumerate(nodes[:3])
+        )
         stage_inner = f"""
-        <div data-step="{step_of(0)}" style="display:flex;align-items:center;gap:26px;">
-          <div style="width:6px;height:78px;background:#EB8B1B;border-radius:3px;"></div>
-          <div>
-            <div style="font-size:64px;font-weight:700;letter-spacing:-0.8px;">{esc(headline)}</div>
-            <div data-step="{step_of(1)}" style="font-size:25px;color:#A1A1AA;margin-top:14px;">{esc(beat.callout_body or beat.visual_subtitle)}</div>
+        <div style="display:flex;flex-direction:column;gap:42px;max-width:1360px;">
+          <div data-step="{step_of(0)}" style="display:flex;align-items:center;gap:28px;">
+            <div style="width:8px;height:96px;background:#EB8B1B;border-radius:4px;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:68px;font-weight:700;letter-spacing:-0.8px;line-height:1.15;">{esc(headline)}</div>
+              <div data-step="{step_of(1)}" style="font-size:28px;color:#D4D4D8;margin-top:14px;">{esc(beat.callout_body or beat.visual_subtitle)}</div>
+            </div>
           </div>
-        </div>
-        <div data-step="{step_of(2)}">{_cite_pill(s0)}</div>"""
+          <div style="display:flex;gap:26px;">{sub_pills}</div>
+        </div>"""
 
     # 18. US STOCKS: COMPACT ASYMMETRIC KPI / VALUATION CARDS (KWAvlqx t=15s, 449s, 697s, 883s)
     elif lt in ("stocks_kpi_asymmetric", "stocks_valuation_scenarios"):
@@ -970,11 +990,30 @@ def build_long_beat_html(
           <div data-step="{step_of(2)}" style="text-align:center;margin-top:28px;">{_cite_pill(s0)}</div>
         </div>"""
 
+    wide_layouts = {
+        "stocks_kpi_asymmetric", "stocks_valuation_scenarios", "stocks_four_pillars",
+        "stocks_big_statement", "second_level_thinking_crowd", "protagonist_app_flow",
+        "code_editor_live_preview", "animated_growth_curve", "operating_leverage_chart",
+        "concept_hero_split_3d",
+    }
+    if lt == "browser_ui_live_tour":
+        wrapped_stage = stage_inner
+    elif lt in wide_layouts:
+        wrapped_stage = f'<div class="stage-zoom-md">{stage_inner}</div>'
+    else:
+        wrapped_stage = f'<div class="stage-zoom-lg">{stage_inner}</div>'
+
+    hud_cite = (
+        f'<div data-step="{step_of(2)}" style="position:fixed;left:48px;bottom:14px;z-index:16;">{_hud_cite_pill(s0)}</div>'
+        if s0 else ""
+    )
+
     doc = f"""<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><style>{base_css(bg_hex, tokens.long_width, tokens.long_height)}</style></head>
     <body>
       {crumb_html}
       {pipe_html}
-      <div class="stage">{stage_inner}</div>
+      <div class="stage">{wrapped_stage}</div>
+      {hud_cite}
     </body></html>"""
     return doc, n_clauses
 

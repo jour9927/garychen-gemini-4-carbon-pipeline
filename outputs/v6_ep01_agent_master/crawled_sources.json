@@ -1,0 +1,128 @@
+[
+  {
+    "source_id": "S1",
+    "title": "browser-use/browser-use (122,138 ★)",
+    "url": "https://github.com/browser-use/browser-use",
+    "domain": "github.com",
+    "published_date": "2026-11-26",
+    "retrieved_at": "2026-11-26T18:25:38Z",
+    "source_type": "github_primary",
+    "relevance_score": 0.99,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1.png",
+    "extra_screenshots": [
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_scroll1.png",
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_scroll2.png",
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_pulls.png"
+    ],
+    "live_video_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_live.webm",
+    "key_facts": [
+      "GitHub 官方開源儲存庫 browser-use/browser-use：122,138 Stars、13,660 Forks（主要語言 Python）",
+      "官方定位：Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.",
+      "最新正式版本 1.0.8（發布於 2026-11-22）",
+      "● task: \"book the earliest driving test\"",
+      "● model writes a cell          new_tab(url); bu.click(41); js(...)",
+      "● REPL runs it on Chrome (CDP) → output back to the model",
+      "The model, a REPL and CDP. That's the whole agent."
+    ],
+    "metrics": [
+      "122,138 ★",
+      "13,660 Forks",
+      "Python"
+    ],
+    "code_or_commands": [
+      "● task: \"book the earliest driving test\"",
+      "● model writes a cell          new_tab(url); bu.click(41); js(...)",
+      "● REPL runs it on Chrome (CDP) → output back to the model",
+      "✓ finish(result)",
+      "Anyone with the link can control the browser.",
+      "Key availability does not prove that the server accepts the key.",
+      "Cloud browser startup confirms that authentication worked.",
+      "**Local browser, your model:**"
+    ],
+    "pr_or_issue_items": [
+      "#6546 Cache Claude on OpenRouter, Bedrock ",
+      "#6545 fix(telemetry): disable person profi",
+      "#6544 fix(agent): request prompt caching f",
+      "#6540 1.0.9: rotate_proxy() with a country",
+      "#6539 fix(repl): preserve future imports a",
+      "#6538 fix(logging): escape lone surrogates"
+    ],
+    "time_series": {},
+    "excerpt": "GitHub 官方開源儲存庫 browser-use/browser-use：122,138 Stars、13,660 Forks（主要語言 Python） | 官方定位：Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API. | 最新正式版本 1.0.8（發布於 2026-11-22） | ● task: \"book the earliest driving test\""
+  },
+  {
+    "source_id": "S2",
+    "title": "官方網站：Browser Use: Browser Agents and Cloud Browsers",
+    "url": "https://browser-use.com",
+    "domain": "browser-use.com",
+    "published_date": "2026-11-27",
+    "retrieved_at": "2026-11-26T18:25:38Z",
+    "source_type": "official_doc",
+    "relevance_score": 0.97,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2.png",
+    "extra_screenshots": [
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_scroll1.png",
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_scroll2.png"
+    ],
+    "live_video_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_live.webm",
+    "key_facts": [
+      "Browser Use: Browser Agents and Cloud Browsers",
+      "Browser agents and cloud browsers: the most-starred open-source browser agent, stealth cloud browsers at $0.06/browser-hour and Browser Harness. SOC 2 Type II, ",
+      "Everything we sell is benchmarked. In public.",
+      "November 2026. 500 tasks. Graders differ."
+    ],
+    "metrics": [],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {},
+    "excerpt": "Everything we sell is benchmarked. In public. November 2026. 500 tasks. Graders differ. Same 100 tasks. Fewer tokens, longer bar. On-prem. Our browsers, your network. US or EU cloud. EU runs stay in Frankfurt. SOC 2 Type II. HIPAA on enterprise plans."
+  },
+  {
+    "source_id": "S3",
+    "title": "Atomicity for Agents: Exposing, Exploiting, and Mitigating TOCTOU Vulnerabilitie",
+    "url": "http://arxiv.org/abs/2603.00476v1",
+    "domain": "arxiv.org",
+    "published_date": "2026-02-28",
+    "retrieved_at": "2026-11-26T18:25:41Z",
+    "source_type": "research_paper",
+    "relevance_score": 0.8,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S3.png",
+    "extra_screenshots": [],
+    "live_video_path": "",
+    "key_facts": [
+      "arXiv 架構與實測論文（2026-02-28）：Atomicity for Agents: Exposing, Exploiting, and Mitigating TOCTOU Vulnerabilities in Browser-Use Agents",
+      "關鍵結論：Browser-use agents are widely used for everyday tasks. They enable automated interaction with web pages through structured DOM based interfaces or vision language models operating "
+    ],
+    "metrics": [
+      "arXiv 論文"
+    ],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {},
+    "excerpt": "Browser-use agents are widely used for everyday tasks. They enable automated interaction with web pages through structured DOM based interfaces or vision language models operating on page screenshots. However, web pages often change between planning and execution, causing agents to execute actions based on stale assumptions. We view this temporal mismatch as a time of check to time of use (TOCTOU)"
+  },
+  {
+    "source_id": "S4",
+    "title": "Nested Browser-Use Learning for Agentic Information Seeking",
+    "url": "http://arxiv.org/abs/2512.23647v1",
+    "domain": "arxiv.org",
+    "published_date": "2025-12-29",
+    "retrieved_at": "2026-11-26T18:25:41Z",
+    "source_type": "research_paper",
+    "relevance_score": 0.8,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S4.png",
+    "extra_screenshots": [],
+    "live_video_path": "",
+    "key_facts": [
+      "arXiv 架構與實測論文（2025-12-29）：Nested Browser-Use Learning for Agentic Information Seeking",
+      "關鍵結論：Information-seeking (IS) agents have achieved strong performance across a range of wide and deep search tasks, yet their tool use remains largely restricted to API-level snippet re"
+    ],
+    "metrics": [
+      "arXiv 論文"
+    ],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {},
+    "excerpt": "Information-seeking (IS) agents have achieved strong performance across a range of wide and deep search tasks, yet their tool use remains largely restricted to API-level snippet retrieval and URL-based page fetching, limiting access to the richer information available through real browsing. While full browser interaction could unlock deeper capabilities, its fine-grained control and verbose page c"
+  }
+]

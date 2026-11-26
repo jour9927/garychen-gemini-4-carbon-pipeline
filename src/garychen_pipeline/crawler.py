@@ -699,14 +699,33 @@ class PublicInfoCrawler:
                                 }"""
                             )
                             page.screenshot(path=str(out_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
-                            # Capture a 2nd scrolled-down view (README / architecture / chart table) so tours never repeat!
-                            if src.source_type in ("github_primary", "official_doc", "market_data"):
-                                page.evaluate("() => window.scrollBy(0, 780)")
-                                page.wait_for_timeout(450)
-                                scroll_png = out_dir / f"{src.source_id}_scroll.png"
+                            extras: list[str] = []
+                            # Capture scrolled views + /pulls tab so live tours never repeat the same static image
+                            if src.source_type in ("github_primary", "official_doc", "market_data", "github_repo"):
+                                page.evaluate("() => window.scrollBy(0, 760)")
+                                page.wait_for_timeout(400)
+                                scroll_png = out_dir / f"{src.source_id}_scroll1.png"
                                 page.screenshot(path=str(scroll_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
                                 if scroll_png.exists() and scroll_png.stat().st_size > 8000:
-                                    src.extra_screenshots = [str(scroll_png)]
+                                    extras.append(str(scroll_png))
+                                page.evaluate("() => window.scrollBy(0, 860)")
+                                page.wait_for_timeout(380)
+                                scroll2_png = out_dir / f"{src.source_id}_scroll2.png"
+                                page.screenshot(path=str(scroll2_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
+                                if scroll2_png.exists() and scroll2_png.stat().st_size > 8000:
+                                    extras.append(str(scroll2_png))
+                            if src.source_type == "github_primary" and "github.com/" in src.url:
+                                try:
+                                    page.goto(src.url.rstrip("/") + "/pulls", wait_until="domcontentloaded", timeout=9000)
+                                    page.wait_for_timeout(900)
+                                    prs_png = out_dir / f"{src.source_id}_pulls.png"
+                                    page.screenshot(path=str(prs_png), clip={"x": 0, "y": 0, "width": 1600, "height": 1000})
+                                    if prs_png.exists() and prs_png.stat().st_size > 8000:
+                                        extras.append(str(prs_png))
+                                except Exception:
+                                    pass
+                            if extras:
+                                src.extra_screenshots = extras
                         page.close()
                         if out_png.exists() and out_png.stat().st_size > 8000:
                             src.screenshot_path = str(out_png)
@@ -714,6 +733,50 @@ class PublicInfoCrawler:
                     except Exception:
                         continue
                 ctx.close()
+
+                # Record real 4.8s live interactive browser `.webm` clips for top 2 live web sources!
+                rec_tmp = out_dir / "_rec_tmp"
+                rec_tmp.mkdir(parents=True, exist_ok=True)
+                live_recorded = 0
+                for src in sources:
+                    if live_recorded >= 2 or src.domain == "sec.gov":
+                        continue
+                    target_webm = out_dir / f"{src.source_id}_live.webm"
+                    if target_webm.exists() and target_webm.stat().st_size > 25000:
+                        src.live_video_path = str(target_webm)
+                        live_recorded += 1
+                        continue
+                    try:
+                        vctx = browser.new_context(
+                            viewport={"width": 1280, "height": 760},
+                            color_scheme="dark",
+                            locale="zh-TW",
+                            record_video_dir=str(rec_tmp),
+                            record_video_size={"width": 1280, "height": 760},
+                        )
+                        vp = vctx.new_page()
+                        vp.goto(src.url, wait_until="domcontentloaded", timeout=10000)
+                        vp.wait_for_timeout(700)
+                        vp.evaluate(
+                            """() => {
+                                for (const sel of ['[id*="cookie"]', '[class*="cookie"]', '[class*="consent"]']) {
+                                    document.querySelectorAll(sel).forEach(el => el.style.display = 'none');
+                                }
+                            }"""
+                        )
+                        # Smooth 60fps-like incremental live scrolling & hover highlight
+                        for step_i in range(14):
+                            vp.evaluate(f"() => window.scrollBy({{top: {85 if step_i < 10 else -65}, behavior: 'smooth'}})")
+                            vp.wait_for_timeout(240)
+                        raw_vid = vp.video.path() if vp.video else None
+                        vp.close()
+                        vctx.close()
+                        if raw_vid and Path(raw_vid).exists() and Path(raw_vid).stat().st_size > 20000:
+                            Path(raw_vid).replace(target_webm)
+                            src.live_video_path = str(target_webm)
+                            live_recorded += 1
+                    except Exception:
+                        continue
                 browser.close()
         except Exception as exc:
             print(f"[crawler] Screenshot capture skipped ({exc})", flush=True)

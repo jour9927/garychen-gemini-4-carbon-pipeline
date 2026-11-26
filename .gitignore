@@ -26,3 +26,5 @@ outputs/*/audio_long/
 outputs/*/audio_short/
 outputs/*/images/
 outputs/*/live_screenshots/
+
+outputs/*/source_screenshots/

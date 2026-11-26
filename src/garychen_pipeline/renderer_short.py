@@ -164,9 +164,7 @@ class GarychenShortsRenderer:
             if txt and txt not in sub_cache:
                 sub_cache[txt] = self._render_subtitle_band(txt)
 
-        vcodec = ["-c:v", "h264_videotoolbox", "-b:v", "5800k", "-profile:v", "high"] if platform.system() == "Darwin" else [
-            "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-profile:v", "high"
-        ]
+        vcodec = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-maxrate", "3200k", "-bufsize", "6400k", "-profile:v", "high"]
         cmd = [
             "ffmpeg", "-y", "-loglevel", "error",
             "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",

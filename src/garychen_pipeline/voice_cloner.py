@@ -97,7 +97,8 @@ class GarychenVoiceCloner:
                     for style, group in by_style.items():
                         ref_info = self.ref_by_style[style]
                         payload_items = []
-                        spd = 1.05 if style == "hook" else (1.03 if style in ("explainer", "stocks") else 1.01)
+                        # V6 Studio Pacing: match real @garychenai brisk 435-450 chars/min speaking cadence!
+                        spd = 1.14 if style == "hook" else (1.12 if style in ("explainer", "stocks") else 1.09)
                         for x in group:
                             disp_cl = x["clauses"]
                             spok_cl = x.get("spoken_clauses") or [to_spoken_tts_text(c) for c in disp_cl]
@@ -213,8 +214,24 @@ class GarychenVoiceCloner:
 
         for b_idx, br in enumerate(beat_results):
             sfx_kind = br.get("sfx_cue", "thock")
+            aligned = br.get("aligned_clauses") or []
             if b_idx > 0:
-                gap = chapter_pause if sfx_kind == "whoosh" else inter_beat_pause
+                prev_cl = (beat_results[b_idx - 1].get("aligned_clauses") or [{}])[-1].get("text", "")
+                first_cl = (aligned[0].get("text", "") if aligned else "")
+                # Natural human breathing curve (std ~0.21s matching real @garychenai):
+                #   - Chapter boundary: 0.58s deep breath
+                #   - Rhetorical question / sharp contrast ("但", "不過", "嗎", "第二層"): 0.42s dramatic pause
+                #   - Fast continuation ("而且", "甚至", "同時", "接著"): tight 0.11s link
+                #   - Standard beat transition: modulated 0.18s..0.31s
+                if sfx_kind == "whoosh":
+                    gap = max(chapter_pause, 0.56) if chapter_pause >= 0.30 else chapter_pause
+                elif any(prev_cl.endswith(q) for q in ("嗎", "呢", "？", "?")) or first_cl.startswith(("但", "不過", "問題", "反過", "換個", "第二層")):
+                    gap = inter_beat_pause * 2.05
+                elif first_cl.startswith(("而且", "甚至", "同時", "接著", "順便", "再把")):
+                    gap = max(0.09, inter_beat_pause * 0.55)
+                else:
+                    wave_mod = 1.0 + 0.34 * np.sin(b_idx * 1.9 + 0.4)
+                    gap = inter_beat_pause * float(wave_mod)
                 voice_chunks.append(np.zeros(int(gap * sr), dtype=np.float32))
                 cursor += gap
 
@@ -228,7 +245,6 @@ class GarychenVoiceCloner:
 
             audio = cls._apply_cosine_fade(audio, sr, fade_ms=18.0)
             dur = len(audio) / sr
-            aligned = br.get("aligned_clauses") or []
 
             # Sparse, motivated Foley ONLY (zero sub-clause beep spam!)
             if sfx_kind == "whoosh":
@@ -283,9 +299,9 @@ class GarychenVoiceCloner:
             "loudnorm=I=-20.5:TP=-1.5:LRA=5.5"
         )
         subprocess.run(
-            ["ffmpeg", "-y", "-i", str(tmp_wav), "-af", af_chain, "-ar", "44100", "-ac", "2", str(out_wav)],
+            ["ffmpeg", "-nostdin", "-y", "-v", "error", "-i", str(tmp_wav), "-af", af_chain, "-ar", "44100", "-ac", "2", str(out_wav)],
+            stdin=subprocess.DEVNULL,
             check=True,
-            capture_output=True,
         )
         tmp_wav.unlink(missing_ok=True)
         total_dur = round(sf.info(str(out_wav)).duration, 3)

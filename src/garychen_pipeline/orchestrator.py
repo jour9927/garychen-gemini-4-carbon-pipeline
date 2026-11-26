@@ -70,7 +70,7 @@ class GarychenUnattendedPipeline:
         category: str | None = None,
         seed_urls: list[str] | None = None,
         episode_id: str | None = None,
-        num_chapters: int = 7,
+        num_chapters: int = 8,
     ) -> dict:
         ts_slug = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
         console.rule("[bold orange3]Stage 1/7 · 無人值守選題 (Unattended Topic Scout V4)")
@@ -106,7 +106,7 @@ class GarychenUnattendedPipeline:
                 json.dumps([s.model_dump() for s in sources], ensure_ascii=False, indent=2),
                 encoding="utf-8",
             )
-        n_scr = sum((1 if s.screenshot_path else 0) + len(s.extra_screenshots) for s in sources)
+        n_scr = sum((1 if s.screenshot_path else 0) + len(s.extra_screenshots) + (1 if s.live_video_path else 0) for s in sources)
         console.print(
             f"[green]✓ Verified {len(sources)} primary sources ({n_scr} distinct 1600x1000 dark views):[/green] "
             + ", ".join(f"[{s.source_id}] {s.domain}" for s in sources)
@@ -199,6 +199,24 @@ class GarychenUnattendedPipeline:
             sources=sources,
             out_mp4=short_mp4,
         )
+        # Automatic YouTube Shorts <59.0s shelf compliance guard
+        if short_dur > 58.8:
+            import subprocess
+            spd_fix = min(1.20, short_dur / 57.6)
+            tmp_s = ep_dir / "_short_58s_tmp.mp4"
+            subprocess.run(
+                [
+                    "ffmpeg", "-nostdin", "-y", "-v", "error", "-i", str(short_mp4),
+                    "-filter:v", f"setpts=PTS/{spd_fix:.4f},fps=60",
+                    "-filter:a", f"atempo={spd_fix:.4f}",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
+                    "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(tmp_s),
+                ],
+                stdin=subprocess.DEVNULL,
+                check=True,
+            )
+            tmp_s.replace(short_mp4)
+            short_dur = round(short_dur / spd_fix, 3)
         publish_md = self._write_publish_pack(ep_dir, script, long_cues, sources)
         summary = {
             "episode_id": ep_id,

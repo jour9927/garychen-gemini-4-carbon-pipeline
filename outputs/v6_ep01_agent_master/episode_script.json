@@ -1,0 +1,5802 @@
+{
+  "episode_id": "v6_ep01_agent_master",
+  "title": "省下 $200！Browser-Use 網頁自動化攻略",
+  "thumbnail_line1": "零訂閱費！",
+  "thumbnail_line2": "自動操作網頁",
+  "category": "ai_agent",
+  "avatar_mode": false,
+  "youtube_description_summary": "每個月花 $200 訂閱商業 AI 代理真的划算嗎？這集帶你深度實戰 GitHub 突破 122,138 顆星的開源神器 Browser-Use 1.0.8，白話拆解 DOM 無障礙樹、視覺雙引擎與 CDP 閉環原理，分享 2 個工作室真實省錢案例，並手把手用 20 行 Python 跑通第一個自動化任務。",
+  "hashtags": [
+    "#GaryChen",
+    "#BrowserUse",
+    "#AIAgent",
+    "#網頁自動化",
+    "#開源專案",
+    "#Python"
+  ],
+  "chapters": [
+    "01 告別 $200 訂閱費",
+    "02 為什麼爬蟲總壞掉",
+    "03 兩個真實省錢案例",
+    "04 20 行程式從零實作",
+    "05 雙模型與驗證防線",
+    "06 本機與雲端成本權衡",
+    "07 實戰必避的3個大坑",
+    "08 工程槓桿與實戰清單"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "app_squircles_strikethrough",
+      "voice_style": "hook",
+      "clauses": [
+        "為了讓 AI 幫你點網頁填表單",
+        "每個月硬吞 $200 商業訂閱費真的划算嗎",
+        "今天的主角 Browser-Use 已經",
+        "在 GitHub 狂掃 122,138 顆星",
+        "與 13,660 個 Fork",
+        "讓你用 $0 月費，直接把瀏覽器代理搬回自己電腦跑"
+      ],
+      "spoken_clauses": [
+        "為了讓 AI 幫你點網頁填表單",
+        "每個月硬吞 兩百美金 商業訂閱費真的划算嗎",
+        "今天的主角 Browser-Use 已經",
+        "在 GitHub 狂掃 十二萬兩千 顆星",
+        "與 一萬三千六百六十 個 Fork",
+        "讓你用 零元免費 月費，直接把瀏覽器代理搬回自己電腦跑"
+      ],
+      "visual_title": "告別 $200 商業訂閱費",
+      "visual_subtitle": "Browser-Use 開源本地瀏覽器代理 $0 月費",
+      "badge_text": "$0 / 月",
+      "nodes": [
+        {
+          "label": "商業代理月費",
+          "sub": "雲端點網頁填表單每月固定支出",
+          "tag": "痛點",
+          "metric": "$200 / 月",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "GitHub 星標數",
+          "sub": "全球開發者實戰驗證的開源霸主",
+          "tag": "熱度",
+          "metric": "122,138 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "社群 Fork",
+          "sub": "龐大開源生態系持續貢獻與維護",
+          "tag": "生態",
+          "metric": "13,660 個",
+          "icon": "git",
+          "trend": "up"
+        },
+        {
+          "label": "本地部署成本",
+          "sub": "開源免費直接裝在自己電腦執行",
+          "tag": "省錢",
+          "metric": "$0 / 月",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "開源星標霸主",
+      "callout_body": "122,138 顆星驗證，把瀏覽器代理搬回自己電腦跑",
+      "code_lines": [
+        "pip install browser-use",
+        "GitHub: 122,138 Stars / 13,660 Forks"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "hook",
+      "clauses": [
+        "你仔細想想每天坐在電腦前的真實工作",
+        "其實有超過 80% 的",
+        "重複瑣事根本沒有開放 API 可以串接",
+        "從跨電商比價，抓競品資料到填寫封閉的報帳後臺",
+        "全都卡在必須用滑鼠一個個點擊的網頁介面裡"
+      ],
+      "spoken_clauses": [
+        "你仔細想想每天坐在電腦前的真實工作",
+        "其實有超過 百分之八十 的",
+        "重複瑣事根本沒有開放 A P I 可以串接",
+        "從跨電商比價，抓競品資料到填寫封閉的報帳後臺",
+        "全都卡在必須用滑鼠一個個點擊的網頁介面裡"
+      ],
+      "visual_title": "80% 瑣事沒有 API",
+      "visual_subtitle": "跨電商比價到封閉報帳全卡在網頁介面",
+      "badge_text": "80% 無 API",
+      "nodes": [
+        {
+          "label": "無 API 瑣事比",
+          "sub": "日常電腦工作多數缺乏標準介面",
+          "tag": "現況",
+          "metric": "80% 以上",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "跨電商比價",
+          "sub": "手動開多個網站查庫存與運費",
+          "tag": "場景",
+          "metric": "6 個網站",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "封閉報帳後臺",
+          "sub": "傳統企業系統只能靠滑鼠逐筆填",
+          "tag": "痛點",
+          "metric": "0 個 API",
+          "icon": "lock",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "真實工作瓶頸",
+      "callout_body": "重複點擊網頁表單吃光每天最寶貴的專注力",
+      "code_lines": [
+        "重複網頁瑣事 > 80%",
+        "無開放 API → 只能手動滑鼠點擊"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "hook",
+      "clauses": [
+        "坊間大廠推出的",
+        "雲端電腦操作代理不只每個月收你",
+        "$200 高額月費，更讓工程師與企業主毛骨悚然的是",
+        "你得把公司帳號密碼",
+        "跟內部表單交給外部伺服器執行",
+        "換成開源本地部署才能真正守住資安底線"
+      ],
+      "spoken_clauses": [
+        "坊間大廠推出的",
+        "雲端電腦操作代理不只每個月收你",
+        "兩百美金 高額月費，更讓工程師與企業主毛骨悚然的是",
+        "你得把公司帳號密碼",
+        "跟內部表單交給外部伺服器執行",
+        "換成開源本地部署才能真正守住資安底線"
+      ],
+      "visual_title": "守住企業資安底線",
+      "visual_subtitle": "別把公司帳密與內部表單交給外部伺服器",
+      "badge_text": "本地隱私優先",
+      "nodes": [
+        {
+          "label": "雲端高昂月費",
+          "sub": "大廠商業方案每月固定高額訂閱",
+          "tag": "成本",
+          "metric": "$200 / 月",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "外部託管風險",
+          "sub": "公司帳密與表單須上傳外部主機",
+          "tag": "風險",
+          "metric": "100% 外露",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "開源本地執行",
+          "sub": "所有操作與憑證全保留在本機端",
+          "tag": "解法",
+          "metric": "100% 本地",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "資安風險警訊",
+      "callout_body": "開源本地部署才能把敏感帳密留在自己電腦裡",
+      "code_lines": [
+        "雲端代理: $200/月 + 帳密外洩風險",
+        "本地開源: $0/月 + 100% 掌控資料"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "看看 Browser-Use",
+        "在 2026 年 11 月 22",
+        "日剛發布的 1.0.8 正式版",
+        "它早就不是早期玩票性質的小型 Python 腳本",
+        "而是進化成一套支援本地隱私執行",
+        "與雲端彈性擴充的完整開源瀏覽器代理生態系"
+      ],
+      "spoken_clauses": [
+        "看看 Browser-Use",
+        "在 二零二六 年 十一 月 二十二",
+        "日剛發布的 一點零版 正式版",
+        "它早就不是早期玩票性質的小型 Python 腳本",
+        "而是進化成一套支援本地隱私執行",
+        "與雲端彈性擴充的完整開源瀏覽器代理生態系"
+      ],
+      "visual_title": "1.0.8 正式版進化",
+      "visual_subtitle": "從小型 Python 腳本升級為完整代理生態系",
+      "badge_text": "v1.0.8 發布",
+      "nodes": [
+        {
+          "label": "最新正式版本",
+          "sub": "2026 年 11 月 22 日穩定版發布",
+          "tag": "版本",
+          "metric": "v1.0.8",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "核心開發語言",
+          "sub": "純 Python 打造輕鬆串接 AI 生態",
+          "tag": "語言",
+          "metric": "Python 3",
+          "icon": "python",
+          "trend": "up"
+        },
+        {
+          "label": "雙軌部署模式",
+          "sub": "支援本地隱私與雲端彈性擴充",
+          "tag": "架構",
+          "metric": "2 種模式",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "成熟開源架構",
+      "callout_body": "同時兼顧本地隱私執行與雲端彈性擴充能力",
+      "code_lines": [
+        "Release: browser-use v1.0.8 (2026-11-22)",
+        "Stack: Python + Local / Cloud Hybrid"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1.png",
+      "live_video_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_live.webm",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "萬一你的業務真的需要",
+        "同時開啟 20 個視窗做大規模併發",
+        "官方的 Browser Use Cloud 也提供每小時",
+        "只要 $0.06 的隱身雲端瀏覽器",
+        "甚至已經通過 SOC 2",
+        "Type II 企業級安全合規認證"
+      ],
+      "spoken_clauses": [
+        "萬一你的業務真的需要",
+        "同時開啟 二十 個視窗做大規模併發",
+        "官方的 Browser Use Cloud 也提供每小時",
+        "只要 零元免費.六 的隱身雲端瀏覽器",
+        "甚至已經通過 SOC 兩",
+        "Type II 企業級安全合規認證"
+      ],
+      "visual_title": "雲端隱身瀏覽器",
+      "visual_subtitle": "大規模併發每小時 $0.06 且具企業合規",
+      "badge_text": "$0.06 / 時",
+      "nodes": [
+        {
+          "label": "大規模併發",
+          "sub": "業務高峰同時開啟多個瀏覽器",
+          "tag": "擴充",
+          "metric": "20 個視窗",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "雲端計價費率",
+          "sub": "按時計費的隱身防偵測瀏覽器",
+          "tag": "費率",
+          "metric": "$0.06 / 時",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "企業資安合規",
+          "sub": "通過國際級資安稽核標準認證",
+          "tag": "認證",
+          "metric": "SOC 2 II",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "企業級擴充力",
+      "callout_body": "需要 20 視窗併發時直接切雲端，通過 SOC 2",
+      "code_lines": [
+        "Browser Use Cloud: $0.06 / browser-hour",
+        "Compliance: SOC 2 Type II"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "最讓我佩服的是團隊對透明度的堅持",
+        "他們在官網，直接寫明所有賣的產品都經過公開評測",
+        "並拿 500 個真實網頁任務來跑基準測試",
+        "這代表開源瀏覽器代理的",
+        "穩定度已經正式跨過可商用的門檻"
+      ],
+      "spoken_clauses": [
+        "最讓我佩服的是團隊對透明度的堅持",
+        "他們在官網，直接寫明所有賣的產品都經過公開評測",
+        "並拿 五百 個真實網頁任務來跑基準測試",
+        "這代表開源瀏覽器代理的",
+        "穩定度已經正式跨過可商用的門檻"
+      ],
+      "visual_title": "500 任務公開評測",
+      "visual_subtitle": "官網透明公開基準測試，跨越商用門檻",
+      "badge_text": "500 項基準測試",
+      "nodes": [
+        {
+          "label": "公開基準測試",
+          "sub": "真實網頁環境跑滿大規模評測",
+          "tag": "實測",
+          "metric": "500 個任務",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "評測更新時間",
+          "sub": "2026 年 11 月最新公開基準數據",
+          "tag": "最新",
+          "metric": "2026-11",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "商用穩定門檻",
+          "sub": "從實驗玩具進化為可上線生產力",
+          "tag": "成熟",
+          "metric": "100% 公開",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "透明度即實力",
+      "callout_body": "所有銷售產品皆經公開評測，穩定度達商用級",
+      "code_lines": [
+        "Benchmark: November 2026 / 500 tasks",
+        "Policy: Everything we sell is benchmarked."
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "這集前半部我會帶你走完 4 個紮實階段",
+        "先搞懂它為什麼比傳統爬蟲耐操",
+        "再看 2 個真實省錢案例",
+        "最後手把手帶你在自己電腦從零架好環境",
+        "用短短 20 行 Python 跑通你的第一個自動任務"
+      ],
+      "spoken_clauses": [
+        "這集前半部我會帶你走完 四 個紮實階段",
+        "先搞懂它為什麼比傳統爬蟲耐操",
+        "再看 兩 個真實省錢案例",
+        "最後手把手帶你在自己電腦從零架好環境",
+        "用短短 二十 行 Python 跑通你的第一個自動任務"
+      ],
+      "visual_title": "四階段實戰藍圖",
+      "visual_subtitle": "從底層原理到 20 行 Python 跑通自動任務",
+      "badge_text": "20 行程式碼",
+      "nodes": [
+        {
+          "label": "課程總階段",
+          "sub": "循序漸進拆解原理與落地步驟",
+          "tag": "藍圖",
+          "metric": "4 個階段",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "真實省錢案例",
+          "sub": "拆解比價採購與自動報帳實戰",
+          "tag": "案例",
+          "metric": "2 個案例",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "極簡啟動門檻",
+          "sub": "從零架環境快速跑通首個任務",
+          "tag": "實作",
+          "metric": "20 行程式",
+          "icon": "python",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "手把手帶你做",
+      "callout_body": "走完 4 階段，今天就能在自己電腦跑起 Agent",
+      "code_lines": [
+        "1. 架構拆解 → 2. 省錢案例",
+        "3. 本地環境 → 4. 20 行 Python 實戰"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "告別 $200 訂閱費",
+      "layout_type": "agenda_four_steps",
+      "voice_style": "explainer",
+      "clauses": [
+        "不管你是寫過 10 年程式的資深開發者",
+        "還是完全沒碰過程式碼的行銷與行政工作者",
+        "今天這套心法都能",
+        "讓你徹底告別手動複製貼上的加班地獄",
+        "我們馬上從底層架構開始拆解它的黑科技"
+      ],
+      "spoken_clauses": [
+        "不管你是寫過 十 年程式的資深開發者",
+        "還是完全沒碰過程式碼的行銷與行政工作者",
+        "今天這套心法都能",
+        "讓你徹底告別手動複製貼上的加班地獄",
+        "我們馬上從底層架構開始拆解它的黑科技"
+      ],
+      "visual_title": "告別複製貼上地獄",
+      "visual_subtitle": "無論工程師或行銷行政都能上手的自動化心法",
+      "badge_text": "全員適用心法",
+      "nodes": [
+        {
+          "label": "為什麼爬蟲總壞掉",
+          "sub": "只要寫過傳統爬蟲或 Selenium",
+          "tag": "01",
+          "metric": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "兩個真實省錢案例",
+          "sub": "原理講完可能還是有點抽象，我們一",
+          "tag": "02",
+          "metric": "02",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "20 行程式從零實",
+          "sub": "看到這裡你應該已經迫不及待想在自",
+          "tag": "03",
+          "metric": "03",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "雙模型與驗證防線",
+          "sub": "學會單一任務後，很多人下一步就是",
+          "tag": "04",
+          "metric": "04",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "馬上拆解黑科技",
+      "callout_body": "從底層架構看懂它為何能徹底解放重複加班",
+      "code_lines": [
+        "資深開發者 (10年經驗) + 非技術工作者",
+        "→ 共同告別手動複製貼上"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "只要寫過傳統爬蟲",
+        "或 Selenium 自動化腳本的工程師一定都崩潰過",
+        "昨天熬夜寫好定位按鈕的程式碼跑得超順",
+        "結果今天網站前端隨手改了一個 class 名稱",
+        "整套腳本立刻當場陣亡報錯"
+      ],
+      "spoken_clauses": [
+        "只要寫過傳統爬蟲",
+        "或 Selenium 自動化腳本的工程師一定都崩潰過",
+        "昨天熬夜寫好定位按鈕的程式碼跑得超順",
+        "結果今天網站前端隨手改了一個 class 名稱",
+        "整套腳本立刻當場陣亡報錯"
+      ],
+      "visual_title": "為什麼爬蟲總壞掉",
+      "visual_subtitle": "網站改一個 class 名稱，傳統腳本當場陣亡",
+      "badge_text": "一改版就爆",
+      "nodes": [
+        {
+          "label": "傳統爬蟲定位",
+          "sub": "熬夜寫死的按鈕選擇器極度脆弱",
+          "tag": "舊法",
+          "metric": "1 個 class",
+          "icon": "code",
+          "trend": "down"
+        },
+        {
+          "label": "前端隨手改版",
+          "sub": "網站更新樣式名稱直接破壞定位",
+          "tag": "變數",
+          "metric": "100% 報錯",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "維護成本暴增",
+          "sub": "每次網站微調都得半夜重寫腳本",
+          "tag": "痛點",
+          "metric": "0 容錯率",
+          "icon": "terminal",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "工程師集體噩夢",
+      "callout_body": "傳統 Selenium 過度依賴寫死的網頁原始碼定位",
+      "code_lines": [
+        "driver.find_element(By.CLASS_NAME, 'btn-old')",
+        "→ NoSuchElementException: 腳本當場陣亡"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "傳統網頁自動化工具就像",
+        "一個只會死背步數的盲人",
+        "你硬性規定它往下走 5 步再點螢幕右下角",
+        "只要今天網站多跳出 1 個特價彈窗",
+        "或是按鈕往下位移了 10 像素",
+        "整支程式就直接卡死給你看"
+      ],
+      "spoken_clauses": [
+        "傳統網頁自動化工具就像",
+        "一個只會死背步數的盲人",
+        "你硬性規定它往下走 五 步再點螢幕右下角",
+        "只要今天網站多跳出 一 個特價彈窗",
+        "或是按鈕往下位移了 十 像素",
+        "整支程式就直接卡死給你看"
+      ],
+      "visual_title": "死背步數的盲人",
+      "visual_subtitle": "多 1 個彈窗或位移 10 像素，整支程式就卡死",
+      "badge_text": "10px 就卡死",
+      "nodes": [
+        {
+          "label": "寫死固定步數",
+          "sub": "盲目執行預設指令毫無彈性空間",
+          "tag": "僵化",
+          "metric": "5 步固定",
+          "icon": "terminal",
+          "trend": "down"
+        },
+        {
+          "label": "突發特價彈窗",
+          "sub": "畫面多跳出遮罩直接擋住點擊點",
+          "tag": "幹擾",
+          "metric": "1 個彈窗",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "按鈕微小位移",
+          "sub": "版面微調就讓座標點擊徹底失效",
+          "tag": "脆弱",
+          "metric": "10 像素",
+          "icon": "code",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "缺乏現場感知",
+      "callout_body": "寫死座標與固定步驟完全無法應付動態網頁",
+      "code_lines": [
+        "step(5) → click(x, y)",
+        "if popup == 1 or shift == 10px: CRASH()"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是傳統工具要求你",
+        "畫出一張一公分都不能錯的",
+        "脆弱地圖，而 Browser-Use 則是",
+        "直接幫 AI 裝上眼睛跟大腦",
+        "讓它自己走到網頁現場看懂畫面再決定怎麼按"
+      ],
+      "spoken_clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是傳統工具要求你",
+        "畫出一張一公分都不能錯的",
+        "脆弱地圖，而 Browser-Use 則是",
+        "直接幫 AI 裝上眼睛跟大腦",
+        "讓它自己走到網頁現場看懂畫面再決定怎麼按"
+      ],
+      "visual_title": "幫 AI 裝上眼睛大腦",
+      "visual_subtitle": "不用畫脆弱地圖，讓 AI 現場看懂畫面再點擊",
+      "badge_text": "看懂畫面再按",
+      "nodes": [
+        {
+          "label": "傳統脆弱地圖",
+          "sub": "任何一公分誤差都會讓流程中斷",
+          "tag": "過去",
+          "metric": "1 公分誤差",
+          "icon": "maps",
+          "trend": "down"
+        },
+        {
+          "label": "AI 視覺眼睛",
+          "sub": "即時看懂網頁當下的真實畫面",
+          "tag": "感知",
+          "metric": "100% 即時",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "AI 決策大腦",
+          "sub": "依現場狀況自主判斷下一步動作",
+          "tag": "決策",
+          "metric": "1 套閉環",
+          "icon": "robot",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "白話核心差異",
+      "callout_body": "從死記硬背升級為現場觀察與動態自主決策",
+      "code_lines": [
+        "傳統工具: 畫出 1 公分不能錯的脆弱地圖",
+        "Browser-Use: 眼睛看畫面 + 大腦做決策"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_scroll1.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "explainer",
+      "clauses": [
+        "2026 年 2 月發表的 arXiv",
+        "研究論文也深入拆解了這個架構",
+        "Browser-Use 並不是單靠截圖瞎猜",
+        "而是同時結合結構化的 DOM",
+        "無障礙樹加上視覺語言模型",
+        "用雙引擎精準鎖定頁面上的每個互動元件"
+      ],
+      "spoken_clauses": [
+        "二零二六 年 兩 月發表的 arXiv",
+        "研究論文也深入拆解了這個架構",
+        "Browser-Use 並不是單靠截圖瞎猜",
+        "而是同時結合結構化的 D O M",
+        "無障礙樹加上視覺語言模型",
+        "用雙引擎精準鎖定頁面上的每個互動元件"
+      ],
+      "visual_title": "DOM 樹加視覺雙引擎",
+      "visual_subtitle": "arXiv 論文拆解：結構化語意與視覺模型並進",
+      "badge_text": "雙引擎定位",
+      "nodes": [
+        {
+          "label": "arXiv 研究論文",
+          "sub": "2026 年 2 月深入解析代理架構",
+          "tag": "論文",
+          "metric": "2026-02",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "結構化 DOM",
+          "sub": "精準讀取無障礙樹的元件層級",
+          "tag": "引擎1",
+          "metric": "100% 結構",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "視覺語言模型",
+          "sub": "輔助辨識複雜版面與視覺元素",
+          "tag": "引擎2",
+          "metric": "2 大引擎",
+          "icon": "cpu",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "不是單靠截圖猜",
+      "callout_body": "結合無障礙樹與視覺語言模型，精準鎖定元件",
+      "code_lines": [
+        "arXiv (2026-02): Browser-Use Architecture",
+        "Engine = Structured DOM + Vision LLM"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "explainer",
+      "clauses": [
+        "它非常聰明的地方在於不會",
+        "把幾萬行雜亂的 HTML",
+        "原始碼硬塞給大模型狂燒 API 費用",
+        "而是先過濾出真正能點擊的按鈕與輸入框",
+        "幫每個元素貼上像 41 號這樣的數字編號",
+        "讓模型一眼就能精準下指令"
+      ],
+      "spoken_clauses": [
+        "它非常聰明的地方在於不會",
+        "把幾萬行雜亂的 HTML",
+        "原始碼硬塞給大模型狂燒 A P I 費用",
+        "而是先過濾出真正能點擊的按鈕與輸入框",
+        "幫每個元素貼上像 四十一 號這樣的數字編號",
+        "讓模型一眼就能精準下指令"
+      ],
+      "visual_title": "數字編號精準省 Token",
+      "visual_subtitle": "過濾雜亂 HTML，只幫可點擊元件貼上編號",
+      "badge_text": "標籤 #41 精準點",
+      "nodes": [
+        {
+          "label": "雜亂原始碼",
+          "sub": "直接丟進大模型會狂燒 API 費用",
+          "tag": "浪費",
+          "metric": "10,000+ 行",
+          "icon": "code",
+          "trend": "down"
+        },
+        {
+          "label": "互動元件過濾",
+          "sub": "只保留真正可點擊的按鈕輸入框",
+          "tag": "淨化",
+          "metric": "100% 精簡",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "數字標籤編號",
+          "sub": "幫元件貼上編號讓模型精準下令",
+          "tag": "定位",
+          "metric": "41 號元素",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "狂省 API 費用",
+      "callout_body": "不塞幾萬行原始碼，讓模型一眼鎖定編號下令",
+      "code_lines": [
+        "過濾 10,000+ 行雜亂 HTML",
+        "→ 僅標記可互動元件 [41] Button"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "更硬核的進化",
+        "在於 1.0.8 版本導入的 REPL 執行迴圈",
+        "當你下達預約最早考照時間這類任務時",
+        "模型會直接寫出像 new_tab",
+        "bu.click(41) 或一段 js 程式碼的執行區塊",
+        "交給底層即時驅動"
+      ],
+      "spoken_clauses": [
+        "更硬核的進化",
+        "在於 一點零版 版本導入的 REPL 執行迴圈",
+        "當你下達預約最早考照時間這類任務時",
+        "模型會直接寫出像 new tab",
+        "bu.click 四十一 或一段 js 程式碼的執行區塊",
+        "交給底層即時驅動"
+      ],
+      "visual_title": "1.0.8 硬核 REPL 迴圈",
+      "visual_subtitle": "模型直接寫出瀏覽器控制碼交給底層即時執行",
+      "badge_text": "REPL 即時驅動",
+      "nodes": [
+        {
+          "label": "REPL 執行迴圈",
+          "sub": "1.0.8 版導入互動式程式碼執行",
+          "tag": "升級",
+          "metric": "v1.0.8",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "開分頁與點擊",
+          "sub": "模型直接呼叫 new_tab 與 click",
+          "tag": "指令",
+          "metric": "click(41)",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "原生 JS 注入",
+          "sub": "複雜操作可直接寫一段 js 執行",
+          "tag": "彈性",
+          "metric": "100% 彈性",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "程式碼級操控力",
+      "callout_body": "預約考照等複雜任務直接寫 cell 區塊驅動",
+      "code_lines": [
+        "task: 『book the earliest driving test』",
+        "new_tab(url); bu.click(41); js(...)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "explainer",
+      "clauses": [
+        "這套 REPL 引擎會",
+        "透過 Chrome 原生的 CDP 協議直接操控瀏覽器",
+        "把點擊後的最新頁面變化",
+        "與截圖立刻回傳給大模型做二次確認",
+        "形成一套會自己驗證有沒有按成功的完整感知閉環"
+      ],
+      "spoken_clauses": [
+        "這套 REPL 引擎會",
+        "透過 Chrome 原生的 CDP 協議直接操控瀏覽器",
+        "把點擊後的最新頁面變化",
+        "與截圖立刻回傳給大模型做二次確認",
+        "形成一套會自己驗證有沒有按成功的完整感知閉環"
+      ],
+      "visual_title": "CDP 原生感知閉環",
+      "visual_subtitle": "透過 Chrome CDP 操控並即時回傳截圖驗證",
+      "badge_text": "自我驗證閉環",
+      "nodes": [
+        {
+          "label": "Chrome CDP 協議",
+          "sub": "底層原生直連瀏覽器高速操控",
+          "tag": "底層",
+          "metric": "1 條通道",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "即時畫面回傳",
+          "sub": "把點擊後的狀態與截圖送回模型",
+          "tag": "回饋",
+          "metric": "100% 同步",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "二次確認驗證",
+          "sub": "自動檢查動作有沒有真的按成功",
+          "tag": "閉環",
+          "metric": "2 次確認",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "確定按成功才過",
+      "callout_body": "每次點擊都把最新變化回傳模型做二次確認",
+      "code_lines": [
+        "REPL → Chrome (CDP) → 點擊執行",
+        "最新畫面 + 截圖 → 回傳模型二次驗證"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "為什麼爬蟲總壞掉",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "explainer",
+      "clauses": [
+        "把這道自動防線建立起來",
+        "才不會做 A 壞 B，陷入找 bug 打地鼠的無限迴圈",
+        "就算目標網站半夜無預警大改版",
+        "或是突然跳出討厭的廣告遮罩",
+        "Browser-Use 也能靠即時畫面自己找路繞過去"
+      ],
+      "spoken_clauses": [
+        "把這道自動防線建立起來",
+        "才不會做 A 壞 B，陷入找 bug 打地鼠的無限迴圈",
+        "就算目標網站半夜無預警大改版",
+        "或是突然跳出討厭的廣告遮罩",
+        "Browser-Use 也能靠即時畫面自己找路繞過去"
+      ],
+      "visual_title": "終結打地鼠無限迴圈",
+      "visual_subtitle": "網站半夜改版或跳廣告，靠即時畫面自己繞路",
+      "badge_text": "自動防線建成",
+      "nodes": [
+        {
+          "label": "半夜突發改版",
+          "sub": "目標網站大幅調整也不再報錯",
+          "tag": "抗變",
+          "metric": "0 次中斷",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "廣告遮罩繞路",
+          "sub": "看到彈窗自動關閉或繞開點擊",
+          "tag": "自癒",
+          "metric": "100% 繞過",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "維護修蟲工時",
+          "sub": "擺脫做 A 壞 B 的打地鼠迴圈",
+          "tag": "省時",
+          "metric": "0 小時",
+          "icon": "check",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "不再做 A 壞 B",
+      "callout_body": "建立自動感知防線，徹底擺脫修不完的爬蟲 bug",
+      "code_lines": [
+        "網站半夜大改版 / 突發廣告遮罩",
+        "→ 即時畫面重規劃 → 自動繞路完成"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "minimalist precision balance scale weighing a glowing amber AI module against dark matte blocks on #222224 background, conceptual editorial metaphor for Browser-Use, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "原理講完可能還是有點抽象",
+        "我們一樣請出老朋友主角 Gary 舉個具體例子",
+        "帶你看看這套 $0",
+        "訂閱費的開源代理放進真實生活",
+        "與小型工作室裡",
+        "到底能幫你省下多少時間跟真金白銀"
+      ],
+      "spoken_clauses": [
+        "原理講完可能還是有點抽象",
+        "我們一樣請出老朋友主角 Gary 舉個具體例子",
+        "帶你看看這套 零元免費",
+        "訂閱費的開源代理放進真實生活",
+        "與小型工作室裡",
+        "到底能幫你省下多少時間跟真金白銀"
+      ],
+      "visual_title": "老朋友 Gary 實戰案例",
+      "visual_subtitle": "$0 訂閱開源代理在小型工作室的真實省錢力",
+      "badge_text": "2 大真實案例",
+      "nodes": [
+        {
+          "label": "開源代理月費",
+          "sub": "零月費門檻直接導入日常工作流",
+          "tag": "成本",
+          "metric": "$0 / 月",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "實戰應用場景",
+          "sub": "涵蓋跨平台比價與封閉表單報帳",
+          "tag": "案例",
+          "metric": "2 大場景",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "工作室投資報酬",
+          "sub": "每月省下數小時重複行政工時",
+          "tag": "效益",
+          "metric": "6 小時/月",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "落地變現指南",
+      "callout_body": "看看開源代理如何替工作室省下時間與真金白銀",
+      "code_lines": [
+        "主角: Gary 小型工作室",
+        "工具: Browser-Use ($0 / 月) → 省時省錢"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "第 1 個案例是每個月都",
+        "讓人眼花的跨平台採購比價",
+        "Gary 之前幫工作室補貨 15 項攝影與錄音耗材",
+        "光是手動打開 6 個電商網站查庫存",
+        "比運費再套用折價券",
+        "整趟弄完少說要耗掉 2 小時"
+      ],
+      "spoken_clauses": [
+        "第 一 個案例是每個月都",
+        "讓人眼花的跨平台採購比價",
+        "Gary 之前幫工作室補貨 十五 項攝影與錄音耗材",
+        "光是手動打開 六 個電商網站查庫存",
+        "比運費再套用折價券",
+        "整趟弄完少說要耗掉 兩 小時"
+      ],
+      "visual_title": "案例一：跨平台採購比價",
+      "visual_subtitle": "15 項耗材橫跨 6 個電商，手動比價耗掉 2 小時",
+      "badge_text": "手動耗時 2 小時",
+      "nodes": [
+        {
+          "label": "採購耗材專案",
+          "sub": "每月固定補貨攝影與錄音設備",
+          "tag": "品項",
+          "metric": "15 項",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "比價電商平台",
+          "sub": "手動切換多個購物網站查庫存",
+          "tag": "平台",
+          "metric": "6 個網站",
+          "icon": "globe",
+          "trend": "neutral"
+        },
+        {
+          "label": "人工比價耗時",
+          "sub": "核對運費與折價券吃掉整個下午",
+          "tag": "痛點",
+          "metric": "2 小時",
+          "icon": "calendar",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "比價痛點全紀錄",
+      "callout_body": "查庫存、比運費再套折價券，眼睛看到快脫窗",
+      "code_lines": [
+        "15 項攝影錄音耗材 × 6 個電商網站",
+        "查庫存 + 比運費 + 折價券 = 2 小時"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_19",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "換成 Browser-Use 之後",
+        "他只要把 15 項型號清單交給 Agent",
+        "AI 就會自己開分頁搜尋商品",
+        "把規格與含運價格抓下來交叉比對",
+        "不到 4 分鐘就",
+        "在桌面上吐出一份標好最低價連結的完整清單"
+      ],
+      "spoken_clauses": [
+        "換成 Browser-Use 之後",
+        "他只要把 十五 項型號清單交給 Agent",
+        "AI 就會自己開分頁搜尋商品",
+        "把規格與含運價格抓下來交叉比對",
+        "不到 四 分鐘就",
+        "在桌面上吐出一份標好最低價連結的完整清單"
+      ],
+      "visual_title": "4 分鐘吐出最低價清單",
+      "visual_subtitle": "交出 15 項型號，AI 自動開分頁比對含運最低價",
+      "badge_text": "2 小時 → 4 分鐘",
+      "nodes": [
+        {
+          "label": "輸入型號清單",
+          "sub": "一次把採購清單交給瀏覽器代理",
+          "tag": "輸入",
+          "metric": "15 項",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "AI 執行總時間",
+          "sub": "自動開分頁抓取規格並交叉比對",
+          "tag": "極速",
+          "metric": "4 分鐘",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "時間節省幅度",
+          "sub": "從 120 分鐘壓縮到不到 4 分鐘",
+          "tag": "效率",
+          "metric": "96.7% 省時",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "30 倍效率暴衝",
+      "callout_body": "自動抓規格算含運價，直接產出最低價連結表",
+      "code_lines": [
+        "Input: 15 項型號清單 → Browser-Use Agent",
+        "Output: 最低價連結表 (耗時 < 4 分鐘)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_scroll2.png",
+      "live_video_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_live.webm",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_20",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "這套邏輯拿來搶早鳥名額或掛號一樣神猛",
+        "官方文件甚至，直接用預約最早的駕照路考當示範任務",
+        "以前得守在螢幕前狂按重新整理半天",
+        "現在讓本地腳本定時巡邏",
+        "一刷出空位就幫你自動鎖定"
+      ],
+      "spoken_clauses": [
+        "這套邏輯拿來搶早鳥名額或掛號一樣神猛",
+        "官方文件甚至，直接用預約最早的駕照路考當示範任務",
+        "以前得守在螢幕前狂按重新整理半天",
+        "現在讓本地腳本定時巡邏",
+        "一刷出空位就幫你自動鎖定"
+      ],
+      "visual_title": "搶早鳥名額與掛號神技",
+      "visual_subtitle": "官方示範預約最早駕照路考，本地定時自動鎖定",
+      "badge_text": "自動巡邏鎖位",
+      "nodes": [
+        {
+          "label": "官方示範任務",
+          "sub": "自動搜尋並預約最早的駕照路考",
+          "tag": "範例",
+          "metric": "1 鍵預約",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "本地定時巡邏",
+          "sub": "免守螢幕背景持續檢查釋出名額",
+          "tag": "自動",
+          "metric": "24 小時",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "空位即時鎖定",
+          "sub": "搶早鳥票與醫院掛號同樣一鍵搞定",
+          "tag": "搶位",
+          "metric": "0 秒猶豫",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "告別狂按 F5",
+      "callout_body": "讓本地腳本定時巡邏，一刷出空位立刻幫你搶",
+      "code_lines": [
+        "task: 『book the earliest driving test』",
+        "schedule → 刷出空位 → finish(result)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_21",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "第 2 個案例更是每個接案工作室的共同惡夢",
+        "Gary 每月底都要",
+        "把 30 張合作廠商寄來的請款單與電子發票",
+        "一筆一筆手動敲進銀行",
+        "或會計系統那種完全沒有",
+        "API 的封閉網頁表單裡"
+      ],
+      "spoken_clauses": [
+        "第 兩 個案例更是每個接案工作室的共同惡夢",
+        "Gary 每月底都要",
+        "把 三十 張合作廠商寄來的請款單與電子發票",
+        "一筆一筆手動敲進銀行",
+        "或會計系統那種完全沒有",
+        "A P I 的封閉網頁表單裡"
+      ],
+      "visual_title": "案例二：封閉系統報帳",
+      "visual_subtitle": "月底 30 張請款單與發票，全靠人工敲進無 API 表單",
+      "badge_text": "30 張手動登打",
+      "nodes": [
+        {
+          "label": "每月請款單量",
+          "sub": "合作廠商寄來的大量單據與發票",
+          "tag": "單量",
+          "metric": "30 張 / 月",
+          "icon": "database",
+          "trend": "down"
+        },
+        {
+          "label": "系統開放程度",
+          "sub": "銀行與會計後臺完全不提供串接",
+          "tag": "封閉",
+          "metric": "0 個 API",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "人工輸入方式",
+          "sub": "只能一筆一筆手動敲進網頁表單",
+          "tag": "痛點",
+          "metric": "100% 手動",
+          "icon": "users",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "接案工作室惡夢",
+      "callout_body": "銀行與會計系統完全沒 API，每月只能硬著頭皮敲",
+      "code_lines": [
+        "月底 30 張請款單 / 電子發票",
+        "→ 無 API 銀行與會計系統 → 逐筆手敲"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_22",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "這種純人工登打的",
+        "工作不只是每個月固定吃掉 4 小時寶貴工時",
+        "最可怕的是隻要下午精神不濟打錯 1 個小數點",
+        "隔天會計退件還得花雙倍時間回頭翻信箱對帳",
+        "整個工作室的節奏全被打亂"
+      ],
+      "spoken_clauses": [
+        "這種純人工登打的",
+        "工作不只是每個月固定吃掉 四 小時寶貴工時",
+        "最可怕的是隻要下午精神不濟打錯 一 個小數點",
+        "隔天會計退件還得花雙倍時間回頭翻信箱對帳",
+        "整個工作室的節奏全被打亂"
+      ],
+      "visual_title": "1 個小數點打亂全盤",
+      "visual_subtitle": "每月吃掉 4 小時工時，打錯字還得花雙倍時間對帳",
+      "badge_text": "月耗 4 小時+",
+      "nodes": [
+        {
+          "label": "固定登打工時",
+          "sub": "每月底固定消耗的寶貴行政時間",
+          "tag": "耗時",
+          "metric": "4 小時/月",
+          "icon": "calendar",
+          "trend": "down"
+        },
+        {
+          "label": "致命人為失誤",
+          "sub": "下午精神不濟極易打錯金額數字",
+          "tag": "風險",
+          "metric": "1 個小數點",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "退件重工代價",
+          "sub": "隔天遭會計退件須翻信箱重新核對",
+          "tag": "重工",
+          "metric": "2 倍時間",
+          "icon": "trending_up",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "人工失誤代價大",
+      "callout_body": "精神不濟錯 1 碼就被退件，重翻信箱對帳最崩潰",
+      "code_lines": [
+        "固定工時: 4 小時 / 月",
+        "打錯 1 個小數點 → 退件重對帳 (×2 時間)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_23",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "explainer",
+      "clauses": [
+        "現在他把整理好的本地表格交給 Browser-Use",
+        "Agent 會自動登入後臺",
+        "依序填入統編與金額、上傳發票 PDF 附件",
+        "最後再截一張完成畫面存檔當憑證",
+        "整批 30 筆單據跑完只要 8 分鐘且零失誤"
+      ],
+      "spoken_clauses": [
+        "現在他把整理好的本地表格交給 Browser-Use",
+        "Agent 會自動登入後臺",
+        "依序填入統編與金額、上傳發票 PDF 附件",
+        "最後再截一張完成畫面存檔當憑證",
+        "整批 三十 筆單據跑完只要 八 分鐘且零失誤"
+      ],
+      "visual_title": "報帳單據自動填表與憑證存檔",
+      "visual_subtitle": "30 筆發票從本地表格到後臺上傳 8 分鐘零失誤",
+      "badge_text": "8 分鐘 / 30 筆",
+      "nodes": [
+        {
+          "label": "讀取本地表格",
+          "sub": "自動解析整理好的 30 筆報帳清單",
+          "tag": "資料輸入",
+          "metric": "30 筆單據",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "自動登入填表",
+          "sub": "依序填入統編與金額免人工複製",
+          "tag": "表單填寫",
+          "metric": "0 次失誤",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "上傳發票 PDF",
+          "sub": "自動綁定對應附件並送出申請單",
+          "tag": "附件處理",
+          "metric": "100% 匹配",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "截圖留存憑證",
+          "sub": "完成後自動存檔畫面供財務核對",
+          "tag": "稽核存證",
+          "metric": "8 分鐘完工",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "全自動無痛報帳",
+      "callout_body": "自動填入統編金額並上傳 PDF，最後截圖留存憑證零出錯。",
+      "code_lines": [
+        "task = '讀取本地表格，登入後臺填寫統編金額並上傳發票 PDF'",
+        "bu.click(41); bu.upload('invoice_01.pdf'); bu.screenshot('receip"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_24",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "兩個真實省錢案例",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "explainer",
+      "clauses": [
+        "你幫 Gary 算一下這筆帳",
+        "光這 2 個流程每個月就省下",
+        "超過 12 小時重複人力",
+        "原本要付給商業 AI 代理的 $200 月費",
+        "直接省下來，自己串 API 跑這幾十次任務的",
+        "實際花費竟然連 $3 都不到"
+      ],
+      "spoken_clauses": [
+        "你幫 Gary 算一下這筆帳",
+        "光這 兩 個流程每個月就省下",
+        "超過 十二 小時重複人力",
+        "原本要付給商業 AI 代理的 兩百美金 月費",
+        "直接省下來，自己串 A P I 跑這幾十次任務的",
+        "實際花費竟然連 三美金 都不到"
+      ],
+      "visual_title": "省時省錢帳本大公開",
+      "visual_subtitle": "月省 12 小時人力，API 實付不到 $3 取代 $200 月費",
+      "badge_text": "< $3 / 月",
+      "nodes": [
+        {
+          "label": "省下重複人力",
+          "sub": "光 2 個流程每月就解放大量工時",
+          "tag": "時間紅利",
+          "metric": "12+ 小時/月",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "商業代理月費",
+          "sub": "原本需支付給封閉平台的訂閱門檻",
+          "tag": "原始成本",
+          "metric": "$200 / 月",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "自串 API 花費",
+          "sub": "執行幾十次網頁任務的真實帳單",
+          "tag": "實測花費",
+          "metric": "< $3 / 月",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "淨省成本比例",
+          "sub": "開源方案直接把固定月費壓到極致",
+          "tag": "成本最佳化",
+          "metric": "省 98.5%",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "98% 訂閱費大減免",
+      "callout_body": "自己串 API 跑幾十次任務花不到 $3，直接省下 $200 月費。",
+      "code_lines": [
+        "商業 AI 代理月費 = $200 / 月",
+        "Browser-Use 自串 API 實測花費 < $3 / 月 (省下 12+ 小時)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [
+        [
+          "傳統腳本",
+          18,
+          "易失效"
+        ],
+        [
+          "商業 RPA",
+          45,
+          "$200/月"
+        ],
+        [
+          "單一 Agent",
+          76,
+          "自動操作"
+        ],
+        [
+          "Browser-Use",
+          98,
+          "$0 開源"
+        ]
+      ],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_25",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "看到這裡你應該已經迫不及待想",
+        "在自己電腦跑一次了",
+        "這章我帶你從零把乾淨的執行環境架起來",
+        "整個流程只要 5 分鐘左右",
+        "照著我說的 4 個標準動作做",
+        "保證不會被奇怪的環境報錯卡關"
+      ],
+      "spoken_clauses": [
+        "看到這裡你應該已經迫不及待想",
+        "在自己電腦跑一次了",
+        "這章我帶你從零把乾淨的執行環境架起來",
+        "整個流程只要 五 分鐘左右",
+        "照著我說的 四 個標準動作做",
+        "保證不會被奇怪的環境報錯卡關"
+      ],
+      "visual_title": "5 分鐘零報錯環境建置路線",
+      "visual_subtitle": "照著 4 個標準動作從零架好乾淨的執行環境",
+      "badge_text": "4 步驟 / 5 分鐘",
+      "nodes": [
+        {
+          "label": "隔離虛擬環境",
+          "sub": "使用 uv 或 venv 避免汙染全域套件",
+          "tag": "步驟 1",
+          "metric": "1 分鐘",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "安裝開源套件",
+          "sub": "一鍵下載 1.0.8 正式版與非同步驅動",
+          "tag": "步驟 2",
+          "metric": "v1.0.8",
+          "icon": "python",
+          "trend": "up"
+        },
+        {
+          "label": "拉取瀏覽器核",
+          "sub": "安裝專用 Chromium 供 CDP 協議接管",
+          "tag": "步驟 3",
+          "metric": "1 個獨立核",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "配置環境金鑰",
+          "sub": "建立 .env 檔安全管理大模型憑證",
+          "tag": "步驟 4",
+          "metric": "5 分鐘總計",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "新手防卡關指南",
+      "callout_body": "按部就班完成環境隔離與驅動安裝，避開 99% 奇怪報錯。",
+      "code_lines": [
+        "1. 建立虛擬環境 -> 2. 安裝 browser-use 1.0.8",
+        "3. 下載 Chromium 核心 -> 4. 設定 .env API 金鑰"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_26",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "第 1 步千萬不要把套件",
+        "直接裝進電腦全域的 Python 裡面",
+        "請先用 uv，或內建的 venv",
+        "指令建立一個專屬的乾淨虛擬環境",
+        "這樣未來不管怎麼升級測試",
+        "都不會把你電腦裡其他舊專案的環境搞爆"
+      ],
+      "spoken_clauses": [
+        "第 一 步千萬不要把套件",
+        "直接裝進電腦全域的 Python 裡面",
+        "請先用 uv，或內建的 venv",
+        "指令建立一個專屬的乾淨虛擬環境",
+        "這樣未來不管怎麼升級測試",
+        "都不會把你電腦裡其他舊專案的環境搞爆"
+      ],
+      "visual_title": "第 1 步：建立專屬虛擬環境",
+      "visual_subtitle": "嚴禁裝進全域 Python，用 uv 或 venv 徹底隔離專案",
+      "badge_text": "環境隔離 100%",
+      "nodes": [
+        {
+          "label": "避開全域安裝",
+          "sub": "防止不同專案的套件版本互相打架",
+          "tag": "防雷守則",
+          "metric": "0 衝突風險",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "uv 極速建置",
+          "sub": "現代 Python 工具秒建乾淨隔離空間",
+          "tag": "推薦工具",
+          "metric": "1 秒完成",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "內建 venv 指令",
+          "sub": "免額外安裝也能標準化建立虛擬環境",
+          "tag": "內建方案",
+          "metric": "Python 3.11+",
+          "icon": "terminal",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "保護舊專案不崩潰",
+      "callout_body": "獨立虛擬環境讓未來升級測試更安心，絕不搞爆電腦環境。",
+      "code_lines": [
+        "uv venv .venv --python 3.11",
+        "source .venv/bin/activate"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_27",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "確認你的虛擬環境跑的是",
+        "Python 3.11 以上版本後",
+        "直接在終端機輸入 pip install browser-use",
+        "系統就會自動把 1.0.8",
+        "正式版以及底層需要的",
+        "非同步驅動套件一次全部下載妥當"
+      ],
+      "spoken_clauses": [
+        "確認你的虛擬環境跑的是",
+        "Python 三點一一 以上版本後",
+        "直接在終端機輸入 pip install browser-use",
+        "系統就會自動把 一點零版",
+        "正式版以及底層需要的",
+        "非同步驅動套件一次全部下載妥當"
+      ],
+      "visual_title": "第 2 步：安裝 Browser-Use 套件",
+      "visual_subtitle": "確認 Python 3.11+ 後一鍵下載 1.0.8 與非同步驅動",
+      "badge_text": "v1.0.8 正式版",
+      "nodes": [
+        {
+          "label": "檢查核心版本",
+          "sub": "確保虛擬環境執行 Python 3.11 以上",
+          "tag": "前置確認",
+          "metric": "Python 3.11+",
+          "icon": "python",
+          "trend": "up"
+        },
+        {
+          "label": "一鍵下載安裝",
+          "sub": "終端機執行 pip install",
+          "tag": "主體安裝",
+          "metric": "v1.0.8",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "自動補齊驅動",
+          "sub": "同步拉取底層非同步控制所需依賴",
+          "tag": "相依套件",
+          "metric": "122,138 ★",
+          "icon": "github",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "一行指令全部搞定",
+      "callout_body": "pip 自動拉齊主套件與底層非同步驅動，免手動拼裝相依性。",
+      "code_lines": [
+        "python --version  # 確認 >= 3.11",
+        "pip install browser-use"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_pulls.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_28",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "explainer",
+      "clauses": [
+        "主套件裝好後還差臨門一腳",
+        "記得執行安裝瀏覽器核心的指令",
+        "把專用的 Chromium 瀏覽器拉進本地環境裡",
+        "這樣等一下底層的 CDP",
+        "協議才有一個乾淨獨立的",
+        "Chrome 視窗可以全權接管"
+      ],
+      "spoken_clauses": [
+        "主套件裝好後還差臨門一腳",
+        "記得執行安裝瀏覽器核心的指令",
+        "把專用的 Chromium 瀏覽器拉進本地環境裡",
+        "這樣等一下底層的 CDP",
+        "協議才有一個乾淨獨立的",
+        "Chrome 視窗可以全權接管"
+      ],
+      "visual_title": "第 3 步：安裝專用 Chromium 核心",
+      "visual_subtitle": "拉取本地獨立瀏覽器，交由底層 CDP 協議全權接管",
+      "badge_text": "CDP 協議接管",
+      "nodes": [
+        {
+          "label": "拉取專用核心",
+          "sub": "將獨立 Chromium 瀏覽器安裝至本地",
+          "tag": "核心下載",
+          "metric": "1 個獨立核",
+          "icon": "playwright",
+          "trend": "up"
+        },
+        {
+          "label": "CDP 底層協議",
+          "sub": "直接透過 Chrome DevTools 協議控制",
+          "tag": "通訊架構",
+          "metric": "13,660 Forks",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "獨立乾淨視窗",
+          "sub": "與你日常工作分頁隔離免互相干擾",
+          "tag": "安全執行",
+          "metric": "100% 獨立",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "乾淨獨立視窗環境",
+      "callout_body": "專用 Chromium 不幹擾日常瀏覽器，讓 Agent 穩定精準操作。",
+      "code_lines": [
+        "playwright install chromium",
+        "# REPL runs it on Chrome (CDP) -> output back to the model"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_29",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "接著在專案資料夾底下新增一個叫做",
+        ".env 的隱藏設定檔",
+        "把你申請好的 OpenAI",
+        "Claude 或 Gemini 金鑰填進去",
+        "這邊順手提醒一下",
+        "記得把 .env 加進忽略清單",
+        "千萬別誤推上公開的 GitHub"
+      ],
+      "spoken_clauses": [
+        "接著在專案資料夾底下新增一個叫做",
+        ".env 的隱藏設定檔",
+        "把你申請好的 OpenAI",
+        "Claude 或 Gemini 金鑰填進去",
+        "這邊順手提醒一下",
+        "記得把 .env 加進忽略清單",
+        "千萬別誤推上公開的 GitHub"
+      ],
+      "visual_title": "第 4 步：設定 .env 與金鑰防外洩",
+      "visual_subtitle": "集中管理三大模型金鑰，務必加入 .gitignore 防誤推",
+      "badge_text": "防外洩紅線",
+      "nodes": [
+        {
+          "label": "建立 .env 檔案",
+          "sub": "在專案根目錄新增隱藏環境變數檔",
+          "tag": "設定檔",
+          "metric": "1 個檔案",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "填入模型金鑰",
+          "sub": "支援 OpenAI、Claude 或 Gemini 憑證",
+          "tag": "多模型支援",
+          "metric": "3 大主流",
+          "icon": "openai",
+          "trend": "up"
+        },
+        {
+          "label": "加入忽略清單",
+          "sub": "寫入 .gitignore 嚴防誤推公開",
+          "tag": "資安防線",
+          "metric": "0 外洩風險",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "金鑰絕不上公開庫",
+      "callout_body": "把 .env 寫進 .gitignore 清單，避免金鑰推上 GitHub 被盜刷。",
+      "code_lines": [
+        "OPENAI_API_KEY=sk-...",
+        "ANTHROPIC_API_KEY=sk-ant-...",
+        "echo '.env' >> .gitignore"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_30",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "如果你很在意跑多步網頁任務時的 Token 帳單",
+        "Browser-Use 最近",
+        "在 PR #6544，與 #6546 都強化了提示詞快取支援",
+        "串接 Claude 或 OpenRouter",
+        "時能大幅省下重複讀取網頁狀態的費用"
+      ],
+      "spoken_clauses": [
+        "如果你很在意跑多步網頁任務時的 Token 帳單",
+        "Browser-Use 最近",
+        "在 P R 六千五百四十四，與 六千五百四十六 都強化了提示詞快取支援",
+        "串接 Claude 或 OpenRouter",
+        "時能大幅省下重複讀取網頁狀態的費用"
+      ],
+      "visual_title": "PR #6544 / #6546 快取省錢黑科技",
+      "visual_subtitle": "強化提示詞快取支援，大幅降低多步網頁任務 Token 帳單",
+      "badge_text": "PR #6544 & #6546",
+      "nodes": [
+        {
+          "label": "強化快取請求",
+          "sub": "PR #6544 最佳化 Agent 提示詞快取機",
+          "tag": "官方更新",
+          "metric": "PR #6544",
+          "icon": "git",
+          "trend": "up"
+        },
+        {
+          "label": "跨平台快取",
+          "sub": "PR #6546 支援 OpenRouter",
+          "tag": "雲端整合",
+          "metric": "PR #6546",
+          "icon": "claude",
+          "trend": "up"
+        },
+        {
+          "label": "壓低長程帳單",
+          "sub": "省下多步任務重複讀取網頁狀態費用",
+          "tag": "Token 節省",
+          "metric": "省 50%+ 費用",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "重複狀態不用重付費",
+      "callout_body": "串接 Claude 或 OpenRouter 自動快取上下文，帳單直降。",
+      "code_lines": [
+        "#6544 fix(agent): request prompt caching for agent calls",
+        "#6546 Cache Claude on OpenRouter, Bedrock"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_31",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "explainer",
+      "clauses": [
+        "環境全部就緒後",
+        "你只要新建一支不到 20 行的 Python 檔案",
+        "先匯入 Agent 與你選定的 LLM 模型類別",
+        "接著把任務目標用白話中文寫進 task 參數裡",
+        "例如幫我查某款麥克風今天的最低價"
+      ],
+      "spoken_clauses": [
+        "環境全部就緒後",
+        "你只要新建一支不到 二十 行的 Python 檔案",
+        "先匯入 Agent 與你選定的 L L M 模型類別",
+        "接著把任務目標用白話中文寫進 task 參數裡",
+        "例如幫我查某款麥克風今天的最低價"
+      ],
+      "visual_title": "不到 20 行 Python 寫出網頁 Agent",
+      "visual_subtitle": "匯入 Agent 與 LLM 類別，用白話中文直接下達比價任務",
+      "badge_text": "< 20 行程式",
+      "nodes": [
+        {
+          "label": "新建腳本檔案",
+          "sub": "不到 20 行 Python 即可完成完整邏輯",
+          "tag": "極簡程式碼",
+          "metric": "< 20 行",
+          "icon": "python",
+          "trend": "up"
+        },
+        {
+          "label": "匯入核心類別",
+          "sub": "引入 Agent 控制器與選定的 LLM 模型",
+          "tag": "模組載入",
+          "metric": "2 個核心類",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "白話任務參數",
+          "sub": "直接用中文描述查某款麥克風最低價",
+          "tag": "自然語言",
+          "metric": "0 爬蟲規則",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "白話中文即刻驅動",
+      "callout_body": "不用寫死複雜爬蟲選擇器，把目標寫進 task 參數就能跑。",
+      "code_lines": [
+        "from browser_use import Agent",
+        "agent = Agent(task='幫我查某款麥克風今天的最低價', llm=llm)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_32",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "20 行程式從零實作",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "最後呼叫非同步的 run 方法並",
+        "在終端機按下執行",
+        "你就會親眼見證電腦自己彈出 Chrome 視窗",
+        "自動打字搜尋",
+        "翻頁比價並呼叫 finish 把最終結果印回畫面上",
+        "下半部我們再來談安全防線與進階部署"
+      ],
+      "spoken_clauses": [
+        "最後呼叫非同步的 run 方法並",
+        "在終端機按下執行",
+        "你就會親眼見證電腦自己彈出 Chrome 視窗",
+        "自動打字搜尋",
+        "翻頁比價並呼叫 finish 把最終結果印回畫面上",
+        "下半部我們再來談安全防線與進階部署"
+      ],
+      "visual_title": "一鍵啟動見證全自動網頁比價",
+      "visual_subtitle": "呼叫非同步 run 方法，自動開窗搜尋翻頁並印回結果",
+      "badge_text": "全自動執行",
+      "nodes": [
+        {
+          "label": "非同步啟動執行",
+          "sub": "終端機呼叫 await agent.run() 觸發",
+          "tag": "啟動指令",
+          "metric": "1 行啟動",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "自動開窗搜尋",
+          "sub": "彈出獨立 Chrome 視窗打字翻頁比價",
+          "tag": "自主操作",
+          "metric": "100% 自動",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "完成回傳結果",
+          "sub": "自動呼叫 finish 將最終最低價印回畫",
+          "tag": "結果輸出",
+          "metric": "0 人工介入",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "從手動點擊到全自動",
+      "callout_body": "彈出 Chrome 自己打字比價並呼叫 finish，結果直接回傳終端。",
+      "code_lines": [
+        "result = await agent.run()",
+        "✓ finish(result)  # 印出今日最低價與購買連結"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_33",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "swarm_subagents_grid",
+      "voice_style": "explainer",
+      "clauses": [
+        "學會單一任務後",
+        "很多人下一步就是把最強的大模型從頭掛到尾",
+        "結果月底打開帳單直接嚇一跳",
+        "其實在 Browser-Use 1.0.8 的進階架構裡",
+        "真正的高手都採用大小模型分工",
+        "讓複雜規劃與簡單點擊各司其職"
+      ],
+      "spoken_clauses": [
+        "學會單一任務後",
+        "很多人下一步就是把最強的大模型從頭掛到尾",
+        "結果月底打開帳單直接嚇一跳",
+        "其實在 Browser-Use 一點零版 的進階架構裡",
+        "真正的高手都採用大小模型分工",
+        "讓複雜規劃與簡單點擊各司其職"
+      ],
+      "visual_title": "破除大模型迷思：大小模型分工",
+      "visual_subtitle": "Browser-Use 1.0.8 進階架構讓複雜規劃與簡單點擊各司其職",
+      "badge_text": "雙模型架構",
+      "nodes": [
+        {
+          "label": "單一模型痛點",
+          "sub": "最強大模型從頭掛到尾導致月底帳單嚇",
+          "tag": "成本陷阱",
+          "metric": "arXiv 論文",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "複雜任務規劃",
+          "sub": "高階模型專注策略拆解與例外判斷",
+          "tag": "主控大腦",
+          "metric": "1.0.8 架構",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "簡單點擊執行",
+          "sub": "輕量模型負責高頻按鈕點擊與翻頁",
+          "tag": "基層執行",
+          "metric": "13,660 Forks",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "別再殺雞用牛刀",
+      "callout_body": "全程掛最強模型只會讓月底帳單爆表，分層協作才是高手做法。",
+      "code_lines": [
+        "Planner LLM (高推理) -> 拆解任務與異常決策",
+        "Worker LLM (輕量快速) -> 執行日常點擊與填表"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_34",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是一家公司裡",
+        "總經理只負責決定策略跟看最後報表",
+        "不會親自去按每一頁的下一頁按鈕",
+        "你把推理強的主控模型拿來拆解任務",
+        "把便宜快速的輕量模型拿來執行點擊",
+        "帳單直接省下 50% 以上"
+      ],
+      "spoken_clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是一家公司裡",
+        "總經理只負責決定策略跟看最後報表",
+        "不會親自去按每一頁的下一頁按鈕",
+        "你把推理強的主控模型拿來拆解任務",
+        "把便宜快速的輕量模型拿來執行點擊",
+        "帳單直接省下 百分之五十 以上"
+      ],
+      "visual_title": "總經理配基層：帳單直砍 50%+",
+      "visual_subtitle": "主控模型管策略看報表，輕量模型負責按每一頁下一頁",
+      "badge_text": "帳單省 50%+",
+      "nodes": [
+        {
+          "label": "總經理定策略",
+          "sub": "推理強的主控模型負責拆解任務與看報",
+          "tag": "高階決策",
+          "metric": "122,138 ★",
+          "icon": "users",
+          "trend": "up"
+        },
+        {
+          "label": "基層按下一頁",
+          "sub": "便宜快速的輕量模型包辦重複點擊動作",
+          "tag": "高頻執行",
+          "metric": "13,660 Forks",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "帳單直接砍半",
+          "sub": "大幅減少高階模型 Token 消耗立省荷包",
+          "tag": "省錢實效",
+          "metric": "省 50%+",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "白話理解雙模型分工",
+      "callout_body": "總經理不親自按按鈕，把便宜模型放前線讓帳單直接砍半。",
+      "code_lines": [
+        "總經理 (主控模型) = 拆解任務 + 審核最終報表",
+        "基層員工 (輕量模型) = 點擊按鈕 + 翻頁擷取 (成本 -50%+)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_35",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "更狠的是，官方近期在 PR #6544",
+        "與 #6546 陸續強化了 Prompt Caching 機制",
+        "連 OpenRouter，與 Bedrock 上的",
+        "Claude 都能快取重複的網頁上下文",
+        "讓長流程成本再砍一截"
+      ],
+      "spoken_clauses": [
+        "更狠的是，官方近期在 P R 六千五百四十四",
+        "與 六千五百四十六 陸續強化了 Prompt Caching 機制",
+        "連 OpenRouter，與 Bedrock 上的",
+        "Claude 都能快取重複的網頁上下文",
+        "讓長流程成本再砍一截"
+      ],
+      "visual_title": "多平台 Prompt Caching 成本再砍",
+      "visual_subtitle": "PR #6544 與 #6546 讓 OpenRouter 與 Bedrock ",
+      "badge_text": "快取再升級",
+      "nodes": [
+        {
+          "label": "PR #6544 強化",
+          "sub": "主動在 Agent 請求中啟用 Prompt",
+          "tag": "核心修補",
+          "metric": "PR #6544",
+          "icon": "git",
+          "trend": "up"
+        },
+        {
+          "label": "多雲端全支援",
+          "sub": "OpenRouter 與 AWS Bedrock",
+          "tag": "平台擴展",
+          "metric": "PR #6546",
+          "icon": "aws",
+          "trend": "up"
+        },
+        {
+          "label": "重複網頁快取",
+          "sub": "長流程免重複計費讓整體成本再砍一截",
+          "tag": "費用最佳化",
+          "metric": "2 大平台",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "長流程任務省錢利器",
+      "callout_body": "重複網頁上下文直接命中快取，大幅壓低長鏈路推理成本。",
+      "code_lines": [
+        "#6544 fix(agent): request prompt caching",
+        "#6546 Cache Claude on OpenRouter, Bedrock"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_36",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "不只省錢，當你要同時比價 20 個電商網站",
+        "單一視窗慢慢跑會等到天荒地老",
+        "你可以直接用 Python",
+        "啟動多個 Agent 實例平行協作",
+        "各自綁定獨立的 Chrome CDP 連線",
+        "原本要跑 30 分鐘的任務 3 分鐘收工"
+      ],
+      "spoken_clauses": [
+        "不只省錢，當你要同時比價 二十 個電商網站",
+        "單一視窗慢慢跑會等到天荒地老",
+        "你可以直接用 Python",
+        "啟動多個 Agent 實例平行協作",
+        "各自綁定獨立的 Chrome CDP 連線",
+        "原本要跑 三十 分鐘的任務 三 分鐘收工"
+      ],
+      "visual_title": "20 視窗平行協作：30 分鐘變 3 分鐘",
+      "visual_subtitle": "Python 同時啟動多個 Agent 實例，各自綁定獨立 CDP 連線",
+      "badge_text": "提速 10 倍",
+      "nodes": [
+        {
+          "label": "同時比價電商",
+          "sub": "一次對 20 個網站發起同步查詢不排隊",
+          "tag": "併發規模",
+          "metric": "20 個網站",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "獨立 CDP 連線",
+          "sub": "每個 Python Agent 實例綁定專屬視窗",
+          "tag": "隔離架構",
+          "metric": "20 條連線",
+          "icon": "python",
+          "trend": "up"
+        },
+        {
+          "label": "耗時壓縮十倍",
+          "sub": "原本需 30 分鐘的比價任務 3 分鐘完工",
+          "tag": "效率飛躍",
+          "metric": "3 分鐘收工",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "告別單視窗排隊苦等",
+      "callout_body": "多實例平行同時比價 20 家電商，30 分鐘任務 3 分鐘收工。",
+      "code_lines": [
+        "await asyncio.gather(*[agent.run() for agent in agents_20])",
+        "# 每個 Agent 綁定獨立 Chrome CDP 連線平行執行"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2.png",
+      "live_video_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S1_live.webm",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_37",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "這也呼應了 2025 年底 arXiv 論文提出的",
+        "Nested Browser-Use 巢狀架構",
+        "不再只靠 API 抓殘缺摘要",
+        "而是讓主控 Agent 派出子",
+        "Agent 鑽進深層網頁交互查證",
+        "再把結構化結果彙整回來"
+      ],
+      "spoken_clauses": [
+        "這也呼應了 二零二五 年底 arXiv 論文提出的",
+        "Nested Browser-Use 巢狀架構",
+        "不再只靠 A P I 抓殘缺摘要",
+        "而是讓主控 Agent 派出子",
+        "Agent 鑽進深層網頁交互查證",
+        "再把結構化結果彙整回來"
+      ],
+      "visual_title": "Nested Browser-Use 巢狀查證架構",
+      "visual_subtitle": "呼應 2025 年底 arXiv 論文，派出子 Agent 鑽進深層網頁",
+      "badge_text": "arXiv 2025.12",
+      "nodes": [
+        {
+          "label": "突破 API 限制",
+          "sub": "不再只靠搜尋引擎 API 抓取殘缺片段",
+          "tag": "技術突破",
+          "metric": "2025-12-29",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "派出子 Agent",
+          "sub": "主控大腦動態調度子代理鑽進深層網頁",
+          "tag": "巢狀協作",
+          "metric": "13,660 Forks",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "彙整結構結果",
+          "sub": "交叉查證真實內容後統一回傳乾淨資料",
+          "tag": "資料品質",
+          "metric": "arXiv 實證",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "超越殘缺 API 摘要",
+      "callout_body": "主控 Agent 派子 Agent 深入交互查證，彙整高品質結構化資料。",
+      "code_lines": [
+        "Paper: Nested Browser-Use Learning for Agentic Information Seeki",
+        "Main Agent -> spawn Sub-Agents -> Deep Web Verification"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_38",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "github_pr_blast_radius",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們一樣請出老朋友主角 Gary 舉個具體例子",
+        "他想同時追蹤 15 家供應商的即時報價與庫存",
+        "主控模型負責分配清單與核對異常",
+        "底層 5 個平行小模型同步進 REPL 跑腳本",
+        "遇到動態表格就自動切換 JS 擷取資料"
+      ],
+      "spoken_clauses": [
+        "我們一樣請出老朋友主角 Gary 舉個具體例子",
+        "他想同時追蹤 十五 家供應商的即時報價與庫存",
+        "主控模型負責分配清單與核對異常",
+        "底層 五 個平行小模型同步進 REPL 跑腳本",
+        "遇到動態表格就自動切換 JS 擷取資料"
+      ],
+      "visual_title": "Gary 實戰：15 家供應商即時報價",
+      "visual_subtitle": "主控分配清單與核對異常，5 個平行小模型進 REPL 跑 JS",
+      "badge_text": "1 主控 + 5 平行",
+      "nodes": [
+        {
+          "label": "追蹤供應商數",
+          "sub": "同步監控 15 家供應商的即時報價與庫",
+          "tag": "實戰目標",
+          "metric": "15 家廠商",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "主控核對異常",
+          "sub": "負責分配查詢清單並把關最終數據合理",
+          "tag": "統籌管理",
+          "metric": "1 個主控",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "平行 REPL 執行",
+          "sub": "5 個小模型同步進 REPL 跑腳本極速處",
+          "tag": "平行加速",
+          "metric": "5 個平行",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "自動切換 JS",
+          "sub": "遇到複雜動態表格直接執行 JS 擷取資",
+          "tag": "精準抓取",
+          "metric": "100% 擷取",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "動態表格自動切 JS",
+      "callout_body": "5 個小模型同步跑 REPL 腳本，遇動態表格直接 JS 精準擷取。",
+      "code_lines": [
+        "new_tab(url); bu.click(41); js('extract_dynamic_table()')",
+        "# 15 家供應商報價與庫存 -> 5 平行 Worker 同步彙整"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_39",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "explainer",
+      "clauses": [
+        "不過流程一多，最怕網站改版導致腳本默默抓錯欄位",
+        "所以我強烈建議導入類似",
+        "CI/CD 的自動驗證防線",
+        "利用 Browser Harness 設定斷言規則",
+        "每次跑完都檢查欄位格式與數值區間",
+        "異常就立刻告警重試"
+      ],
+      "spoken_clauses": [
+        "不過流程一多，最怕網站改版導致腳本默默抓錯欄位",
+        "所以我強烈建議導入類似",
+        "C I C D 的自動驗證防線",
+        "利用 Browser Harness 設定斷言規則",
+        "每次跑完都檢查欄位格式與數值區間",
+        "異常就立刻告警重試"
+      ],
+      "visual_title": "導入 CI/CD 級自動驗證防線",
+      "visual_subtitle": "利用 Browser Harness 設定斷言規則，防網站改版默默抓錯",
+      "badge_text": "Browser Harness",
+      "nodes": [
+        {
+          "label": "網站改版風險",
+          "sub": "流程一多最怕網頁微調導致腳本默默抓",
+          "tag": "隱藏地雷",
+          "metric": "0 容忍度",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "設定斷言規則",
+          "sub": "透過 Browser Harness 驗證格式與數",
+          "tag": "自動品管",
+          "metric": "100% 檢查",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "異常告警重試",
+          "sub": "偵測欄位異常立刻發送告警並自動重跑",
+          "tag": "故障自癒",
+          "metric": "13,660 Forks",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "異常立刻告警重試",
+      "callout_body": "每次執行後自動檢查欄位格式與數值區間，絕不讓髒資料過關。",
+      "code_lines": [
+        "assert isinstance(price, float) and 100 < price < 50000",
+        "if validation_failed: alert_and_retry(max_retries=3)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_40",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "雙模型與驗證防線",
+      "layout_type": "slash_command_prompt_bar",
+      "voice_style": "explainer",
+      "clauses": [
+        "把這道自動防線建立起來",
+        "才不會做 A 壞 B，陷入找 bug 打地鼠的無限迴圈",
+        "當分工、平行與驗證三條管線都接好",
+        "你手上就不再只是一個玩具腳本",
+        "而是一套可以 24 小時",
+        "穩定產出的數位勞動力系統"
+      ],
+      "spoken_clauses": [
+        "把這道自動防線建立起來",
+        "才不會做 A 壞 B，陷入找 bug 打地鼠的無限迴圈",
+        "當分工、平行與驗證三條管線都接好",
+        "你手上就不再只是一個玩具腳本",
+        "而是一套可以 二十四 小時",
+        "穩定產出的數位勞動力系統"
+      ],
+      "visual_title": "三管齊下打造 24 小時數位勞動力",
+      "visual_subtitle": "分工、平行與驗證三條管線接通，告別做 A 壞 B 打地鼠迴圈",
+      "badge_text": "24/7 穩定產出",
+      "nodes": [
+        {
+          "label": "大小模型分工",
+          "sub": "高階規劃配輕量點擊把成本壓到最低",
+          "tag": "管線 1",
+          "metric": "省 50%+ 費用",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "多實例平行跑",
+          "sub": "多視窗同步作業大幅縮短任務等待時間",
+          "tag": "管線 2",
+          "metric": "提速 10 倍",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "自動驗證防線",
+          "sub": "杜絕做 A 壞 B 陷入找 bug 打地鼠迴圈",
+          "tag": "管線 3",
+          "metric": "0 靜默錯誤",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "數位勞動力",
+          "sub": "從玩具腳本蛻變為 24 小時穩定生產系",
+          "tag": "最終形態",
+          "metric": "24 小時/天",
+          "icon": "robot",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "從玩具升級正式系統",
+      "callout_body": "建立自動防線才不會做 A 壞 B，真正實現 24 小時穩定產出。",
+      "code_lines": [
+        "Pipeline = [大小模型分工] + [多實例平行] + [CI/CD 自動驗證]",
+        "Status: 24/7 Production-Ready Digital Workforce"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_41",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "工具跑起來之後",
+        "我們得進入第二層思考",
+        "到底該繼續用開源版在自己電腦免費跑",
+        "還是租官方的 Browser Use Cloud",
+        "或者乾脆花每個月 $200 買商業封閉工具",
+        "這題沒有標準答案",
+        "全看你的場景權衡"
+      ],
+      "spoken_clauses": [
+        "工具跑起來之後",
+        "我們得進入第二層思考",
+        "到底該繼續用開源版在自己電腦免費跑",
+        "還是租官方的 Browser Use Cloud",
+        "或者乾脆花每個月 兩百美金 買商業封閉工具",
+        "這題沒有標準答案",
+        "全看你的場景權衡"
+      ],
+      "visual_title": "本機、雲端與商業版三方權衡",
+      "visual_subtitle": "開源 $0、官方 Cloud 或 $200 商業封閉工具，全看場景決定",
+      "badge_text": "3 種部署決策",
+      "nodes": [
+        {
+          "label": "本機開源免費",
+          "sub": "在自己電腦免費執行，隱私與掌控度最",
+          "tag": "方案 A",
+          "metric": "$0 / 月",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "官方雲端瀏覽",
+          "sub": "租用 Browser Use Cloud 隱身瀏覽器",
+          "tag": "方案 B",
+          "metric": "$0.06 / 時",
+          "icon": "cloudflare",
+          "trend": "up"
+        },
+        {
+          "label": "商業封閉工具",
+          "sub": "免維護開箱即用但需負擔高昂固定月費",
+          "tag": "方案 C",
+          "metric": "$200 / 月",
+          "icon": "dollar",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "沒有唯一標準答案",
+      "callout_body": "依據隱私等級、併發需求與預算上限，挑選最適合的執行環境。",
+      "code_lines": [
+        "Option A: 本地開源 ($0) | Option B: Browser Use Cloud ($0.06/hr)",
+        "Option C: 商業封閉代理 ($200 / 月)"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_42",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "explainer",
+      "clauses": [
+        "如果你的任務牽涉到公司內部 ERP",
+        "私人銀行對帳或未公開客戶名單",
+        "本機開源 $0 方案絕對是首選",
+        "所有 Cookie，登入憑證跟網頁截圖都留在自己硬碟裡",
+        "搭配地端模型甚至能做到資料完全不外流",
+        "隱私掌控權 100%"
+      ],
+      "spoken_clauses": [
+        "如果你的任務牽涉到公司內部 ERP",
+        "私人銀行對帳或未公開客戶名單",
+        "本機開源 零元免費 方案絕對是首選",
+        "所有 Cookie，登入憑證跟網頁截圖都留在自己硬碟裡",
+        "搭配地端模型甚至能做到資料完全不外流",
+        "隱私掌控權 百分之一百"
+      ],
+      "visual_title": "高機密場景首選：本機開源 $0 方案",
+      "visual_subtitle": "內部 ERP、銀行對帳與客戶名單留在硬碟，隱私掌控 100%",
+      "badge_text": "100% 隱私掌控",
+      "nodes": [
+        {
+          "label": "高敏感度任務",
+          "sub": "公司內部 ERP、私人銀行對帳與客戶名",
+          "tag": "適用場景",
+          "metric": "3 大機密",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "憑證留存硬碟",
+          "sub": "所有 Cookie、登入憑證與截圖不離本",
+          "tag": "本地隔離",
+          "metric": "$0 軟體費",
+          "icon": "lock",
+          "trend": "up"
+        },
+        {
+          "label": "隱私完全掌控",
+          "sub": "搭配地端模型做到資料完全不外流最安",
+          "tag": "最高資安",
+          "metric": "100% 掌控",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "敏感資料完全不外流",
+      "callout_body": "Cookie、憑證與截圖全留本機，配地端模型實現零資料外洩。",
+      "code_lines": [
+        "Local Storage: Cookies + Credentials + Screenshots (100% On-Prem",
+        "Local LLM + Browser-Use = Zero Data Exfiltration"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [
+        [
+          "傳統腳本",
+          18,
+          "易失效"
+        ],
+        [
+          "商業 RPA",
+          45,
+          "$200/月"
+        ],
+        [
+          "單一 Agent",
+          76,
+          "自動操作"
+        ],
+        [
+          "Browser-Use",
+          98,
+          "$0 開源"
+        ]
+      ],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_43",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "但本機跑很快就會撞上第一道高牆",
+        "反爬蟲與 IP 封鎖",
+        "你用家裡固定 IP 一口氣開 10 個視窗狂刷機票",
+        "或電商網站，不出 5 分鐘就被風控系統鎖住",
+        "連自己正常上網都要一直受阻",
+        "這時候硬扛反而浪費時間"
+      ],
+      "spoken_clauses": [
+        "但本機跑很快就會撞上第一道高牆",
+        "反爬蟲與 IP 封鎖",
+        "你用家裡固定 IP 一口氣開 十 個視窗狂刷機票",
+        "或電商網站，不出 五 分鐘就被風控系統鎖住",
+        "連自己正常上網都要一直受阻",
+        "這時候硬扛反而浪費時間"
+      ],
+      "visual_title": "本機執行的第一道高牆：反爬蟲封鎖",
+      "visual_subtitle": "家用固定 IP 開 10 視窗狂刷機票電商，5 分鐘就被風控鎖住",
+      "badge_text": "5 分鐘遭風控",
+      "nodes": [
+        {
+          "label": "家用固定 IP",
+          "sub": "一口氣開 10 個視窗狂刷機票或電商網",
+          "tag": "高危操作",
+          "metric": "10 個視窗",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "極速觸發風控",
+          "sub": "不出 5 分鐘就被目標網站反爬蟲系統封",
+          "tag": "封鎖速度",
+          "metric": "5 分鐘被鎖",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "連累日常上網",
+          "sub": "IP 黑名單導致自己正常瀏覽網頁也受阻",
+          "tag": "副作用",
+          "metric": "arXiv 論文",
+          "icon": "lock",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "家用 IP 硬扛浪費時間",
+      "callout_body": "本機高併發不只被鎖爬蟲，連帶害自己日常上網都處處受阻。",
+      "code_lines": [
+        "Home Static IP x 10 Windows -> Rate Limited / Blocked in 5 mins",
+        "# 解法：改用雲端隱身瀏覽器或輪換代理 IP"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_44",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "這正是官方 Browser Use Cloud 切入的痛點",
+        "他們把雲端隱身瀏覽器的計價壓到每小時",
+        "只要 $0.06，還通過了 SOC 2 Type II 安全認證",
+        "對需要合規與高併發的團隊來說",
+        "比自己養伺服器划算太多"
+      ],
+      "spoken_clauses": [
+        "這正是官方 Browser Use Cloud 切入的痛點",
+        "他們把雲端隱身瀏覽器的計價壓到每小時",
+        "只要 零元免費.六，還通過了 SOC 兩 Type II 安全認證",
+        "對需要合規與高併發的團隊來說",
+        "比自己養伺服器划算太多"
+      ],
+      "visual_title": "雲端隱身瀏覽器成本優勢",
+      "visual_subtitle": "每小時 $0.06 兼顧合規與高併發",
+      "badge_text": "$0.06 / 時",
+      "nodes": [
+        {
+          "label": "雲端按時計費",
+          "sub": "用多少算多少免養機",
+          "tag": "低成本",
+          "metric": "$0.06 / 時",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "SOC2安全認證",
+          "sub": "符合企業級資安合規",
+          "tag": "高合規",
+          "metric": "arXiv 論文",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "隱身防偵測",
+          "sub": "內建反爬蟲指紋偽裝",
+          "tag": "高穩定",
+          "metric": "100% 託管",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "企業級託管首選",
+      "callout_body": "免自建伺服器，直接取得高併發與安全認證",
+      "code_lines": [
+        "Browser Use Cloud: $0.06 / browser-hour",
+        "Compliance: SOC 2 Type II Certified"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_scroll1.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_45",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "explainer",
+      "clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是：自己買車停在車庫很省月費",
+        "但如果要一次載 50 個人出差",
+        "直接按小時叫車隊反而更省心",
+        "而且 1.0.9 版本還補上了",
+        "rotate_proxy() 指定國家切換代理",
+        "反偵測能力更強"
+      ],
+      "spoken_clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是：自己買車停在車庫很省月費",
+        "但如果要一次載 五十 個人出差",
+        "直接按小時叫車隊反而更省心",
+        "而且 一點零版 版本還補上了",
+        "rotate proxy 指定國家切換代理",
+        "反偵測能力更強"
+      ],
+      "visual_title": "自架與雲端的車隊比喻",
+      "visual_subtitle": "50 人出差叫車隊，1.0.9 支援跨國代理",
+      "badge_text": "v1.0.9 代理",
+      "nodes": [
+        {
+          "label": "本機自架車庫",
+          "sub": "個人日常跑任務免月費",
+          "tag": "省月費",
+          "metric": "$0 / 月",
+          "icon": "cpu",
+          "trend": "down"
+        },
+        {
+          "label": "雲端平行車隊",
+          "sub": "一次派發大量併發任務",
+          "tag": "高併發",
+          "metric": "50 節點",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "指定國家代理",
+          "sub": "1.0.9 支援動態切換 IP",
+          "tag": "反偵測",
+          "metric": "v1.0.9",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "彈性擴容更省心",
+      "callout_body": "高併發直接按需呼叫雲端，搭配跨國代理防封鎖",
+      "code_lines": [
+        "rotate_proxy(country='US') # PR #6540",
+        "concurrency = 50 # 平行雲端節點"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_46",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "explainer",
+      "clauses": [
+        "那商業封閉工具到底還有沒有價值",
+        "有，它的強項是零設定開箱即用",
+        "適合完全不想碰終端機的非工程師",
+        "但它就像黑盒子",
+        "遇到特殊企業表單卡關時",
+        "你既看不到底層 DOM 結構",
+        "也沒辦法寫兩行 Python 程式碼自己繞過去"
+      ],
+      "spoken_clauses": [
+        "那商業封閉工具到底還有沒有價值",
+        "有，它的強項是零設定開箱即用",
+        "適合完全不想碰終端機的非工程師",
+        "但它就像黑盒子",
+        "遇到特殊企業表單卡關時",
+        "你既看不到底層 D O M 結構",
+        "也沒辦法寫兩行 Python 程式碼自己繞過去"
+      ],
+      "visual_title": "商業黑盒與開源白盒對決",
+      "visual_subtitle": "開箱即用 vs 掌控底層 DOM 與 Python",
+      "badge_text": "開源白盒",
+      "nodes": [
+        {
+          "label": "商業封閉工具",
+          "sub": "零設定但卡關無解",
+          "tag": "黑盒子",
+          "metric": "0% 可控",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "底層DOM結構",
+          "sub": "完整透視網頁元素樹",
+          "tag": "全透明",
+          "metric": "100% 透視",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "Python繞過",
+          "sub": "隨時插入腳本修補例外",
+          "tag": "高彈性",
+          "metric": "2 行搞定",
+          "icon": "python",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "卡關能否自己修",
+      "callout_body": "遇到特殊企業表單，開源能寫兩行程式碼繞過",
+      "code_lines": [
+        "bu.click(41); js('document.querySelector(...)')",
+        "# 看得見 DOM，隨時用 Python 接管"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_47",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "explainer",
+      "clauses": [
+        "我很欣賞 Browser-Use 官網敢",
+        "直接喊出所有基準測試全面公開",
+        "在 2026 年 11 月針",
+        "對 500 個真實任務跑完評測並公開細節",
+        "這種把成績攤在陽光下的開源文化",
+        "讓我們做技術選型時能看證據",
+        "不必只聽行銷話術"
+      ],
+      "spoken_clauses": [
+        "我很欣賞 Browser-Use 官網敢",
+        "直接喊出所有基準測試全面公開",
+        "在 二零二六 年 十一 月針",
+        "對 五百 個真實任務跑完評測並公開細節",
+        "這種把成績攤在陽光下的開源文化",
+        "讓我們做技術選型時能看證據",
+        "不必只聽行銷話術"
+      ],
+      "visual_title": "公開基準測試透明文化",
+      "visual_subtitle": "2026 年 11 月 500 項真實任務全公開",
+      "badge_text": "500 任務評測",
+      "nodes": [
+        {
+          "label": "真實任務評測",
+          "sub": "覆蓋多元複雜網頁場景",
+          "tag": "高覆蓋",
+          "metric": "500 任務",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "評測細節公開",
+          "sub": "所有數據與標準皆可查",
+          "tag": "零黑箱",
+          "metric": "100% 公開",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "開源技術選型",
+          "sub": "用客觀數據取代話術",
+          "tag": "看證據",
+          "metric": "2026-11",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "選型看真實證據",
+      "callout_body": "把成績攤在陽光下，拒絕只聽商業行銷話術",
+      "code_lines": [
+        "Benchmark Date: 2026-11",
+        "Evaluation Suite: 500 real-world tasks"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_48",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "本機與雲端成本權衡",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "explainer",
+      "clauses": [
+        "總結來說",
+        "個人日常自動化與高敏感資料走本機 $0 開源",
+        "要跨國比價、大量平行爬資料就按需切換到",
+        "$0.06 每小時的雲端隱身節點",
+        "把開源彈性與雲端算力混搭使用",
+        "才是性價比與隱私兼顧的最優解"
+      ],
+      "spoken_clauses": [
+        "總結來說",
+        "個人日常自動化與高敏感資料走本機 零元免費 開源",
+        "要跨國比價、大量平行爬資料就按需切換到",
+        "零元免費.六 每小時的雲端隱身節點",
+        "把開源彈性與雲端算力混搭使用",
+        "才是性價比與隱私兼顧的最優解"
+      ],
+      "visual_title": "本機與雲端混搭最優解",
+      "visual_subtitle": "隱私走本機 $0，高併發切雲端 $0.06",
+      "badge_text": "混搭策略",
+      "nodes": [
+        {
+          "label": "本機開源執行",
+          "sub": "高敏感資料不離開電腦",
+          "tag": "高隱私",
+          "metric": "$0 / 時",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "雲端隱身節點",
+          "sub": "跨國比價與大量爬蟲",
+          "tag": "高併發",
+          "metric": "$0.06 / 時",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "混合架構部署",
+          "sub": "日常免費與峰值擴容",
+          "tag": "最優解",
+          "metric": "2 軌並行",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "性價比與隱私兼顧",
+      "callout_body": "開源彈性結合雲端算力，按場景自由切換",
+      "code_lines": [
+        "LOCAL_SENSITIVE = '$0 / hr'",
+        "CLOUD_STEALTH   = '$0.06 / hr'"
+      ],
+      "pipeline_steps": [
+        "為什麼爬蟲總壞掉",
+        "兩個真實省錢案例",
+        "20 行程式從零實作",
+        "雙模型與驗證防線",
+        "本機與雲端成本權衡"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "minimalist precision balance scale weighing a glowing amber AI module against dark matte blocks on #222224 background, conceptual editorial metaphor for Browser-Use, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_49",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "explainer",
+      "clauses": [
+        "接下來這章價值連城",
+        "因為我看過太多新手興沖沖",
+        "把 Agent 接上真實帳號",
+        "結果第一週就釀成災難",
+        "不管你技術多強",
+        "在把 Browser-Use 放進真實工作流之前",
+        "這 3 個致命大坑一定要先打好預防針"
+      ],
+      "spoken_clauses": [
+        "接下來這章價值連城",
+        "因為我看過太多新手興沖沖",
+        "把 Agent 接上真實帳號",
+        "結果第一週就釀成災難",
+        "不管你技術多強",
+        "在把 Browser-Use 放進真實工作流之前",
+        "這 三 個致命大坑一定要先打好預防針"
+      ],
+      "visual_title": "上線前必避的 3 個大坑",
+      "visual_subtitle": "接上真實帳號前，先建立安全防線",
+      "badge_text": "3 大致命坑",
+      "nodes": [
+        {
+          "label": "付款人工確認",
+          "sub": "攔截不可逆金流與發信",
+          "tag": "大坑 1",
+          "metric": "100% 必設",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "時間差漏洞",
+          "sub": "防範頁面跳動誤觸按鈕",
+          "tag": "大坑 2",
+          "metric": "13,660 Forks",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "遠端權限隔離",
+          "sub": "獨立設定檔與最小權限",
+          "tag": "大坑 3",
+          "metric": "0 暴露",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "先打好預防針",
+      "callout_body": "別讓 Agent 第一週就在真實帳號釀成災難",
+      "code_lines": [
+        "Pitfall 1: Missing Payment Lock",
+        "Pitfall 2: TOCTOU Race | Pitfall 3: Isolation"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_50",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "claude_chat_dialog",
+      "voice_style": "explainer",
+      "clauses": [
+        "第一個大坑，就是完全沒設『付款前人工確認鎖",
+        "很多教學為了展示酷炫",
+        "直接讓 AI 一路從搜尋、加購物車跑到刷卡結帳",
+        "但只要商品規格抓錯或運費暴漲",
+        "AI 照樣毫秒級幫你下單",
+        "等你收到簡訊已經來不及取消"
+      ],
+      "spoken_clauses": [
+        "第一個大坑，就是完全沒設『付款前人工確認鎖",
+        "很多教學為了展示酷炫",
+        "直接讓 AI 一路從搜尋、加購物車跑到刷卡結帳",
+        "但只要商品規格抓錯或運費暴漲",
+        "AI 照樣毫秒級幫你下單",
+        "等你收到簡訊已經來不及取消"
+      ],
+      "visual_title": "大坑一：沒設付款確認鎖",
+      "visual_subtitle": "規格抓錯或運費暴漲，AI 照樣毫秒下單",
+      "badge_text": "金流高風險",
+      "nodes": [
+        {
+          "label": "全自動刷卡",
+          "sub": "從搜尋一路跑到結帳",
+          "tag": "無煞車",
+          "metric": "1 毫秒下單",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "規格運費誤判",
+          "sub": "抓錯型號或暴漲運費",
+          "tag": "高損失",
+          "metric": "0 次確認",
+          "icon": "robot",
+          "trend": "down"
+        },
+        {
+          "label": "不可逆操作",
+          "sub": "扣款完成無法自動取消",
+          "tag": "災難現場",
+          "metric": "100% 實付",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "收到簡訊已太晚",
+      "callout_body": "全自動刷卡結帳沒有煞車，出錯立刻造成損失",
+      "code_lines": [
+        "search() -> add_to_cart() -> checkout() # 危險！",
+        "# 毫秒級下單，無法撤回"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_51",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "explainer",
+      "clauses": [
+        "正確的工程做法非常簡單：把流程切在最後一步",
+        "所有涉及金流、刪資料或對外發信的按鈕",
+        "一律透過鉤子暫停並通知人類審查",
+        "讓 AI 幫你做完 99% 的苦工",
+        "最後那 1% 不可逆的確認鍵",
+        "永遠留在你自己手裡"
+      ],
+      "spoken_clauses": [
+        "正確的工程做法非常簡單：把流程切在最後一步",
+        "所有涉及金流、刪資料或對外發信的按鈕",
+        "一律透過鉤子暫停並通知人類審查",
+        "讓 AI 幫你做完 百分之九十九 的苦工",
+        "最後那 百分之一 不可逆的確認鍵",
+        "永遠留在你自己手裡"
+      ],
+      "visual_title": "99% 苦工與 1% 人類確認",
+      "visual_subtitle": "透過鉤子暫停高風險按鈕，由人類放行",
+      "badge_text": "99% / 1% 分工",
+      "nodes": [
+        {
+          "label": "AI代勞苦工",
+          "sub": "搜尋比價與填表全包辦",
+          "tag": "高效率",
+          "metric": "99% 流程",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "鉤子自動暫停",
+          "sub": "遇到敏感按鈕立刻卡住",
+          "tag": "安全閥",
+          "metric": "3 類高危",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "人類最終放行",
+          "sub": "不可逆操作由本人點擊",
+          "tag": "零失誤",
+          "metric": "1% 決策",
+          "icon": "users",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "確認鍵留在自己手",
+      "callout_body": "金流、刪資料與對外發信，一律暫停等人類審查",
+      "code_lines": [
+        "if action in ['pay', 'delete', 'send_email']:",
+        "    pause_and_notify_human()"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_scroll2.png",
+      "live_video_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep01_agent_master/source_screenshots/S2_live.webm",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_52",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "第二個大坑更隱蔽",
+        "也是 2026 年 2 月 arXiv",
+        "論文特別點名的 TOCTOU 時間差漏洞",
+        "論文揭露不管是靠 DOM",
+        "還是視覺模型操作的瀏覽器 Agent",
+        "在『檢查畫面』與『點擊執行』之間都存",
+        "在致命空窗期"
+      ],
+      "spoken_clauses": [
+        "第二個大坑更隱蔽",
+        "也是 二零二六 年 兩 月 arXiv",
+        "論文特別點名的 TOCTOU 時間差漏洞",
+        "論文揭露不管是靠 D O M",
+        "還是視覺模型操作的瀏覽器 Agent",
+        "在『檢查畫面』與『點擊執行』之間都存",
+        "在致命空窗期"
+      ],
+      "visual_title": "大坑二：TOCTOU 時間差漏洞",
+      "visual_subtitle": "2026 年 2 月 arXiv 論文揭露致命空窗期",
+      "badge_text": "arXiv 論文",
+      "nodes": [
+        {
+          "label": "arXiv實測論文",
+          "sub": "專文拆解瀏覽器代理漏洞",
+          "tag": "學術實證",
+          "metric": "2026-02",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "檢查執行空窗",
+          "sub": "Time-of-Check 到 Use 落差",
+          "tag": "TOCTOU",
+          "metric": "2 階段斷層",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "雙模式皆受創",
+          "sub": "DOM 與視覺模型都有風險",
+          "tag": "全面影響",
+          "metric": "100% 適用",
+          "icon": "globe",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "檢查與點擊不同步",
+      "callout_body": "DOM 與視覺模型皆存在畫面變動的空窗風險",
+      "code_lines": [
+        "T1 (Check): inspect DOM / Screenshot",
+        "T2 (Use):   click(target) # 畫面已變動"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_53",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "code_editor_live_preview",
+      "voice_style": "explainer",
+      "clauses": [
+        "我們一樣請出老朋友主角 Gary 舉個具體例子",
+        "Agent 剛剛檢查好編號 41 的按鈕是『套用折扣",
+        "結果 0.5 秒後網頁廣告載入把版面往下推",
+        "原本編號 41 的位置瞬間變成『一鍵購買",
+        "AI 一點下去直接翻車"
+      ],
+      "spoken_clauses": [
+        "我們一樣請出老朋友主角 Gary 舉個具體例子",
+        "Agent 剛剛檢查好編號 四十一 的按鈕是『套用折扣",
+        "結果 零點五 秒後網頁廣告載入把版面往下推",
+        "原本編號 四十一 的位置瞬間變成『一鍵購買",
+        "AI 一點下去直接翻車"
+      ],
+      "visual_title": "主角 Gary 的 0.5 秒翻車",
+      "visual_subtitle": "廣告載入推擠版面，編號 41 變一鍵購買",
+      "badge_text": "0.5 秒偏移",
+      "nodes": [
+        {
+          "label": "初始檢查41號",
+          "sub": "確認目標是套用折扣鈕",
+          "tag": "T=0.0s",
+          "metric": "編號 41",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "廣告推擠版面",
+          "sub": "動態元素載入導致位移",
+          "tag": "T=0.5s",
+          "metric": "0.5 秒後",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "誤觸一鍵購買",
+          "sub": "舊索引對應到結帳按鈕",
+          "tag": "直接翻車",
+          "metric": "1 次誤點",
+          "icon": "dollar",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "舊索引盲點釀大禍",
+      "callout_body": "原本要按『套用折扣』，廣告位移害 AI 直接下單",
+      "code_lines": [
+        "T=0.0s: element[41] == '套用折扣'",
+        "T=0.5s: ad_loaded() -> element[41] == '一鍵購買'"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "typing"
+    },
+    {
+      "beat_id": "beat_54",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "explainer",
+      "clauses": [
+        "要防範 TOCTOU 風險",
+        "千萬別只靠單次座標或舊索引盲點",
+        "執行關鍵操作前",
+        "必須重新校驗目標元素的文字與狀態",
+        "並把點擊與結果驗證綁成原子化檢查",
+        "只要版面異動或目標特徵不符",
+        "立刻中止動作並重抓頁面"
+      ],
+      "spoken_clauses": [
+        "要防範 TOCTOU 風險",
+        "千萬別只靠單次座標或舊索引盲點",
+        "執行關鍵操作前",
+        "必須重新校驗目標元素的文字與狀態",
+        "並把點擊與結果驗證綁成原子化檢查",
+        "只要版面異動或目標特徵不符",
+        "立刻中止動作並重抓頁面"
+      ],
+      "visual_title": "原子化檢查防範 TOCTOU",
+      "visual_subtitle": "點擊前重檢文字與狀態，不符立刻中止",
+      "badge_text": "原子化校驗",
+      "nodes": [
+        {
+          "label": "執行前重校驗",
+          "sub": "再次確認文字與元素狀態",
+          "tag": "雙重確認",
+          "metric": "100% 核對",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "原子化綁定",
+          "sub": "點擊與結果驗證合而為一",
+          "tag": "防競態",
+          "metric": "0 空窗期",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "異動立刻中止",
+          "sub": "特徵不符馬上停止並重抓",
+          "tag": "自動煞車",
+          "metric": "0 誤觸",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "拒絕座標與索引盲點",
+      "callout_body": "綁定點擊與特徵驗證，版面異動立刻重抓頁面",
+      "code_lines": [
+        "assert el.text == '套用折扣' and el.is_stable()",
+        "atomic_click(el) or abort_and_reload()"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_55",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "explainer",
+      "clauses": [
+        "第三個大坑是遠端權限隔離沒做好",
+        "官方文件白紙黑字警告過",
+        "任何拿到遠端瀏覽器控制連結的人",
+        "都能直接接管你的瀏覽器",
+        "而且環境裡存在 API Key",
+        "也不代表遠端伺服器真的",
+        "核準了這個金鑰的權限範圍"
+      ],
+      "spoken_clauses": [
+        "第三個大坑是遠端權限隔離沒做好",
+        "官方文件白紙黑字警告過",
+        "任何拿到遠端瀏覽器控制連結的人",
+        "都能直接接管你的瀏覽器",
+        "而且環境裡存在 A P I Key",
+        "也不代表遠端伺服器真的",
+        "核準了這個金鑰的權限範圍"
+      ],
+      "visual_title": "大坑三：遠端權限未隔離",
+      "visual_subtitle": "控制連結等同接管，有 Key 不代表有權限",
+      "badge_text": "官方安全警告",
+      "nodes": [
+        {
+          "label": "控制連結外洩",
+          "sub": "拿到連結就能接管瀏覽器",
+          "tag": "極高危",
+          "metric": "100% 接管",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "API金鑰誤區",
+          "sub": "有 Key 不代表伺服器核准",
+          "tag": "權限盲點",
+          "metric": "0 保證",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "官方白紙黑字",
+          "sub": "文件明確警示遠端風險",
+          "tag": "必讀規範",
+          "metric": "2 條鐵律",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "連結外洩即全面淪陷",
+      "callout_body": "任何拿到控制連結的人都能直接操作你的瀏覽器",
+      "code_lines": [
+        "Anyone with the link can control the browser.",
+        "Key availability != server accepts the key."
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_56",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "實戰必避的3個大坑",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "explainer",
+      "clauses": [
+        "所以千萬不要把你平常用來登入網銀",
+        "跟主信箱的 Chrome 設定檔直接交給 Agent",
+        "務必為它建立專屬的獨立 Profile",
+        "開啟最小權限原則",
+        "並且絕不把除錯埠與控制連結暴露在公網",
+        "才能安心享受自動化紅利"
+      ],
+      "spoken_clauses": [
+        "所以千萬不要把你平常用來登入網銀",
+        "跟主信箱的 Chrome 設定檔直接交給 Agent",
+        "務必為它建立專屬的獨立 Profile",
+        "開啟最小權限原則",
+        "並且絕不把除錯埠與控制連結暴露在公網",
+        "才能安心享受自動化紅利"
+      ],
+      "visual_title": "獨立 Profile 與最小權限",
+      "visual_subtitle": "絕不共用網銀主信箱，絕不暴露公網埠",
+      "badge_text": "沙盒隔離",
+      "nodes": [
+        {
+          "label": "獨立設定檔",
+          "sub": "與網銀主信箱完全切割",
+          "tag": "物理隔離",
+          "metric": "1 專屬檔",
+          "icon": "users",
+          "trend": "up"
+        },
+        {
+          "label": "最小權限原則",
+          "sub": "只給任務所需的最低權限",
+          "tag": "控風險",
+          "metric": "arXiv 論文",
+          "icon": "lock",
+          "trend": "up"
+        },
+        {
+          "label": "禁曝公網埠",
+          "sub": "除錯埠與連結限本機存取",
+          "tag": "防入侵",
+          "metric": "0 公網暴露",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "安心享受自動化紅利",
+      "callout_body": "建立專屬 Chrome 設定檔，封鎖除錯埠對外暴露",
+      "code_lines": [
+        "chrome --user-data-dir=./agent-profile",
+        "--remote-debugging-address=127.0.0.1"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_57",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "走到這裡，你應該能感受到為什麼 Browser-Use 能",
+        "在 GitHub 狂掃 122,138 顆星",
+        "與 13,660 個 Fork",
+        "它真正顛覆的不是某個單一功能",
+        "而是把過去只有工程師能寫的自動化",
+        "變成每個人都能指揮的槓桿"
+      ],
+      "spoken_clauses": [
+        "走到這裡，你應該能感受到為什麼 Browser-Use 能",
+        "在 GitHub 狂掃 十二萬兩千 顆星",
+        "與 一萬三千六百六十 個 Fork",
+        "它真正顛覆的不是某個單一功能",
+        "而是把過去只有工程師能寫的自動化",
+        "變成每個人都能指揮的槓桿"
+      ],
+      "visual_title": "122,138 星的真正價值",
+      "visual_subtitle": "把工程師專屬自動化，變成全民指揮槓桿",
+      "badge_text": "122,138 ★",
+      "nodes": [
+        {
+          "label": "GitHub星標",
+          "sub": "開源瀏覽器代理霸主級熱度",
+          "tag": "頂尖專案",
+          "metric": "122,138 ★",
+          "icon": "github",
+          "trend": "up"
+        },
+        {
+          "label": "全球開發分支",
+          "sub": "龐大社群共同迭代修補",
+          "tag": "高活躍",
+          "metric": "13,660 Fork",
+          "icon": "git",
+          "trend": "up"
+        },
+        {
+          "label": "全民工程槓桿",
+          "sub": "免手寫爬蟲也能指揮瀏覽器",
+          "tag": "降門檻",
+          "metric": "10x 槓桿",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "自動化權力下放",
+      "callout_body": "顛覆的不是單一功能，而是讓每個人都能指揮 Agent",
+      "code_lines": [
+        "GitHub Stars: 122,138 ★",
+        "GitHub Forks: 13,660 Forks"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_58",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "warm",
+      "clauses": [
+        "以前寫一套跨網站比價或填表機器人",
+        "你得研究各種 API 文件",
+        "處理雜亂的 HTML 選擇器",
+        "網站一改版整套程式就報廢",
+        "現在透過 REPL 與 CDP 雙軌驅動",
+        "AI 自己會看畫面",
+        "寫腳本、讀回傳值並修正路線"
+      ],
+      "spoken_clauses": [
+        "以前寫一套跨網站比價或填表機器人",
+        "你得研究各種 A P I 文件",
+        "處理雜亂的 HTML 選擇器",
+        "網站一改版整套程式就報廢",
+        "現在透過 REPL 與 CDP 雙軌驅動",
+        "AI 自己會看畫面",
+        "寫腳本、讀回傳值並修正路線"
+      ],
+      "visual_title": "REPL + CDP 雙軌自癒",
+      "visual_subtitle": "告別改版就報廢的脆弱 HTML 選擇器",
+      "badge_text": "雙軌驅動",
+      "nodes": [
+        {
+          "label": "傳統脆弱爬蟲",
+          "sub": "網頁一改版選擇器全報廢",
+          "tag": "舊痛點",
+          "metric": "1 改版就掛",
+          "icon": "code",
+          "trend": "down"
+        },
+        {
+          "label": "REPL動態腳本",
+          "sub": "模型即時撰寫並執行指令",
+          "tag": "高彈性",
+          "metric": "13,660 Forks",
+          "icon": "terminal",
+          "trend": "up"
+        },
+        {
+          "label": "CDP雙軌回饋",
+          "sub": "讀取畫面與輸出自動修正",
+          "tag": "會自癒",
+          "metric": "2 軌閉環",
+          "icon": "robot",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "AI 自己看畫面修路線",
+      "callout_body": "免啃雜亂 API 文件，動態寫腳本並讀回傳修正",
+      "code_lines": [
+        "model -> write cell (new_tab / click / js)",
+        "REPL -> Chrome (CDP) -> output back to model"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [
+        [
+          "傳統腳本",
+          18,
+          "易失效"
+        ],
+        [
+          "商業 RPA",
+          45,
+          "$200/月"
+        ],
+        [
+          "單一 Agent",
+          76,
+          "自動操作"
+        ],
+        [
+          "Browser-Use",
+          98,
+          "$0 開源"
+        ]
+      ],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_59",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "warm",
+      "clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是，AI 終於不再只是關在對話框裡的軍師",
+        "而是長出了雙手與眼睛的實習生",
+        "你省下的不只是每個月 $200 的訂閱費",
+        "更是每週 5 到 10",
+        "小時重複複製貼上的寶貴生命"
+      ],
+      "spoken_clauses": [
+        "對非技術背景的朋友來說",
+        "白話講就是，AI 終於不再只是關在對話框裡的軍師",
+        "而是長出了雙手與眼睛的實習生",
+        "你省下的不只是每個月 兩百美金 的訂閱費",
+        "更是每週 五 到 十",
+        "小時重複複製貼上的寶貴生命"
+      ],
+      "visual_title": "長出手腳的 AI 實習生",
+      "visual_subtitle": "省下 $200 月費與每週 5 到 10 小時",
+      "badge_text": "省 5-10 時/週",
+      "nodes": [
+        {
+          "label": "省下訂閱費",
+          "sub": "擺脫高價商業代理月費",
+          "tag": "省預算",
+          "metric": "$200 / 月",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "省下重複工時",
+          "sub": "終結無止盡複製貼上地獄",
+          "tag": "省生命",
+          "metric": "5-10 時/週",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "長出雙手眼睛",
+          "sub": "真正操作瀏覽器完成任務",
+          "tag": "能幹活",
+          "metric": "100% 落地",
+          "icon": "robot",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "走出對話框的實戰力",
+      "callout_body": "從只會給建議的軍師，進化為親手幹活的實習生",
+      "code_lines": [
+        "Monthly Subscription Saved: $200 / month",
+        "Repetitive Work Saved: 5-10 hours / week"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_60",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "warm",
+      "clauses": [
+        "為了讓你看完影片今天就能落地",
+        "我整理了一張 4 步實戰檢查清單",
+        "第一步，先用一個低風險的公開比價",
+        "或表單任務跑通本機 1.0.8 版本",
+        "親眼確認它在 Chrome 裡",
+        "順利執行並回傳 finish 結果"
+      ],
+      "spoken_clauses": [
+        "為了讓你看完影片今天就能落地",
+        "我整理了一張 四 步實戰檢查清單",
+        "第一步，先用一個低風險的公開比價",
+        "或表單任務跑通本機 一點零版 版本",
+        "親眼確認它在 Chrome 裡",
+        "順利執行並回傳 finish 結果"
+      ],
+      "visual_title": "4 步清單第一步：本機跑通",
+      "visual_subtitle": "用公開低風險任務驗證 v1.0.8 與 finish",
+      "badge_text": "Step 1 / 4",
+      "nodes": [
+        {
+          "label": "安裝本機版本",
+          "sub": "部署最新穩定開源環境",
+          "tag": "穩定版",
+          "metric": "v1.0.8",
+          "icon": "python",
+          "trend": "up"
+        },
+        {
+          "label": "低風險公開測",
+          "sub": "先挑比價或公開表單練手",
+          "tag": "零風險",
+          "metric": "1 個任務",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "驗證完成回傳",
+          "sub": "親眼確認 Chrome 回傳結果",
+          "tag": "已跑通",
+          "metric": "13,660 Forks",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "今天就能親手落地",
+      "callout_body": "先跑公開比價或表單，確認 Chrome 順利回傳結果",
+      "code_lines": [
+        "task: 'book the earliest driving test'",
+        "✓ finish(result) # 確認本機 v1.0.8 跑通"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_61",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "warm",
+      "clauses": [
+        "第二步，把主控規劃與重複執行拆成大小模型分工",
+        "順手打開 Prompt Caching 省下 50% 以上帳單",
+        "第三步",
+        "替關鍵步驟加上人工確認鎖與 TOCTOU 狀態重檢",
+        "確保任何不可逆操作都在你的掌控中"
+      ],
+      "spoken_clauses": [
+        "第二步，把主控規劃與重複執行拆成大小模型分工",
+        "順手打開 Prompt Caching 省下 百分之五十 以上帳單",
+        "第三步",
+        "替關鍵步驟加上人工確認鎖與 TOCTOU 狀態重檢",
+        "確保任何不可逆操作都在你的掌控中"
+      ],
+      "visual_title": "清單二三步：省錢與防呆",
+      "visual_subtitle": "大小模型分工開快取，加上雙重安全鎖",
+      "badge_text": "Step 2-3 / 4",
+      "nodes": [
+        {
+          "label": "大小模型分工",
+          "sub": "主控規劃與重複執行拆開",
+          "tag": "Step 2",
+          "metric": "2 層架構",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "開啟提示快取",
+          "sub": "大幅壓低重複上下文帳單",
+          "tag": "省帳單",
+          "metric": "省 50%+",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "雙重安全防線",
+          "sub": "人工確認鎖加 TOCTOU 重檢",
+          "tag": "Step 3",
+          "metric": "2 道防線",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "省 50% 帳單又零翻車",
+      "callout_body": "快取壓低 Token 成本，人工鎖與狀態重檢守住安全",
+      "code_lines": [
+        "Prompt Caching: >50% token cost reduction",
+        "Guardrails: Human Lock + TOCTOU Re-check"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_62",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "warm",
+      "clauses": [
+        "第四步，把你最常跑的任務包成排程並接上驗證防線",
+        "當資料量放大或遇到反爬蟲時",
+        "再彈性切換到每小時 $0.06 的雲端隱身瀏覽器",
+        "照這 4 步走完，你就正式跨過了 AI 工具玩家",
+        "與工程自動化高手的分水嶺"
+      ],
+      "spoken_clauses": [
+        "第四步，把你最常跑的任務包成排程並接上驗證防線",
+        "當資料量放大或遇到反爬蟲時",
+        "再彈性切換到每小時 零元免費.六 的雲端隱身瀏覽器",
+        "照這 四 步走完，你就正式跨過了 AI 工具玩家",
+        "與工程自動化高手的分水嶺"
+      ],
+      "visual_title": "清單第四步：排程與擴容",
+      "visual_subtitle": "常跑任務自動化，放大時切換 $0.06 雲端",
+      "badge_text": "Step 4 / 4",
+      "nodes": [
+        {
+          "label": "任務排程化",
+          "sub": "把高頻流程打包定時執行",
+          "tag": "全自動",
+          "metric": "24/7 運作",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "驗證防線整合",
+          "sub": "確保每次排程穩定不翻車",
+          "tag": "高可靠",
+          "metric": "100% 守護",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "彈性切換雲端",
+          "sub": "量放大或遇反爬蟲切隱身",
+          "tag": "秒擴容",
+          "metric": "$0.06 / 時",
+          "icon": "globe",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "跨過工程高手分水嶺",
+      "callout_body": "排程接上驗證防線，反爬蟲時彈性切換雲端隱身",
+      "code_lines": [
+        "schedule(daily_task, guardrails=True)",
+        "if scale_up: switch_to_cloud('$0.06/hr')"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_63",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "warm",
+      "clauses": [
+        "如果你不想自己一個人摸索踩坑",
+        "想系統化掌握 Browser-Use",
+        "MCP 協定、多 Agent 協作與企業級自動化部署",
+        "歡迎加入我們的『AI 實戰營",
+        "裡面有完整可跑的專案範本",
+        "避坑指南與每週實戰答疑"
+      ],
+      "spoken_clauses": [
+        "如果你不想自己一個人摸索踩坑",
+        "想系統化掌握 Browser-Use",
+        "M C P 協定、多 Agent 協作與企業級自動化部署",
+        "歡迎加入我們的『AI 實戰營",
+        "裡面有完整可跑的專案範本",
+        "避坑指南與每週實戰答疑"
+      ],
+      "visual_title": "系統化掌握 AI 實戰營",
+      "visual_subtitle": "Browser-Use、MCP 協定與多 Agent 部署",
+      "badge_text": "AI 實戰營",
+      "nodes": [
+        {
+          "label": "核心技術全套",
+          "sub": "貫通瀏覽器代理與 MCP 協定",
+          "tag": "系統化",
+          "metric": "4 大模組",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "可跑專案範本",
+          "sub": "直接套用省去從零摸索",
+          "tag": "開箱跑",
+          "metric": "100% 實戰",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "每週實戰答疑",
+          "sub": "避坑指南與社群即時解惑",
+          "tag": "有陪跑",
+          "metric": "1 次 / 週",
+          "icon": "users",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "少走彎路直接落地",
+      "callout_body": "完整可跑專案範本、避坑指南與每週實戰答疑",
+      "code_lines": [
+        "Stack: Browser-Use + MCP + Multi-Agent",
+        "Includes: Templates + Guides + Weekly Q&A"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "clean architectural dark glass vault protecting warm amber compute cores on #222224 studio stage, conceptual editorial metaphor for Browser-Use, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_64",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "工程槓桿與實戰清單",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "warm",
+      "clauses": [
+        "那以上就是今天這套開源工作流的完整實戰拆解",
+        "感謝你看到這邊",
+        "如果鋪天蓋地的 AI 工具讓你覺得眼花撩亂",
+        "歡迎加入我在下方資訊欄整理的 AI 實戰營社群",
+        "這支影片用到的檢查清單跟提示詞模板都在裡面",
+        "我們下次見"
+      ],
+      "spoken_clauses": [
+        "那以上就是今天這套開源工作流的完整實戰拆解",
+        "感謝你看到這邊",
+        "如果鋪天蓋地的 AI 工具讓你覺得眼花撩亂",
+        "歡迎加入我在下方資訊欄整理的 AI 實戰營社群",
+        "這支影片用到的檢查清單跟提示詞模板都在裡面",
+        "我們下次見"
+      ],
+      "visual_title": "領取實戰清單與模板",
+      "visual_subtitle": "資訊欄加入 AI 實戰營社群，下次見",
+      "badge_text": "免費領清單",
+      "nodes": [
+        {
+          "label": "實戰檢查清單",
+          "sub": "照著 4 步驟零失誤落地",
+          "tag": "隨手查",
+          "metric": "4 步清單",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "提示詞模板",
+          "sub": "直接複製使用省去試錯",
+          "tag": "直接用",
+          "metric": "100% 附上",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "AI實戰營社群",
+          "sub": "資訊欄加入一起升級打怪",
+          "tag": "立即加入",
+          "metric": "1 鍵領取",
+          "icon": "youtube",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "把工作流真正帶回家",
+      "callout_body": "本片 4 步檢查清單與提示詞模板皆收錄在社群",
+      "code_lines": [
+        "Checklist: 4-Step Browser-Use Playbook",
+        "Community: AI 實戰營 (資訊欄連結)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    }
+  ],
+  "short_title": "122,138星開源神器！零訂閱費讓AI自動操作網頁省$200 #Shorts",
+  "short_hook_banner": "免費AI代操",
+  "short_cta_target_title": "省下 $200！Browser-Use 網頁自動化攻略",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_squircles_hook",
+      "voice_style": "hook",
+      "clauses": [
+        "月付 $200 買代操",
+        "122,138 星開源神器 $0 直接跑"
+      ],
+      "spoken_clauses": [
+        "月付 兩百美金 買代操",
+        "十二萬兩千 星開源神器 零元免費 直接跑"
+      ],
+      "headline": "零月費AI接管瀏覽器",
+      "sub_caption": "告別昂貴封閉訂閱制，開源直接落地",
+      "highlight_badge": "122,138 ★",
+      "nodes": [
+        {
+          "label": "商業封閉工具",
+          "sub": "每月 $200 高昂訂閱費",
+          "tag": "$200/月",
+          "metric": "$200/月",
+          "icon": "dollar",
+          "trend": "neutral"
+        },
+        {
+          "label": "Browser-Use",
+          "sub": "13,660 Forks 開源免費",
+          "tag": "$0 開源",
+          "metric": "$0 開源",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "pip install browser-use",
+        "GitHub: 122,138 Stars / 13,660 Forks"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_live_typing_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "Browser-Use 直連 Chrome",
+        "自動比價、填表單一次搞定"
+      ],
+      "spoken_clauses": [
+        "Browser-Use 直連 Chrome",
+        "自動比價、填表單一次搞定"
+      ],
+      "headline": "REPL 驅動 Chrome",
+      "sub_caption": "看懂 DOM 與畫面，自動點擊填表",
+      "highlight_badge": "v1.0.8",
+      "nodes": [
+        {
+          "label": "Python REPL",
+          "sub": "動態生成腳本與點擊指令",
+          "tag": "自動規劃",
+          "metric": "13,660 Forks",
+          "icon": "code",
+          "trend": "neutral"
+        },
+        {
+          "label": "Chrome CDP",
+          "sub": "即時操作分頁並回傳結果",
+          "tag": "實機執行",
+          "metric": "13,660 Forks",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "資深開發者 (10年經驗) + 非技術工作者",
+        "→ 共同告別手動複製貼上"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_browser_zoom_proof",
+      "voice_style": "explainer",
+      "clauses": [
+        "高手都用大小模型分工加快取",
+        "API 帳單直接省下 50%"
+      ],
+      "spoken_clauses": [
+        "高手都用大小模型分工加快取",
+        "A P I 帳單直接省下 百分之五十"
+      ],
+      "headline": "大小模型分工省一半",
+      "sub_caption": "強模型拆解策略，小模型高速點擊",
+      "highlight_badge": "省 50% 成本",
+      "nodes": [
+        {
+          "label": "主控推理模型",
+          "sub": "只做任務規劃與異常決策",
+          "tag": "高智商",
+          "metric": "arXiv 論文",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "輕量執行模型",
+          "sub": "搭配 Prompt Caching 省費",
+          "tag": "快又省",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "REPL → Chrome (CDP) → 點擊執行",
+        "最新畫面 + 截圖 → 回傳模型二次驗證"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "explainer",
+      "clauses": [
+        "同時比價 20 個網站",
+        "開多 Agent 平行跑，3 分鐘收工"
+      ],
+      "spoken_clauses": [
+        "同時比價 二十 個網站",
+        "開多 Agent 平行跑，三 分鐘收工"
+      ],
+      "headline": "多 Agent 平行協作",
+      "sub_caption": "多視窗同步查價，效率直接翻 10 倍",
+      "highlight_badge": "3 分鐘收工",
+      "nodes": [
+        {
+          "label": "20 個目標站",
+          "sub": "自動派發獨立分頁任務",
+          "tag": "高併發",
+          "metric": "122,138 ★",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "巢狀查證架構",
+          "sub": "深入網頁抓結構化報價",
+          "tag": "精準彙整",
+          "metric": "122,138 ★",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "固定工時: 4 小時 / 月",
+        "打錯 1 個小數點 → 退件重對帳 (×2 時間)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_versus_stamp",
+      "voice_style": "explainer",
+      "clauses": [
+        "加上自動驗證防線查格式",
+        "才不會做 A 壞 B 陷入打地鼠迴圈"
+      ],
+      "spoken_clauses": [
+        "加上自動驗證防線查格式",
+        "才不會做 A 壞 B 陷入打地鼠迴圈"
+      ],
+      "headline": "建立自動驗證防線",
+      "sub_caption": "Browser Harness 攔截改版異常",
+      "highlight_badge": "零打地鼠",
+      "nodes": [
+        {
+          "label": "欄位斷言檢查",
+          "sub": "自動核對格式與數值區間",
+          "tag": "CI/CD級",
+          "metric": "13,660 Forks",
+          "icon": "shield",
+          "trend": "neutral"
+        },
+        {
+          "label": "異常即時重試",
+          "sub": "24 小時穩定跑出正確資料",
+          "tag": "高可靠",
+          "metric": "13,660 Forks",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "OPENAI_API_KEY=sk-...",
+        "ANTHROPIC_API_KEY=sk-ant-...",
+        "echo '.env' >> .gitignore"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_live_typing_card",
+      "voice_style": "explainer",
+      "clauses": [
+        "機密資料本機 $0 跑",
+        "遇反爬蟲改租 $0.06/小時雲端節點"
+      ],
+      "spoken_clauses": [
+        "機密資料本機 零元免費 跑",
+        "遇反爬蟲改租 零元免費.六、小時雲端節點"
+      ],
+      "headline": "本機與雲端彈性混搭",
+      "sub_caption": "隱私與反風控一次兼顧的最優解",
+      "highlight_badge": "$0.06/hr",
+      "nodes": [
+        {
+          "label": "本機開源 $0",
+          "sub": "憑證留地端，隱私 100%",
+          "tag": "高機密",
+          "metric": "arXiv 論文",
+          "icon": "lock",
+          "trend": "neutral"
+        },
+        {
+          "label": "雲端隱身節點",
+          "sub": "SOC 2 Type II + 切換代理",
+          "tag": "抗風控",
+          "metric": "arXiv 論文",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "await asyncio.gather(*[agent.run() for agent in agents_20])",
+        "# 每個 Agent 綁定獨立 Chrome CDP 連線平行執行"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "typing",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_growth_curve",
+      "voice_style": "explainer",
+      "clauses": [
+        "第一大坑：結帳前一定要設人工確認鎖",
+        "別讓 AI 誤刷你的信用卡"
+      ],
+      "spoken_clauses": [
+        "第一大坑：結帳前一定要設人工確認鎖",
+        "別讓 AI 誤刷你的信用卡"
+      ],
+      "headline": "大坑 1：付款確認鎖",
+      "sub_caption": "99% 交給 AI，最後 1% 人類按確認",
+      "highlight_badge": "防誤刷卡",
+      "nodes": [
+        {
+          "label": "不可逆操作",
+          "sub": "金流結帳與刪檔強制暫停",
+          "tag": "高風險",
+          "metric": "122,138 ★",
+          "icon": "lock",
+          "trend": "neutral"
+        },
+        {
+          "label": "人工審查確認",
+          "sub": "人類核准後才放行送出",
+          "tag": "安全鎖",
+          "metric": "122,138 ★",
+          "icon": "shield",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "Home Static IP x 10 Windows -> Rate Limited / Blocked in 5 mins",
+        "# 解法：改用雲端隱身瀏覽器或輪換代理 IP"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_08",
+      "layout_type": "short_second_level_crowd",
+      "voice_style": "explainer",
+      "clauses": [
+        "第二大坑：提防 TOCTOU 時間差",
+        "點擊前重檢版面避免點錯購買鍵"
+      ],
+      "spoken_clauses": [
+        "第二大坑：提防 TOCTOU 時間差",
+        "點擊前重檢版面避免點錯購買鍵"
+      ],
+      "headline": "大坑 2：TOCTOU 漏洞",
+      "sub_caption": "廣告載入推擠按鈕，0.5 秒就翻車",
+      "highlight_badge": "arXiv 警示",
+      "nodes": [
+        {
+          "label": "畫面偏移風險",
+          "sub": "按鈕編號瞬間換成結帳鍵",
+          "tag": "時間差",
+          "metric": "13,660 Forks",
+          "icon": "robot",
+          "trend": "neutral"
+        },
+        {
+          "label": "原子化重檢",
+          "sub": "點擊前二次驗證元素文字",
+          "tag": "防誤點",
+          "metric": "13,660 Forks",
+          "icon": "check",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "search() -> add_to_cart() -> checkout() # 危險！",
+        "# 毫秒級下單，無法撤回"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_09",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "explainer",
+      "clauses": [
+        "第三大坑：務必隔離專屬設定檔",
+        "別把遠端控制連結跟主帳號交出去"
+      ],
+      "spoken_clauses": [
+        "第三大坑：務必隔離專屬設定檔",
+        "別把遠端控制連結跟主帳號交出去"
+      ],
+      "headline": "大坑 3：權限嚴格隔離",
+      "sub_caption": "控制連結外洩等於整臺瀏覽器被接管",
+      "highlight_badge": "最小權限",
+      "nodes": [
+        {
+          "label": "獨立 Profile",
+          "sub": "絕不混用網銀與主信箱",
+          "tag": "環境隔離",
+          "metric": "arXiv 論文",
+          "icon": "lock",
+          "trend": "neutral"
+        },
+        {
+          "label": "關閉公網暴露",
+          "sub": "嚴控除錯埠與遠端連結",
+          "tag": "零外洩",
+          "metric": "arXiv 論文",
+          "icon": "shield",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "GitHub Stars: 122,138 ★",
+        "GitHub Forks: 13,660 Forks"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_10",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "完整架構與 4 步清單",
+        "點左下角『關聯影片』看 15 分鐘長片"
+      ],
+      "spoken_clauses": [
+        "完整架構與 四 步清單",
+        "點左下角『關聯影片』看 十五 分鐘長片"
+      ],
+      "headline": "看完整 15 分鐘攻略",
+      "sub_caption": "點擊左下角『關聯影片』馬上實戰",
+      "highlight_badge": "完整長片",
+      "nodes": [
+        {
+          "label": "4 步實戰清單",
+          "sub": "從安裝分工到避坑一次帶走",
+          "tag": "即學即用",
+          "metric": "122,138 ★",
+          "icon": "check",
+          "trend": "neutral"
+        },
+        {
+          "label": "左下角關聯影片",
+          "sub": "解鎖完整 15 分鐘深度教學",
+          "tag": "立即觀看",
+          "metric": "122,138 ★",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "Checklist: 4-Step Browser-Use Playbook",
+        "Community: AI 實戰營 (資訊欄連結)"
+      ],
+      "chart_points": [
+        [
+          "傳統",
+          22,
+          "手動"
+        ],
+        [
+          "半自動",
+          55,
+          "$200"
+        ],
+        [
+          "Browser-Us",
+          96,
+          "$0"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": true
+    }
+  ]
+}

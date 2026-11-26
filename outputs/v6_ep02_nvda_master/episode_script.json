@@ -1,0 +1,6588 @@
+{
+  "episode_id": "v6_ep02_nvda_master",
+  "title": "NVDA暴跌四成PE剩16倍！五年財報看懂AI營運槓桿",
+  "thumbnail_line1": "輝達暴跌四成",
+  "thumbnail_line2": "PE竟剩16倍",
+  "category": "us_stocks",
+  "avatar_mode": true,
+  "youtube_description_summary": "NVDA 股價從 $243.37 暴跌近四成至 $149.30，本益比壓到 16.0 倍！我們直接攤開 NVDA、微軟與 Meta 五年 SEC 10-K 官方年報，拆解從賣晶片到 AI 工廠的商業飛輪、60.4% 營益率的營運槓桿奇蹟，以及雲端巨頭千億 CapEx 背後的真實現金流底氣。",
+  "hashtags": [
+    "#GaryChen",
+    "#NVDA",
+    "#輝達",
+    "#美股分析",
+    "#SEC財報",
+    "#AI投資"
+  ],
+  "chapters": [
+    "01 暴跌與財報預期差",
+    "02 從晶片到AI工廠",
+    "03 五年財報的營運槓桿",
+    "04 巨頭燒錢的現金真相",
+    "05 自研晶片難越三道牆",
+    "06 PE 16 倍的安全邊際",
+    "07 必盯三大真實風險",
+    "08 紀律控管與長期清單"
+  ],
+  "beats": [
+    {
+      "beat_id": "beat_01",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "hook",
+      "clauses": [
+        "當一家年營收衝破 $2,159 億 美金",
+        "成長率高達 +65.5% 的科技霸主",
+        "股價卻從高點 $243.37 一路殺到 $149.30",
+        "市場現在瀰漫的恐慌情緒",
+        "跟財報數字根本活在兩個平行宇宙"
+      ],
+      "spoken_clauses": [
+        "當一家年營收衝破 兩千一百五十九億美金",
+        "成長率高達 百分之六十五點五 的科技霸主",
+        "股價卻從高點 兩百四十三點三七美金 一路殺到 一百四十九點三零美金",
+        "市場現在瀰漫的恐慌情緒",
+        "跟財報數字根本活在兩個平行宇宙"
+      ],
+      "visual_title": "股價暴跌與財報的平行宇宙",
+      "visual_subtitle": "營收衝破 $2,159 億卻從 $243.37 殺回 $149.30",
+      "badge_text": "+65.5% YoY",
+      "nodes": [
+        {
+          "label": "FY26 總營收",
+          "sub": "SEC 10-K 揭露全年營收創歷史新高",
+          "tag": "基本面",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營收年增率",
+          "sub": "兩千億體量仍維持超高速擴張",
+          "tag": "成長力",
+          "metric": "+65.5%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "52 週高點",
+          "sub": "市場狂熱期創下的歷史股價峰值",
+          "tag": "前高",
+          "metric": "$243.37",
+          "icon": "dollar",
+          "trend": "neutral"
+        },
+        {
+          "label": "目前市場價",
+          "sub": "恐慌拋售後大幅回檔的真實報價",
+          "tag": "現價",
+          "metric": "$149.30",
+          "icon": "zap",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "極端預期差現形",
+      "callout_body": "基本面年增 +65.5%，股價卻先反映最悲觀的衰退劇本。",
+      "code_lines": [
+        "FY26_Revenue = $2,159 億 (+65.5% YoY)",
+        "NVDA_Drawdown = ($149.30 - $243.37) / $243.37 = -38.7%"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_02",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "hook",
+      "clauses": [
+        "你現在打開看盤軟體",
+        "NVDA 輝達從 52 週高點回檔將近四成",
+        "本益比直接被華爾街砍到只剩 16.0 倍",
+        "甚至比許多成長停滯的傳統消費品龍頭還要便宜",
+        "這背後的定價落差大到讓人覺得不可思議"
+      ],
+      "spoken_clauses": [
+        "你現在打開看盤軟體",
+        "Nvidia 輝達從 五十二 週高點回檔將近四成",
+        "本益比直接被華爾街砍到只剩 十六點零 倍",
+        "甚至比許多成長停滯的傳統消費品龍頭還要便宜",
+        "這背後的定價落差大到讓人覺得不可思議"
+      ],
+      "visual_title": "本益比慘遭砍至 16.0",
+      "visual_subtitle": "成長霸主估值竟低於傳統消費品龍頭",
+      "badge_text": "PE 16.0x",
+      "nodes": [
+        {
+          "label": "股價回檔幅度",
+          "sub": "從 52 週高點 $243.37 大幅修正",
+          "tag": "修正",
+          "metric": "-38.7%",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "NVDA 本益比",
+          "sub": "華爾街給予的估值倍數跌至谷底",
+          "tag": "估值",
+          "metric": "16.0x",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "52 週低點",
+          "sub": "市場恐慌情緒測試的支撐區間",
+          "tag": "區間底",
+          "metric": "$124.50",
+          "icon": "shield",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "估值嚴重錯殺",
+      "callout_body": "回檔近四成把 P/E 壓縮到 16.0 倍，定價邏輯出現巨大裂縫。",
+      "code_lines": [
+        "NVDA_Price = $149.30 | 52W_Range = $124.50 - $243.37",
+        "NVDA_PE = 16.0x (低於傳統消費龍頭均值)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_03",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "打開華爾街的看空報告",
+        "滿天飛的都是 AI 資本支出見頂",
+        "客製化晶片要取代 GPU",
+        "科技巨頭燒錢沒回報這些故事",
+        "聽起來好像明天全世界的",
+        "資料中心就要集體拔掉插頭",
+        "停止採購輝達晶片一樣"
+      ],
+      "spoken_clauses": [
+        "打開華爾街的看空報告",
+        "滿天飛的都是 AI 資本支出見頂",
+        "客製化晶片要取代 G P U",
+        "科技巨頭燒錢沒回報這些故事",
+        "聽起來好像明天全世界的",
+        "資料中心就要集體拔掉插頭",
+        "停止採購輝達晶片一樣"
+      ],
+      "visual_title": "華爾街看空劇本滿天飛",
+      "visual_subtitle": "三大空頭敘事把 AI 描繪成明天就斷電的泡沫",
+      "badge_text": "市場恐慌",
+      "nodes": [
+        {
+          "label": "資本支出見頂",
+          "sub": "市場擔憂雲端巨頭即將急踩煞車",
+          "tag": "空頭一",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "down"
+        },
+        {
+          "label": "客製晶片取代",
+          "sub": "憂心自研 ASIC 全面搶走 GPU 市佔",
+          "tag": "空頭二",
+          "metric": "60.4%",
+          "icon": "cpu",
+          "trend": "down"
+        },
+        {
+          "label": "燒錢沒回報",
+          "sub": "質疑千億 AI 投資難以轉化為獲利",
+          "tag": "空頭三",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "敘事大於事實",
+      "callout_body": "空頭報告把長期隱憂當成明日末日，刻意忽略真實採購規模。",
+      "code_lines": [
+        "Bear_Case = [CapEx見頂, ASIC取代GPU, AI無回報]"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S1.png",
+      "live_video_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_live.webm",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_04",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "但我們做深度研究從來不看市場情緒喊盤",
+        "我們只看白紙黑字",
+        "必須負法律責任的 SEC 10-K 官方年報",
+        "當你把輝達截至 2026 年",
+        "1 月底的最新年報攤在桌上",
+        "你會發現恐慌跟現實完全脫節"
+      ],
+      "spoken_clauses": [
+        "但我們做深度研究從來不看市場情緒喊盤",
+        "我們只看白紙黑字",
+        "必須負法律責任的 S E C 十-K 官方年報",
+        "當你把輝達截至 二零二六 年",
+        "一 月底的最新年報攤在桌上",
+        "你會發現恐慌跟現實完全脫節"
+      ],
+      "visual_title": "只看 SEC 10-K 官方年報",
+      "visual_subtitle": "拒絕情緒喊盤，用負法律責任的財報數字說話",
+      "badge_text": "SEC 10-K",
+      "nodes": [
+        {
+          "label": "財報截止日",
+          "sub": "FY26 完整會計年度官方申報基準",
+          "tag": "官方",
+          "metric": "2026-01-25",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "全年總營收",
+          "sub": "白紙黑字經會計師查核的真實規模",
+          "tag": "實績",
+          "metric": "$2,159 億",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "真金白銀流進公司帳戶的硬實力",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "回到第一性原理",
+      "callout_body": "攤開截至 2026-01-25 的年報，恐慌敘事與現實完全脫節。",
+      "code_lines": [
+        "Filing = SEC EDGAR 10-K (NVDA)",
+        "Period_End = 2026-01-25"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_05",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "這份 FY26 年報交出來的成績單是什麼",
+        "全年總營收 $2,159 億 美金",
+        "營業利益高達 $1,304 億 美金",
+        "營業利益率穩穩站在 60.4%",
+        "全年淨利更是來到驚人的 $1,201 億 美金"
+      ],
+      "spoken_clauses": [
+        "這份 FY二十六 年報交出來的成績單是什麼",
+        "全年總營收 兩千一百五十九億美金",
+        "營業利益高達 一千三百零四億美金",
+        "營業利益率穩穩站在 百分之六十點四",
+        "全年淨利更是來到驚人的 一千兩百零一億美金"
+      ],
+      "visual_title": "FY26 財報四大核心成績單",
+      "visual_subtitle": "營收、營業利益、營益率與淨利全面創下歷史紀錄",
+      "badge_text": "營益率 60.4%",
+      "nodes": [
+        {
+          "label": "全年總營收",
+          "sub": "較前一年度暴增 +65.5% 的龐大體量",
+          "tag": "營收",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "全年營業利益",
+          "sub": "本業直接賺進超過千億美金的利潤",
+          "tag": "本業",
+          "metric": "$1,304 億",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "每收 $100 就有超過 $60 成為營業利益",
+          "tag": "利潤率",
+          "metric": "60.4%",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "全年淨利",
+          "sub": "稅後純益年增 +64.7% 刷新紀錄",
+          "tag": "純益",
+          "metric": "$1,201 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "史詩級獲利機器",
+      "callout_body": "超過兩千億營收還能守住 60.4% 營益率，商業史上極度罕見。",
+      "code_lines": [
+        "Revenue = $2,159 億 | OpIncome = $1,304 億",
+        "OpMargin = 60.4% | NetIncome = $1,201 億"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_06",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "白話講就是，輝達光是去年一年賺進口袋的純利潤",
+        "就已經超過絕大多數財星五百大企業的總營收",
+        "而且營運現金流 OCF",
+        "實打實收進了 $1,027 億 美金",
+        "這完全不是靠會計做帳吹出來的紙面富貴"
+      ],
+      "spoken_clauses": [
+        "白話講就是，輝達光是去年一年賺進口袋的純利潤",
+        "就已經超過絕大多數財星五百大企業的總營收",
+        "而且營運現金流 營運現金流",
+        "實打實收進了 一千零二十七億美金",
+        "這完全不是靠會計做帳吹出來的紙面富貴"
+      ],
+      "visual_title": "不是紙面富貴：千億真金白銀",
+      "visual_subtitle": "單年純利超越多數五百大企業營收，OCF 突破千億",
+      "badge_text": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "全年純利潤",
+          "sub": "單年獲利超越多數財星五百大營收",
+          "tag": "獲利",
+          "metric": "$1,201 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "OCF 實打實入袋，現金轉換率極高",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "輕資產模式讓 CapEx 僅佔極低比例",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "layers",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "現金流驗證真實性",
+      "callout_body": "實打實收進 $1,027 億營運現金流，徹底粉碎會計做帳質疑。",
+      "code_lines": [
+        "Net_Income = $1,201 億 (+64.7% YoY)",
+        "Operating_Cash_Flow (OCF) = $1,027 億"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_07",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "當股價暴跌近四成",
+        "總市值回落到 $3.598 兆 美金",
+        "估值被壓縮到 16.0 倍本益比",
+        "而企業基本面卻剛創下歷史最強紀錄",
+        "這種極端的預期差",
+        "往往才是長期投資人最該冷靜拆解的黃金時刻"
+      ],
+      "spoken_clauses": [
+        "當股價暴跌近四成",
+        "總市值回落到 三點五九兆美金",
+        "估值被壓縮到 十六點零 倍本益比",
+        "而企業基本面卻剛創下歷史最強紀錄",
+        "這種極端的預期差",
+        "往往才是長期投資人最該冷靜拆解的黃金時刻"
+      ],
+      "visual_title": "基本面創高 vs 市值大回落",
+      "visual_subtitle": "總市值 $3.598 兆與 16.0 倍本益比交織出的黃金時刻",
+      "badge_text": "市值 $3.598T",
+      "nodes": [
+        {
+          "label": "總市值回落",
+          "sub": "股價暴跌近四成後的最新市值規模",
+          "tag": "市值",
+          "metric": "$3.598T",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "估值大壓縮",
+          "sub": "本益比殺至 16.0 倍的極端低水位",
+          "tag": "本益比",
+          "metric": "16.0x",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "歷史最強財報",
+          "sub": "營收與淨利雙雙改寫輝達歷史紀錄",
+          "tag": "基本面",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "長期投資黃金點",
+      "callout_body": "當最強財報撞上最悲觀估值，冷靜拆解才是超額報酬來源。",
+      "code_lines": [
+        "Market_Cap = $3.598T | PE = 16.0x",
+        "FY26_Net_Income = $1,201 億 (歷史新高)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_08",
+      "chapter_index": 1,
+      "total_chapters": 8,
+      "chapter_title": "暴跌與財報預期差",
+      "layout_type": "agenda_four_steps",
+      "voice_style": "stocks",
+      "clauses": [
+        "所以今天這支深度長片",
+        "我們不猜明天股價漲跌",
+        "直接帶你從商業模式升級",
+        "五年 SEC 財報營運槓桿",
+        "再到微軟與 Meta 的千億 CapEx 現金流真相",
+        "一層一層把輝達真正的護城河徹底看透"
+      ],
+      "spoken_clauses": [
+        "所以今天這支深度長片",
+        "我們不猜明天股價漲跌",
+        "直接帶你從商業模式升級",
+        "五年 S E C 財報營運槓桿",
+        "再到微軟與 Meta 的千億 資本支出 現金流真相",
+        "一層一層把輝達真正的護城河徹底看透"
+      ],
+      "visual_title": "今天深度拆解四大核心路線",
+      "visual_subtitle": "不猜明天漲跌，從商業模式到巨頭現金流徹底看透",
+      "badge_text": "4 大視角",
+      "nodes": [
+        {
+          "label": "從晶片到AI工廠",
+          "sub": "想要看懂為什麼市場現在對 NVDA",
+          "tag": "01",
+          "metric": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "五年財報的營運槓",
+          "sub": "商業故事講得再好聽，最終還是要回",
+          "tag": "02",
+          "metric": "02",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "巨頭燒錢的現金真",
+          "sub": "聊到這裡，看空派一定會馬上跳出來",
+          "tag": "03",
+          "metric": "03",
+          "icon": "terminal",
+          "trend": "neutral"
+        },
+        {
+          "label": "自研晶片難越三道",
+          "sub": "聊完五年 SEC 10-K 的驚人營運槓桿",
+          "tag": "04",
+          "metric": "04",
+          "icon": "robot",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "建立底層投資邏輯",
+      "callout_body": "用 SEC 財報與產業結構取代情緒雜訊，看清真正的護城河。",
+      "code_lines": [
+        "Step1: AI工廠商業模式 -> Step2: 五年營運槓桿",
+        "Step3: MSFT/META千億CapEx -> Step4: 護城河定價"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_09",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "想要看懂為什麼市場現",
+        "在對 NVDA 的定價出現嚴重誤判",
+        "第一件事就是得徹底更新你的商業認知",
+        "如果你到今天還把輝達當成一家賣顯示卡",
+        "或單顆 GPU 的半導體硬體公司",
+        "那你一定會被週期論嚇出場"
+      ],
+      "spoken_clauses": [
+        "想要看懂為什麼市場現",
+        "在對 Nvidia 的定價出現嚴重誤判",
+        "第一件事就是得徹底更新你的商業認知",
+        "如果你到今天還把輝達當成一家賣顯示卡",
+        "或單顆 G P U 的半導體硬體公司",
+        "那你一定會被週期論嚇出場"
+      ],
+      "visual_title": "打破舊認知：輝達不是硬體廠",
+      "visual_subtitle": "還把 NVDA 當顯卡公司看，一定會被週期論嚇出場",
+      "badge_text": "認知升級",
+      "nodes": [
+        {
+          "label": "舊顯卡框架",
+          "sub": "賣完即結束、深受景氣循環牽制",
+          "tag": "誤區",
+          "metric": "16.0x PE",
+          "icon": "cpu",
+          "trend": "down"
+        },
+        {
+          "label": "AI 基礎設施",
+          "sub": "軟硬整合綁定全球資料中心底層",
+          "tag": "真相",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "超高利潤護城河",
+          "sub": "軟體等級的 60.4% 營業利益率",
+          "tag": "定價權",
+          "metric": "60.4%",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "跳脫半導體週期論",
+      "callout_body": "市場誤判的根源，在於用舊硬體框架去套用全新的平台霸主。",
+      "code_lines": [
+        "Old_View: 單顆 GPU 硬體商 (強週期)",
+        "New_View: AI 基礎設施平台 (高黏著)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_10",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "過去大家熟悉硬體廠的宿命",
+        "賣一顆晶片賺一次錢",
+        "景氣好時大賺、景氣反轉就庫存爆倉",
+        "但輝達這幾年做了一場極度高明的商業模式躍遷",
+        "它早就不再只賣單顆晶片",
+        "而是直接向全球企業兜售整座 AI 工廠"
+      ],
+      "spoken_clauses": [
+        "過去大家熟悉硬體廠的宿命",
+        "賣一顆晶片賺一次錢",
+        "景氣好時大賺、景氣反轉就庫存爆倉",
+        "但輝達這幾年做了一場極度高明的商業模式躍遷",
+        "它早就不再只賣單顆晶片",
+        "而是直接向全球企業兜售整座 AI 工廠"
+      ],
+      "visual_title": "商業模式躍遷：整座 AI 工廠",
+      "visual_subtitle": "告別賣一顆賺一次的宿命，改向全球兜售標準化產線",
+      "badge_text": "AI Factory",
+      "nodes": [
+        {
+          "label": "傳統硬體宿命",
+          "sub": "FY23 庫存調整曾讓營益率跌至谷底",
+          "tag": "過去",
+          "metric": "15.7%",
+          "icon": "cpu",
+          "trend": "down"
+        },
+        {
+          "label": "整座 AI 工廠",
+          "sub": "將算力打包為標準化基礎設施輸出",
+          "tag": "現在",
+          "metric": "$2,159 億",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "系統級獲利",
+          "sub": "FY26 營業利益一舉突破千億大關",
+          "tag": "成果",
+          "metric": "$1,304 億",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "從零件商變建廠者",
+      "callout_body": "輝達賣的不再是單顆晶片，而是能直接量產智慧的完整工廠。",
+      "code_lines": [
+        "Legacy: 賣單顆晶片 -> 景氣反轉庫存爆倉",
+        "NVDA: 兜售整座 AI 工廠 -> 系統級鎖定"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_11",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "白話講就是，客戶今天跟輝達採購的",
+        "是一整套包含運算晶片",
+        "高速互連網路、機櫃系統、散熱架構",
+        "再加上底層 CUDA 軟體",
+        "與網路協議的完整基礎設施",
+        "把算力直接打包成插電就能量產智慧的標準化產線"
+      ],
+      "spoken_clauses": [
+        "白話講就是，客戶今天跟輝達採購的",
+        "是一整套包含運算晶片",
+        "高速互連網路、機櫃系統、散熱架構",
+        "再加上底層 CUDA 軟體",
+        "與網路協議的完整基礎設施",
+        "把算力直接打包成插電就能量產智慧的標準化產線"
+      ],
+      "visual_title": "插電即量產：全棧式算力產線",
+      "visual_subtitle": "晶片、高速網路、機櫃散熱與 CUDA 軟體一次打包",
+      "badge_text": "Full Stack",
+      "nodes": [
+        {
+          "label": "運算核心晶片",
+          "sub": "提供最強算力密度的底層運算引擎",
+          "tag": "硬體層",
+          "metric": "FY26",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "高速互連網路",
+          "sub": "打通數萬顆晶片協同運算的通訊瓶頸",
+          "tag": "網路層",
+          "metric": "OCF $1,829 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "機櫃散熱架構",
+          "sub": "標準化資料中心電力與液冷系統",
+          "tag": "系統層",
+          "metric": "CapEx $1,159 億",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "CUDA 軟體生態",
+          "sub": "鎖死開發者習慣的底層運算協議",
+          "tag": "軟體層",
+          "metric": "60.4%",
+          "icon": "code",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "極高系統整合度",
+      "callout_body": "五大核心層深度耦合，讓客戶買回去就能立刻量產 AI 智慧。",
+      "code_lines": [
+        "AI_Factory = GPU + 高速互連 + 機櫃散熱 + CUDA"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_12",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "這背後藏著一個極度可怕的定價權轉移",
+        "當你只賣單顆零件",
+        "客戶可以到處比價殺價",
+        "但當你賣的是整座資料中心的運算效率",
+        "與總擁有成本 TCO",
+        "客戶在乎的就不再是晶片單價",
+        "而是每瓦電力能產出多少 Token"
+      ],
+      "spoken_clauses": [
+        "這背後藏著一個極度可怕的定價權轉移",
+        "當你只賣單顆零件",
+        "客戶可以到處比價殺價",
+        "但當你賣的是整座資料中心的運算效率",
+        "與總擁有成本 TCO",
+        "客戶在乎的就不再是晶片單價",
+        "而是每瓦電力能產出多少 Token"
+      ],
+      "visual_title": "定價權轉移：從單價看 TCO",
+      "visual_subtitle": "客戶不再比價晶片，而是精算每瓦電力能產出多少 Token",
+      "badge_text": "TCO 霸權",
+      "nodes": [
+        {
+          "label": "零件比價陷阱",
+          "sub": "只賣單顆晶片容易陷入紅海殺價戰",
+          "tag": "舊邏輯",
+          "metric": "OCF $1,829 億",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "總擁有成本",
+          "sub": "資料中心考量電力、空間與部署速度",
+          "tag": "TCO",
+          "metric": "CapEx $1,159 億",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "每瓦產出效率",
+          "sub": "每瓦電力能產出的 Token 決定毛利",
+          "tag": "核心指標",
+          "metric": "60.4%",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "改寫客戶採購指標",
+      "callout_body": "當競爭焦點變成每瓦 Token 產出率，低價替代品反而更貴。",
+      "code_lines": [
+        "KPI_Shift: 晶片單價 ($) -> 總擁有成本 (TCO)",
+        "Efficiency = Tokens_Generated / Watt"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_13",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "protagonist_app_flow",
+      "voice_style": "stocks",
+      "clauses": [
+        "但如果我們換個角度進入第二層思考",
+        "你會發現市場最容易忽略的",
+        "其實是 AI 算力需求正",
+        "從第一階段的『模型預訓練",
+        "全面跨入規模大上數十倍的第二層飛輪",
+        "也就是『即時推論』與『物理 AI"
+      ],
+      "spoken_clauses": [
+        "但如果我們換個角度進入第二層思考",
+        "你會發現市場最容易忽略的",
+        "其實是 AI 算力需求正",
+        "從第一階段的『模型預訓練",
+        "全面跨入規模大上數十倍的第二層飛輪",
+        "也就是『即時推論』與『物理 AI"
+      ],
+      "visual_title": "第二層思考：算力飛輪大換檔",
+      "visual_subtitle": "從模型預訓練全面跨入規模大數十倍的即時推論與物理 AI",
+      "badge_text": "第二層飛輪",
+      "nodes": [
+        {
+          "label": "模型預訓練",
+          "sub": "第一階段由少數頂尖實驗室主導",
+          "tag": "第一波",
+          "metric": "CapEx $1,159 億",
+          "icon": "database",
+          "trend": "neutral"
+        },
+        {
+          "label": "即時推論飛輪",
+          "sub": "全球用戶每天高頻觸發的運算需求",
+          "tag": "第二波",
+          "metric": "10x+ 規模",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "物理 AI 落地",
+          "sub": "算力從數位世界延伸至真實物理環境",
+          "tag": "第三波",
+          "metric": "+22.2%",
+          "icon": "robot",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "需求量級再跳躍",
+      "callout_body": "市場只盯著預訓練放緩，卻漏看即時推論與物理 AI 的爆發。",
+      "code_lines": [
+        "Wave_1: 模型預訓練 (少數巨頭)",
+        "Wave_2: 即時推論 + 物理 AI (數十倍規模)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_14",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "模型訓練終究只有少數幾家頂尖實驗室在做",
+        "市場擔心訓練需求會放緩很合理",
+        "但當全球數十億人每天都在用 AI 代理人寫程式",
+        "做決策、生成影音",
+        "每一次思考鏈的推理都在瘋狂消耗即時運算資源"
+      ],
+      "spoken_clauses": [
+        "模型訓練終究只有少數幾家頂尖實驗室在做",
+        "市場擔心訓練需求會放緩很合理",
+        "但當全球數十億人每天都在用 AI 代理人寫程式",
+        "做決策、生成影音",
+        "每一次思考鏈的推理都在瘋狂消耗即時運算資源"
+      ],
+      "visual_title": "數十億人的即時推論算力黑洞",
+      "visual_subtitle": "AI 代理人寫程式、做決策與生成影音，每次思考都在燒算力",
+      "badge_text": "即時推論",
+      "nodes": [
+        {
+          "label": "AI 代理人寫碼",
+          "sub": "自動撰寫與除錯持續消耗後端推論",
+          "tag": "開發",
+          "metric": "24/7 運行",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "自動化決策",
+          "sub": "企業級工作流導入多步驟思考鏈",
+          "tag": "企業",
+          "metric": "+22.2%",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "多模態生成",
+          "sub": "影音與圖像即時生成極度吃重算力",
+          "tag": "影音",
+          "metric": "營益率 41.4%",
+          "icon": "play",
+          "trend": "up"
+        },
+        {
+          "label": "數十億終端",
+          "sub": "從少數實驗室擴散至全球日常使用",
+          "tag": "普及",
+          "metric": "+65.5%",
+          "icon": "users",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "推論需求永不止息",
+      "callout_body": "當推理思考鏈成為日常工作流，算力消耗將與全球人口掛鉤。",
+      "code_lines": [
+        "Inference_Load = 數十億用戶 × 思考鏈推理次數"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_15",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "更關鍵的是下一階段的物理 AI",
+        "從自動駕駛車隊",
+        "智慧工廠的協作機器人到醫療影像診斷",
+        "這些設備需要在真實世界毫秒級反應",
+        "代表雲端資料中心加上邊緣端裝置",
+        "將迎來一波完全不同量級的算力軍備競賽"
+      ],
+      "spoken_clauses": [
+        "更關鍵的是下一階段的物理 AI",
+        "從自動駕駛車隊",
+        "智慧工廠的協作機器人到醫療影像診斷",
+        "這些設備需要在真實世界毫秒級反應",
+        "代表雲端資料中心加上邊緣端裝置",
+        "將迎來一波完全不同量級的算力軍備競賽"
+      ],
+      "visual_title": "物理 AI：雲端加邊緣的軍備競賽",
+      "visual_subtitle": "自駕車、協作機器人與醫療影像需要真實世界的毫秒級反應",
+      "badge_text": "Physical AI",
+      "nodes": [
+        {
+          "label": "自動駕駛車隊",
+          "sub": "真實路況決策要求極低延遲與高可靠",
+          "tag": "交通",
+          "metric": "+22.2%",
+          "icon": "maps",
+          "trend": "up"
+        },
+        {
+          "label": "智慧工廠機器人",
+          "sub": "產線協作機器人需要即時視覺運算",
+          "tag": "製造",
+          "metric": "營益率 41.4%",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "醫療影像診斷",
+          "sub": "高精度輔助判讀推動醫院升級算力",
+          "tag": "醫療",
+          "metric": "OCF $1,158 億",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "全新量級的算力戰場",
+      "callout_body": "實體工業全面智能化，將引爆雲端與邊緣端的雙重算力需求。",
+      "code_lines": [
+        "Physical_AI = 雲端訓練中心 + 邊緣端毫秒推論"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_16",
+      "chapter_index": 2,
+      "total_chapters": 8,
+      "chapter_title": "從晶片到AI工廠",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "stocks",
+      "clauses": [
+        "所以輝達 FY26 營收衝到 $2,159 億 美金",
+        "絕對不是單一產品週期的曇花一現",
+        "而是它成功，把全世界的數位轉型與實體工業自動化",
+        "全部綁進了以 CUDA 生態系為核心",
+        "每年高速迭代的 AI 工廠飛輪裡"
+      ],
+      "spoken_clauses": [
+        "所以輝達 FY二十六 營收衝到 兩千一百五十九億美金",
+        "絕對不是單一產品週期的曇花一現",
+        "而是它成功，把全世界的數位轉型與實體工業自動化",
+        "全部綁進了以 CUDA 生態系為核心",
+        "每年高速迭代的 AI 工廠飛輪裡"
+      ],
+      "visual_title": "CUDA 生態綁定全球工業自動化",
+      "visual_subtitle": "FY26 $2,159 億營收不是曇花一現，而是每年迭代的飛輪",
+      "badge_text": "CUDA 飛輪",
+      "nodes": [
+        {
+          "label": "FY26 營收實績",
+          "sub": "非單一產品週期，而是平台級爆發",
+          "tag": "規模",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "CUDA 核心生態",
+          "sub": "全球開發者與企業難以跨越的轉換牆",
+          "tag": "護城河",
+          "metric": "OCF $1,158 億",
+          "icon": "lock",
+          "trend": "up"
+        },
+        {
+          "label": "年度高速迭代",
+          "sub": "每年推出新架構讓對手永遠追趕不上",
+          "tag": "節奏",
+          "metric": "CapEx $697 億",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "長期結構性成長",
+      "callout_body": "把數位轉型與實體自動化全部鎖進 CUDA，護城河只會越挖越深。",
+      "code_lines": [
+        "FY26_Revenue = $2,159 億",
+        "Core_Moat = CUDA 生態系 × 每年架構高速迭代"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 0,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "minimalist precision balance scale weighing a glowing amber AI module against dark matte blocks on #222224 background, conceptual editorial metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_17",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "商業故事講得再好聽",
+        "最終還是要回到 SEC 10-K 財報的硬數據來驗證",
+        "我們直接把輝達從 FY22 到 FY26",
+        "整整五個會計年度的營運軌跡拉出來看",
+        "你會看到現代商業史上最震撼的一條成長曲線"
+      ],
+      "spoken_clauses": [
+        "商業故事講得再好聽",
+        "最終還是要回到 S E C 十-K 財報的硬數據來驗證",
+        "我們直接把輝達從 FY二十二 到 FY二十六",
+        "整整五個會計年度的營運軌跡拉出來看",
+        "你會看到現代商業史上最震撼的一條成長曲線"
+      ],
+      "visual_title": "SEC 10-K 五年財報硬數據驗證",
+      "visual_subtitle": "拉出 FY22 到 FY26 營運軌跡，見證現代商業史奇蹟",
+      "badge_text": "FY22-FY26",
+      "nodes": [
+        {
+          "label": "五年營收起點",
+          "sub": "FY22 仍處於兩百多億美金的傳統規模",
+          "tag": "FY22",
+          "metric": "$269 億",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "最新營收高度",
+          "sub": "FY26 躍升至超過兩千億的超級霸主",
+          "tag": "FY26",
+          "metric": "$2,159 億",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "五年營益躍升",
+          "sub": "從 37.3% 一路拉昇並穩守 60.4%",
+          "tag": "獲利力",
+          "metric": "60.4%",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "數據粉碎一切雜音",
+      "callout_body": "故事可以編造，但連續五年的 SEC 10-K 成長曲線無法作假。",
+      "code_lines": [
+        "Timeline = [FY22, FY23, FY24, FY25, FY26]",
+        "Source = SEC EDGAR 10-K (NVDA)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_18",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "先看營收規模的爆發力：FY22 是 $269 億 美金",
+        "FY23 經歷庫存調整停在 $270 億",
+        "接著 FY24 翻倍衝到 $609 億",
+        "FY25 再翻倍到 $1,305 億",
+        "到了最新 FY26 直接站上 $2,159 億 美金"
+      ],
+      "spoken_clauses": [
+        "先看營收規模的爆發力：FY二十二 是 兩百六十九億美金",
+        "FY二十三 經歷庫存調整停在 兩百七十億美金",
+        "接著 FY二十四 翻倍衝到 六百零九億美金",
+        "FY二十五 再翻倍到 一千三百零五億美金",
+        "到了最新 FY二十六 直接站上 兩千一百五十九億美金"
+      ],
+      "visual_title": "營收爆發力：四年翻倍再翻倍",
+      "visual_subtitle": "從 $269 億起步，一路狂飆站上 $2,159 億美金天險",
+      "badge_text": "8 倍成長",
+      "nodes": [
+        {
+          "label": "FY23 庫存調整",
+          "sub": "景氣低谷期營收持平停在 $270",
+          "tag": "谷底",
+          "metric": "$270 億",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "FY24 翻倍爆發",
+          "sub": "AI 浪潮啟動帶動營收一口氣翻倍",
+          "tag": "起飛",
+          "metric": "$609 億",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "FY25 再度翻倍",
+          "sub": "資料中心全面搶貨衝破千億大關",
+          "tag": "突破",
+          "metric": "$1,305 億",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "FY26 站上巔峰",
+          "sub": "最新財報強勢突破兩千億美金大關",
+          "tag": "創高",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "指數級擴張軌跡",
+      "callout_body": "FY23 熬過庫存谷底後，連續三年寫下史無前例的營收大躍進。",
+      "code_lines": [
+        "FY22: $269億 -> FY23: $270億 -> FY24: $609億",
+        "FY25: $1,305億 -> FY26: $2,159億"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_19",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "四年之間營收翻了將近 8 倍",
+        "這已經夠誇張了",
+        "但真正讓專業機構看到下巴掉下來的",
+        "其實是營業利益率的劇烈變化：FY22 是 37.3%",
+        "FY23 谷底掉到 15.7%",
+        "FY24 卻一口氣飆升到 54.1%"
+      ],
+      "spoken_clauses": [
+        "四年之間營收翻了將近 八 倍",
+        "這已經夠誇張了",
+        "但真正讓專業機構看到下巴掉下來的",
+        "其實是營業利益率的劇烈變化：FY二十二 是 百分之三十七點三",
+        "FY二十三 谷底掉到 百分之十五點七",
+        "FY二十四 卻一口氣飆升到 百分之五十四點一"
+      ],
+      "visual_title": "機構驚呆：營益率 V 型暴衝",
+      "visual_subtitle": "四年營收翻近 8 倍，營業利益率更從 15.7% 飆到 54.1%",
+      "badge_text": "15.7% → 54.1%",
+      "nodes": [
+        {
+          "label": "FY22 營益率",
+          "sub": "AI 爆發前原本已屬優秀的半導體水準",
+          "tag": "基準",
+          "metric": "37.3%",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "FY23 谷底考驗",
+          "sub": "去化庫存壓力讓營益率一度腰斬",
+          "tag": "谷底",
+          "metric": "15.7%",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "FY24 飆升質變",
+          "sub": "高毛利資料中心放量帶動營益率狂飆",
+          "tag": "質變",
+          "metric": "54.1%",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "獲利結構質變",
+      "callout_body": "不只賣得更多，每賺一塊錢的純度更在 FY24 發生徹底質變。",
+      "code_lines": [
+        "OpMargin_FY22 = 37.3%",
+        "OpMargin_FY23 = 15.7% -> OpMargin_FY24 = 54.1%"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_scroll1.png",
+      "live_video_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_live.webm",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_20",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "到了 FY25 營益率再衝到 62.4%",
+        "最新 FY26",
+        "在營收基期已經突破兩千億美金的龐大體量下",
+        "依然穩穩守住 60.4% 的超高水準",
+        "全年營業利益高達 $1,304 億 美金",
+        "淨利年增率還維持在 +64.7%"
+      ],
+      "spoken_clauses": [
+        "到了 FY二十五 營益率再衝到 百分之六十二點四",
+        "最新 FY二十六",
+        "在營收基期已經突破兩千億美金的龐大體量下",
+        "依然穩穩守住 百分之六十點四 的超高水準",
+        "全年營業利益高達 一千三百零四億美金",
+        "淨利年增率還維持在 成長百分之六十四點七"
+      ],
+      "visual_title": "兩千億體量仍守住 60.4% 營益率",
+      "visual_subtitle": "FY25 衝上 62.4%，FY26 淨利年增率依然維持 +64.7%",
+      "badge_text": "淨利 +64.7%",
+      "nodes": [
+        {
+          "label": "FY25 營益率",
+          "sub": "突破六成大關展現極致定價優勢",
+          "tag": "高峰",
+          "metric": "62.4%",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "FY26 營益率",
+          "sub": "兩千億營收基期下穩穩守住高水位",
+          "tag": "穩守",
+          "metric": "60.4%",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "全年營業利益",
+          "sub": "單年本業獲利規模高達 $1,304",
+          "tag": "本業",
+          "metric": "$1,304 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "淨利年增率",
+          "sub": "龐大基期上依然交出超過六成成長",
+          "tag": "成長",
+          "metric": "+64.7%",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "恐怖的獲利韌性",
+      "callout_body": "體量放大到 $2,159 億卻沒有邊際遞減，證明定價權無人能敵。",
+      "code_lines": [
+        "FY25_OpMargin = 62.4% | FY26_OpMargin = 60.4%",
+        "FY26_OpIncome = $1,304 億 | NetIncome_YoY = +64.7%"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_21",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "因為輝達採取無晶圓廠設計模式",
+        "把最燒錢的建廠折舊留給晶圓代工夥伴",
+        "自己的研發團隊與 CUDA 軟體生態一旦開發完成",
+        "每多賣出一套系統",
+        "邊際成本幾乎不會等比例膨脹"
+      ],
+      "spoken_clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "因為輝達採取無晶圓廠設計模式",
+        "把最燒錢的建廠折舊留給晶圓代工夥伴",
+        "自己的研發團隊與 CUDA 軟體生態一旦開發完成",
+        "每多賣出一套系統",
+        "邊際成本幾乎不會等比例膨脹"
+      ],
+      "visual_title": "無晶圓廠模式的營運槓桿真相",
+      "visual_subtitle": "把建廠折舊留給代工夥伴，軟體生態開發完邊際成本極低",
+      "badge_text": "Fabless 槓桿",
+      "nodes": [
+        {
+          "label": "無晶圓廠設計",
+          "sub": "將沉重摺舊留給代工，自身維持輕資產",
+          "tag": "模式",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "研發一次投入",
+          "sub": "架構與 CUDA 開發完成後可無限複製",
+          "tag": "軟體力",
+          "metric": "OCF $1,027 億",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "超高自由現金",
+          "sub": "OCF 遠大於 CapEx 造就驚人現金流",
+          "tag": "現金流",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "輕資產高毛利基因",
+      "callout_body": "CapEx 僅 $60.4 億卻撐起兩千億營收，邊際成本幾乎不膨脹。",
+      "code_lines": [
+        "NVDA_CapEx = $60.4 億 (僅佔營收 2.8%)",
+        "Marginal_Cost(CUDA + 設計) ≈ 0"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_22",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "白話講就是",
+        "當你的固定研發費用只需要分攤在十萬套系統時",
+        "利潤率當然普通",
+        "但當全球需求瞬間暴衝",
+        "同一套架構賣出數百萬套",
+        "多出來的營收幾乎就直接灌進營業利益",
+        "這就是教科書等級的營運槓桿奇蹟"
+      ],
+      "spoken_clauses": [
+        "白話講就是",
+        "當你的固定研發費用只需要分攤在十萬套系統時",
+        "利潤率當然普通",
+        "但當全球需求瞬間暴衝",
+        "同一套架構賣出數百萬套",
+        "多出來的營收幾乎就直接灌進營業利益",
+        "這就是教科書等級的營運槓桿奇蹟"
+      ],
+      "visual_title": "教科書等級的營運槓桿奇蹟",
+      "visual_subtitle": "固定研發費用分攤到數百萬套系統，新增營收直接灌進獲利",
+      "badge_text": "營運槓桿",
+      "nodes": [
+        {
+          "label": "固定研發費用",
+          "sub": "十萬套規模時分攤成本高、利潤普通",
+          "tag": "低規模",
+          "metric": "15.7%",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "全球需求暴衝",
+          "sub": "同一套架構賣出數百萬套大幅攤平成本",
+          "tag": "放量",
+          "metric": "$2,159 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "直灌營業利益",
+          "sub": "多出來的營收幾乎直接變成純利潤",
+          "tag": "槓桿",
+          "metric": "$1,304 億",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "極致營益水準",
+          "sub": "交出令全球科技業望塵莫及的成績",
+          "tag": "奇蹟",
+          "metric": "60.4%",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "規模越大賺得越狠",
+      "callout_body": "需求暴衝時固定費用被極度稀釋，營收增量直接轉化為營業利益。",
+      "code_lines": [
+        "Operating_Leverage = ΔOpIncome / ΔRevenue",
+        "固定研發費分攤 -> 數百萬套系統 -> 60.4% 營益率"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_23",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "我們再來核對最不容易作假的現金流量表",
+        "FY26 輝達的營運現金流 OCF",
+        "高達 $1,027 億 美金",
+        "你猜它自己一年需要投入多少資本支出",
+        "CapEx 來維持這臺超級印鈔機",
+        "答案竟然只有 $60.4 億 美金"
+      ],
+      "spoken_clauses": [
+        "我們再來核對最不容易作假的現金流量表",
+        "FY二十六 輝達的營運現金流 營運現金流",
+        "高達 一千零二十七億美金",
+        "你猜它自己一年需要投入多少資本支出",
+        "資本支出 來維持這臺超級印鈔機",
+        "答案竟然只有 六十點四億美金"
+      ],
+      "visual_title": "OCF 與 CapEx 的極致剪刀差",
+      "visual_subtitle": "FY26 營運現金流破千億，資本支出僅 60 億",
+      "badge_text": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "營運現金流",
+          "sub": "FY26 本業實收現金",
+          "tag": "SEC 10-K",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "資本支出",
+          "sub": "維持營運所需硬體投入",
+          "tag": "極低負擔",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "現金創造倍數",
+          "sub": "OCF 為 CapEx 的 17",
+          "tag": "營運槓桿",
+          "metric": "17.0x",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "輕資產印鈔機",
+      "callout_body": "每投入 $1 資本支出，就能換回超過 $17 營運現金流。",
+      "code_lines": [
+        "NVDA_FY26_OCF = $1,027 億",
+        "NVDA_FY26_CapEx = $60.4 億",
+        "OCF / CapEx = 17.0x"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_24",
+      "chapter_index": 3,
+      "total_chapters": 8,
+      "chapter_title": "五年財報的營運槓桿",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "哪怕輝達 FY26 的 CapEx",
+        "已經比前一年大增 +86.7%",
+        "從 FY25 的 $32.4 億 拉高到 $60.4 億",
+        "佔營收比重也還不到 3%",
+        "這意味著它不需要像傳統",
+        "製造業一樣瘋狂舉債蓋廠",
+        "就能把絕大部分利潤轉化成純粹的自由現金流"
+      ],
+      "spoken_clauses": [
+        "哪怕輝達 FY二十六 的 資本支出",
+        "已經比前一年大增 成長百分之八十六點七",
+        "從 FY二十五 的 三十二點四億美金 拉高到 六十點四億美金",
+        "佔營收比重也還不到 百分之三",
+        "這意味著它不需要像傳統",
+        "製造業一樣瘋狂舉債蓋廠",
+        "就能把絕大部分利潤轉化成純粹的自由現金流"
+      ],
+      "visual_title": "CapEx 佔營收不到 3%",
+      "visual_subtitle": "無晶圓廠模式免舉債蓋廠，利潤直轉現金流",
+      "badge_text": "CapEx 佔比 2.8%",
+      "nodes": [
+        {
+          "label": "FY25 資本支出",
+          "sub": "前一年基礎建設投入",
+          "tag": "基期對照",
+          "metric": "$32.4 億",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "FY26 資本支出",
+          "sub": "年增 +86.7% 仍極輕量",
+          "tag": "擴張投入",
+          "metric": "$60.4 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營收佔比",
+          "sub": "遠低於傳統重資產製造業",
+          "tag": "輕資產",
+          "metric": "2.8%",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "無須重資產擴產",
+      "callout_body": "CapEx 年增 +86.7% 仍僅佔營收 2.8%，現金留存率極高。",
+      "code_lines": [
+        "CapEx_YoY: $32.4 億 -> $60.4 億 (+86.7%)",
+        "CapEx / Revenue: $60.4 億 / $2,159 億 = 2.8%"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_25",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "聊到這裡，看空派一定會馬上跳出來反駁",
+        "『輝達自己賺翻沒錯",
+        "但它的錢全是跟微軟",
+        "Meta 這些雲端巨頭收來的",
+        "巨頭一年狂燒上千億美金 CapEx",
+        "這不就是西元兩千年網路泡沫重演",
+        "隨時會斷鏈崩盤嗎"
+      ],
+      "spoken_clauses": [
+        "聊到這裡，看空派一定會馬上跳出來反駁",
+        "『輝達自己賺翻沒錯",
+        "但它的錢全是跟微軟",
+        "Meta 這些雲端巨頭收來的",
+        "巨頭一年狂燒上千億美金 資本支出",
+        "這不就是西元兩千年網路泡沫重演",
+        "隨時會斷鏈崩盤嗎"
+      ],
+      "visual_title": "空頭質疑：網路泡沫重演？",
+      "visual_subtitle": "市場恐懼巨頭狂燒千億 CapEx 隨時斷鏈崩盤",
+      "badge_text": "第一層恐懼",
+      "nodes": [
+        {
+          "label": "微軟資本支出",
+          "sub": "FY26 單年狂砸千億建置",
+          "tag": "買單巨頭",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "Meta 資本支出",
+          "sub": "FY25 大舉投入 AI 算力",
+          "tag": "買單巨頭",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "泡沫崩盤論",
+          "sub": "擔憂 2000 年光纖斷鏈重演",
+          "tag": "市場恐慌",
+          "metric": "2000 年",
+          "icon": "zap",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "市場主流敘事",
+      "callout_body": "空頭將 AI 算力投資類比西元 2000 年電信光纖泡沫。",
+      "code_lines": [
+        "Bear_Case = 『雲端巨頭燒錢不可持續』",
+        "MSFT_CapEx ($1,159 億) + META_CapEx ($697 億) = $1,856 億"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_26",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "這個質疑聽起來非常有說服力",
+        "也是壓垮輝達股價跌掉近四成的第一層恐懼",
+        "但如果我們換個角度進入第二層思考",
+        "直接把微軟跟 Meta 的 SEC",
+        "10-K 官方年報拿出來跟輝達對帳",
+        "你會發現真相完全相反"
+      ],
+      "spoken_clauses": [
+        "這個質疑聽起來非常有說服力",
+        "也是壓垮輝達股價跌掉近四成的第一層恐懼",
+        "但如果我們換個角度進入第二層思考",
+        "直接把微軟跟 Meta 的 S E C",
+        "十-K 官方年報拿出來跟輝達對帳",
+        "你會發現真相完全相反"
+      ],
+      "visual_title": "第二層思考：交叉核對 10-K",
+      "visual_subtitle": "股價回檔近四成，直接拿巨頭財報跟輝達對帳",
+      "badge_text": "預期差拆解",
+      "nodes": [
+        {
+          "label": "輝達股價回檔",
+          "sub": "從 52 週高點重挫近四成",
+          "tag": "市場定價",
+          "metric": "-38.7%",
+          "icon": "nvidia",
+          "trend": "down"
+        },
+        {
+          "label": "微軟官方年報",
+          "sub": "核對雲端龍頭真實造血力",
+          "tag": "SEC 10-K",
+          "metric": "$3,318 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "Meta 官方年報",
+          "sub": "核對廣告巨頭現金流底氣",
+          "tag": "SEC 10-K",
+          "metric": "$2,010 億",
+          "icon": "meta",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "用財報打臉恐慌",
+      "callout_body": "攤開微軟與 Meta 官方年報，資本支出真相完全相反。",
+      "code_lines": [
+        "NVDA_Drawdown: $243.37 -> $149.30 (-38.7%)",
+        "Audit_Targets = [NVDA 10-K, MSFT 10-K, META 10-K]"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_27",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "先看微軟 MSFT 截至 2026",
+        "年 6 月的 FY26 年報",
+        "它的資本支出 CapEx 確實",
+        "從 FY22 的 $239 億 一路狂飆",
+        "FY25 來到 $646 億",
+        "FY26 更暴增 +79.6%",
+        "直接衝上史無前例的 $1,159 億 美金"
+      ],
+      "spoken_clauses": [
+        "先看微軟 Microsoft 截至 二零二六",
+        "年 六 月的 FY二十六 年報",
+        "它的資本支出 資本支出 確實",
+        "從 FY二十二 的 兩百三十九億美金 一路狂飆",
+        "FY二十五 來到 六百四十六億美金",
+        "FY二十六 更暴增 成長百分之七十九點六",
+        "直接衝上史無前例的 一千一百五十九億美金"
+      ],
+      "visual_title": "微軟 CapEx 五年狂飆軌跡",
+      "visual_subtitle": "FY26 資本支出暴增 +79.6%，衝上 $1,159 億",
+      "badge_text": "+79.6% YoY",
+      "nodes": [
+        {
+          "label": "FY22 資本支出",
+          "sub": "生成式 AI 爆發前基準",
+          "tag": "起點",
+          "metric": "$239 億",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "FY25 資本支出",
+          "sub": "資料中心進入加速擴張期",
+          "tag": "加速",
+          "metric": "$646 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "FY26 資本支出",
+          "sub": "單年暴增 +79.6% 創歷史新高",
+          "tag": "爆發",
+          "metric": "$1,159 億",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "史無前例的投入",
+      "callout_body": "微軟四年內將年度資本支出從 $239 億拉高近五倍。",
+      "code_lines": [
+        "MSFT_CapEx_FY22 = $239 億",
+        "MSFT_CapEx_FY25 = $646 億",
+        "MSFT_CapEx_FY26 = $1,159 億 (+79.6%)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_scroll2.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_28",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "很多人只看到 $1,159",
+        "億 的燒錢數字就嚇到腿軟",
+        "卻漏看了下一行最關鍵的現金流數據",
+        "微軟 FY26 全年營收達 $3,318 億",
+        "年增 +17.8%，營業利益率不降反升到 46.8%",
+        "營運現金流 OCF 高達 $1,829 億 美金"
+      ],
+      "spoken_clauses": [
+        "很多人只看到 一千一百五十九美金",
+        "億 的燒錢數字就嚇到腿軟",
+        "卻漏看了下一行最關鍵的現金流數據",
+        "微軟 FY二十六 全年營收達 三千三百一十八億美金",
+        "年增 百分之十七點八，營業利益率不降反升到 百分之四十六點八",
+        "營運現金流 營運現金流 高達 一千八百二十九億美金"
+      ],
+      "visual_title": "被市場漏看的微軟現金流",
+      "visual_subtitle": "營益率不降反升至 46.8%，OCF 衝上 $1,829 億",
+      "badge_text": "營益率 46.8%",
+      "nodes": [
+        {
+          "label": "微軟全年營收",
+          "sub": "龐大基期下仍年增 +17.8%",
+          "tag": "FY26 10-K",
+          "metric": "$3,318 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "大舉投資下利潤率不降反升",
+          "tag": "獲利品質",
+          "metric": "46.8%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "單年本業流入超狂現金",
+          "tag": "OCF",
+          "metric": "$1,829 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "獲利與造血雙強",
+      "callout_body": "市場只盯著千億支出，卻忽略微軟更驚人的印鈔能力。",
+      "code_lines": [
+        "MSFT_FY26_Rev = $3,318 億 (+17.8%)",
+        "MSFT_FY26_OpMargin = 46.8%",
+        "MSFT_FY26_OCF = $1,829 億"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_29",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "白話講就是，微軟砸下超過千億美金買算力建資料中心",
+        "根本不是去銀行借高利貸豪賭",
+        "而是用自己雲端與軟體本業每年穩穩賺進來的",
+        "$1,829 億 現金直接付現",
+        "付完之後手上還淨多出",
+        "將近 $670 億 自由現金流"
+      ],
+      "spoken_clauses": [
+        "白話講就是，微軟砸下超過千億美金買算力建資料中心",
+        "根本不是去銀行借高利貸豪賭",
+        "而是用自己雲端與軟體本業每年穩穩賺進來的",
+        "一千八百二十九億美金 現金直接付現",
+        "付完之後手上還淨多出",
+        "將近 六百七十億美金 自由現金流"
+      ],
+      "visual_title": "微軟全額付現還剩 $670",
+      "visual_subtitle": "不是借高利貸豪賭，而是用本業現金直接買單",
+      "badge_text": "FCF $670 億",
+      "nodes": [
+        {
+          "label": "本業現金流入",
+          "sub": "雲端與軟體穩定貢獻現金",
+          "tag": "OCF",
+          "metric": "$1,829 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "算力建置支出",
+          "sub": "全額現金支付無須舉債",
+          "tag": "CapEx",
+          "metric": "$1,159 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "剩餘自由現金",
+          "sub": "扣完支出仍淨賺龐大餘裕",
+          "tag": "FCF",
+          "metric": "$670 億",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "零舉債擴張底氣",
+      "callout_body": "付完 $1,159 億算力帳單後，手上還淨多出近 $670 億現金。",
+      "code_lines": [
+        "MSFT_OCF ($1,829 億) - CapEx ($1,159 億) = FCF $670 億"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_30",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "我們再拿 Meta 的 FY25 SEC 年報來交叉驗證",
+        "Meta 的 CapEx 同樣從 FY23 的 $270 億",
+        "FY24 的 $373 億",
+        "在 FY25 猛增 +87.1% 到 $697 億 美金",
+        "讓市場一度擔心它又要重演元宇宙時，期的燒錢噩夢"
+      ],
+      "spoken_clauses": [
+        "我們再拿 Meta 的 FY二十五 S E C 年報來交叉驗證",
+        "Meta 的 資本支出 同樣從 FY二十三 的 兩百七十億美金",
+        "FY二十四 的 三百七十三億美金",
+        "在 FY二十五 猛增 成長百分之八十七點一 到 六百九十七億美金",
+        "讓市場一度擔心它又要重演元宇宙時，期的燒錢噩夢"
+      ],
+      "visual_title": "Meta 資本支出猛增 +87.1%",
+      "visual_subtitle": "FY25 衝上 $697 億，勾起市場元宇宙燒錢恐懼",
+      "badge_text": "+87.1% YoY",
+      "nodes": [
+        {
+          "label": "FY23 資本支出",
+          "sub": "效率年嚴控成本低點",
+          "tag": "起點",
+          "metric": "$270 億",
+          "icon": "calendar",
+          "trend": "neutral"
+        },
+        {
+          "label": "FY24 資本支出",
+          "sub": "開始加碼 AI 訓練叢集",
+          "tag": "爬坡",
+          "metric": "$373 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "FY25 資本支出",
+          "sub": "單年暴衝 +87.1% 震撼市場",
+          "tag": "爆發",
+          "metric": "$697 億",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "歷史陰影再起",
+      "callout_body": "Meta 連續三年大幅拉昇 CapEx，引發投資人擔憂。",
+      "code_lines": [
+        "META_CapEx_FY23 = $270 億",
+        "META_CapEx_FY24 = $373 億",
+        "META_CapEx_FY25 = $697 億 (+87.1%)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_31",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "結果財報攤開來一看",
+        "Meta 全年營收衝破 $2,010 億、年增 +22.2%",
+        "營業利益率穩守在 41.4%",
+        "營運現金流 OCF 更衝上 $1,158 億 美金",
+        "靠著 AI 強化廣告精準投放",
+        "本業造血能力完全覆蓋了資本支出"
+      ],
+      "spoken_clauses": [
+        "結果財報攤開來一看",
+        "Meta 全年營收衝破 兩千零十億美金、年增 百分之二十二點二",
+        "營業利益率穩守在 百分之四十一點四",
+        "營運現金流 營運現金流 更衝上 一千一百五十八億美金",
+        "靠著 AI 強化廣告精準投放",
+        "本業造血能力完全覆蓋了資本支出"
+      ],
+      "visual_title": "Meta 本業造血完勝支出",
+      "visual_subtitle": "AI 強化廣告變現，OCF 破千億輕鬆覆蓋 CapEx",
+      "badge_text": "OCF $1,158 億",
+      "nodes": [
+        {
+          "label": "Meta 全年營收",
+          "sub": "AI 廣告精準投放帶動高成長",
+          "tag": "+22.2% YoY",
+          "metric": "$2,010 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "高資本投入下仍穩守四成",
+          "tag": "獲利防線",
+          "metric": "41.4%",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "完全覆蓋 $697 億資本支出",
+          "tag": "OCF",
+          "metric": "$1,158 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "剩餘自由現金",
+          "sub": "扣除 CapEx 仍淨剩四百多億",
+          "tag": "FCF",
+          "metric": "$461 億",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "廣告飛輪已變現",
+      "callout_body": "營收破兩千億、營益率 41.4%，本業現金完全覆蓋投資。",
+      "code_lines": [
+        "META_FY25_Rev = $2,010 億 (+22.2%)",
+        "META_FY25_OCF ($1,158 億) - CapEx ($697 億) = FCF $461 億"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_32",
+      "chapter_index": 4,
+      "total_chapters": 8,
+      "chapter_title": "巨頭燒錢的現金真相",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "對比當年網路泡沫是靠虧損累累",
+        "沒有現金流的新創電信商借債狂鋪光纖",
+        "今天幫輝達買單的是全球現金流最強",
+        "營益率超過四成的超級印鈔機",
+        "而且只要這場 AI 賽局沒人敢率先停手",
+        "算力投資就絕不會突然歸零"
+      ],
+      "spoken_clauses": [
+        "對比當年網路泡沫是靠虧損累累",
+        "沒有現金流的新創電信商借債狂鋪光纖",
+        "今天幫輝達買單的是全球現金流最強",
+        "營益率超過四成的超級印鈔機",
+        "而且只要這場 AI 賽局沒人敢率先停手",
+        "算力投資就絕不會突然歸零"
+      ],
+      "visual_title": "2000 泡沫 vs 2026 超級印鈔機",
+      "visual_subtitle": "買單者從虧損舉債新創，換成營益率破四成巨頭",
+      "badge_text": "囚徒困境賽局",
+      "nodes": [
+        {
+          "label": "2000 網路泡沫",
+          "sub": "無現金流新創靠舉債鋪光纖",
+          "tag": "高風險",
+          "metric": "$2,010 億",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "微軟營益率",
+          "sub": "全球最強現金流印鈔機之一",
+          "tag": "FY26",
+          "metric": "46.8%",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "Meta 營益率",
+          "sub": "廣告本業強勢支撐算力軍備",
+          "tag": "FY25",
+          "metric": "41.4%",
+          "icon": "meta",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "算力不會突然歸零",
+      "callout_body": "只要沒有巨頭敢率先停手，AI 算力軍備競賽就會延續。",
+      "code_lines": [
+        "2000_DotCom = 虧損電信商 + 高槓桿舉債",
+        "2026_AI_Giants = 營益率 >40% + OCF >$1,000 億"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 2,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_33",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "stocks",
+      "clauses": [
+        "聊完五年 SEC 10-K 的驚人營運槓桿",
+        "市場空頭最愛拿來嚇人的劇本",
+        "就是雲端巨頭都在自研 ASIC",
+        "輝達很快就會被取代",
+        "但如果我們換個角度進入第二層思考",
+        "你會發現硬體算力只是表象",
+        "真正鎖死客戶的是三道極高的轉換成本"
+      ],
+      "spoken_clauses": [
+        "聊完五年 S E C 十-K 的驚人營運槓桿",
+        "市場空頭最愛拿來嚇人的劇本",
+        "就是雲端巨頭都在自研 ASIC",
+        "輝達很快就會被取代",
+        "但如果我們換個角度進入第二層思考",
+        "你會發現硬體算力只是表象",
+        "真正鎖死客戶的是三道極高的轉換成本"
+      ],
+      "visual_title": "自研晶片難越的三道高牆",
+      "visual_subtitle": "硬體算力只是表象，真正鎖死客戶的是轉換成本",
+      "badge_text": "三大護城河",
+      "nodes": [
+        {
+          "label": "CUDA 軟體生態",
+          "sub": "百萬開發者與底層函式庫鎖定",
+          "tag": "第一道牆",
+          "metric": "數百萬人",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "整機櫃系統工程",
+          "sub": "NVLink 互連與液冷標準化",
+          "tag": "第二道牆",
+          "metric": "萬卡叢集",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "一年一代節奏",
+          "sub": "超高速研發週期拉開技術代差",
+          "tag": "第三道牆",
+          "metric": "1 年/代",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "ASIC 難取代主導權",
+      "callout_body": "從軟體生態、系統工程到產品節奏，三道高牆層層鎖死。",
+      "code_lines": [
+        "Moat_1 = CUDA 軟體生態",
+        "Moat_2 = NVLink 整機櫃系統工程",
+        "Moat_3 = 一年一代產品節奏"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_34",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "第一道牆就是講到爛",
+        "卻最難複製的 CUDA 軟體生態",
+        "全球數百萬名開發者與無數 AI 函式庫",
+        "全都是寫在 CUDA 底層之上",
+        "白話講就是，就算對手免費送你一顆算力相同的晶片",
+        "重寫模型與除錯的人力時間成本",
+        "就足以讓企業卻步"
+      ],
+      "spoken_clauses": [
+        "第一道牆就是講到爛",
+        "卻最難複製的 CUDA 軟體生態",
+        "全球數百萬名開發者與無數 AI 函式庫",
+        "全都是寫在 CUDA 底層之上",
+        "白話講就是，就算對手免費送你一顆算力相同的晶片",
+        "重寫模型與除錯的人力時間成本",
+        "就足以讓企業卻步"
+      ],
+      "visual_title": "第一道牆：CUDA 軟體生態",
+      "visual_subtitle": "就算對手免費送晶片，重寫與除錯成本也讓人卻步",
+      "badge_text": "極高轉換成本",
+      "nodes": [
+        {
+          "label": "開發者生態系",
+          "sub": "全球數百萬名工程師深度綁定",
+          "tag": "網路效應",
+          "metric": "數百萬名",
+          "icon": "users",
+          "trend": "up"
+        },
+        {
+          "label": "底層函式庫",
+          "sub": "無數 AI 框架預設針對 CUDA 最佳化",
+          "tag": "技術鎖定",
+          "metric": "100% 整合",
+          "icon": "code",
+          "trend": "up"
+        },
+        {
+          "label": "遷移時間成本",
+          "sub": "免費硬體也補不回除錯代價",
+          "tag": "轉換壁壘",
+          "metric": "CapEx $697 億",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "軟體才是真護城河",
+      "callout_body": "全球 AI 函式庫皆建構在 CUDA 之上，遷移風險極高。",
+      "code_lines": [
+        "Migration_Cost = 模型重寫 + 除錯人力 + 上線延遲 > 晶片差價"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_35",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "而且自研 ASIC 天生有個致命盲點",
+        "就是它只適合跑架構已經定型的特定推論任務",
+        "偏偏現在 AI 模型演進速度是以月計算",
+        "從語言模型一路跨到多模態與代理系統",
+        "晶片一開模就要等兩年",
+        "等流片出來，演算法早就換了三代"
+      ],
+      "spoken_clauses": [
+        "而且自研 ASIC 天生有個致命盲點",
+        "就是它只適合跑架構已經定型的特定推論任務",
+        "偏偏現在 AI 模型演進速度是以月計算",
+        "從語言模型一路跨到多模態與代理系統",
+        "晶片一開模就要等兩年",
+        "等流片出來，演算法早就換了三代"
+      ],
+      "visual_title": "自研 ASIC 的天生致命盲點",
+      "visual_subtitle": "演算法按月演進，晶片開模卻要苦等兩年",
+      "badge_text": "架構演進錯配",
+      "nodes": [
+        {
+          "label": "模型演進速度",
+          "sub": "從語言模型直奔多模態與代理",
+          "tag": "按月計算",
+          "metric": "1 個月",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "ASIC 開模週期",
+          "sub": "設計到流片量產需耗時兩年",
+          "tag": "硬體僵化",
+          "metric": "2 年",
+          "icon": "cpu",
+          "trend": "down"
+        },
+        {
+          "label": "演算法代差",
+          "sub": "晶片剛出爐模型已換了三代",
+          "tag": "致命盲點",
+          "metric": "3 代落差",
+          "icon": "zap",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "流片出來已過時",
+      "callout_body": "ASIC 只適合定型推論，跟不上多模態與代理系統演化。",
+      "code_lines": [
+        "AI_Model_Cycle = 1~3 個月",
+        "ASIC_Tapeout_Cycle = 24 個月 (落後 3 代演算法)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_36",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "第二道牆則是，從單顆晶片升級到整機櫃的系統工程",
+        "也就是 NVLink 高速互連加上液冷散熱架構",
+        "當萬卡叢集要同時訓練超大模型",
+        "瓶頸早就不在單卡跑多快",
+        "而在卡與卡之間的通訊延遲",
+        "輝達直接把網路、交換器與機櫃打包成標準品"
+      ],
+      "spoken_clauses": [
+        "第二道牆則是，從單顆晶片升級到整機櫃的系統工程",
+        "也就是 N V Link 高速互連加上液冷散熱架構",
+        "當萬卡叢集要同時訓練超大模型",
+        "瓶頸早就不在單卡跑多快",
+        "而在卡與卡之間的通訊延遲",
+        "輝達直接把網路、交換器與機櫃打包成標準品"
+      ],
+      "visual_title": "第二道牆：整機櫃系統工程",
+      "visual_subtitle": "萬卡叢集瓶頸在通訊延遲，輝達直接打包標準品",
+      "badge_text": "NVLink + 液冷",
+      "nodes": [
+        {
+          "label": "萬卡訓練叢集",
+          "sub": "超大模型考驗極限並聯效率",
+          "tag": "算力規模",
+          "metric": "10,000+ 卡",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "NVLink 互連",
+          "sub": "消除卡間傳輸延遲的核心關鍵",
+          "tag": "高速網路",
+          "metric": "$2,159 億",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "液冷標準機櫃",
+          "sub": "整合散熱與交換器成標準品",
+          "tag": "系統封裝",
+          "metric": "+65.5%",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "從單卡升級整機櫃",
+      "callout_body": "將高速互連、交換器與液冷打包，徹底解決通訊瓶頸。",
+      "code_lines": [
+        "Bottleneck = 卡與卡之間的通訊延遲 (非單卡算力)",
+        "NVDA_Solution = GPU + NVLink + Switch + 液冷機櫃"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S3.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_37",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "當輝達賣的不再是單顆 GPU",
+        "而是整套資料中心 AI 工廠時",
+        "系統級的整合難度會呈指數上升",
+        "雲端巨頭要自己搞定光通訊、散熱與叢集調度",
+        "不僅良率爬坡痛苦",
+        "整體建置時程更會嚴重落後"
+      ],
+      "spoken_clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "當輝達賣的不再是單顆 G P U",
+        "而是整套資料中心 AI 工廠時",
+        "系統級的整合難度會呈指數上升",
+        "雲端巨頭要自己搞定光通訊、散熱與叢集調度",
+        "不僅良率爬坡痛苦",
+        "整體建置時程更會嚴重落後"
+      ],
+      "visual_title": "賣的不是 GPU，而是 AI 工廠",
+      "visual_subtitle": "系統整合難度呈指數上升，自建良率與時程皆痛",
+      "badge_text": "系統級營運槓桿",
+      "nodes": [
+        {
+          "label": "單顆晶片時代",
+          "sub": "過去僅比拚單卡規格與算力",
+          "tag": "舊模式",
+          "metric": "1x 難度",
+          "icon": "cpu",
+          "trend": "neutral"
+        },
+        {
+          "label": "整套 AI 工廠",
+          "sub": "打包光通訊、散熱與叢集調度",
+          "tag": "新壁壘",
+          "metric": "+65.5%",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "自建良率風險",
+          "sub": "巨頭自研面臨爬坡痛苦與延遲",
+          "tag": "時程落後",
+          "metric": "營益率 60.4%",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "自建時程嚴重落後",
+      "callout_body": "光通訊、散熱與叢集調度全包，讓巨頭難以獨自克服。",
+      "code_lines": [
+        "Old_Era = 賣單顆 GPU 晶片",
+        "New_Era = 賣整套資料中心 AI Factory"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_38",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "第三道牆是最",
+        "讓競爭對手絕望的『一年一代』產品節奏",
+        "過去半導體產業習慣兩到三年才大改款",
+        "但輝達憑藉 FY26 高達 $2,159 億的營收規模",
+        "與 $1,027 億的 OCF",
+        "硬是把研發週期壓縮到每年推出全新架構",
+        "徹底拉開代差"
+      ],
+      "spoken_clauses": [
+        "第三道牆是最",
+        "讓競爭對手絕望的『一年一代』產品節奏",
+        "過去半導體產業習慣兩到三年才大改款",
+        "但輝達憑藉 FY二十六 高達 兩千一百五十九億美金的營收規模",
+        "與 一千零二十七億美金的 營運現金流",
+        "硬是把研發週期壓縮到每年推出全新架構",
+        "徹底拉開代差"
+      ],
+      "visual_title": "第三道牆：一年一代產品節奏",
+      "visual_subtitle": "憑藉 $2,159 億營收與千億現金，壓縮研發週期",
+      "badge_text": "1 年 1 代架構",
+      "nodes": [
+        {
+          "label": "FY26 全年營收",
+          "sub": "龐大收入支撐無上限研發火力",
+          "tag": "規模優勢",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營運現金流",
+          "sub": "千億現金流讓對手望塵莫及",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "產品迭代節奏",
+          "sub": "從兩三年壓縮至每年全新架構",
+          "tag": "代差碾壓",
+          "metric": "1 年/代",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "規模碾壓研發速度",
+      "callout_body": "打破半導體兩三年大改款慣例，每年推出新架構拉開代差。",
+      "code_lines": [
+        "Industry_Norm = 2~3 年大改款",
+        "NVDA_Cadence = 1 年 1 代 (Backed by $2,159 億 Rev)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_39",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "換位思考一下",
+        "競爭對手好不容易花三年追上輝達前一代效能",
+        "結果輝達下一代機櫃已經量產出貨",
+        "還把每瓦 token 成本再砍一半",
+        "對大客戶來說，省那一點晶片採購價",
+        "卻得承受算力落後一代的 TCO 劣勢",
+        "這筆帳根本劃不來"
+      ],
+      "spoken_clauses": [
+        "換位思考一下",
+        "競爭對手好不容易花三年追上輝達前一代效能",
+        "結果輝達下一代機櫃已經量產出貨",
+        "還把每瓦 token 成本再砍一半",
+        "對大客戶來說，省那一點晶片採購價",
+        "卻得承受算力落後一代的 TCO 劣勢",
+        "這筆帳根本劃不來"
+      ],
+      "visual_title": "省了晶片價，卻輸了 TCO",
+      "visual_subtitle": "對手花三年追上前代，輝達已將每瓦成本再砍半",
+      "badge_text": "每瓦成本 -50%",
+      "nodes": [
+        {
+          "label": "對手追趕時間",
+          "sub": "耗時三年才追上輝達前代效能",
+          "tag": "永遠落後",
+          "metric": "3 年",
+          "icon": "calendar",
+          "trend": "down"
+        },
+        {
+          "label": "每瓦成本砍半",
+          "sub": "新世代機櫃量產大幅降低能耗",
+          "tag": "算力通膨",
+          "metric": "-50%",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "TCO 總成本劣勢",
+          "sub": "省小錢買落後晶片根本不划算",
+          "tag": "客戶算盤",
+          "metric": "CapEx $60.4 億",
+          "icon": "dollar",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "總擁有成本定生死",
+      "callout_body": "算力落後一代的電費與效率劣勢，遠大於省下的晶片價差。",
+      "code_lines": [
+        "Rival_Catchup = 3 年追上前一代",
+        "NVDA_NextGen = 每瓦 Token 成本 -50%"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_40",
+      "chapter_index": 5,
+      "total_chapters": 8,
+      "chapter_title": "自研晶片難越三道牆",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "stocks",
+      "clauses": [
+        "所以我們在 SEC 財報裡看到一個很有趣的現象",
+        "一邊是 MSFT 與 META 大舉投入自研晶片",
+        "另一邊兩家 FY26 與 FY25 的 CapEx",
+        "卻同步暴衝到 $1,159 億與 $697 億",
+        "最核心的通用訓練算力",
+        "依然牢牢握在 NVDA 手裡"
+      ],
+      "spoken_clauses": [
+        "所以我們在 S E C 財報裡看到一個很有趣的現象",
+        "一邊是 Microsoft 與 Meta 大舉投入自研晶片",
+        "另一邊兩家 FY二十六 與 FY二十五 的 資本支出",
+        "卻同步暴衝到 一千一百五十九億美金與 六百九十七億美金",
+        "最核心的通用訓練算力",
+        "依然牢牢握在 Nvidia 手裡"
+      ],
+      "visual_title": "嘴上自研，身體誠實買單",
+      "visual_subtitle": "微軟與 Meta 邊推自研晶片，CapEx 卻同步暴衝",
+      "badge_text": "合計 $1,856 億",
+      "nodes": [
+        {
+          "label": "微軟資本支出",
+          "sub": "自研同時 FY26 支出暴衝千億",
+          "tag": "MSFT",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "Meta 資本支出",
+          "sub": "自研同時 FY25 支出猛增近倍",
+          "tag": "META",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "通用訓練算力",
+          "sub": "最核心高毛利訂單仍鎖定輝達",
+          "tag": "NVDA",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "通用訓練仍靠輝達",
+      "callout_body": "財報證實最核心的通用訓練算力，依然牢牢握在 NVDA 手裡。",
+      "code_lines": [
+        "MSFT_FY26_CapEx = $1,159 億",
+        "META_FY25_CapEx = $697 億",
+        "Core_Training_Share = NVDA 主導"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 3,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "minimalist precision balance scale weighing a glowing amber AI module against dark matte blocks on #222224 background, conceptual editorial metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_41",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "stocks_valuation_scenarios",
+      "voice_style": "stocks",
+      "clauses": [
+        "看懂護城河之後",
+        "我們回到投資最核心的問題：現在股價",
+        "從 52 週高點 $243.37 跌到 $149.30",
+        "跌幅逼近四成，本益比 PE 只剩 16.0 倍",
+        "總市值 $3.598 兆",
+        "這到底算不算便宜",
+        "我們直接攤開自由現金流與三種估值情境來算帳"
+      ],
+      "spoken_clauses": [
+        "看懂護城河之後",
+        "我們回到投資最核心的問題：現在股價",
+        "從 五十二 週高點 兩百四十三點三七美金 跌到 一百四十九點三零美金",
+        "跌幅逼近四成，本益比 本益比 只剩 十六點零 倍",
+        "總市值 三點五九兆美金",
+        "這到底算不算便宜",
+        "我們直接攤開自由現金流與三種估值情境來算帳"
+      ],
+      "visual_title": "PE 16.0 倍的安全邊際算帳",
+      "visual_subtitle": "股價從 $243.37 跌至 $149.30，市值 $3.598 兆",
+      "badge_text": "PE 16.0x",
+      "nodes": [
+        {
+          "label": "52 週高點",
+          "sub": "市場狂熱期曾創下的歷史高價",
+          "tag": "前波高點",
+          "metric": "$243.37",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "目前市場股價",
+          "sub": "回檔逼近四成後的恐慌報價",
+          "tag": "38.7%",
+          "metric": "$149.30",
+          "icon": "nvidia",
+          "trend": "down"
+        },
+        {
+          "label": "本益比估值",
+          "sub": "估值壓縮至極具吸引力的水位",
+          "tag": "P/E",
+          "metric": "16.0x",
+          "icon": "dollar",
+          "trend": "down"
+        },
+        {
+          "label": "總市值規模",
+          "sub": "全球 AI 基礎設施核心霸主",
+          "tag": "Market Cap",
+          "metric": "$3.598 兆",
+          "icon": "globe",
+          "trend": "neutral"
+        }
+      ],
+      "callout_title": "跌幅逼近四成",
+      "callout_body": "回到投資本質：用自由現金流與三種估值情境檢驗便宜度。",
+      "code_lines": [
+        "52W_High = $243.37 -> Current = $149.30 (-38.7%)",
+        "P/E = 16.0x | Market_Cap = $3.598T"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_42",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "先看最硬核的現金流底氣",
+        "根據 FY26 SEC 10-K",
+        "NVDA 全年 OCF 高達 $1,027 億",
+        "但因為採取輕資產無晶圓廠模式",
+        "全年 CapEx 僅僅 $60.4 億",
+        "兩者相減，自由現金流 FCF 高達約 $967 億",
+        "現金轉換率驚人"
+      ],
+      "spoken_clauses": [
+        "先看最硬核的現金流底氣",
+        "根據 FY二十六 S E C 十-K",
+        "Nvidia 全年 營運現金流 高達 一千零二十七億美金",
+        "但因為採取輕資產無晶圓廠模式",
+        "全年 資本支出 僅僅 六十點四億美金",
+        "兩者相減，自由現金流 自由現金流 高達約 九百六十七億美金",
+        "現金轉換率驚人"
+      ],
+      "visual_title": "最硬核底氣：FCF 約 $967",
+      "visual_subtitle": "OCF $1,027 億扣除 $60.4 億支出，現金轉換率驚人",
+      "badge_text": "FCF $967 億",
+      "nodes": [
+        {
+          "label": "營運現金流",
+          "sub": "FY26 SEC 10-K 實收現金",
+          "tag": "OCF",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "極低資本支出",
+          "sub": "輕資產無晶圓廠模式優勢",
+          "tag": "CapEx",
+          "metric": "$60.4 億",
+          "icon": "cpu",
+          "trend": "down"
+        },
+        {
+          "label": "自由現金流",
+          "sub": "幾乎全數轉化為可支配現金",
+          "tag": "FCF",
+          "metric": "$967 億",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "無晶圓廠印鈔奇蹟",
+      "callout_body": "超過九成營運現金流直接化為自由現金流，防禦力拉滿。",
+      "code_lines": [
+        "NVDA_FY26_FCF = $1,027 億 - $60.4 億 = $966.6 億",
+        "FCF_Conversion = 94.1%"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_43",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "白話講就是，市場現在給這家年營收成長 +65.5%",
+        "淨利 $1,201 億",
+        "營益率高達 60.4% 的 AI 基礎設施霸主",
+        "只給出 16.0 倍的 PE",
+        "這代表華爾街已經在股價裡",
+        "提前定價了明年營收成長大幅放緩",
+        "甚至獲利見頂的悲觀預期"
+      ],
+      "spoken_clauses": [
+        "白話講就是，市場現在給這家年營收成長 百分之六十五點五",
+        "淨利 一千兩百零一億美金",
+        "營益率高達 百分之六十點四 的 AI 基礎設施霸主",
+        "只給出 十六點零 倍的 本益比",
+        "這代表華爾街已經在股價裡",
+        "提前定價了明年營收成長大幅放緩",
+        "甚至獲利見頂的悲觀預期"
+      ],
+      "visual_title": "華爾街已提前定價悲觀預期",
+      "visual_subtitle": "營收 +65.5%、營益率 60.4%，卻只給 16.0 倍 PE",
+      "badge_text": "極致估值錯殺",
+      "nodes": [
+        {
+          "label": "營收年增率",
+          "sub": "兩千億體量仍維持高速爆發",
+          "tag": "FY26",
+          "metric": "+65.5%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "全年淨利",
+          "sub": "單年純益突破千億美金大關",
+          "tag": "+64.7% YoY",
+          "metric": "$1,201 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "營業利益率",
+          "sub": "史無前例的霸主級定價權",
+          "tag": "獲利能力",
+          "metric": "60.4%",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "市場給予 PE",
+          "sub": "已提前計入成長放緩悲觀預期",
+          "tag": "估值折價",
+          "metric": "16.0x",
+          "icon": "nvidia",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "悲觀情境已反映",
+      "callout_body": "市場已提前在股價裡定價明年成長放緩與獲利見頂風險。",
+      "code_lines": [
+        "Rev_Growth = +65.5% | Net_Income = $1,201 億",
+        "Op_Margin = 60.4% | Valuation = 16.0x P/E"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_44",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "接下來我們做最嚴格的『保守情境』壓力測試",
+        "假設未來兩年雲端巨頭縮手",
+        "NVDA 營收成長從 +65.5% 急凍到個位數",
+        "營益率也從 60.4% 回落到 50% 水準",
+        "市場只願給它傳統半導體週期股的13 倍到 14 倍 PE"
+      ],
+      "spoken_clauses": [
+        "接下來我們做最嚴格的『保守情境』壓力測試",
+        "假設未來兩年雲端巨頭縮手",
+        "Nvidia 營收成長從 成長百分之六十五點五 急凍到個位數",
+        "營益率也從 百分之六十點四 回落到 百分之五十 水準",
+        "市場只願給它傳統半導體週期股的十三 倍到 十四 倍 本益比"
+      ],
+      "visual_title": "保守情境壓力測試模型",
+      "visual_subtitle": "假設雲端縮手、營收急凍與估值下殺",
+      "badge_text": "PE 13-14x",
+      "nodes": [
+        {
+          "label": "營收增速急凍",
+          "sub": "從 +65.5% 假設放緩至個位數",
+          "tag": "保守假設",
+          "metric": "+65.5%→<10%",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "營益率回落",
+          "sub": "由 60.4% 下修至 50% 水準",
+          "tag": "獲利壓力",
+          "metric": "50.0%",
+          "icon": "layers",
+          "trend": "down"
+        },
+        {
+          "label": "週期股估值",
+          "sub": "市場僅給傳統半導體 13-14",
+          "tag": "估值壓縮",
+          "metric": "13x-14x",
+          "icon": "dollar",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "極端壓力測試",
+      "callout_body": "就算成長急凍回落週期股，仍可精算底線",
+      "code_lines": [
+        "Rev Growth: +65.5% -> <10% (保守假設)",
+        "Op Margin: 60.4% -> 50.0% | Target PE: 13x-14x"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_45",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "就算在這麼極端的保守劇本下",
+        "以目前 $149.30 對應 16.0 倍 PE 推算",
+        "股價下檔空間大約落在 $120 到 $130 區間",
+        "正好貼近 52 週低點 $124.50",
+        "也就是說，現在進場往下看的潛在回撤",
+        "大約在 15% 到 20% 之間"
+      ],
+      "spoken_clauses": [
+        "就算在這麼極端的保守劇本下",
+        "以目前 一百四十九點三零美金 對應 十六點零 倍 本益比 推算",
+        "股價下檔空間大約落在 一百二十到一百三十美金 區間",
+        "正好貼近 五十二 週低點 一百二十四點五零美金",
+        "也就是說，現在進場往下看的潛在回撤",
+        "大約在 百分之十五 到 百分之二十 之間"
+      ],
+      "visual_title": "下檔空間貼近 52 週低點",
+      "visual_subtitle": "現價 $149.30 對比極端保守區間 $120-$130",
+      "badge_text": "回撤 15%-20%",
+      "nodes": [
+        {
+          "label": "目前市場報價",
+          "sub": "現價對應 16.0 倍本益比",
+          "tag": "現價基準",
+          "metric": "$149.30",
+          "icon": "dollar",
+          "trend": "neutral"
+        },
+        {
+          "label": "保守目標區間",
+          "sub": "極端情境下股價落於 $120-$130",
+          "tag": "下檔測算",
+          "metric": "$120-$130",
+          "icon": "shield",
+          "trend": "down"
+        },
+        {
+          "label": "52 週低點支撐",
+          "sub": "測算區間正好貼近歷史低點",
+          "tag": "技術支撐",
+          "metric": "$124.50",
+          "icon": "lock",
+          "trend": "neutral"
+        },
+        {
+          "label": "潛在回撤幅度",
+          "sub": "往下看最大跌幅約 15% 至 20%",
+          "tag": "風險界線",
+          "metric": "-15%~-20%",
+          "icon": "trending_up",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "下檔風險可控",
+      "callout_body": "極端劇本下檔約 15% 至 20%，貼近前低",
+      "code_lines": [
+        "Current: $149.30 (16.0x PE)",
+        "Bear Target: $120-$130 vs 52W Low $124.50 (-15%~-20%)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_46",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "再來看最貼近基本面的『中性情境",
+        "假設 AI 推論需求接棒訓練",
+        "NVDA 未來兩年獲利維持 15%",
+        "到 20% 的穩健年複合成長",
+        "營益率守穩 55% 以上",
+        "市場情緒修復後",
+        "估值只需回歸大型科技股常態的20 倍到 22 倍 PE"
+      ],
+      "spoken_clauses": [
+        "再來看最貼近基本面的『中性情境",
+        "假設 AI 推論需求接棒訓練",
+        "Nvidia 未來兩年獲利維持 百分之十五",
+        "到 百分之二十 的穩健年複合成長",
+        "營益率守穩 百分之五十五 以上",
+        "市場情緒修復後",
+        "估值只需回歸大型科技股常態的二十 倍到 二十二 倍 本益比"
+      ],
+      "visual_title": "中性情境回歸常態估值",
+      "visual_subtitle": "AI 推論接棒訓練，獲利穩健成長與估值修復",
+      "badge_text": "PE 20-22x",
+      "nodes": [
+        {
+          "label": "AI 推論接棒",
+          "sub": "推論需求接力訓練撐起基本面",
+          "tag": "需求動能",
+          "metric": "2 年 CAGR",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "獲利穩健成長",
+          "sub": "未來兩年維持 15%-20% 複合成長",
+          "tag": "獲利預估",
+          "metric": "+15%-20%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "營益率守穩",
+          "sub": "營業利益率維持 55% 以上水準",
+          "tag": "獲利防線",
+          "metric": ">=55%",
+          "icon": "shield",
+          "trend": "neutral"
+        },
+        {
+          "label": "大型科技估值",
+          "sub": "情緒修復後回歸 20-22 倍常態",
+          "tag": "估值修復",
+          "metric": "20x-22x",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "基本面常態修復",
+      "callout_body": "獲利年複合成長 15%-20%，PE 回歸 20-22 倍",
+      "code_lines": [
+        "EPS CAGR: +15%~20% | Op Margin: >=55.0%",
+        "Valuation Re-rating: 16.0x -> 20x-22x PE"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_47",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "只要獲利溫和成長加上估值",
+        "從 16.0 倍修復回 21 倍",
+        "戴維斯雙擊就會帶動股價重回",
+        "$200 到 $225 區間",
+        "對比現在 $149.30 的股價",
+        "這已經是超過 35% 到 50% 的潛在報酬空間"
+      ],
+      "spoken_clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "只要獲利溫和成長加上估值",
+        "從 十六點零 倍修復回 二十一 倍",
+        "戴維斯雙擊就會帶動股價重回",
+        "兩百到兩百二十五美金 區間",
+        "對比現在 一百四十九點三零美金 的股價",
+        "這已經是超過 百分之三十五 到 百分之五十 的潛在報酬空間"
+      ],
+      "visual_title": "戴維斯雙擊的營運槓桿",
+      "visual_subtitle": "溫和獲利成長搭配估值修復，上檔空間 35%-50%",
+      "badge_text": "+35% ~ +50%",
+      "nodes": [
+        {
+          "label": "估值倍數修復",
+          "sub": "本益比由 16.0 倍回升至 21",
+          "tag": "估值修復",
+          "metric": "16x→21x",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "中性目標股價",
+          "sub": "戴維斯雙擊帶動股價重回區間",
+          "tag": "目標價位",
+          "metric": "$200-$225",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "現價基準點",
+          "sub": "對比目前公開市場報價 $149.30",
+          "tag": "安全起點",
+          "metric": "$149.30",
+          "icon": "nvidia",
+          "trend": "neutral"
+        },
+        {
+          "label": "潛在報酬空間",
+          "sub": "中性情境即具備 35%-50% 漲幅",
+          "tag": "報酬測算",
+          "metric": "+35%-50%",
+          "icon": "zap",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "戴維斯雙擊效應",
+      "callout_body": "估值從 16.0x 修復至 21x，股價上看 $200-$225",
+      "code_lines": [
+        "PE Re-rating: 16.0x -> 21.0x (+31.3%)",
+        "Target Price: $200-$225 vs $149.30 (+35%~+50%)"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_48",
+      "chapter_index": 6,
+      "total_chapters": 8,
+      "chapter_title": "PE 16 倍的安全邊際",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "stocks",
+      "clauses": [
+        "至於『樂觀情境",
+        "若企業端 AI 代理全面引爆新一輪算力軍備賽",
+        "營收維持 30% 以上高成長且市場重給 25 倍 PE",
+        "股價就有機會挑戰前高 $243.37",
+        "甚至上看 $260 以上",
+        "下檔兩成、上檔五成起跳",
+        "這就是標準的不對稱安全邊際"
+      ],
+      "spoken_clauses": [
+        "至於『樂觀情境",
+        "若企業端 AI 代理全面引爆新一輪算力軍備賽",
+        "營收維持 百分之三十 以上高成長且市場重給 二十五 倍 本益比",
+        "股價就有機會挑戰前高 兩百四十三點三七美金",
+        "甚至上看 兩百六十美金 以上",
+        "下檔兩成、上檔五成起跳",
+        "這就是標準的不對稱安全邊際"
+      ],
+      "visual_title": "不對稱安全邊際總結",
+      "visual_subtitle": "樂觀情境上看 $260+，下檔兩成換上檔五成起跳",
+      "badge_text": "上看 $260+",
+      "nodes": [
+        {
+          "label": "企業 AI 代理",
+          "sub": "引爆新一輪算力軍備賽需求",
+          "tag": "樂觀催化",
+          "metric": "Rev +30%+",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "重估 25 倍 PE",
+          "sub": "高成長帶動市場重給成長估值",
+          "tag": "樂觀估值",
+          "metric": "25x PE",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "挑戰歷史前高",
+          "sub": "突破 52 週高點上看 $260 以上",
+          "tag": "上檔目標",
+          "metric": "$243→$260+",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "不對稱賠率",
+          "sub": "下檔兩成風險對應五成以上報酬",
+          "tag": "安全邊際",
+          "metric": "-20%/+50%",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "不對稱賠率結構",
+      "callout_body": "下檔 20% 換上檔 50% 起跳，標準安全邊際",
+      "code_lines": [
+        "Bull Case: Rev +30%+ | PE 25x -> $243.37 ~ $260+",
+        "Risk/Reward: Downside -20% vs Upside +50%+"
+      ],
+      "pipeline_steps": [
+        "從晶片到AI工廠",
+        "五年財報的營運槓桿",
+        "巨頭燒錢的現金真相",
+        "自研晶片難越三道牆",
+        "PE 16 倍的安全邊際"
+      ],
+      "active_pipeline_idx": 4,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_49",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "stocks",
+      "clauses": [
+        "當然，價值投資人絕對不能只看多頭故事",
+        "忽略下檔地雷",
+        "股價會從 $243.37 一路殺到 $149.30",
+        "市場一定有它害怕的理由",
+        "如果我們想在這場博弈裡全身而退",
+        "接下來每一季財報",
+        "有三項硬核風險指標必須死盯不放"
+      ],
+      "spoken_clauses": [
+        "當然，價值投資人絕對不能只看多頭故事",
+        "忽略下檔地雷",
+        "股價會從 兩百四十三點三七美金 一路殺到 一百四十九點三零美金",
+        "市場一定有它害怕的理由",
+        "如果我們想在這場博弈裡全身而退",
+        "接下來每一季財報",
+        "有三項硬核風險指標必須死盯不放"
+      ],
+      "visual_title": "股價腰斬背後的真實地雷",
+      "visual_subtitle": "從 $243.37 殺至 $149.30，每季財報必盯三大硬核風險",
+      "badge_text": "三大硬核風險",
+      "nodes": [
+        {
+          "label": "股價深度回檔",
+          "sub": "從 52 週高點 $243.37 殺至 $149.30",
+          "tag": "市場定價",
+          "metric": "-38.7%",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "雲端 CapEx 風險",
+          "sub": "緊盯四大巨頭資本支出是否煞車",
+          "tag": "風險一",
+          "metric": "$2,010 億",
+          "icon": "aws",
+          "trend": "down"
+        },
+        {
+          "label": "地緣政治管制",
+          "sub": "出口禁令直接衝擊海外高毛利單",
+          "tag": "風險二",
+          "metric": "+22.2%",
+          "icon": "globe",
+          "trend": "down"
+        },
+        {
+          "label": "營益率防線",
+          "sub": "新機櫃爬坡期毛利與定價權考驗",
+          "tag": "風險三",
+          "metric": "55% 防線",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "拒絕盲目看多",
+      "callout_body": "想在博弈中全身而退，必須死盯三項財報指標",
+      "code_lines": [
+        "Drawdown: $243.37 -> $149.30 (-38.7%)",
+        "Risk Checklist: 1.CapEx 2.Geopolitics 3.Op Margin"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_50",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "stocks",
+      "clauses": [
+        "第一個核心風險",
+        "就是四大雲端巨頭的 CapEx",
+        "指引會不會突然踩煞車",
+        "從 SEC 10-K 來看",
+        "MSFT 在 FY26 的 CapEx",
+        "暴增 +79.6% 到 $1,159 億",
+        "META 在 FY25 也大增 +87.1% 到 $697 億",
+        "兩者都吃掉極高比例的 OCF"
+      ],
+      "spoken_clauses": [
+        "第一個核心風險",
+        "就是四大雲端巨頭的 資本支出",
+        "指引會不會突然踩煞車",
+        "從 S E C 十-K 來看",
+        "Microsoft 在 FY二十六 的 資本支出",
+        "暴增 成長百分之七十九點六 到 一千一百五十九億美金",
+        "Meta 在 FY二十五 也大增 成長百分之八十七點一 到 六百九十七億美金",
+        "兩者都吃掉極高比例的 營運現金流"
+      ],
+      "visual_title": "風險一：巨頭 CapEx 煞車",
+      "visual_subtitle": "MSFT 與 META 資本支出暴增，大舉消耗營運現金流",
+      "badge_text": "CapEx 暴增",
+      "nodes": [
+        {
+          "label": "MSFT 資本支出",
+          "sub": "FY26 暴增 +79.6% 達 $1,159",
+          "tag": "SEC 10-K",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "META 資本支出",
+          "sub": "FY25 大增 +87.1% 達 $697",
+          "tag": "SEC 10-K",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "OCF 佔比攀升",
+          "sub": "CapEx 佔兩家營運現金流逾 60%",
+          "tag": "財務壓力",
+          "metric": ">60% OCF",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "現金流消耗警訊",
+      "callout_body": "兩大巨頭 CapEx 增幅高達 80%，吃掉高比例 OCF",
+      "code_lines": [
+        "MSFT FY26: CapEx $1,159 億 (+79.6%) / OCF $1,829 億",
+        "META FY25: CapEx $697 億 (+87.1%) / OCF $1,158 億"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_51",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "browser_ui_live_tour",
+      "voice_style": "stocks",
+      "clauses": [
+        "但如果我們換個角度進入第二層思考",
+        "華爾街現在最怕的不是巨頭沒錢",
+        "而是折舊費用開始吞噬獲利",
+        "一旦 MSFT 或 META 的雲端與廣告變現速度",
+        "跟不上折舊增幅",
+        "只要財報會議上出現『明年",
+        "CapEx 增速放緩』五個字",
+        "NVDA 就會再殺一波"
+      ],
+      "spoken_clauses": [
+        "但如果我們換個角度進入第二層思考",
+        "華爾街現在最怕的不是巨頭沒錢",
+        "而是折舊費用開始吞噬獲利",
+        "一旦 Microsoft 或 Meta 的雲端與廣告變現速度",
+        "跟不上折舊增幅",
+        "只要財報會議上出現『明年",
+        "資本支出 增速放緩』五個字",
+        "Nvidia 就會再殺一波"
+      ],
+      "visual_title": "第二層思考：折舊吞噬獲利",
+      "visual_subtitle": "華爾街最怕變現跟不上折舊，『增速放緩』將引爆拋售",
+      "badge_text": "折舊費用壓力",
+      "nodes": [
+        {
+          "label": "折舊費用攀升",
+          "sub": "龐大 CapEx 轉化為未來折舊成本",
+          "tag": "損益壓力",
+          "metric": "$1,856 億合計",
+          "icon": "layers",
+          "trend": "up"
+        },
+        {
+          "label": "AI 變現速度",
+          "sub": "雲端與廣告營收須跟上折舊增幅",
+          "tag": "關鍵驗證",
+          "metric": "營益率 41.4%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "指引放緩風險",
+          "sub": "法說若提 CapEx 放緩將觸發殺盤",
+          "tag": "財報地雷",
+          "metric": "5 字警訊",
+          "icon": "zap",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "變現與折舊賽跑",
+      "callout_body": "只要巨頭喊出明年 CapEx 增速放緩，股價必殺",
+      "code_lines": [
+        "Trigger: Cloud/Ads ROI < Depreciation Growth",
+        "Alert: 『明年 CapEx 增速放緩』 -> NVDA 估值再殺"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S4.png",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S4"
+      ],
+      "sfx_cue": "click"
+    },
+    {
+      "beat_id": "beat_52",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "stocks",
+      "clauses": [
+        "第二個真實風險",
+        "是隨時可能升級的地緣政治與出口管制變數",
+        "AI 算力已經被各國視為國家級戰略物資",
+        "從晶片規格限制到特定區域的資料中心轉運審查",
+        "每一道新禁令都會直接砍掉高毛利的海外訂單",
+        "而且完全無法靠財報模型預測"
+      ],
+      "spoken_clauses": [
+        "第二個真實風險",
+        "是隨時可能升級的地緣政治與出口管制變數",
+        "AI 算力已經被各國視為國家級戰略物資",
+        "從晶片規格限制到特定區域的資料中心轉運審查",
+        "每一道新禁令都會直接砍掉高毛利的海外訂單",
+        "而且完全無法靠財報模型預測"
+      ],
+      "visual_title": "風險二：地緣政治與出口管制",
+      "visual_subtitle": "AI 算力成國家戰略物資，禁令直接砍掉高毛利訂單",
+      "badge_text": "政策黑天鵝",
+      "nodes": [
+        {
+          "label": "國家戰略物資",
+          "sub": "AI 算力已升級為地緣博弈核心",
+          "tag": "宏觀變數",
+          "metric": "營益率 41.4%",
+          "icon": "globe",
+          "trend": "neutral"
+        },
+        {
+          "label": "晶片規格限制",
+          "sub": "美方隨時收緊出口算力門檻",
+          "tag": "法規風險",
+          "metric": "OCF $1,158 億",
+          "icon": "lock",
+          "trend": "down"
+        },
+        {
+          "label": "資料中心審查",
+          "sub": "嚴查特定區域轉運與海外部署",
+          "tag": "合規壓力",
+          "metric": "CapEx $697 億",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "模型無法預測",
+      "callout_body": "每一道新禁令都直接衝擊海外高毛利營收",
+      "code_lines": [
+        "Risk Type: Export Controls / Transshipment Audit",
+        "Impact: Direct Cut to High-Margin Overseas Orders"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_53",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "stocks",
+      "clauses": [
+        "白話講就是，這類政策黑天鵝沒辦法靠技術護城河化解",
+        "它只會透過營收指引下修與庫存提列",
+        "直接反映在季報裡",
+        "所以我們必須追蹤美國商務部動向",
+        "以及主權 AI 客戶能否在歐美",
+        "中東市場補上潛在的營收缺口"
+      ],
+      "spoken_clauses": [
+        "白話講就是，這類政策黑天鵝沒辦法靠技術護城河化解",
+        "它只會透過營收指引下修與庫存提列",
+        "直接反映在季報裡",
+        "所以我們必須追蹤美國商務部動向",
+        "以及主權 AI 客戶能否在歐美",
+        "中東市場補上潛在的營收缺口"
+      ],
+      "visual_title": "主權 AI 能否補上營收缺口",
+      "visual_subtitle": "政策衝擊無法靠技術化解，須緊盯商務部與海外替代市場",
+      "badge_text": "主權 AI 補位",
+      "nodes": [
+        {
+          "label": "營收指引下修",
+          "sub": "禁令直接反映在季報指引與庫存",
+          "tag": "財報衝擊",
+          "metric": "OCF $1,158 億",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "美國商務部",
+          "sub": "密切追蹤出口管制最新政策動向",
+          "tag": "政策追蹤",
+          "metric": "CapEx $697 億",
+          "icon": "globe",
+          "trend": "neutral"
+        },
+        {
+          "label": "主權 AI 補位",
+          "sub": "歐美與中東主權訂單填補缺口",
+          "tag": "替代市場",
+          "metric": "$2,159 億",
+          "icon": "sparkles",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "追蹤政策與補位",
+      "callout_body": "觀察歐美與中東主權 AI 能否填補潛在缺口",
+      "code_lines": [
+        "Impact: Guidance Cut + Inventory Write-down",
+        "Offset: US/EU/Middle East Sovereign AI Demand"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_54",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "ecosystem_node_graph",
+      "voice_style": "stocks",
+      "clauses": [
+        "第三個最容易被散戶忽略的指標",
+        "是新架構整機櫃爬坡期的毛利率與營益率防線",
+        "我們看 FY22 到 FY26 的軌跡",
+        "NVDA 營益率在 FY25 衝上 62.4% 高峰",
+        "FY26 微幅回落到 60.4%",
+        "這其實已經透露出產品轉換期的成本壓力"
+      ],
+      "spoken_clauses": [
+        "第三個最容易被散戶忽略的指標",
+        "是新架構整機櫃爬坡期的毛利率與營益率防線",
+        "我們看 FY二十二 到 FY二十六 的軌跡",
+        "Nvidia 營益率在 FY二十五 衝上 百分之六十二點四 高峰",
+        "FY二十六 微幅回落到 百分之六十點四",
+        "這其實已經透露出產品轉換期的成本壓力"
+      ],
+      "visual_title": "風險三：新架構爬坡期營益率",
+      "visual_subtitle": "FY25 高峰 62.4% 微降至 FY26 60.4%，透露轉換期成本壓力",
+      "badge_text": "62.4% → 60.4%",
+      "nodes": [
+        {
+          "label": "FY24 營益率",
+          "sub": "AI 爆發初期營益率躍升至 54.1%",
+          "tag": "成長起點",
+          "metric": "54.1%",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "FY25 營益高峰",
+          "sub": "高毛利晶片放量衝上 62.4% 巔峰",
+          "tag": "歷史高點",
+          "metric": "62.4%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "FY26 微幅回落",
+          "sub": "新架構整機櫃爬坡微降至 60.4%",
+          "tag": "轉換壓力",
+          "metric": "60.4%",
+          "icon": "cpu",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "散戶易忽略指標",
+      "callout_body": "營益率微幅回落 2 個百分點，反映產品轉換成本",
+      "code_lines": [
+        "NVDA Op Margin: FY24 54.1% -> FY25 62.4% -> FY26 60.4%",
+        "YoY Change: -2.0% pts (New Rack Ramp-up Cost)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_55",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "因為現在賣的是高度複雜的液冷整機櫃",
+        "從先進封裝產能瓶頸",
+        "散熱零組件良率到初期組裝磨合",
+        "只要任何一個環節出包導致出貨遞延",
+        "毛利率就會立刻承壓",
+        "市場會立刻拿這個數據大做文章",
+        "質疑輝達的定價權是不是開始鬆動"
+      ],
+      "spoken_clauses": [
+        "因為現在賣的是高度複雜的液冷整機櫃",
+        "從先進封裝產能瓶頸",
+        "散熱零組件良率到初期組裝磨合",
+        "只要任何一個環節出包導致出貨遞延",
+        "毛利率就會立刻承壓",
+        "市場會立刻拿這個數據大做文章",
+        "質疑輝達的定價權是不是開始鬆動"
+      ],
+      "visual_title": "液冷整機櫃的良率與定價權",
+      "visual_subtitle": "封裝、散熱與組裝環環相扣，出貨遞延將引發定價權質疑",
+      "badge_text": "供應鏈瓶頸",
+      "nodes": [
+        {
+          "label": "先進封裝瓶頸",
+          "sub": "高階晶片封裝產能仍是出貨關鍵",
+          "tag": "上游產能",
+          "metric": "$2,159 億",
+          "icon": "cpu",
+          "trend": "neutral"
+        },
+        {
+          "label": "散熱良率考驗",
+          "sub": "液冷整機櫃零組件良率難度極高",
+          "tag": "硬體門檻",
+          "metric": "+65.5%",
+          "icon": "zap",
+          "trend": "down"
+        },
+        {
+          "label": "組裝磨合期",
+          "sub": "初期整合若遞延將直接衝擊毛利",
+          "tag": "交期風險",
+          "metric": "營益率 60.4%",
+          "icon": "layers",
+          "trend": "down"
+        },
+        {
+          "label": "定價權質疑",
+          "sub": "毛利承壓將被市場放大解讀",
+          "tag": "估值敏感",
+          "metric": "OCF $1,027 億",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "系統整合大考驗",
+      "callout_body": "任一環節卡關都會壓抑毛利，動搖市場信心",
+      "code_lines": [
+        "Bottlenecks: Packaging + Liquid Cooling + Assembly",
+        "Market Fear: Shipment Delay -> Pricing Power Doubt"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_56",
+      "chapter_index": 7,
+      "total_chapters": 8,
+      "chapter_title": "必盯三大真實風險",
+      "layout_type": "operating_leverage_chart",
+      "voice_style": "stocks",
+      "clauses": [
+        "所以幫大家劃個明確的警戒線",
+        "未來兩季如果 NVDA 營業利益率依然穩守",
+        "在 55% 以上，代表系統整合與定價權完好無損",
+        "反之若營益率連續跌破 55%",
+        "同時巨頭下修 CapEx",
+        "那我們就必須果斷重新評估原本的多頭假設"
+      ],
+      "spoken_clauses": [
+        "所以幫大家劃個明確的警戒線",
+        "未來兩季如果 Nvidia 營業利益率依然穩守",
+        "在 百分之五十五 以上，代表系統整合與定價權完好無損",
+        "反之若營益率連續跌破 百分之五十五",
+        "同時巨頭下修 資本支出",
+        "那我們就必須果斷重新評估原本的多頭假設"
+      ],
+      "visual_title": "劃清 55% 營益率警戒線",
+      "visual_subtitle": "未來兩季守穩 55% 代表護城河無損，跌破則果斷重估",
+      "badge_text": "55% 警戒線",
+      "nodes": [
+        {
+          "label": "穩守 55% 以上",
+          "sub": "代表系統整合與定價權完好無損",
+          "tag": "多頭成立",
+          "metric": ">=55.0%",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "連續跌破 55%",
+          "sub": "反映成本失控或競爭加劇警訊",
+          "tag": "警戒觸發",
+          "metric": "<55.0%",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "巨頭下修 CapEx",
+          "sub": "若同步出現砍單則果斷重估部位",
+          "tag": "雙重確認",
+          "metric": "OCF $1,027 億",
+          "icon": "shield",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "明確紀律防線",
+      "callout_body": "營益率連破 55% 且巨頭砍單，必須重估多頭假設",
+      "code_lines": [
+        "Bull Intact: Op Margin >= 55.0% (Next 2 Quarters)",
+        "Re-evaluate: Op Margin < 55.0% && Hyperscaler CapEx Cut"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_57",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "stocks_kpi_asymmetric",
+      "voice_style": "warm",
+      "clauses": [
+        "看懂了營運槓桿、三大護城河",
+        "16.0 倍 PE 的安全邊際與三大風險",
+        "最後我們來談最關鍵的實戰執行",
+        "就算面對勝率極高的不對稱賭局",
+        "如果部位控管失控",
+        "一次財報後的劇烈震盪",
+        "還是可能把你徹底洗出場外"
+      ],
+      "spoken_clauses": [
+        "看懂了營運槓桿、三大護城河",
+        "十六點零 倍 本益比 的安全邊際與三大風險",
+        "最後我們來談最關鍵的實戰執行",
+        "就算面對勝率極高的不對稱賭局",
+        "如果部位控管失控",
+        "一次財報後的劇烈震盪",
+        "還是可能把你徹底洗出場外"
+      ],
+      "visual_title": "實戰執行：部位控管決定勝負",
+      "visual_subtitle": "就算擁有 16.0x PE 安全邊際，失控的倉位仍會被洗出場",
+      "badge_text": "實戰倉位紀律",
+      "nodes": [
+        {
+          "label": "16 倍安全邊際",
+          "sub": "具備高勝率的不對稱風險報酬",
+          "tag": "基本面優勢",
+          "metric": "16.0x PE",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "財報劇烈震盪",
+          "sub": "單季業績波動極易引發情緒恐慌",
+          "tag": "市場常態",
+          "metric": "OCF $1,027 億",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "部位控管紀律",
+          "sub": "守住倉位上限才能留到估值修復",
+          "tag": "實戰核心",
+          "metric": "CapEx $60.4 億",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "控管重於預測",
+      "callout_body": "高勝率賭局更需要紀律，避免被財報震盪洗出",
+      "code_lines": [
+        "Edge: Op Leverage + 3 Moats + 16.0x PE Margin of Safety",
+        "Execution: Position Sizing > Short-Term Timing"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "whoosh"
+    },
+    {
+      "beat_id": "beat_58",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "second_level_thinking_crowd",
+      "voice_style": "warm",
+      "clauses": [
+        "面對 $149.30 這種充滿市場恐慌",
+        "與多空分歧的位置",
+        "最忌諱的就是一把 All-in 賭隔天立刻反轉",
+        "因為沒人能精準抄到最低點",
+        "萬一市場情緒繼續發酵",
+        "股價再度回測 52 週低點 $124.50",
+        "滿倉的人心態絕對會先崩潰"
+      ],
+      "spoken_clauses": [
+        "面對 一百四十九點三零美金 這種充滿市場恐慌",
+        "與多空分歧的位置",
+        "最忌諱的就是一把 All-in 賭隔天立刻反轉",
+        "因為沒人能精準抄到最低點",
+        "萬一市場情緒繼續發酵",
+        "股價再度回測 五十二 週低點 一百二十四點五零美金",
+        "滿倉的人心態絕對會先崩潰"
+      ],
+      "visual_title": "切忌 $149.30 一把 All-in",
+      "visual_subtitle": "沒人能精準抄底，滿倉面對回測 $124.50 心態必崩",
+      "badge_text": "禁止 All-in",
+      "nodes": [
+        {
+          "label": "多空分歧價位",
+          "sub": "$149.30 充斥市場恐慌與劇烈分歧",
+          "tag": "現價位置",
+          "metric": "$149.30",
+          "icon": "dollar",
+          "trend": "neutral"
+        },
+        {
+          "label": "回測前低風險",
+          "sub": "情緒延燒可能再測 52 週低點",
+          "tag": "下檔測試",
+          "metric": "$124.50",
+          "icon": "trending_up",
+          "trend": "down"
+        },
+        {
+          "label": "滿倉心態崩潰",
+          "sub": "一把重壓將失去應對波動的彈性",
+          "tag": "操作大忌",
+          "metric": "0% 現金",
+          "icon": "lock",
+          "trend": "down"
+        }
+      ],
+      "callout_title": "保留心態餘裕",
+      "callout_body": "若情緒發酵回測 $124.50，滿倉者將最先崩潰",
+      "code_lines": [
+        "Current: $149.30 | 52W Low: $124.50 (-16.6% risk)",
+        "Rule: Never All-in at a Single Price Point"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_59",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "animated_growth_curve",
+      "voice_style": "warm",
+      "clauses": [
+        "我自己的實戰紀律非常簡單",
+        "把目標倉位拆成三到四批",
+        "搭配估值區間與季報驗證分批佈局",
+        "PE 16 倍附近先建第一筆底倉",
+        "若市場非理性殺到 14 倍甚至 $125 附近",
+        "手上有現金才能從容加碼",
+        "若直接反轉，底倉也已經在車上"
+      ],
+      "spoken_clauses": [
+        "我自己的實戰紀律非常簡單",
+        "把目標倉位拆成三到四批",
+        "搭配估值區間與季報驗證分批佈局",
+        "本益比 十六 倍附近先建第一筆底倉",
+        "若市場非理性殺到 十四 倍甚至 一百二十五美金 附近",
+        "手上有現金才能從容加碼",
+        "若直接反轉，底倉也已經在車上"
+      ],
+      "visual_title": "三到四批分批佈局法",
+      "visual_subtitle": "16x 建底倉、14x 從容加碼，進可攻退可守的實戰節奏",
+      "badge_text": "3-4 批建倉",
+      "nodes": [
+        {
+          "label": "拆分三到四批",
+          "sub": "搭配估值區間與季報驗證進場",
+          "tag": "資金規劃",
+          "metric": "3-4 批",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "16 倍建底倉",
+          "sub": "先建立基礎部位避免踏空反轉",
+          "tag": "第一筆",
+          "metric": "16x PE",
+          "icon": "check",
+          "trend": "up"
+        },
+        {
+          "label": "14 倍從容加碼",
+          "sub": "若殺至 $125 附近手握現金撿便宜",
+          "tag": "加碼區間",
+          "metric": "$125 / 14x",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "估值分批紀律",
+      "callout_body": "16x 建底倉、14x 加碼，上漲在車上下跌有現金",
+      "code_lines": [
+        "Tranche 1: ~16x PE ($149.30) 建第一筆底倉",
+        "Tranche 2-3: ~14x PE ($125 附近) 手握現金從容加碼"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "secondary_chart_points": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_60",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "stocks_four_pillars",
+      "voice_style": "warm",
+      "clauses": [
+        "同時單一持股佔整體投資組合的比重",
+        "一定要設好上限",
+        "就算 NVDA 是全球最強的 AI 基礎設施霸主",
+        "它本質上仍屬於高波動的科技成長股",
+        "控制好單檔權重",
+        "你才能在股價單日震盪 5% 到 8% 時",
+        "依然冷靜地用財報做決策"
+      ],
+      "spoken_clauses": [
+        "同時單一持股佔整體投資組合的比重",
+        "一定要設好上限",
+        "就算 Nvidia 是全球最強的 AI 基礎設施霸主",
+        "它本質上仍屬於高波動的科技成長股",
+        "控制好單檔權重",
+        "你才能在股價單日震盪 百分之五 到 百分之八 時",
+        "依然冷靜地用財報做決策"
+      ],
+      "visual_title": "嚴設單一持股權重上限",
+      "visual_subtitle": "AI 霸主仍是高波動科技股，控好權重才能冷靜看財報",
+      "badge_text": "單日波動 5%-8%",
+      "nodes": [
+        {
+          "label": "單檔權重上限",
+          "sub": "嚴格限制 NVDA 佔總投組比例",
+          "tag": "風控紅線",
+          "metric": "$149.30",
+          "icon": "shield",
+          "trend": "neutral"
+        },
+        {
+          "label": "高波動本質",
+          "sub": "AI 基礎設施霸主仍屬高波動成長股",
+          "tag": "資產屬性",
+          "metric": "±5%~8%",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "冷靜財報決策",
+          "sub": "不因單日劇烈震盪而情緒化停損",
+          "tag": "理性執行",
+          "metric": "52W高 $243",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "權重管理防線",
+      "callout_body": "控制單檔佔比，面對 5%-8% 震盪才能保持理性",
+      "code_lines": [
+        "Asset Class: High-Beta AI Infrastructure Growth Stock",
+        "Daily Volatility: +-5% ~ +-8% -> Cap Single Stock Weight"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.58,
+        0.32,
+        1.3
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_61",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "moat_shield_architecture",
+      "voice_style": "warm",
+      "clauses": [
+        "接下來我幫大家整理一份可以",
+        "直接抄走的『長期追蹤清單",
+        "第一，緊盯 MSFT、META 等雲端巨頭每季 CapEx",
+        "與 AI 雲端營收增速",
+        "第二，追蹤 NVDA 營益率能否守住 55% 防線",
+        "第三，觀察 OCF 轉化率",
+        "與應收帳款天數有沒有異常惡化"
+      ],
+      "spoken_clauses": [
+        "接下來我幫大家整理一份可以",
+        "直接抄走的『長期追蹤清單",
+        "第一，緊盯 Microsoft 、 Meta 等雲端巨頭每季 資本支出",
+        "與 AI 雲端營收增速",
+        "第二，追蹤 Nvidia 營益率能否守住 百分之五十五 防線",
+        "第三，觀察 營運現金流 轉化率",
+        "與應收帳款天數有沒有異常惡化"
+      ],
+      "visual_title": "可直接抄走的長期追蹤清單",
+      "visual_subtitle": "每季財報必查三大核心指標：巨頭 CapEx、營益率與現金流",
+      "badge_text": "三大追蹤清單",
+      "nodes": [
+        {
+          "label": "巨頭資本支出",
+          "sub": "每季追蹤 MSFT 與 META 支出增速",
+          "tag": "清單一",
+          "metric": "CapEx/AI雲",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "55% 營益率線",
+          "sub": "確認 NVDA 定價權與整合未鬆動",
+          "tag": "清單二",
+          "metric": ">=55.0%",
+          "icon": "nvidia",
+          "trend": "neutral"
+        },
+        {
+          "label": "OCF 與應收帳款",
+          "sub": "檢查現金流轉化率與帳款天數",
+          "tag": "清單三",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "季報檢核清單",
+      "callout_body": "盯緊 CapEx、55% 營益率與 OCF 轉化率三大指標",
+      "code_lines": [
+        "1. MSFT/META CapEx & AI Cloud Growth",
+        "2. NVDA Op Margin >= 55% | 3. OCF & AR Days"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.38,
+        0.3,
+        1.32
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_62",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "before_after_workflow_card",
+      "voice_style": "warm",
+      "clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "股價短期是投票機",
+        "反映的是市場的恐懼與貪婪",
+        "但拉長到三年來看",
+        "股價終究是體重機",
+        "緊緊跟著 $1,027 億的 OCF",
+        "與實打實的自由現金流走",
+        "當價格遠低於內在價值",
+        "時間就會站在你這邊"
+      ],
+      "spoken_clauses": [
+        "這背後的營運槓桿邏輯其實很直白",
+        "股價短期是投票機",
+        "反映的是市場的恐懼與貪婪",
+        "但拉長到三年來看",
+        "股價終究是體重機",
+        "緊緊跟著 一千零二十七億美金的 營運現金流",
+        "與實打實的自由現金流走",
+        "當價格遠低於內在價值",
+        "時間就會站在你這邊"
+      ],
+      "visual_title": "短期投票機，長期體重機",
+      "visual_subtitle": "拉長三年看，股價終究緊跟 $1,027 億 OCF 與自由現金流",
+      "badge_text": "OCF $1,027 億",
+      "nodes": [
+        {
+          "label": "短期投票機",
+          "sub": "股價短期反映市場恐懼與貪婪情緒",
+          "tag": "短期噪音",
+          "metric": "52W高 $243",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "三年體重機",
+          "sub": "長期股價緊跟實打實獲利與現金流",
+          "tag": "長期鐵律",
+          "metric": "3 年週期",
+          "icon": "calendar",
+          "trend": "up"
+        },
+        {
+          "label": "千億營運現金",
+          "sub": "FY26 營運現金流高達 $1,027",
+          "tag": "內在價值",
+          "metric": "$1,027 億",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "時間站在你這邊",
+      "callout_body": "當價格遠低於內在價值，時間與現金流會兌現報酬",
+      "code_lines": [
+        "Short-Term: Voting Machine (Fear & Greed)",
+        "3-Year View: Weighing Machine ($1,027 億 OCF & FCF)"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.54,
+        0.46,
+        1.35
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp"
+    },
+    {
+      "beat_id": "beat_63",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "concept_hero_split_3d",
+      "voice_style": "warm",
+      "clauses": [
+        "最後做個招牌總結：在『Gary 聊美股",
+        "我們從來不靠內線消息炒短線",
+        "而是堅持翻開最枯燥的 SEC 10-K",
+        "把五年數據連成一條線",
+        "在大家因為股價下跌四成而恐慌時",
+        "用第二層思考看清商業飛輪與安全邊際",
+        "做自己看得懂的決定"
+      ],
+      "spoken_clauses": [
+        "最後做個招牌總結：在『Gary 聊美股",
+        "我們從來不靠內線消息炒短線",
+        "而是堅持翻開最枯燥的 S E C 十-K",
+        "把五年數據連成一條線",
+        "在大家因為股價下跌四成而恐慌時",
+        "用第二層思考看清商業飛輪與安全邊際",
+        "做自己看得懂的決定"
+      ],
+      "visual_title": "Gary 聊美股的招牌心法",
+      "visual_subtitle": "翻開枯燥 SEC 10-K，把五年數據連成線、用第二層思考決策",
+      "badge_text": "SEC 10-K 實證",
+      "nodes": [
+        {
+          "label": "深挖 SEC 10-K",
+          "sub": "不靠內線炒短線，只信官方財報",
+          "tag": "研究底層",
+          "metric": "5 年數據",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "第二層思考",
+          "sub": "在下跌四成恐慌時看清真實邏輯",
+          "tag": "逆向視角",
+          "metric": "-38.7% 回檔",
+          "icon": "sparkles",
+          "trend": "up"
+        },
+        {
+          "label": "商業飛輪邊際",
+          "sub": "只做自己徹底看得懂的投資決定",
+          "tag": "核心信念",
+          "metric": "16.0x PE",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "做看得懂的決定",
+      "callout_body": "在股價下跌四成恐慌時，用五年財報看清安全邊際",
+      "code_lines": [
+        "Method: 5-Year SEC 10-K Data + 2nd-Level Thinking",
+        "Goal: Identify Flywheel & Margin of Safety in Panic"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.44,
+        0.58,
+        1.28
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "clean architectural dark glass vault protecting warm amber compute cores on #222224 studio stage, conceptual editorial metaphor for NVDA, strictly no text or letters",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "sfx_cue": "thock"
+    },
+    {
+      "beat_id": "beat_64",
+      "chapter_index": 8,
+      "total_chapters": 8,
+      "chapter_title": "紀律控管與長期清單",
+      "layout_type": "stocks_big_statement",
+      "voice_style": "warm",
+      "clauses": [
+        "最後還是要提醒大家持續",
+        "追蹤雲端巨頭自研晶片進度",
+        "與營業利益率變化",
+        "如果你喜歡這種把 SEC 10-K 財報數字",
+        "跟產業底層邏輯拆開來看的深度分析",
+        "記得幫我按讚訂閱追蹤 Gary 聊美股",
+        "本片內容僅供研究參考不構成投資建議，我們下次見"
+      ],
+      "spoken_clauses": [
+        "最後還是要提醒大家持續",
+        "追蹤雲端巨頭自研晶片進度",
+        "與營業利益率變化",
+        "如果你喜歡這種把 S E C 十-K 財報數字",
+        "跟產業底層邏輯拆開來看的深度分析",
+        "記得幫我按讚訂閱追蹤 Gary 聊美股",
+        "本片內容僅供研究參考不構成投資建議，我們下次見"
+      ],
+      "visual_title": "持續追蹤關鍵指標，我們下次見",
+      "visual_subtitle": "訂閱 Gary 聊美股，一起拆解 SEC 10-K 與產業底層邏輯",
+      "badge_text": "Gary 聊美股",
+      "nodes": [
+        {
+          "label": "自研晶片進度",
+          "sub": "持續追蹤雲端巨頭 ASIC 替代影響",
+          "tag": "長期追蹤",
+          "metric": "+17.8%",
+          "icon": "cpu",
+          "trend": "neutral"
+        },
+        {
+          "label": "營益率變化",
+          "sub": "緊盯 NVDA 60.4% 至 55% 防線",
+          "tag": "核心指標",
+          "metric": "60.4%→55%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "訂閱深度分析",
+          "sub": "按讚訂閱追蹤 Gary 聊美股頻道",
+          "tag": "頻道互動",
+          "metric": "OCF $1,829 億",
+          "icon": "youtube",
+          "trend": "up"
+        }
+      ],
+      "callout_title": "研究參考聲明",
+      "callout_body": "本片僅供研究參考不構成投資建議，歡迎按讚訂閱",
+      "code_lines": [
+        "Watchlist: Hyperscaler ASIC Progress + NVDA Op Margin",
+        "Disclaimer: Research Only, Not Financial Advice"
+      ],
+      "pipeline_steps": [],
+      "active_pipeline_idx": -1,
+      "chart_points": [],
+      "secondary_chart_points": [],
+      "camera_focus": [
+        0.34,
+        0.4,
+        1.34
+      ],
+      "screenshot_override": "",
+      "live_video_override": "",
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "sfx_cue": "thock"
+    }
+  ],
+  "short_title": "NVDA暴跌4成PE剩16倍！自研晶片真的殺得死輝達嗎？ #Shorts",
+  "short_hook_banner": "NVDA估值拆解",
+  "short_cta_target_title": "NVDA暴跌四成PE剩16倍！五年財報看懂AI營運槓桿",
+  "short_beats": [
+    {
+      "beat_id": "sbeat_01",
+      "layout_type": "short_squircles_hook",
+      "voice_style": "hook",
+      "clauses": [
+        "輝達從 $243.37 暴跌近四成到 $149.30",
+        "PE 只剩 16 倍，該逃還是抄底"
+      ],
+      "spoken_clauses": [
+        "輝達從 兩百四十三點三七美金 暴跌近四成到 一百四十九點三零美金",
+        "本益比 只剩 十六 倍，該逃還是抄底"
+      ],
+      "headline": "暴跌四成PE剩16倍",
+      "sub_caption": "市場恐慌與財報的巨大預期差",
+      "highlight_badge": "PE 16.0x",
+      "nodes": [
+        {
+          "label": "FY26 總營收",
+          "sub": "SEC 10-K 揭露全年營收創歷史新高",
+          "tag": "基本面",
+          "metric": "$2,159 億",
+          "icon": "nvidia",
+          "trend": "up"
+        },
+        {
+          "label": "營收年增率",
+          "sub": "兩千億體量仍維持超高速擴張",
+          "tag": "成長力",
+          "metric": "+65.5%",
+          "icon": "trending_up",
+          "trend": "up"
+        },
+        {
+          "label": "52 週高點",
+          "sub": "市場狂熱期創下的歷史股價峰值",
+          "tag": "前高",
+          "metric": "$243.37",
+          "icon": "dollar",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "FY26_Revenue = $2,159 億 (+65.5% YoY)",
+        "NVDA_Drawdown = ($149.30 - $243.37) / $243.37 = -38.7%"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "whoosh",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_02",
+      "layout_type": "short_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "翻開 FY26 SEC 10-K",
+        "NVDA 年營收衝上 $2,159 億，暴增 +65.5%"
+      ],
+      "spoken_clauses": [
+        "翻開 FY二十六 S E C 十-K",
+        "Nvidia 年營收衝上 兩千一百五十九億美金，暴增 成長百分之六十五點五"
+      ],
+      "headline": "營收年增高達65.5%",
+      "sub_caption": "四年從 $270 億狂飆到 $2,159 億",
+      "highlight_badge": "$2,159 億",
+      "nodes": [
+        {
+          "label": "從晶片到AI工廠",
+          "sub": "想要看懂為什麼市場現在對 NVDA",
+          "tag": "01",
+          "metric": "01",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "五年財報的營運槓",
+          "sub": "商業故事講得再好聽，最終還是要回",
+          "tag": "02",
+          "metric": "02",
+          "icon": "users",
+          "trend": "neutral"
+        },
+        {
+          "label": "巨頭燒錢的現金真",
+          "sub": "聊到這裡，看空派一定會馬上跳出來",
+          "tag": "03",
+          "metric": "03",
+          "icon": "terminal",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "Step1: AI工廠商業模式 -> Step2: 五年營運槓桿",
+        "Step3: MSFT/META千億CapEx -> Step4: 護城河定價"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_03",
+      "layout_type": "short_browser_zoom_proof",
+      "voice_style": "stocks",
+      "clauses": [
+        "更誇張的是 OCF 高達 $1,027 億",
+        "但 CapEx 只有 $60.4 億，現金流超猛"
+      ],
+      "spoken_clauses": [
+        "更誇張的是 營運現金流 高達 一千零二十七億美金",
+        "但 資本支出 只有 六十點四億美金，現金流超猛"
+      ],
+      "headline": "自由現金流近千億",
+      "sub_caption": "輕資產模式造就 60.4% 驚人營益率",
+      "highlight_badge": "FCF $967億",
+      "nodes": [
+        {
+          "label": "自動駕駛車隊",
+          "sub": "真實路況決策要求極低延遲與高可靠",
+          "tag": "交通",
+          "metric": "+22.2%",
+          "icon": "maps",
+          "trend": "up"
+        },
+        {
+          "label": "智慧工廠機器人",
+          "sub": "產線協作機器人需要即時視覺運算",
+          "tag": "製造",
+          "metric": "營益率 41.4%",
+          "icon": "robot",
+          "trend": "up"
+        },
+        {
+          "label": "醫療影像診斷",
+          "sub": "高精度輔助判讀推動醫院升級算力",
+          "tag": "醫療",
+          "metric": "OCF $1,158 億",
+          "icon": "shield",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "Physical_AI = 雲端訓練中心 + 邊緣端毫秒推論"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "click",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_04",
+      "layout_type": "short_second_level_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "空頭最愛喊巨頭自研 ASIC 要取代輝達",
+        "但有三道牆他們根本跨不過"
+      ],
+      "spoken_clauses": [
+        "空頭最愛喊巨頭自研 ASIC 要取代輝達",
+        "但有三道牆他們根本跨不過"
+      ],
+      "headline": "自研晶片難越三道牆",
+      "sub_caption": "硬體算力只是表象，轉換成本才是關鍵",
+      "highlight_badge": "三大護城河",
+      "nodes": [
+        {
+          "label": "固定研發費用",
+          "sub": "十萬套規模時分攤成本高、利潤普通",
+          "tag": "低規模",
+          "metric": "15.7%",
+          "icon": "layers",
+          "trend": "neutral"
+        },
+        {
+          "label": "全球需求暴衝",
+          "sub": "同一套架構賣出數百萬套大幅攤平成本",
+          "tag": "放量",
+          "metric": "$2,159 億",
+          "icon": "globe",
+          "trend": "up"
+        },
+        {
+          "label": "直灌營業利益",
+          "sub": "多出來的營收幾乎直接變成純利潤",
+          "tag": "槓桿",
+          "metric": "$1,304 億",
+          "icon": "trending_up",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "Operating_Leverage = ΔOpIncome / ΔRevenue",
+        "固定研發費分攤 -> 數百萬套系統 -> 60.4% 營益率"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_05",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "stocks",
+      "clauses": [
+        "第一道牆是 CUDA 生態",
+        "與 NVLink 液冷整機櫃",
+        "整套 AI 工廠讓客戶離不開"
+      ],
+      "spoken_clauses": [
+        "第一道牆是 CUDA 生態",
+        "與 N V Link 液冷整機櫃",
+        "整套 AI 工廠讓客戶離不開"
+      ],
+      "headline": "CUDA加整機櫃鎖死",
+      "sub_caption": "賣的不是單顆晶片，而是整套算力系統",
+      "highlight_badge": "系統級壁壘",
+      "nodes": [
+        {
+          "label": "本業現金流入",
+          "sub": "雲端與軟體穩定貢獻現金",
+          "tag": "OCF",
+          "metric": "$1,829 億",
+          "icon": "dollar",
+          "trend": "up"
+        },
+        {
+          "label": "算力建置支出",
+          "sub": "全額現金支付無須舉債",
+          "tag": "CapEx",
+          "metric": "$1,159 億",
+          "icon": "cpu",
+          "trend": "up"
+        },
+        {
+          "label": "剩餘自由現金",
+          "sub": "扣完支出仍淨賺龐大餘裕",
+          "tag": "FCF",
+          "metric": "$670 億",
+          "icon": "check",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "MSFT_OCF ($1,829 億) - CapEx ($1,159 億) = FCF $670 億"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_06",
+      "layout_type": "short_versus_stamp",
+      "voice_style": "stocks",
+      "clauses": [
+        "第二是『一年一代』節奏",
+        "對手花三年追上",
+        "輝達下一代早就量產拉開代差"
+      ],
+      "spoken_clauses": [
+        "第二是『一年一代』節奏",
+        "對手花三年追上",
+        "輝達下一代早就量產拉開代差"
+      ],
+      "headline": "一年一代輾壓對手",
+      "sub_caption": "每瓦成本腰斬，省晶片錢反而虧 TCO",
+      "highlight_badge": "年度迭代",
+      "nodes": [
+        {
+          "label": "萬卡訓練叢集",
+          "sub": "超大模型考驗極限並聯效率",
+          "tag": "算力規模",
+          "metric": "10,000+ 卡",
+          "icon": "database",
+          "trend": "up"
+        },
+        {
+          "label": "NVLink 互連",
+          "sub": "消除卡間傳輸延遲的核心關鍵",
+          "tag": "高速網路",
+          "metric": "$2,159 億",
+          "icon": "zap",
+          "trend": "up"
+        },
+        {
+          "label": "液冷標準機櫃",
+          "sub": "整合散熱與交換器成標準品",
+          "tag": "系統封裝",
+          "metric": "+65.5%",
+          "icon": "nvidia",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "Bottleneck = 卡與卡之間的通訊延遲 (非單卡算力)",
+        "NVDA_Solution = GPU + NVLink + Switch + 液冷機櫃"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_07",
+      "layout_type": "short_growth_curve",
+      "voice_style": "stocks",
+      "clauses": [
+        "你看 SEC 財報",
+        "MSFT 砸 $1,159 億、META 砸 $697 億",
+        "算力軍備賽根本沒停"
+      ],
+      "spoken_clauses": [
+        "你看 S E C 財報",
+        "Microsoft 砸 一千一百五十九億美金、 Meta 砸 六百九十七億美金",
+        "算力軍備賽根本沒停"
+      ],
+      "headline": "巨頭資本支出暴衝",
+      "sub_caption": "MSFT +79.6%、META +87.1% ",
+      "highlight_badge": "CapEx 狂飆",
+      "nodes": [
+        {
+          "label": "MSFT CapEx",
+          "sub": "FY26 資本支出高達 $1,159",
+          "tag": "+79.6%",
+          "metric": "+79.6%",
+          "icon": "nvidia",
+          "trend": "neutral"
+        },
+        {
+          "label": "META CapEx",
+          "sub": "FY25 資本支出暴增至 $697",
+          "tag": "+87.1%",
+          "metric": "+87.1%",
+          "icon": "nvidia",
+          "trend": "neutral"
+        }
+      ],
+      "code_lines": [
+        "Rev_Growth = +65.5% | Net_Income = $1,201 億",
+        "Op_Margin = 60.4% | Valuation = 16.0x P/E"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_08",
+      "layout_type": "short_kpi_stack",
+      "voice_style": "stocks",
+      "clauses": [
+        "以 PE 16 倍試算：保守下檔約 $125",
+        "中性估值修復回 21 倍就能上看 $225"
+      ],
+      "spoken_clauses": [
+        "以 本益比 十六 倍試算：保守下檔約 一百二十五美金",
+        "中性估值修復回 二十一 倍就能上看 兩百二十五美金"
+      ],
+      "headline": "極具吸引力的賠率",
+      "sub_caption": "下檔約兩成、上檔超過三成五到五成",
+      "highlight_badge": "不對稱賭局",
+      "nodes": [
+        {
+          "label": "MSFT 資本支出",
+          "sub": "FY26 暴增 +79.6% 達 $1,159",
+          "tag": "SEC 10-K",
+          "metric": "$1,159 億",
+          "icon": "microsoft",
+          "trend": "up"
+        },
+        {
+          "label": "META 資本支出",
+          "sub": "FY25 大增 +87.1% 達 $697",
+          "tag": "SEC 10-K",
+          "metric": "$697 億",
+          "icon": "meta",
+          "trend": "up"
+        },
+        {
+          "label": "OCF 佔比攀升",
+          "sub": "CapEx 佔兩家營運現金流逾 60%",
+          "tag": "財務壓力",
+          "metric": ">60% OCF",
+          "icon": "dollar",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "MSFT FY26: CapEx $1,159 億 (+79.6%) / OCF $1,829 億",
+        "META FY25: CapEx $697 億 (+87.1%) / OCF $1,158 億"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_09",
+      "layout_type": "short_second_level_crowd",
+      "voice_style": "stocks",
+      "clauses": [
+        "不過別忘三大風險",
+        "巨頭縮手 CapEx、地緣管制",
+        "以及 55% 營益率防線"
+      ],
+      "spoken_clauses": [
+        "不過別忘三大風險",
+        "巨頭縮手 資本支出 、地緣管制",
+        "以及 百分之五十五 營益率防線"
+      ],
+      "headline": "必盯三大真實地雷",
+      "sub_caption": "分批建倉控管部位，絕不一把 All-in",
+      "highlight_badge": "55% 防線",
+      "nodes": [
+        {
+          "label": "16 倍安全邊際",
+          "sub": "具備高勝率的不對稱風險報酬",
+          "tag": "基本面優勢",
+          "metric": "16.0x PE",
+          "icon": "shield",
+          "trend": "up"
+        },
+        {
+          "label": "財報劇烈震盪",
+          "sub": "單季業績波動極易引發情緒恐慌",
+          "tag": "市場常態",
+          "metric": "OCF $1,027 億",
+          "icon": "zap",
+          "trend": "neutral"
+        },
+        {
+          "label": "部位控管紀律",
+          "sub": "守住倉位上限才能留到估值修復",
+          "tag": "實戰核心",
+          "metric": "CapEx $60.4 億",
+          "icon": "lock",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "Edge: Op Leverage + 3 Moats + 16.0x PE Margin of Safety",
+        "Execution: Position Sizing > Short-Term Timing"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "stamp",
+      "is_cta": false
+    },
+    {
+      "beat_id": "sbeat_10",
+      "layout_type": "short_funnel_cta",
+      "voice_style": "warm",
+      "clauses": [
+        "想看完整三種估值模型與五年財報拆解",
+        "點左下角『關聯影片』看 15 分鐘長片"
+      ],
+      "spoken_clauses": [
+        "想看完整三種估值模型與五年財報拆解",
+        "點左下角『關聯影片』看 十五 分鐘長片"
+      ],
+      "headline": "點左下角看完整版",
+      "sub_caption": "15 分鐘深度解析 NVDA 飛輪與追蹤清單",
+      "highlight_badge": "完整長片",
+      "nodes": [
+        {
+          "label": "自研晶片進度",
+          "sub": "持續追蹤雲端巨頭 ASIC 替代影響",
+          "tag": "長期追蹤",
+          "metric": "+17.8%",
+          "icon": "cpu",
+          "trend": "neutral"
+        },
+        {
+          "label": "營益率變化",
+          "sub": "緊盯 NVDA 60.4% 至 55% 防線",
+          "tag": "核心指標",
+          "metric": "60.4%→55%",
+          "icon": "trending_up",
+          "trend": "neutral"
+        },
+        {
+          "label": "訂閱深度分析",
+          "sub": "按讚訂閱追蹤 Gary 聊美股頻道",
+          "tag": "頻道互動",
+          "metric": "OCF $1,829 億",
+          "icon": "youtube",
+          "trend": "up"
+        }
+      ],
+      "code_lines": [
+        "Watchlist: Hyperscaler ASIC Progress + NVDA Op Margin",
+        "Disclaimer: Research Only, Not Financial Advice"
+      ],
+      "chart_points": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "ai_image_prompt": "",
+      "source_ids": [
+        "S1"
+      ],
+      "sfx_cue": "thock",
+      "is_cta": true
+    }
+  ]
+}

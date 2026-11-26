@@ -60,7 +60,7 @@ def main():
     ap.add_argument("--category", choices=["ai_agent", "vibe_coding", "ai_fundamentals", "us_stocks"], default=None)
     ap.add_argument("--seed-url", action="append", default=[], help="Optional public URLs to crawl first")
     ap.add_argument("--episode-id", default=None, help="Optional fixed episode directory ID (enables checkpoint resume)")
-    ap.add_argument("--chapters", type=int, default=7, help="Number of chapters/scenes in long video (default: 7)")
+    ap.add_argument("--chapters", type=int, default=8, help="Number of chapters/scenes in long video (default: 8 x 8 = 64 beats)")
     ap.add_argument("--scout-only", action="store_true", help="Discover and print ranked topics without rendering")
     ap.add_argument("--health", action="store_true", help="Check RTX PRO 6000 Colab, B850 Tailscale, and Local node health")
     args = ap.parse_args()

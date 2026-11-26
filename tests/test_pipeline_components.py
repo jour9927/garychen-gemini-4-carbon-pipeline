@@ -2,8 +2,37 @@ from __future__ import annotations
 
 from garychen_pipeline.config import CrawledSource, DesignTokens, EpisodeScript, ShortBeatSpec, VisualBeat, VisualNode
 from garychen_pipeline.html_renderer import build_long_beat_html, build_short_beat_html
-from garychen_pipeline.scriptwriter import split_into_clauses, taiwanize_text
+from garychen_pipeline.scriptwriter import (
+    STOCKS_CHAPTER_LAYOUT_MAP,
+    TUTORIAL_CHAPTER_LAYOUT_MAP,
+    normalize_visual_numbers,
+    split_into_clauses,
+    taiwanize_text,
+)
+from garychen_pipeline.thumbnail_gen import _pick_real_portrait, render_studio_thumbnail
 from garychen_pipeline.tts_normalizer import to_spoken_tts_text
+
+
+def test_v6_lossless_clauses_and_numbers():
+    # Previously truncated at 26 chars in V5 — must preserve 100% of characters in V6!
+    s1 = "輝達股價從五十二週高點兩百四十三美金一路殺到一百四十一美金，市場滿街都在喊泡沫。"
+    c1 = split_into_clauses(s1)
+    j1 = "".join(c1)
+    assert "141" in j1 or "一百四十一" in j1, f"Truncated tail in: {c1}"
+    assert "泡沫" in j1
+
+    s2 = "系統會在送出最終付款或預約確認前停下來請 Gary 檢視結果，確保每一分錢都安全。"
+    c2 = split_into_clauses(s2)
+    assert any("結果" in x for x in c2), f"Lost '結果' in: {c2}"
+
+    assert "65.5%" in normalize_visual_numbers("年增率高達百分之六十五點五")
+    assert "$200 美金" in normalize_visual_numbers("每個月花兩百美元訂閱")
+
+    # Verify 64-beat layout maps & zero PR-card spam
+    flat_tut = [lt for row in TUTORIAL_CHAPTER_LAYOUT_MAP for lt in row]
+    flat_stk = [lt for row in STOCKS_CHAPTER_LAYOUT_MAP for lt in row]
+    assert len(flat_tut) == 64 and len(flat_stk) == 64
+    assert flat_tut.count("github_pr_blast_radius") <= 1
 
 
 def test_tts_phonetic_normalizer():
@@ -85,7 +114,7 @@ def test_all_14_v3_layouts_render():
     )
     for b in beats:
         doc, n_st = build_long_beat_html(sc, b, None, {"S1": src}, tokens)
-        assert 'data-step="0"' in doc and n_st == 3
+        assert ('data-step="0"' in doc or 'data-typing="1"' in doc) and n_st == 3
     sdoc, sn = build_short_beat_html(sc, sb, None, None, {"S1": src}, tokens)
     assert 'data-step="0"' in sdoc and sn == 2
 
@@ -93,5 +122,6 @@ def test_all_14_v3_layouts_render():
 if __name__ == "__main__":
     test_tts_phonetic_normalizer()
     test_taiwanize_and_clauses()
+    test_v6_lossless_clauses_and_numbers()
     test_all_14_v3_layouts_render()
-    print("ALL_V3_UNIT_TESTS_PASSED")
+    print("ALL_V6_UNIT_TESTS_PASSED")

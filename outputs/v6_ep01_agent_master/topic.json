@@ -1,0 +1,17 @@
+{
+  "topic_id": "browser_use",
+  "title": "開源 Browser-Use 零訂閱費讓 AI 自動操作網頁、比價與填表單全攻略",
+  "primary_entity": "Browser-Use",
+  "category": "ai_agent",
+  "hook_angle": "開源 Browser-Use 零訂閱費讓 AI 自動操作網頁、比價與填表單全攻略",
+  "why_now": "開源實戰與底層運作深度拆解",
+  "score": 100.0,
+  "seed_queries": [
+    "Browser-Use",
+    "開源 Browser-Use 零訂閱費讓 AI "
+  ],
+  "seed_urls": [
+    "https://github.com/browser-use/browser-use"
+  ],
+  "tickers": []
+}

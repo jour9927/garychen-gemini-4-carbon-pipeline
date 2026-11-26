@@ -44,6 +44,7 @@ class CrawledSource(BaseModel):
     relevance_score: float = 1.0
     screenshot_path: str = ""
     extra_screenshots: list[str] = Field(default_factory=list)
+    live_video_path: str = ""
     key_facts: list[str] = Field(default_factory=list)
     metrics: list[str] = Field(default_factory=list)
     code_or_commands: list[str] = Field(default_factory=list)
@@ -130,6 +131,7 @@ class VisualBeat(BaseModel):
     secondary_chart_points: list[list[Any]] = Field(default_factory=list)
     camera_focus: list[float] = Field(default_factory=lambda: [0.42, 0.36, 1.30])
     screenshot_override: str = ""
+    live_video_override: str = ""
     ai_image_prompt: str = ""
     source_ids: list[str] = Field(default_factory=list)
     sfx_cue: Literal["none", "pop", "thock", "typing", "terminal", "click", "whoosh", "stamp"] = "thock"

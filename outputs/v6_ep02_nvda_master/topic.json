@@ -1,0 +1,18 @@
+{
+  "topic_id": "nvda",
+  "title": "NVDA 輝達暴跌四成 PE 剩 15 倍！從五年 SEC 年報營運槓桿看懂第二層飛輪與三大護城河",
+  "primary_entity": "NVDA",
+  "category": "us_stocks",
+  "hook_angle": "NVDA 輝達暴跌四成 PE 剩 15 倍！從五年 SEC 年報營運槓桿看懂第二層飛輪與三大護城河",
+  "why_now": "公開財報數據、市場預期差與護城河深度拆解",
+  "score": 100.0,
+  "seed_queries": [
+    "NVDA earnings revenue capex",
+    "NVDA moat valuation",
+    "NVDA 輝達暴跌四成 PE 剩 15 倍！從五"
+  ],
+  "seed_urls": [],
+  "tickers": [
+    "NVDA"
+  ]
+}

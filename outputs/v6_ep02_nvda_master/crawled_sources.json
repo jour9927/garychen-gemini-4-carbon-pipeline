@@ -1,0 +1,372 @@
+[
+  {
+    "source_id": "S1",
+    "title": "SEC EDGAR 10-K 官方財報：NVIDIA Corp. (NVDA)",
+    "url": "https://www.sec.gov/edgar/browse/?CIK=1045810",
+    "domain": "sec.gov",
+    "published_date": "2026-01-25",
+    "retrieved_at": "2026-11-26T19:35:57Z",
+    "source_type": "sec_filing",
+    "relevance_score": 1.0,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S1.png",
+    "extra_screenshots": [],
+    "live_video_path": "",
+    "key_facts": [
+      "SEC 10-K 官方年報（截至 2026-01-25）：全年總營收 $2,159 億 美金（年增 +65.5%）",
+      "多年度營收成長軌跡：FY23 $270 億 → FY24 $609 億 → FY25 $1,305 億 → FY26 $2,159 億",
+      "營業利益達 $1,304 億 美金，營業利益率高達 60.4%",
+      "全年淨利 $1,201 億 美金（年增 +64.7%）",
+      "營運現金流（OCF）達 $1,027 億 美金",
+      "資本支出（CapEx）為 $60.4 億 美金（年變動 +86.7%）"
+    ],
+    "metrics": [
+      "$2,159 億",
+      "+65.5%",
+      "營益率 60.4%",
+      "OCF $1,027 億",
+      "CapEx $60.4 億"
+    ],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {
+      "revenue_yi": [
+        [
+          "FY22",
+          269.1,
+          "$269 億"
+        ],
+        [
+          "FY23",
+          269.7,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          609.2,
+          "$609 億"
+        ],
+        [
+          "FY25",
+          1305.0,
+          "$1,305 億"
+        ],
+        [
+          "FY26",
+          2159.4,
+          "$2,159 億"
+        ]
+      ],
+      "op_margin_pct": [
+        [
+          "FY22",
+          37.3,
+          "37.3%"
+        ],
+        [
+          "FY23",
+          15.7,
+          "15.7%"
+        ],
+        [
+          "FY24",
+          54.1,
+          "54.1%"
+        ],
+        [
+          "FY25",
+          62.4,
+          "62.4%"
+        ],
+        [
+          "FY26",
+          60.4,
+          "60.4%"
+        ]
+      ],
+      "capex_yi": [
+        [
+          "FY22",
+          9.8,
+          "$9.8 億"
+        ],
+        [
+          "FY23",
+          18.3,
+          "$18.3 億"
+        ],
+        [
+          "FY24",
+          10.7,
+          "$10.7 億"
+        ],
+        [
+          "FY25",
+          32.4,
+          "$32.4 億"
+        ],
+        [
+          "FY26",
+          60.4,
+          "$60.4 億"
+        ]
+      ]
+    },
+    "excerpt": "SEC 10-K 官方年報（截至 2026-01-25）：全年總營收 $2,159 億 美金（年增 +65.5%） | 多年度營收成長軌跡：FY23 $270 億 → FY24 $609 億 → FY25 $1,305 億 → FY26 $2,159 億 | 營業利益達 $1,304 億 美金，營業利益率高達 60.4% | 全年淨利 $1,201 億 美金（年增 +64.7%） | 營運現金流（OCF）達 $1,027 億 美金 | 資本支出（CapEx）為 $60.4 億 美金（年變動 +86.7%）"
+  },
+  {
+    "source_id": "S2",
+    "title": "CNBC 公開市場報價與估值：NVDA ($149.30 / PE 16.0x)",
+    "url": "https://www.cnbc.com/quotes/NVDA",
+    "domain": "cnbc.com",
+    "published_date": "2026-11-27",
+    "retrieved_at": "2026-11-26T19:35:57Z",
+    "source_type": "market_data",
+    "relevance_score": 0.99,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2.png",
+    "extra_screenshots": [
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_scroll1.png",
+      "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_scroll2.png"
+    ],
+    "live_video_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S2_live.webm",
+    "key_facts": [
+      "NVDA 公開市場股價報 $149.30 美金，52 週高低點區間 $124.50 – $243.37，本益比（P/E）約 16.0x，總市值 3.598T"
+    ],
+    "metrics": [
+      "$149.30",
+      "PE 16.0x",
+      "52W高 $243"
+    ],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {},
+    "excerpt": "NVDA 公開市場股價報 $149.30 美金，52 週高低點區間 $124.50 – $243.37，本益比（P/E）約 16.0x，總市值 3.598T"
+  },
+  {
+    "source_id": "S3",
+    "title": "SEC EDGAR 10-K 官方財報：Microsoft Corp. (MSFT)",
+    "url": "https://www.sec.gov/edgar/browse/?CIK=789019",
+    "domain": "sec.gov",
+    "published_date": "2026-06-30",
+    "retrieved_at": "2026-11-26T19:35:56Z",
+    "source_type": "sec_filing",
+    "relevance_score": 0.94,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S3.png",
+    "extra_screenshots": [],
+    "live_video_path": "",
+    "key_facts": [
+      "SEC 10-K 官方年報（截至 2026-06-30）：全年總營收 $3,318 億 美金（年增 +17.8%）",
+      "多年度營收成長軌跡：FY23 $2,119 億 → FY24 $2,451 億 → FY25 $2,817 億 → FY26 $3,318 億",
+      "營業利益達 $1,552 億 美金，營業利益率高達 46.8%",
+      "全年淨利 $1,337 億 美金（年增 +31.3%）",
+      "營運現金流（OCF）達 $1,829 億 美金",
+      "資本支出（CapEx）為 $1,159 億 美金（年變動 +79.6%）"
+    ],
+    "metrics": [
+      "$3,318 億",
+      "+17.8%",
+      "營益率 46.8%",
+      "OCF $1,829 億",
+      "CapEx $1,159 億"
+    ],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {
+      "revenue_yi": [
+        [
+          "FY22",
+          1982.7,
+          "$1,983 億"
+        ],
+        [
+          "FY23",
+          2119.2,
+          "$2,119 億"
+        ],
+        [
+          "FY24",
+          2451.2,
+          "$2,451 億"
+        ],
+        [
+          "FY25",
+          2817.2,
+          "$2,817 億"
+        ],
+        [
+          "FY26",
+          3318.4,
+          "$3,318 億"
+        ]
+      ],
+      "op_margin_pct": [
+        [
+          "FY22",
+          42.1,
+          "42.1%"
+        ],
+        [
+          "FY23",
+          41.8,
+          "41.8%"
+        ],
+        [
+          "FY24",
+          44.6,
+          "44.6%"
+        ],
+        [
+          "FY25",
+          45.6,
+          "45.6%"
+        ],
+        [
+          "FY26",
+          46.8,
+          "46.8%"
+        ]
+      ],
+      "capex_yi": [
+        [
+          "FY22",
+          238.9,
+          "$239 億"
+        ],
+        [
+          "FY23",
+          281.1,
+          "$281 億"
+        ],
+        [
+          "FY24",
+          444.8,
+          "$445 億"
+        ],
+        [
+          "FY25",
+          645.5,
+          "$646 億"
+        ],
+        [
+          "FY26",
+          1159.5,
+          "$1,159 億"
+        ]
+      ]
+    },
+    "excerpt": "SEC 10-K 官方年報（截至 2026-06-30）：全年總營收 $3,318 億 美金（年增 +17.8%） | 多年度營收成長軌跡：FY23 $2,119 億 → FY24 $2,451 億 → FY25 $2,817 億 → FY26 $3,318 億 | 營業利益達 $1,552 億 美金，營業利益率高達 46.8% | 全年淨利 $1,337 億 美金（年增 +31.3%） | 營運現金流（OCF）達 $1,829 億 美金 | 資本支出（CapEx）為 $1,159 億 美金（年變動 +79.6%）"
+  },
+  {
+    "source_id": "S4",
+    "title": "SEC EDGAR 10-K 官方財報：Meta Platforms, Inc. (META)",
+    "url": "https://www.sec.gov/edgar/browse/?CIK=1326801",
+    "domain": "sec.gov",
+    "published_date": "2025-12-31",
+    "retrieved_at": "2026-11-26T19:35:57Z",
+    "source_type": "sec_filing",
+    "relevance_score": 0.94,
+    "screenshot_path": "/Users/alan_dingchaoliao/Downloads/garychen/outputs/v6_ep02_nvda_master/source_screenshots/S4.png",
+    "extra_screenshots": [],
+    "live_video_path": "",
+    "key_facts": [
+      "SEC 10-K 官方年報（截至 2025-12-31）：全年總營收 $2,010 億 美金（年增 +22.2%）",
+      "多年度營收成長軌跡：FY22 $1,166 億 → FY23 $1,349 億 → FY24 $1,645 億 → FY25 $2,010 億",
+      "營業利益達 $833 億 美金，營業利益率高達 41.4%",
+      "全年淨利 $605 億 美金（年增 -3.1%）",
+      "營運現金流（OCF）達 $1,158 億 美金",
+      "資本支出（CapEx）為 $697 億 美金（年變動 +87.1%）"
+    ],
+    "metrics": [
+      "$2,010 億",
+      "+22.2%",
+      "營益率 41.4%",
+      "OCF $1,158 億",
+      "CapEx $697 億"
+    ],
+    "code_or_commands": [],
+    "pr_or_issue_items": [],
+    "time_series": {
+      "revenue_yi": [
+        [
+          "FY21",
+          1179.3,
+          "$1,179 億"
+        ],
+        [
+          "FY22",
+          1166.1,
+          "$1,166 億"
+        ],
+        [
+          "FY23",
+          1349.0,
+          "$1,349 億"
+        ],
+        [
+          "FY24",
+          1645.0,
+          "$1,645 億"
+        ],
+        [
+          "FY25",
+          2009.7,
+          "$2,010 億"
+        ]
+      ],
+      "op_margin_pct": [
+        [
+          "FY21",
+          39.6,
+          "39.6%"
+        ],
+        [
+          "FY22",
+          24.8,
+          "24.8%"
+        ],
+        [
+          "FY23",
+          34.7,
+          "34.7%"
+        ],
+        [
+          "FY24",
+          42.2,
+          "42.2%"
+        ],
+        [
+          "FY25",
+          41.4,
+          "41.4%"
+        ]
+      ],
+      "capex_yi": [
+        [
+          "FY21",
+          186.9,
+          "$187 億"
+        ],
+        [
+          "FY22",
+          311.9,
+          "$312 億"
+        ],
+        [
+          "FY23",
+          270.4,
+          "$270 億"
+        ],
+        [
+          "FY24",
+          372.6,
+          "$373 億"
+        ],
+        [
+          "FY25",
+          696.9,
+          "$697 億"
+        ]
+      ]
+    },
+    "excerpt": "SEC 10-K 官方年報（截至 2025-12-31）：全年總營收 $2,010 億 美金（年增 +22.2%） | 多年度營收成長軌跡：FY22 $1,166 億 → FY23 $1,349 億 → FY24 $1,645 億 → FY25 $2,010 億 | 營業利益達 $833 億 美金，營業利益率高達 41.4% | 全年淨利 $605 億 美金（年增 -3.1%） | 營運現金流（OCF）達 $1,158 億 美金 | 資本支出（CapEx）為 $697 億 美金（年變動 +87.1%）"
+  }
+]
